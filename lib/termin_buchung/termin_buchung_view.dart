@@ -28,71 +28,84 @@ class _TerminBuchungState extends State<TerminBuchung> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Neue Terminbuchung",
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Neue Terminbuchung",
+          ),
         ),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-              ),
-              child: PageView(
-                controller: _controller,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  FragenWidget(
-                    testFrage,
-                    () {
-                      _controller.animateToPage(
-                        1,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  FragenWidget(
-                    testFrage2,
-                    () {
-                      _controller.animateToPage(
-                        2,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  FragenWidget(
-                    testFrage,
-                    () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Buchung()),
-                      );
-                    },
-                  ),
-                ],
+        body: Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 20,
+                  left: 20,
+                  right: 20,
+                ),
+                child: PageView(
+                  controller: _controller,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    FragenWidget(
+                      testFrage,
+                      () {
+                        _controller.animateToPage(
+                          1,
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                    ),
+                    FragenWidget(
+                      testFrage2,
+                      () {
+                        _controller.animateToPage(
+                          2,
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                    ),
+                    FragenWidget(
+                      testFrage,
+                      () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Buchung()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
-}
 
-/*
-Padding(
-            padding: EdgeInsets.only(
-              top: 30,
-              left: 30,
-              right: 30,
-            ),
-            child: FragenWidget(testFrage),
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Möchtest du die Buchung abbrechen?'),
+            content: Text('Dein bisheriger Fortschritt geht verloren.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text('Ja'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text('Nein'),
+              ),
+            ],
           ),
-      */
+        )) ??
+        false;
+  }
+}

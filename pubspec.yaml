@@ -43,7 +43,11 @@ dependencies:
   flutter_riverpod: ^0.14.0+3
   table_calendar: ^3.0.2
   google_fonts: ^2.1.0
+  http: ^0.13.3
 
+  firebase_core: "^1.6.0"
+  firebase_messaging: "^10.0.7"
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter
