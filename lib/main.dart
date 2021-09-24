@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 import './Home/home.dart';
 import 'faq/faq_view.dart';
 
@@ -31,12 +32,11 @@ class MyApp extends StatelessWidget {
         ),
 
         primaryColor: primCol,
-        dividerColor: accCol,
 
         fontFamily: 'Roboto',
 
         textTheme: TextTheme(
-            bodyText1: TextStyle(fontSize: 16, color: Colors.white),
+            bodyText1: TextStyle(fontSize: 20, color: Colors.white),
             headline1: TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
             headline2: TextStyle(
