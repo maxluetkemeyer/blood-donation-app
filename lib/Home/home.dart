@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ukmblutspende/faq/faq_view.dart';
+import 'package:ukmblutspende/karte/maps.dart';
+import 'package:ukmblutspende/main.dart';
+import 'package:ukmblutspende/termin_buchung/termin_buchung_view.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -29,9 +33,7 @@ class HomeView extends StatelessWidget {
                   child: ListView.builder(
                     padding: EdgeInsets.symmetric(vertical: 16.0),
                     itemBuilder: (BuildContext context, int index) {
-
-                        return _buildCarousel(context, index ~/ 2);
-                      
+                      return _buildCarousel(context, index ~/ 2);
                     },
                   ),
                 ),
@@ -43,7 +45,11 @@ class HomeView extends StatelessWidget {
                 widthFactor: 1,
                 child: ElevatedButton(
                     onPressed: () {
-                      //TODO: Implementieren der Push
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TerminBuchung()),
+                      );
                     },
                     child: Text('Terminanmeldung')),
               )
@@ -87,10 +93,10 @@ class HomeView extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TerminBuchung()),
+                  );
                 },
               ),
               Divider(),
@@ -100,10 +106,10 @@ class HomeView extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyMap()),
+                  );
                 },
               ),
               Divider(),
@@ -126,10 +132,10 @@ class HomeView extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Faq()),
+                  );
                 },
               ),
               Divider(),
@@ -182,7 +188,6 @@ class HomeView extends StatelessWidget {
           color: Colors.grey,
           borderRadius: BorderRadius.all(Radius.circular(4.0)),
         ),
-        
       ),
     );
   }
