@@ -1,28 +1,62 @@
-/// Flutter code sample for ExpansionTile
-// This example demonstrates different configurations of ExpansionTile.
-import 'package:flutter/material.dart';
+//@dart = 2.9
 
-void main() => runApp(const MyApp());
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import './Home/home.dart';
+
+// Main
+void main() {
+  runApp(ProviderScope(child: MyApp()));
+}
 
 /// This is the main application widget.
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
   static const String _title = 'FAQ zur Blutspende';
+  final Color primCol = Color(0xff003866);
+  final Color accCol = Color(0xff93001D);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: const MyStatefulWidget(),
+      title: "UKM Blutspende",
+      debugShowCheckedModeBanner: false,
+      // TODO: Theme Ändern!!
+      theme: ThemeData(
+        // Primäre Farbe des Dokumentes (UKM Logo-Farbe dunkel)
+        appBarTheme: AppBarTheme(
+          backgroundColor: primCol,
+        ),
+
+        primaryColor: primCol,
+        dividerColor: accCol,
+
+        fontFamily: 'Roboto',
+
+        textTheme: TextTheme(
+            bodyText1: TextStyle(fontSize: 16, color: Colors.white),
+            headline1: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            headline2: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black)),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            elevation: 5,
+            primary: primCol,
+          ),
+        ),
       ),
+      home: HomeView(),
     );
   }
 }
 
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
