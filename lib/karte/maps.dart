@@ -14,7 +14,9 @@ class MyMap extends StatelessWidget{
       title: Text("Karte"),
     ),
     
-    body: SingleChildScrollView(
+    body: SingleChildScrollView(  //Scrollfunktion
+
+    //Karte hinzufügen
       child: Center( 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +53,7 @@ class MyMap extends StatelessWidget{
               )
             ),
           
-          
+          //Überschrift
           SizedBox(
             height: 50,
             child: Center(
@@ -66,8 +68,9 @@ class MyMap extends StatelessWidget{
           ),
 
         
-          Row(
+          Row(mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[  
+                //UKM-Image
                 Padding(
                     padding: EdgeInsets.all(16), 
                     child: Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Universit%C3%A4tsklinikum_M%C3%BCnster_Logo.svg/1200px-Universit%C3%A4tsklinikum_M%C3%BCnster_Logo.svg.png",
@@ -84,7 +87,7 @@ class MyMap extends StatelessWidget{
                   Padding(
                     padding: EdgeInsets.all(15),
                     child:
-                      Text("Anfahrstadresse: Domagkstraße 5\n48149 Münster\nTel.: +49 251 83-55555\nE-Mail: info@ukmuenster.de",
+                      Text("Albert-Schweitzer-Campus 1\n48149 Münster\nAnfahrtsadresse:\nDomagkstr. 11, Gebäude D11\nT 0251 - 83 58000\nblutspende@­ukmuenster.de",
                          style: TextStyle(
                          color: Color(0xff003866),
                          fontWeight: FontWeight.bold,
