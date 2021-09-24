@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
+import './onboard/onboarding.dart';
 import './Home/home.dart';
 import 'faq/faq_view.dart';
 
@@ -51,7 +53,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeView(),
+      home: OnBoard(),
     );
   }
 }
