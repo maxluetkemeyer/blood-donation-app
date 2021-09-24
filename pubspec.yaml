@@ -30,11 +30,18 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # add map
+  latlong2: ^0.8.0
+  flutter_map: ^0.14.0
+  flutter_map_marker_cluster: ^0.4.0
+
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^0.14.0+3
+  table_calendar: ^3.0.2
   google_fonts: ^2.1.0
   carousel_slider: ^4.0.0
 

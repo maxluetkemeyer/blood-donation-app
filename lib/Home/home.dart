@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ukmblutspende/faq/faq_view.dart';
+import 'package:ukmblutspende/karte/maps.dart';
+import 'package:ukmblutspende/main.dart';
+import 'package:ukmblutspende/termin_buchung/termin_buchung_view.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -54,7 +58,11 @@ class HomeView extends StatelessWidget {
                 widthFactor: 1,
                 child: ElevatedButton(
                     onPressed: () {
-                      //TODO: Implementieren der Push
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TerminBuchung()),
+                      );
                     },
                     child: Text('Terminanmeldung')),
               )
@@ -98,10 +106,10 @@ class HomeView extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TerminBuchung()),
+                  );
                 },
               ),
               Divider(),
@@ -111,10 +119,10 @@ class HomeView extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyMap()),
+                  );
                 },
               ),
               Divider(),
@@ -137,10 +145,10 @@ class HomeView extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Faq()),
+                  );
                 },
               ),
               Divider(),

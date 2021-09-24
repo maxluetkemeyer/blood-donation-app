@@ -5,15 +5,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import './Home/home.dart';
+import 'faq/faq_view.dart';
 
 // Main
 void main() {
-  runApp(ProviderScope(child: LernenApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
-// Material App
-class LernenApp extends StatelessWidget {
-
+/// This is the main application widget.
+class MyApp extends StatelessWidget {
+  static const String _title = 'FAQ zur Blutspende';
   final Color primCol = Color(0xff003866);
   final Color accCol = Color(0xff93001D);
 
@@ -29,20 +30,19 @@ class LernenApp extends StatelessWidget {
           backgroundColor: primCol,
         ),
 
-
-
         primaryColor: primCol,
         dividerColor: accCol,
 
         fontFamily: 'Roboto',
 
         textTheme: TextTheme(
-          bodyText1: TextStyle(fontSize: 16, color: Colors.white),
-          headline1: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-          headline2: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)
-        ),
-
-        
+            bodyText1: TextStyle(fontSize: 16, color: Colors.white),
+            headline1: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            headline2: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black)),
 
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -55,5 +55,3 @@ class LernenApp extends StatelessWidget {
     );
   }
 }
-
-
