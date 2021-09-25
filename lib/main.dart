@@ -1,9 +1,11 @@
 //@dart = 2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
+import 'package:shared_preferences/shared_preferences.dart';
+
+import './onboard/onboarding.dart';
 import './Home/home.dart';
 
 void main() {
@@ -14,7 +16,6 @@ void main() {
 class MyApp extends StatelessWidget {
   final Color primCol = Color(0xff003866);
   final Color accCol = Color(0xff93001D);
-
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +30,11 @@ class MyApp extends StatelessWidget {
         ),
 
         primaryColor: primCol,
-        dividerColor: accCol,
 
         fontFamily: 'Roboto',
 
         textTheme: TextTheme(
-            bodyText1: TextStyle(fontSize: 16, color: Colors.white),
+            bodyText1: TextStyle(fontSize: 20, color: Colors.white),
             headline1: TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
             headline2: TextStyle(
@@ -55,9 +55,8 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData) {
             if (snapshot.data) {
               // Onboarding
-              return Container(color: Colors.blue);
+              return OnBoard();
             }
-
             // Home
             return HomeView();
           } else {
