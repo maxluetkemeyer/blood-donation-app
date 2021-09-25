@@ -1,6 +1,9 @@
+import 'dart:convert';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Nutzerdaten extends StatelessWidget {
   /* setPrefs() async {
@@ -99,26 +102,54 @@ class Nutzerdaten extends StatelessWidget {
 }
 
 class Calendar extends StatelessWidget {
+  List<Meeting> meetings = <Meeting>[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SfCalendar(
-      view: CalendarView.month,
-      dataSource: MeetingDataSource(_getDataSource()),
-      monthViewSettings: MonthViewSettings(
-          appointmentDisplayMode: MonthAppointmentDisplayMode.appointment),
-    ));
+        body: FutureBuilder<String>(
+            future: funktion(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                Map<String, dynamic> datenMap =
+                    jsonDecode(snapshot.data ?? "abc");
+                var datum = Datum.fromJson(datenMap);
+                int l = datenMap["Datum"].length;
+                for (var length = 0; length < l; length++) {
+                  _setDataSource(
+                      datenMap["Datum"][length]["Jahr"],
+                      datenMap["Datum"][length]["Monat"],
+                      datenMap["Datum"][length]["Tag"]);
+                }
+              }
+              return SfCalendar(
+                view: CalendarView.month,
+                dataSource: MeetingDataSource(_getDataSource()),
+                monthViewSettings: MonthViewSettings(
+                    appointmentDisplayMode:
+                        MonthAppointmentDisplayMode.appointment),
+              );
+            }));
   }
-}
 
-List<Meeting> _getDataSource() {
-  final List<Meeting> meetings = <Meeting>[];
-  meetings.add(Meeting("Blutspende", DateTime.utc(2021, 9, 17),
-      DateTime.utc(2021, 9, 17, 2), Color(0xFF0F8644), true));
-  meetings.add(Meeting("Blutspende", DateTime.utc(2021, 9, 18),
-      DateTime.utc(2021, 9, 18, 2), Color(0xFF0F8644), false));
+  List<Meeting> _getDataSource() {
+    return meetings;
+  }
 
-  return meetings;
+  List<Meeting> _setDataSource(int j, int m, int d) {
+    print(j + m + d);
+    var mee = Meeting("Blutspende", DateTime.utc(j, m, d),
+        DateTime.utc(j, m, d, 2), Color(0xFF0F8644), true);
+    if (!(meetings.contains(mee))) {
+      meetings.add(Meeting("Blutspende", DateTime.utc(j, m, d),
+          DateTime.utc(j, m, d, 2), Color(0xFF0F8644), true));
+    }
+    return meetings;
+  }
+
+  Future<String> funktion() async {
+    //asyncron json laden und zurückgeben
+    return await rootBundle.loadString('assets/images/daten.json');
+  }
 }
 
 class MeetingDataSource extends CalendarDataSource {
@@ -160,4 +191,22 @@ class Meeting {
   DateTime to;
   Color background;
   bool isAllDay;
+}
+
+class Datum {
+  final int jahr;
+  final int monat;
+  final int tag;
+  Datum(this.jahr, this.monat, this.tag);
+
+  Datum.fromJson(Map<String, dynamic> json)
+      : jahr = json["Jahr"],
+        monat = json["Monat"],
+        tag = json["Tag"];
+
+  Map<String, dynamic> toJson() => {
+        "Jahr": jahr,
+        "Monat": monat,
+        "Tag": tag,
+      };
 }
