@@ -1,3 +1,4 @@
+//@dart = 2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -5,15 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import './Home/home.dart';
 
-void main() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-
-  final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
-
-  runApp(ProviderScope(
-      child: MyApp(
-    alreadyOnboarded: alreadyOnboarded,
-  )));
+void main() {
+  runApp(ProviderScope(child: MyApp()));
 }
 
 /// This is the main application widget.
@@ -21,9 +15,6 @@ class MyApp extends StatelessWidget {
   final Color primCol = Color(0xff003866);
   final Color accCol = Color(0xff93001D);
 
-  final bool alreadyOnboarded;
-
-  MyApp({required this.alreadyOnboarded});
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +49,31 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: alreadyOnboarded ? HomeView() : Container(),
+      home: FutureBuilder<bool>(
+        future: showOnboarding(),
+        builder: (buildContext, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data) {
+              // Onboarding
+              return Container(color: Colors.blue);
+            }
+
+            // Home
+            return HomeView();
+          } else {
+            // Return loading screen while reading preferences
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
+  }
+
+  Future<bool> showOnboarding() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final alreadyOnboarded = prefs.getBool("alreadyOnboarded");
+
+    return alreadyOnboarded == null;
   }
 }
 

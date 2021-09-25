@@ -45,8 +45,6 @@ dependencies:
   google_fonts: ^2.1.0
   http: ^0.13.3
 
-  firebase_core: "^1.6.0"
-  firebase_messaging: "^10.0.7"
   shared_preferences: ^2.0.8
     
 dev_dependencies:
