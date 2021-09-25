@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ukmblutspende/Home/menu.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class Impressum extends StatelessWidget {
@@ -8,6 +9,7 @@ class Impressum extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Impressum')),
+        drawer: Menu(),
         body: SingleChildScrollView(
             child: Padding(
                 padding: EdgeInsets.only(left: 8),
