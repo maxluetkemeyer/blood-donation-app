@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'frage_model.dart';
 
 class FragenWidget extends StatelessWidget {
-  Frage _frage;
-  Function nextQuestionFunc;
+  final Frage frage;
+  final Function nextQuestionFunc;
 
-  FragenWidget(this._frage, this.nextQuestionFunc);
+  FragenWidget({required this.frage, required this.nextQuestionFunc});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class FragenWidget extends StatelessWidget {
         children: [
           Container(
             child: Text(
-              _frage.text,
+              frage.text,
               style: TextStyle(
                 fontSize: 30,
               ),
@@ -39,7 +39,7 @@ class FragenWidget extends StatelessWidget {
             height: 60,
             child: ElevatedButton.icon(
               onPressed: () {
-                if (_frage.isYesCorrect) {
+                if (frage.isYesCorrect) {
                   nextQuestionFunc();
                 }
               },
@@ -58,7 +58,7 @@ class FragenWidget extends StatelessWidget {
             height: 60,
             child: ElevatedButton.icon(
               onPressed: () {
-                if (!_frage.isYesCorrect) {
+                if (!frage.isYesCorrect) {
                   nextQuestionFunc();
                 }
               },

@@ -50,8 +50,8 @@ class _TerminBuchungState extends State<TerminBuchung> {
                   physics: NeverScrollableScrollPhysics(),
                   children: [
                     FragenWidget(
-                      testFrage,
-                      () {
+                      frage: testFrage,
+                      nextQuestionFunc: () {
                         _controller.animateToPage(
                           1,
                           duration: Duration(milliseconds: 300),
@@ -60,8 +60,8 @@ class _TerminBuchungState extends State<TerminBuchung> {
                       },
                     ),
                     FragenWidget(
-                      testFrage2,
-                      () {
+                      frage: testFrage2,
+                      nextQuestionFunc: () {
                         _controller.animateToPage(
                           2,
                           duration: Duration(milliseconds: 300),
@@ -70,8 +70,8 @@ class _TerminBuchungState extends State<TerminBuchung> {
                       },
                     ),
                     FragenWidget(
-                      testFrage,
-                      () {
+                      frage: testFrage,
+                      nextQuestionFunc: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Buchung()),

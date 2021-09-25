@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "UKM Blutspende",
       debugShowCheckedModeBanner: false,
-      // TODO: Theme Ändern!!
       theme: ThemeData(
         // Primäre Farbe des Dokumentes (UKM Logo-Farbe dunkel)
         appBarTheme: AppBarTheme(

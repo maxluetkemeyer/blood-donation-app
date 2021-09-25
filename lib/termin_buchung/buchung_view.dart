@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:table_calendar/table_calendar.dart';
-import 'package:ukmblutspende/main.dart';
+
+// ignore: import_of_legacy_library_into_null_safe
+import '../main.dart';
 
 class Buchung extends StatefulWidget {
   const Buchung({Key? key}) : super(key: key);
@@ -161,8 +163,6 @@ class _FreieTermineState extends State<FreieTermine> {
               future: _response,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  
-
                   List<Widget> boxen = [];
                   for (int i = 0; i < 10; i++) {
                     boxen.add(TerminBox(
