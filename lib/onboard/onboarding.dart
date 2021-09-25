@@ -14,9 +14,10 @@ class _OnBoardState extends State<OnBoard> {
 
   void _presentDatePicker() {
     showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1899),
+      context: context, 
+      locale : const Locale("de","DE"),
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(1899), 
       lastDate: DateTime.now(),
     ).then((pickedDate) {
       if (pickedDate == null) {
