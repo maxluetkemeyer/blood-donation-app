@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
               body: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 child: Text(
-                  "Damit Sie mit einen sicheren Gefühl zu Ihrer ersten Blutspende gehen können, legen wir besonderen Wert darauf, dass ein Erstspender umfassend informiert wird, Fragen beantworten wir gerne im Arztgespräch",
+                  "Vor der Spende solltest du ausreichend gegessen und mindestens 1,5 Liter alkoholfreie Flüssigkeit zu sich genommen haben. Nicht mit nüchternem Magen zum Blutspendetermin kommen!",
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
               body: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 child: Text(
-                  "Jede Blutspende wird auf HIV und andere Erreger getestet. Dazu wird die Blutgruppe und der Rhesusfaktor bestimmt. Das Blut wird in seine verschiedenen Komponenten: \n Die roten Blutkörperchen (Erythrozyten)\n die Blutplättchen (Thrombozyten)\n die Blutflüssigkeit (Plasma)\n aufgetrennt und zu Blutpräparaten verarbeitet. Diese werden an die Patienten mit Bedarf geliefert.",
+                  "Jede Blutspende wird auf HIV und andere Erreger getestet. Dazu wird die Blutgruppe und der Rhesusfaktor bestimmt. Das Blut wird in seine verschiedenen Komponenten: \n Die roten Blutkörperchen (Erythrozyten)\n Die Blutplättchen (Thrombozyten)\n Die Blutflüssigkeit (Plasma)\naufgetrennt und zu Blutpräparaten verarbeitet. Diese werden an die Patienten mit Bedarf geliefert.",
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -217,13 +217,13 @@ class _HomePageState extends State<HomePage> {
               headerBuilder: (_, isExpanded) => Container(
                   padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   child: Text(
-                    "Warum wird meine Blutgruppe gespeichert?",
+                    "Warum wird meine Blutgruppe in der App gespeichert?",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   )),
               body: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 child: Text(
-                  "[Begründung]",
+                  "Bei Blutmangel werden Spender über diese App informiert. Damit wir spezifisch die Personen mit der entsprechenden Blutgruppe erreichen und benachrichtigen können, speichern wir die Blutgruppe ab.",
                   style: TextStyle(fontSize: 20),
                 ),
               ),
