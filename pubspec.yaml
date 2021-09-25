@@ -38,6 +38,8 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  
+  syncfusion_flutter_calendar: ^19.2.62
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -82,6 +84,8 @@ flutter:
     - assets/images/image_3.png
     - assets/images/image_4.png
     - assets/images/1.png
+    - assets/images/daten.json
+  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
