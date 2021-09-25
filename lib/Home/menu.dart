@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ukmblutspende/Nutzerdaten/nutzerdaten.dart';
+import 'package:ukmblutspende/impressum/impressum.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import './list_object.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -50,7 +51,7 @@ class Menu extends StatelessWidget {
             ),
             ListObject(
               title: 'Impressum',
-              onTap: HomeView(),
+              onTap: Impressum(),
             ),
           ],
         ),
