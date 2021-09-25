@@ -85,6 +85,7 @@ flutter:
     - assets/images/image_4.png
     - assets/images/1.png
     - assets/images/daten.json
+    - assets/images/UKM_Blutspende_Muenster_Eingang.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
