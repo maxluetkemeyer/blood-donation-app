@@ -43,6 +43,7 @@ class _OnBoardState extends State<OnBoard> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Card(
+            elevation: 5,
             child: Column(
               children: [
                 Container(
@@ -73,7 +74,7 @@ class _OnBoardState extends State<OnBoard> {
                       Expanded(
                           child: Text(bDate.day == DateTime.now().day
                               ? 'Geburtsdatum'
-                              : 'Picked Date: ${DateFormat.yMd().format(bDate)}')),
+                              : 'Geburtstag auswählen: ${DateFormat.yMd().format(bDate)}')),
                       TextButton(
                         onPressed: () {
                           _presentDatePicker();
@@ -96,6 +97,10 @@ class _OnBoardState extends State<OnBoard> {
                   onPressed: () async {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
+
+                    if(_nameController.text==''||_fNameController.text==''||bDate.day==DateTime.now().day){
+                      return;
+                    }
 
                     prefs.setString("vorname", _fNameController.text);
                     prefs.setString("name", _nameController.text);

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ukmblutspende/onboard/firstcontact.dart';
 
 import './onboard/onboarding.dart';
 import './Home/home.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData) {
             if (snapshot.data) {
               // Onboarding
-              return OnBoard();
+              return FirstContact();
             }
             // Home
             return HomeView();
