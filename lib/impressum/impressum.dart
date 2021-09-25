@@ -21,7 +21,7 @@ class Impressum extends StatelessWidget {
                           style:
                               TextStyle(color: Colors.black, fontSize: 23.0)),
                       SizedBox(height: 7),
-                      Text('Wir sind blablabla',
+                      Text('Wir sind ein Projektseminar der Uni Münster',
                           style:
                               TextStyle(color: Colors.black, fontSize: 18.0)),
                       SizedBox(height: 30),

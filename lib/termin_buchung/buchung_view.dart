@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:table_calendar/table_calendar.dart';
+import 'package:ukmblutspende/Home/home.dart';
 import 'package:ukmblutspende/termin_buchung/termin_model.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
@@ -148,7 +149,9 @@ class _FreieTermineState extends State<FreieTermine> {
                         Text(
                           selectedDay.day.toString() +
                               "." +
-                              selectedDay.month.toString() +
+                              (selectedDay.month.toString().length == 1
+                                  ? "0" + selectedDay.month.toString()
+                                  : selectedDay.month.toString()) +
                               "." +
                               selectedDay.year.toString(),
                           style: TextStyle(
@@ -156,7 +159,7 @@ class _FreieTermineState extends State<FreieTermine> {
                           ),
                         ),
                         Text(
-                          "Auswegählter Blutspendetermin",
+                          "Ausgewählter Blutspendetermin",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.grey,
@@ -379,6 +382,9 @@ class DatenKarte extends ConsumerWidget {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
               Row(
                 children: [
                   SizedBox(
@@ -398,7 +404,24 @@ class DatenKarte extends ConsumerWidget {
                     width: 190,
                     height: 40,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        AlertDialog(
+                          title: Text('Dein Termin wurde gebaucht'),
+                          content: Text('Wir freuen uns auf dich!'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeView()),
+                                );
+                              },
+                              child: Text('Fertig'),
+                            ),
+                          ],
+                        );
+                      },
                       child: Row(
                         children: [
                           Text("Termin buchen"),
@@ -409,6 +432,9 @@ class DatenKarte extends ConsumerWidget {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 30,
               ),
             ],
           );
