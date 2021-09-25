@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:table_calendar/table_calendar.dart';
+import 'package:ukmblutspende/termin_buchung/termin_model.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 import '../main.dart';
@@ -14,21 +18,27 @@ class Buchung extends StatefulWidget {
   _BuchungState createState() => _BuchungState();
 }
 
+StateProvider<ScrollController>? buchungsScrollController;
+
 class _BuchungState extends State<Buchung> {
-  late ScrollController _scrollController;
+  late ScrollController scrollController;
 
   @override
   void initState() {
     super.initState();
 
-    _scrollController = ScrollController();
+    scrollController = ScrollController();
+
+    buchungsScrollController = StateProvider<ScrollController>((ref) {
+      return scrollController;
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
 
-    _scrollController.dispose();
+    scrollController.dispose();
   }
 
   @override
@@ -39,6 +49,7 @@ class _BuchungState extends State<Buchung> {
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
+        controller: scrollController,
         child: Column(
           children: [
             SizedBox(
@@ -82,15 +93,23 @@ class _FreieTermineState extends State<FreieTermine> {
   Future<String> fetch() async {
     DateTime day = context.read(selectedDayProvider).state;
 
-    final response = await http
-        .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+    String monat;
+    if (day.month.toString().length == 1) {
+      monat = "0" + day.month.toString();
+    } else {
+      monat = day.month.toString();
+    }
+
+    String tagString =
+        day.day.toString() + monat + day.year.toString().substring(2, 4);
+
+    print("tagString: " + tagString);
+    final response = await http.get(Uri.parse(
+        'http://ukm-mshack-env.eba-qaxzjmvp.eu-central-1.elasticbeanstalk.com/freieTermineProTag?datum=' +
+            tagString));
 
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(day.toString()),
-      ));
+      //print(response.body);
       return response.body;
     } else {
       // If the server did not return a 200 OK response,
@@ -163,10 +182,24 @@ class _FreieTermineState extends State<FreieTermine> {
               future: _response,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  //JSON String bearbeiten
+                  Map<String, dynamic> map = jsonDecode(snapshot.data ?? "");
+
+                  //print(map);
+
+                  //print(map["day"]);
+                  //print(map["freieUhrezeiten"]);
+
+                  print(map["freieUhrezeiten"][0]);
+
+                  int anzahlTermine = map["freieUhrezeiten"].length;
+
                   List<Widget> boxen = [];
-                  for (int i = 0; i < 10; i++) {
+                  for (int i = 0; i < anzahlTermine; i++) {
                     boxen.add(TerminBox(
-                      uhrzeit: DateTime.now(),
+                      uhrzeit: DateTime.fromMillisecondsSinceEpoch(
+                          map["freieUhrezeiten"][i]["time"]),
+                      id: map["freieUhrezeiten"][i]["id"].toString(),
                     ));
                   }
                   //boxen.add(Text(snapshot.data!));
@@ -183,7 +216,18 @@ class _FreieTermineState extends State<FreieTermine> {
                 // By default, show a loading spinner.
                 return const CircularProgressIndicator();
               },
-            )
+            ),
+            Consumer(
+              builder: (context, watch, child) {
+                final myTermin = watch(selectedTerminProvider).state;
+
+                if (myTermin.id.isEmpty) {
+                  return Container();
+                } else {
+                  return DatenKarte();
+                }
+              },
+            ),
           ],
         );
       },
@@ -193,8 +237,12 @@ class _FreieTermineState extends State<FreieTermine> {
 
 class TerminBox extends StatelessWidget {
   final DateTime uhrzeit;
+  final String id;
 
-  const TerminBox({required this.uhrzeit});
+  const TerminBox({
+    required this.uhrzeit,
+    required this.id,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -210,7 +258,11 @@ class TerminBox extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            uhrzeit.hour.toString() + ":" + uhrzeit.minute.toString(),
+            uhrzeit.hour.toString() +
+                ":" +
+                ((uhrzeit.minute.toString().length == 1)
+                    ? "0" + uhrzeit.minute.toString()
+                    : uhrzeit.minute.toString()),
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -218,19 +270,29 @@ class TerminBox extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () {},
+      onTap: () async {
+        context.read(selectedTerminProvider).state =
+            Termin(id: id, time: uhrzeit);
+
+        ScrollController scon = context.read(buchungsScrollController!).state;
+
+        sleep1(scon);
+      },
     );
+  }
+
+  Future sleep1(ScrollController scon) {
+    return new Future.delayed(const Duration(milliseconds: 40), () {
+      scon.animateTo(
+        scon.position.maxScrollExtent,
+        duration: Duration(seconds: 1),
+        curve: Curves.fastOutSlowIn,
+      );
+    });
   }
 }
 
-class DatenKarte extends StatefulWidget {
-  const DatenKarte({Key? key}) : super(key: key);
-
-  @override
-  _DatenKarteState createState() => _DatenKarteState();
-}
-
-class _DatenKarteState extends State<DatenKarte> {
+class DatenKarte extends ConsumerWidget {
   final TextStyle headStyle = TextStyle(
     color: Colors.white70,
   );
@@ -240,98 +302,118 @@ class _DatenKarteState extends State<DatenKarte> {
     fontSize: 16,
   );
 
+  Future<Map<String, String>> loadUserInfos() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String vorname = prefs.getString("vorname") ?? "";
+    final String name = prefs.getString("name") ?? "";
+    final String bday = prefs.getString("bday") ?? "";
+
+    return {"vorname": vorname, "name": name, "bday": bday};
+  }
+
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Divider(),
-        Container(
-          width: double.infinity,
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          child: Card(
-            color: Color(0xff003866),
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Diese Daten werden übermittelt",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+  Widget build(BuildContext context, ScopedReader watch) {
+    return FutureBuilder<Map<String, String>>(
+      future: loadUserInfos(),
+      builder: (buildContext, snapshot) {
+        if (!snapshot.hasData) {
+          return Center(child: CircularProgressIndicator());
+        } else {
+          Map<String, String> map = snapshot.data!;
+
+          return Column(
+            children: [
+              Divider(),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Card(
+                  color: Color(0xff003866),
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Diese Daten werden übermittelt",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Name",
+                          style: headStyle,
+                        ),
+                        Text(
+                          (map["vorname"] ?? "") + " " + (map["name"] ?? ""),
+                          style: subStyle,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Geburtsdatum",
+                          style: headStyle,
+                        ),
+                        Text(
+                          map["bday"] ?? "",
+                          style: subStyle,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Dein Termin",
+                          style: headStyle,
+                        ),
+                        Text(
+                          watch(selectedTerminProvider).state.time.toString(),
+                          style: subStyle,
+                        ),
+                      ],
                     ),
                   ),
+                ),
+              ),
+              Row(
+                children: [
                   SizedBox(
-                    height: 5,
+                    width: 190,
+                    height: 40,
+                    child: ElevatedButton.icon(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.grey,
+                      ),
+                      icon: Icon(Icons.close),
+                      label: Text("Buchung abbrechen"),
+                    ),
                   ),
-                  Text(
-                    "Name",
-                    style: headStyle,
-                  ),
-                  Text(
-                    "Armin Stein",
-                    style: subStyle,
-                  ),
+                  Expanded(child: Container()),
                   SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Geburtsdatum",
-                    style: headStyle,
-                  ),
-                  Text(
-                    "18.07.1997",
-                    style: subStyle,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Dein Termin",
-                    style: headStyle,
-                  ),
-                  Text(
-                    "27.09.21 um 08:00",
-                    style: subStyle,
+                    width: 190,
+                    height: 40,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Text("Termin buchen"),
+                          Expanded(child: Container()),
+                          Icon(Icons.send),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
-            ),
-          ),
-        ),
-        Row(
-          children: [
-            SizedBox(
-              width: 190,
-              height: 40,
-              child: ElevatedButton.icon(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.grey,
-                ),
-                icon: Icon(Icons.close),
-                label: Text("Buchung abbrechen"),
-              ),
-            ),
-            Expanded(child: Container()),
-            SizedBox(
-              width: 190,
-              height: 40,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Text("Termin buchen"),
-                    Expanded(child: Container()),
-                    Icon(Icons.send),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          );
+        }
+      },
     );
   }
 }

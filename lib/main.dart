@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ukmblutspende/termin_buchung/termin_model.dart';
 
 import './onboard/onboarding.dart';
 import './Home/home.dart';
@@ -83,3 +84,9 @@ final tappedDayProvider = StateProvider<bool>((ref) {
 final selectedDayProvider = StateProvider<DateTime>((ref) {
   return DateTime.now();
 });
+
+final selectedTerminProvider = StateProvider<Termin>((ref) {
+  return Termin(id: "", time: DateTime.now());
+});
+
+
