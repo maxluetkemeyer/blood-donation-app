@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:ukmblutspende/Home/menu.dart';
 //import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,6 +11,7 @@ class MyMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: Menu(),
         appBar: AppBar(
           title: Text("Karte"),
         ),
@@ -62,7 +64,6 @@ class MyMap extends StatelessWidget {
                               fontSize: 22,
                               fontWeight: FontWeight.bold)))),
 
-              // TODO: Für jede Zeile Text eine neue Row hinzufügen
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

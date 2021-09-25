@@ -7,9 +7,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import '../Home/menu.dart';
 import '../termin_buchung/termin_buchung_view.dart';
 
-
 class HomeView extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +68,8 @@ class HomeView extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 0,vertical: 20),
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 0, vertical: 20),
                         child: Text(
                           'Terminanmeldung',
                           style: Theme.of(context).textTheme.bodyText1,
@@ -80,6 +79,13 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(60.0),
+            child: Image(
+              image: AssetImage(
+                  "./assets/images/Universitätsklinikum_Münster_Logo.png"),
+            ),
+          )
         ],
       ),
       drawer: Menu(),

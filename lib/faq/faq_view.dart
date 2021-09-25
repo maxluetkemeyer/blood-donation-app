@@ -1,38 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ukmblutspende/Home/menu.dart';
 
-/// This is the stateful widget that the main application instantiates.
-class Faq extends StatefulWidget {
-  const Faq({Key? key}) : super(key: key);
+class FaqView extends StatefulWidget {
+  const FaqView({Key? key}) : super(key: key);
   @override
-  State<Faq> createState() => _FaqState();
+  createState() => _FaqState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
-class _FaqState extends State<Faq> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        // Remove the debug banner
-        debugShowCheckedModeBanner: false,
-        title: 'FAQ',
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
-        ),
-        home: HomePage());
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class _FaqState extends State<FaqView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
       appBar: AppBar(
         title: Text('FAQ'),
       ),

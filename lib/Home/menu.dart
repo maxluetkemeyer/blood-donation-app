@@ -45,7 +45,7 @@ class Menu extends StatelessWidget {
             ),
             ListObject(
               title: 'FAQ',
-              onTap: Faq(),
+              onTap: FaqView(),
             ),
             ListObject(
               title: 'Impressum',
