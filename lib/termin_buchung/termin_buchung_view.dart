@@ -35,51 +35,53 @@ class _TerminBuchungState extends State<TerminBuchung> {
           title: Text(
             "Neue Terminbuchung",
           ),
+          automaticallyImplyLeading: false,
         ),
         body: Column(
           children: [
             Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: 20,
-                  left: 20,
-                  right: 20,
-                ),
-                child: PageView(
-                  controller: _controller,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    FragenWidget(
-                      frage: testFrage,
-                      nextQuestionFunc: () {
-                        _controller.animateToPage(
-                          1,
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                    ),
-                    FragenWidget(
-                      frage: testFrage2,
-                      nextQuestionFunc: () {
-                        _controller.animateToPage(
-                          2,
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                    ),
-                    FragenWidget(
-                      frage: testFrage,
-                      nextQuestionFunc: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Buchung()),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+              child: PageView(
+                controller: _controller,
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  FragenWidget(
+                    frage: testFrage,
+                    nextQuestionFunc: () {
+                      _controller.animateToPage(
+                        1,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
+                  FragenWidget(
+                    frage: testFrage2,
+                    nextQuestionFunc: () {
+                      _controller.animateToPage(
+                        2,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
+                  FragenWidget(
+                    frage: testFrage,
+                    nextQuestionFunc: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Buchung()),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                "Buchungsvorgang abbrechen",
               ),
             ),
           ],

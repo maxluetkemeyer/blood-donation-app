@@ -1,6 +1,6 @@
 class Termin {
   final String id;
-  final String time;
+  final DateTime time;
 
   Termin({
     required this.id,
@@ -14,4 +14,3 @@ class Termin {
     );
   }
 }
-

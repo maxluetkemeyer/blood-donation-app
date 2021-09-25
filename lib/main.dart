@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ukmblutspende/termin_buchung/termin_model.dart';
 
 import './onboard/onboarding.dart';
 import './Home/home.dart';
@@ -23,14 +24,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "UKM Blutspende",
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate
-      ],
-      supportedLocales: [
-        const Locale('en'),
-        const Locale('fr')
-      ],
-      // TODO: Theme Ändern!!
+      localizationsDelegates: [GlobalMaterialLocalizations.delegate],
+      supportedLocales: [const Locale('en'), const Locale('fr')],
       theme: ThemeData(
         // Primäre Farbe des Dokumentes (UKM Logo-Farbe dunkel)
         appBarTheme: AppBarTheme(
@@ -91,4 +86,8 @@ final tappedDayProvider = StateProvider<bool>((ref) {
 
 final selectedDayProvider = StateProvider<DateTime>((ref) {
   return DateTime.now();
+});
+
+final selectedTerminProvider = StateProvider<Termin>((ref) {
+  return Termin(id: "", time: DateTime.now());
 });
