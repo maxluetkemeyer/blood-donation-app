@@ -14,7 +14,7 @@ class _FaqState extends State<Faq> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Faq"),
+        title: Text("FAQ"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -60,7 +60,47 @@ class _FaqState extends State<Faq> {
             const ExpansionTile(
               title: Text('Wer darf Blutspenden?'),
               children: <Widget>[
-                ListTile(title: Text('blabla')),
+                ListTile(
+                    title: Text(
+                        '• Sie müssen zwischen 18 und 68 Jahre alt sein, jedoch bei Aufnahme in unsere Spenderdatei als Erstspender nicht älter als 60 Jahre alt sein.')),
+                ListTile(
+                    title: Text(
+                        '• Sie müssen völlig gesund sein und mindestens 50 kg wiegen.')),
+                ListTile(
+                    title: Text(
+                        '• In den vergangenen 4 Wochen darf keine Magen-Darm-Infektion, kein fieberhafter Infekt und keine andere Infektionskrankheit vorgelegen haben.')),
+                ListTile(
+                    title: Text(
+                        '• Sie dürfen keine bestehenden Grunderkrankungen (wie z. B. Diabetes,  Bluthochdruck, Herzkrankheiten, Autoimmunerkrankungen, Epilepsie usw.) haben.')),
+                ListTile(
+                    title: Text(
+                        '• Sie dürfen nicht regelmäßig Medikamente (außer Hormonpräparate) einnehmen.')),
+                ListTile(
+                    title: Text(
+                        '• Während Ihrer Schwangerschaft und der Stillzeit dürfen Sie kein Blut spenden.')),
+                ListTile(
+                    title: Text('• Sie dürfen keine Tumorkrankheiten haben.')),
+                ListTile(
+                    title: Text(
+                        '• Auslandsreisen (auch innerhalb von Europa) können unter Umständen einen befristeten Ausschluß von der Blutspende nach sich ziehen. Bitte kontaktieren Sie uns gerne für weitere Informationen unter unserer Hotline 0251-8358000. Sie dürfen sich in dem Zeitraum zwischen 1980 und 1996 nicht länger als sechs Monate in Großbritannien aufgehalten haben (auch Kurzaufenthalte zusammengerechnet).')),
+                ListTile(
+                    title: Text(
+                        '• Sie dürfen in den letzten vier Monaten nicht gepierct oder tätowiert worden sein.')),
+                ListTile(
+                    title: Text(
+                        '• Sie dürfen kein Piercing im Mund- oder Intimbereich haben.')),
+                ListTile(
+                    title: Text(
+                        '• Sie dürfen in Ihrem Leben nicht an einer Malaria erkrankt sein.')),
+                ListTile(
+                    title: Text(
+                        '• Sie dürfen keine Operationen, Magen- oder Darmspiegelungen in den letzten vier Monaten gehabt haben.')),
+                ListTile(
+                    title: Text(
+                        '• Bei neuen Sexualpartnern erfolgt eine zeitlich begrenzte Rückstellung von der Blutspende für 4 Monate.')),
+                ListTile(
+                    title: Text(
+                        '• Vor eine Blutspende sollten Sie ausreichend gegessen und getrunken haben.')),
               ],
             ),
             const ExpansionTile(
