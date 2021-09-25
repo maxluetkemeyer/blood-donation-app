@@ -31,8 +31,8 @@ class _OnBoardState extends State<OnBoard> {
 
   @override
   Widget build(context) {
-    final _nameController = TextEditingController();
-    final _fNameController = TextEditingController();
+    var _name = '';
+    var _fName= '';
     return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -50,9 +50,11 @@ class _OnBoardState extends State<OnBoard> {
                   margin: EdgeInsets.all(10),
                   child: TextField(
                     decoration: InputDecoration(labelText: 'Vorname'),
-                    controller: _fNameController,
+                    onChanged: (input) {
+                      _fName = input;
+                    },
                     onSubmitted: (_) {
-                      //fName = input_fName;
+                      
                     },
                   ),
                 ),
@@ -60,9 +62,11 @@ class _OnBoardState extends State<OnBoard> {
                   margin: EdgeInsets.all(10),
                   child: TextField(
                     decoration: InputDecoration(labelText: 'Nachname'),
-                    controller: _nameController,
+                    onChanged: (input) {
+                      _name = input;
+                    },
                     onSubmitted: (_) {
-                      //name = input_Name;
+                      
                     },
                   ),
                 ),
@@ -98,12 +102,13 @@ class _OnBoardState extends State<OnBoard> {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
 
-                    if(_nameController.text==''||_fNameController.text==''||bDate.day==DateTime.now().day){
+
+                    if(_name==''||_fName==''||bDate.day==DateTime.now().day){
                       return;
                     }
 
-                    prefs.setString("vorname", _fNameController.text);
-                    prefs.setString("name", _nameController.text);
+                    prefs.setString("vorname", _fName);
+                    prefs.setString("name", _name);
                     prefs.setString("bday", bDate.toString());
                     prefs.setBool("alreadyOnboarded", true);
 
