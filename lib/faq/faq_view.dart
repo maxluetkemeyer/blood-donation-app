@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               body: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 child: Text(
-                  "[Anwendung der App]",
+                  "Entweder über den Startbildschirm oder über das Menü kann man Anmeldung auswählen. Bevor man sich einen Termin aussuchen kann, werden ein paar generelle Fragen gestellt, die eine Blutspende verhindern könnten. Sollte nach den Fragen eine Blutspende möglich kein, kann über die Kalenderfunktion ein Termin ausgewählt werden. Der Termin ist verbindlich, wenn er in der App als bestätigt gilt.",
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -87,7 +87,9 @@ class _HomePageState extends State<HomePage> {
               body: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                 child: Text(
-                    "Erstspender bekommen von uns einen umfangreichen Fragebogen ausgehändigt, um Ihre Krankengeschichte und eventuelle Ausschlusskriterien für eine Spende zu erfassen\nDamit Sie mit einen sicheren Gefühl zu Ihrer ersten Blutspende gehen können, legen wir besonderen Wert darauf, dass ein Erstspender umfassend informiert wird, Fragen beantworten wir gerne im Arztgespräch"),
+                  "Erstspender bekommen von uns einen umfangreichen Fragebogen ausgehändigt, um Ihre Krankengeschichte und eventuelle Ausschlusskriterien für eine Spende zu erfassen\nDamit Sie mit einen sicheren Gefühl zu Ihrer ersten Blutspende gehen können, legen wir besonderen Wert darauf, dass ein Erstspender umfassend informiert wird, Fragen beantworten wir gerne im Arztgespräch",
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
             ExpansionPanelRadio(
@@ -152,7 +154,10 @@ class _HomePageState extends State<HomePage> {
                   )),
               body: Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                child: Text("[Verwendung des Blutes]"),
+                child: Text(
+                  "Jede Blutspende wird auf HIV und andere Erreger getestet. Dazu wird die Blutgruppe und der Rhesusfaktor bestimmt. Das Blut wird in seine verschiedenen Komponenten: \n Die roten Blutkörperchen (Erythrozyten)\n die Blutplättchen (Thrombozyten)\n die Blutflüssigkeit (Plasma)\n aufgetrennt und zu Blutpräparaten verarbeitet. Diese werden an die Patienten mit Bedarf geliefert.",
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
             ExpansionPanelRadio(
