@@ -15,6 +15,7 @@ class _OnBoardState extends State<OnBoard> {
   void _presentDatePicker(){
     showDatePicker(
       context: context, 
+      locale : const Locale("de","DE"),
       initialDate: DateTime.now(), 
       firstDate: DateTime(1899), 
       lastDate: DateTime.now(),
@@ -28,11 +29,10 @@ class _OnBoardState extends State<OnBoard> {
     });
   }
 
-
   @override
   Widget build(context) {
-    final _nameController = TextEditingController();
-    final _fNameController = TextEditingController();
+    var _name;
+    var _fName;
       return Container(
         margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -49,9 +49,8 @@ class _OnBoardState extends State<OnBoard> {
                     margin: EdgeInsets.all(10),
                     child: TextField(
                       decoration: InputDecoration(labelText: 'Vorname'),
-                      controller: _fNameController,
-                      onSubmitted: (_) {
-                        //fName = input_fName;
+                      onChanged: (input) {
+                        _fName=input;
                       },
                     ),
                   ),
@@ -59,9 +58,8 @@ class _OnBoardState extends State<OnBoard> {
                     margin: EdgeInsets.all(10),
                     child: TextField(
                       decoration: InputDecoration(labelText: 'Nachname'),
-                      controller: _nameController,
-                      onSubmitted: (_) {
-                        //name = input_Name;
+                      onChanged: (input) {
+                        _name=input;
                       },
                     ),
                   ),
@@ -70,7 +68,7 @@ class _OnBoardState extends State<OnBoard> {
                     height: 70,
                     child: Row(
                       children: <Widget>[
-                        Expanded(child: Text(bDate.day==DateTime.now().day ? 'Geburtsdatum' : 'Picked Date: ${DateFormat.yMd().format(bDate)}')),
+                        Expanded(child: Text(bDate.day==DateTime.now().day ? 'Geburtsdatum' : 'Ausgewählter Geburtstag: ${DateFormat.yMd().format(bDate)}')),
                         TextButton(
                           onPressed: () {
                             _presentDatePicker();

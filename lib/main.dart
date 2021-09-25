@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 import './onboard/onboarding.dart';
@@ -26,6 +27,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "UKM Blutspende",
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate
+      ],
+      supportedLocales: [
+        const Locale('en'),
+        const Locale('fr')
+      ],
       // TODO: Theme Ändern!!
       theme: ThemeData(
         // Primäre Farbe des Dokumentes (UKM Logo-Farbe dunkel)
