@@ -112,6 +112,8 @@ class MyMap extends StatelessWidget {
                             )
                           ],
                         )
+
+
               
                         /*
                         //altes UKM-Image
@@ -142,7 +144,16 @@ class MyMap extends StatelessWidget {
                         ]),
                       
                         */
-                      ])
+                      ]),
+                      Container(
+                        margin: EdgeInsets.all(5),
+                        child: Card(
+                          elevation: 15,
+                          child: Image(
+                            image: AssetImage("assets/images/UKM_Blutspende_Muenster_Eingang.jpg")
+                          ),
+                        ),
+                      )
                 ])),
               
             ));
