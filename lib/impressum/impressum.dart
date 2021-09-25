@@ -7,52 +7,41 @@ class Impressum extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Impressum')),
-      body: SingleChildScrollView(
-          child: Column(children: <Widget>[
-        Column(
-          children: [
-            SizedBox(height: 10),
-            Center(
-              child: Text('Wer sind wir?',
-                  style: TextStyle(color: Colors.black, fontSize: 23.0)),
-            ),
-            SizedBox(height: 10),
-            Center(
-              child: Text('keine Ahnung',
-                  style: TextStyle(color: Colors.black, fontSize: 17.0)),
-            )
-          ],
-        ),
-        SizedBox(height: 25),
-        Column(
-          children: [
-            Center(
-              child: Text('Kontakt',
-                  style: TextStyle(color: Colors.black, fontSize: 23.0)),
-            ),
-            SizedBox(height: 10),
-            Center(
-              child: Text('Kontaktdaten',
-                  style: TextStyle(color: Colors.black, fontSize: 17.0)),
-            )
-          ],
-        ),
-        SizedBox(height: 25),
-        Column(
-          children: [
-            Center(
-              child: Text('Lizenzen',
-                  style: TextStyle(color: Colors.black, fontSize: 23.0)),
-            ),
-            SizedBox(height: 10),
-            Center(
-              child: Text('blabla',
-                  style: TextStyle(color: Colors.black, fontSize: 17.0)),
-            )
-          ],
-        ),
-      ])),
-    );
+        appBar: AppBar(title: Text('Impressum')),
+        body: SingleChildScrollView(
+            child: Padding(
+                padding: EdgeInsets.only(left: 8),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(height: 10),
+                      Text('Wer sind wir?',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 23.0)),
+                      SizedBox(height: 7),
+                      Text('Wir sind blablabla',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 18.0)),
+                      SizedBox(height: 30),
+                      Text('Kontakt',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 23.0)),
+                      SizedBox(height: 7),
+                      Text('UKM',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 20.0)),
+                      Text(
+                          'Zentralklinikum\nAlbert-Schweitzer-Campus 1, Gebäude: A1\nAnfahrtsadresse: Albert-Schweitzer-Straße 33\n48149 Münster\nT +49 251 83-55555\nT +49 251 83-56960\ninfo@­ukmuenster.­de',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 18.0)),
+                      SizedBox(height: 30),
+                      Text('Lizenzen',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 23.0)),
+                      SizedBox(height: 7),
+                      Text('Lizenzen',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 18.0)),
+                    ]))));
   }
 }
