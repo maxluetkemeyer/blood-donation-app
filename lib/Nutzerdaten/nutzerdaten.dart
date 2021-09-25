@@ -2,10 +2,19 @@ import 'dart:convert';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:ukmblutspende/Home/menu.dart';
 
-class Nutzerdaten extends StatelessWidget {
+class Nutzerdaten extends StatefulWidget {
+  const Nutzerdaten({Key? key}) : super(key: key);
+
+  @override
+  _NutzerdatenState createState() => _NutzerdatenState();
+}
+
+class _NutzerdatenState extends State<Nutzerdaten> {
   /* setPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('number', 1);
@@ -20,84 +29,123 @@ class Nutzerdaten extends StatelessWidget {
   }
 */
 
+  Future<String> nDaten() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String vorname = prefs.getString("vorname") ?? "";
+    String name = prefs.getString("name") ?? "";
+
+    return vorname + " " + name;
+  }
+
+  final TextEditingController _firstNameController =
+      new TextEditingController();
+
+  @override
+  void initState() {
+    _firstNameController.text = "Dominik Eitner";
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: Text("Nutzerdaten"),
-        ),
-        body: SingleChildScrollView(
-            child: Center(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: <
-                  Widget>[
-            const Text(" "),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: const Text("Ihre Nutzerdaten:",
-                  textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              SizedBox(
-                width: 300,
-                height: 30,
-                child: Text("Name",
-                    textAlign: TextAlign.left, style: TextStyle(fontSize: 16)),
+    return FutureBuilder(
+        future: nDaten(),
+        builder: (context, snapshot) {
+          return Scaffold(
+              resizeToAvoidBottomInset: false,
+              drawer: Menu(),
+              appBar: AppBar(
+                title: Text("Nutzerdaten"),
               ),
-            ]),
+              body: SingleChildScrollView(
+                  child: Center(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(" "),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: const Text("Ihre Nutzerdaten:",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 20)),
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 300,
+                              height: 30,
+                              child: Text("Name",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 16)),
+                            ),
+                          ]),
 
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              SizedBox(
-                  width: 300,
-                  height: 50,
-                  child: TextField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(), hintText: 'Your Name'),
-                  )),
-            ]),
-            const Text(" "),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              SizedBox(
-                width: 300,
-                height: 30,
-                child: const Text("Geburtsdatum",
-                    textAlign: TextAlign.left, style: TextStyle(fontSize: 16)),
-              ),
-            ]),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                                width: 300,
+                                height: 50,
+                                child: TextField(
+                                  controller: _firstNameController,
+                                  decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'Your Name'),
+                                )),
+                          ]),
+                      const Text(" "),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 300,
+                              height: 30,
+                              child: const Text("Geburtsdatum",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 16)),
+                            ),
+                          ]),
 
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              SizedBox(
-                  width: 300,
-                  height: 50,
-                  child: TextField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Your Birthday'),
-                  )),
-            ]), //Vorname aus json
-            const Text(" "),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              SizedBox(
-                  width: 300,
-                  height: 50,
-                  child: const Text("Ihre letzten Blutspenden",
-                      style: TextStyle(fontSize: 16))),
-            ]),
-            /*
-            SizedBox(
-              child: TableCalendar(
-                firstDay: DateTime.utc(2021, 9, 01),
-                lastDay: DateTime.utc(2021, 10, 31),
-                focusedDay: DateTime.now(),
-                calendarFormat: CalendarFormat.month,
-              ),
-            ),
-            */
-            SizedBox(height: 500, child: Calendar())
-          ]),
-        )));
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                                width: 300,
+                                height: 50,
+                                child: TextField(
+                                  decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'Your Birthday'),
+                                )),
+                          ]), //Vorname aus json
+                      const Text(" "),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                                width: 300,
+                                height: 50,
+                                child: const Text("Ihre letzten Blutspenden",
+                                    style: TextStyle(fontSize: 16))),
+                          ]),
+                      /*
+                SizedBox(
+                  child: TableCalendar(
+                    firstDay: DateTime.utc(2021, 9, 01),
+                    lastDay: DateTime.utc(2021, 10, 31),
+                    focusedDay: DateTime.now(),
+                    calendarFormat: CalendarFormat.month,
+                  ),
+                ),
+                */
+                      SizedBox(height: 500, child: Calendar())
+                    ]),
+              )));
+        });
   }
 }
 
