@@ -6,8 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ukmblutspende/termin_buchung/termin_model.dart';
+import 'package:ukmblutspende/onboard/firstcontact.dart';
 
-import './onboard/onboarding.dart';
 import './Home/home.dart';
 
 void main() {
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData) {
             if (snapshot.data) {
               // Onboarding
-              return OnBoard();
+              return FirstContact();
             }
             // Home
             return HomeView();
