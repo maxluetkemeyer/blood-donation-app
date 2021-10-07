@@ -44,6 +44,9 @@ class Impressum extends StatelessWidget {
                       Text('Lizenzen',
                           style:
                               TextStyle(color: Colors.black, fontSize: 18.0)),
+                      Text('https://www.openstreetmap.org/copyright',
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 18.0)),
                     ]))));
   }
 }

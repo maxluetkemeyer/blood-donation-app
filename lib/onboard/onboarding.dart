@@ -14,10 +14,10 @@ class _OnBoardState extends State<OnBoard> {
 
   void _presentDatePicker() {
     showDatePicker(
-      context: context, 
-      locale : const Locale("de","DE"),
-      initialDate: DateTime.now(), 
-      firstDate: DateTime(1899), 
+      context: context,
+      locale: const Locale("de", "DE"),
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1899),
       lastDate: DateTime.now(),
     ).then((pickedDate) {
       if (pickedDate == null) {
@@ -32,7 +32,7 @@ class _OnBoardState extends State<OnBoard> {
   @override
   Widget build(context) {
     var _name = '';
-    var _fName= '';
+    var _fName = '';
     return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -53,9 +53,7 @@ class _OnBoardState extends State<OnBoard> {
                     onChanged: (input) {
                       _fName = input;
                     },
-                    onSubmitted: (_) {
-                      
-                    },
+                    onSubmitted: (_) {},
                   ),
                 ),
                 Container(
@@ -65,9 +63,7 @@ class _OnBoardState extends State<OnBoard> {
                     onChanged: (input) {
                       _name = input;
                     },
-                    onSubmitted: (_) {
-                      
-                    },
+                    onSubmitted: (_) {},
                   ),
                 ),
                 Container(
@@ -102,10 +98,10 @@ class _OnBoardState extends State<OnBoard> {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
 
-
+/*
                     if(_name==''||_fName==''||bDate.day==DateTime.now().day){
                       return;
-                    }
+                    }*/
 
                     prefs.setString("vorname", _fName);
                     prefs.setString("name", _name);
