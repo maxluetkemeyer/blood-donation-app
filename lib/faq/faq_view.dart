@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ukmblutspende/Home/menu.dart';
+
+import '../Home/menu.dart';
 
 class FaqView extends StatefulWidget {
   const FaqView({Key? key}) : super(key: key);

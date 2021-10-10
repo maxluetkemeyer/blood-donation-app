@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ukmblutspende/Nutzerdaten/nutzerdaten.dart';
-import 'package:ukmblutspende/impressum/impressum.dart';
-// ignore: import_of_legacy_library_into_null_safe
+
 import './list_object.dart';
-// ignore: import_of_legacy_library_into_null_safe
+
+import '../Nutzerdaten/nutzerdaten.dart';
+import '../impressum/impressum.dart';
 import '../Home/home.dart';
 import '../faq/faq_view.dart';
 import '../karte/maps.dart';
-
-import 'package:ukmblutspende/faq/faq_view.dart';
-import 'package:ukmblutspende/karte/maps.dart';
-import 'package:ukmblutspende/termin_buchung/termin_buchung_view.dart';
+import '../termin_buchung/termin_buchung_view.dart';
 
 class Menu extends StatelessWidget {
   @override

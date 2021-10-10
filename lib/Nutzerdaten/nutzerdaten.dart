@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:ukmblutspende/Home/menu.dart';
+
+import '../Home/menu.dart';
 
 class Nutzerdaten extends StatefulWidget {
   const Nutzerdaten({Key? key}) : super(key: key);
@@ -149,6 +150,7 @@ class _NutzerdatenState extends State<Nutzerdaten> {
   }
 }
 
+// ignore: must_be_immutable
 class Calendar extends StatelessWidget {
   List<Meeting> meetings = <Meeting>[];
   @override
@@ -160,7 +162,7 @@ class Calendar extends StatelessWidget {
               if (snapshot.hasData) {
                 Map<String, dynamic> datenMap =
                     jsonDecode(snapshot.data ?? "abc");
-                var datum = Datum.fromJson(datenMap);
+                //var datum = Datum.fromJson(datenMap);
                 int l = datenMap["Datum"].length;
                 for (var length = 0; length < l; length++) {
                   _setDataSource(

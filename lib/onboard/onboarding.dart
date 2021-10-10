@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:ukmblutspende/Home/home.dart';
+
+import '../Home/home.dart';
 
 class OnBoard extends StatefulWidget {
   @override

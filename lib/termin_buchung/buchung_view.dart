@@ -2,15 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:table_calendar/table_calendar.dart';
-import 'package:ukmblutspende/Home/home.dart';
-import 'package:ukmblutspende/termin_buchung/termin_model.dart';
 
-// ignore: import_of_legacy_library_into_null_safe
-import '../main.dart';
+import '../providers.dart';
+
+import '../Home/home.dart';
+import '../termin_buchung/termin_model.dart';
 
 class Buchung extends StatefulWidget {
   const Buchung({Key? key}) : super(key: key);

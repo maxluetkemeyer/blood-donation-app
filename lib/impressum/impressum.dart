@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ukmblutspende/Home/menu.dart';
 
-/// This is the stateful widget that the main application instantiates.
+import '../Home/menu.dart';
+
 class Impressum extends StatelessWidget {
   const Impressum({Key? key}) : super(key: key);
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ukmblutspende/onboard/onboarding.dart';
+
+import '../onboard/onboarding.dart';
 
 class FirstContact extends StatelessWidget {
   @override
@@ -24,7 +25,8 @@ class FirstContact extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal:0.0,vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 0.0, vertical: 15),
                 child: SizedBox(
                   child: Center(
                       child: Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ukmblutspende/termin_buchung/buchung_view.dart';
+
+import '../termin_buchung/buchung_view.dart';
 
 import 'frage.dart';
 import 'frage_model.dart';

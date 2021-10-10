@@ -1,4 +1,3 @@
-
 class Frage {
   String text;
   bool isYesCorrect;
