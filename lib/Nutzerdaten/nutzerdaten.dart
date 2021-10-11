@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-import '../Home/menu.dart';
-
 class Nutzerdaten extends StatefulWidget {
   const Nutzerdaten({Key? key}) : super(key: key);
 
@@ -56,7 +54,6 @@ class _NutzerdatenState extends State<Nutzerdaten> {
         builder: (context, snapshot) {
           return Scaffold(
               resizeToAvoidBottomInset: false,
-              drawer: Menu(),
               appBar: AppBar(
                 title: Text("Nutzerdaten"),
               ),

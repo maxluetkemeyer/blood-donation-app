@@ -1,90 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ukmblooddonation/Home/home_page_view.dart';
+import 'package:ukmblooddonation/Home/more_view.dart';
+import 'package:ukmblooddonation/faq/faq_view.dart';
+import 'package:ukmblooddonation/karte/maps.dart';
+import 'package:ukmblooddonation/termin_buchung/termin_buchung_view.dart';
 
-import '../Home/menu.dart';
-import '../termin_buchung/termin_buchung_view.dart';
+class HomeView extends StatefulWidget {
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
 
-class HomeView extends StatelessWidget {
+class _HomeViewState extends State<HomeView> {
+  int pageIndex = 0;
+  final screens = [
+    HomePageView(),
+    TerminBuchung(),
+    MyMap(),
+    FaqView(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
-      ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 20,
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MoreView())),
+            icon: Icon(Icons.more_vert),
           ),
-          SizedBox(
-            width: double.infinity,
-            height: 250,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-              ),
-              child: CarouselSlider(
-                options: CarouselOptions(height: 400.0),
-                items: [1, 2, 3, 4].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration: BoxDecoration(color: Color(0xff003866)),
-                          child: Image(
-                            image: AssetImage(
-                              './assets/images/image_$i.png',
-                            ),
-                            fit: BoxFit.cover,
-                          ));
-                    },
-                  );
-                }).toList(),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
-                FractionallySizedBox(
-                  widthFactor: 1,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TerminBuchung()),
-                        );
-                      },
-                      child: Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-                        child: Text(
-                          'Terminanmeldung',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                      )),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(60.0),
-            child: Image(
-              image: AssetImage(
-                  "./assets/images/Universitätsklinikum_Münster_Logo.png"),
-            ),
-          )
         ],
       ),
-      drawer: Menu(),
+      body: screens[pageIndex],
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: pageIndex,
+        onDestinationSelected: (index) => setState(() {
+          print(index);
+          pageIndex = index;
+        }),
+        //labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        destinations: [
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home),
+            label: "Start",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.date_range_outlined),
+            selectedIcon: Icon(Icons.date_range),
+            label: "Termine",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.map_outlined),
+            selectedIcon: Icon(Icons.map),
+            label: "Karte",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.help_outline),
+            selectedIcon: Icon(Icons.help),
+            label: "FAQ",
+          ),
+        ],
+      ),
     );
   }
 }
+
+//Home, Anmeldung, Karte, FAQ
+//More: Daten, Impressum

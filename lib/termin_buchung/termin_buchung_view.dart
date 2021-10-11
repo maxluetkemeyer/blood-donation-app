@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../termin_buchung/buchung_view.dart';
@@ -32,12 +31,6 @@ class _TerminBuchungState extends State<TerminBuchung> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Neue Terminbuchung",
-          ),
-          automaticallyImplyLeading: false,
-        ),
         body: Column(
           children: [
             Expanded(

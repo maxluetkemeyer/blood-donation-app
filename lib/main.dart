@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
 import './onboard/firstcontact.dart';
 import './theme.dart';
 import './Home/home.dart';
@@ -44,9 +42,12 @@ class MyApp extends StatelessWidget {
   }
 
   Future<bool> showOnboarding() async {
+    return false;
+    /*
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded");
 
     return alreadyOnboarded == null;
+    */
   }
 }
