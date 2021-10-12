@@ -37,7 +37,6 @@ class _HomeViewState extends State<HomeView> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: pageIndex,
         onDestinationSelected: (index) => setState(() {
-          print(index);
           pageIndex = index;
         }),
         //labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
