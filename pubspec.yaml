@@ -1,17 +1,9 @@
 name: ukmblooddonation
 description: UKM Blood Donation App from the Hackathon Münster 2021
-
-
 publish_to: 'none'
-
-
 version: 1.0.0+1
-
-
 environment:
   sdk: ">=2.12.0 <3.0.0"
-
-
 
 dependencies:
   # Infrastructure
@@ -39,16 +31,15 @@ dependencies:
   table_calendar: ^3.0.2
   carousel_slider: ^4.0.0
   
-
-
+  # Firebase
+  firebase_core: ^1.7.0
+  firebase_messaging: ^10.0.8
     
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
 
 
-    
 flutter:
   uses-material-design: true
 

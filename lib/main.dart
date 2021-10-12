@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ukmblooddonation/services/services.dart';
 
 import './onboard/firstcontact.dart';
 import './theme.dart';
@@ -9,6 +10,9 @@ import './Home/home.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(ProviderScope(child: MyApp()));
+
+  final Services services = Services.instance;
+  services.initServices();
 }
 
 /// This is the main application widget.
