@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Home/menu.dart';
-
 class Impressum extends StatelessWidget {
   const Impressum({Key? key}) : super(key: key);
 
@@ -9,7 +7,6 @@ class Impressum extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Impressum')),
-        drawer: Menu(),
         body: SingleChildScrollView(
             child: Padding(
                 padding: EdgeInsets.only(left: 8),
