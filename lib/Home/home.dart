@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ukmblooddonation/Home/home_page_view.dart';
 import 'package:ukmblooddonation/Home/more_view.dart';
+import 'package:ukmblooddonation/appointment_booking/booking_view.dart';
 import 'package:ukmblooddonation/faq/faq_view.dart';
 import 'package:ukmblooddonation/karte/maps.dart';
-import 'package:ukmblooddonation/termin_buchung/termin_buchung_view.dart';
+import '../appointment_booking/termin_buchung_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int pageIndex = 0;
   final screens = [
+    BookingView(),
     HomePageView(),
     TerminBuchung(),
     MyMap(),
@@ -23,8 +25,10 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 242, 242, 247),
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
+        backgroundColor: Colors.deepOrange.shade700,
         actions: [
           IconButton(
             onPressed: () => Navigator.push(

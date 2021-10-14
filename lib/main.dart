@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ukmblooddonation/services/services.dart';
 
 import './onboard/firstcontact.dart';
-import './theme.dart';
 import './Home/home.dart';
 
 void main() {
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
-      theme: lightTheme,
+      //theme: Theme.of(context).copyWith(),
       home: FutureBuilder<bool>(
         future: showOnboarding(),
         builder: (buildContext, snapshot) {

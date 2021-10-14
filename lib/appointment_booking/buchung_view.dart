@@ -10,7 +10,7 @@ import 'package:table_calendar/table_calendar.dart';
 import '../providers.dart';
 
 import '../Home/home.dart';
-import '../termin_buchung/termin_model.dart';
+import './termin_model.dart';
 
 class Buchung extends StatefulWidget {
   const Buchung({Key? key}) : super(key: key);
