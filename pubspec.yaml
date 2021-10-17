@@ -34,10 +34,16 @@ dependencies:
   # Firebase
   firebase_core: ^1.7.0
   firebase_messaging: ^10.0.8
+  flutter_driver: 
+    sdk: flutter
+    version: ^0.0.0
     
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+  test: any
 
 
 flutter:
