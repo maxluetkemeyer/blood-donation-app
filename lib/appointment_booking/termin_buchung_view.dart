@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import './buchung_view.dart';
+import 'package:ukmblooddonation/appointment_booking/booking_view.dart';
 
 import 'frage.dart';
 import 'frage_model.dart';
@@ -22,86 +22,115 @@ class _TerminBuchungState extends State<TerminBuchung> {
     false,
   );
 
-  final _controller = PageController(
-    initialPage: 0,
-  );
+  late PageController _pageController;
 
   @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _onWillPop,
-      child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child: PageView(
-                controller: _controller,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  FragenWidget(
-                    frage: testFrage,
-                    nextQuestionFunc: () {
-                      _controller.animateToPage(
-                        1,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  FragenWidget(
-                    frage: testFrage2,
-                    nextQuestionFunc: () {
-                      _controller.animateToPage(
-                        2,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  FragenWidget(
-                    frage: testFrage,
-                    nextQuestionFunc: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Buchung()),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "Buchungsvorgang abbrechen",
-              ),
-            ),
-          ],
-        ),
-      ),
+  void initState() {
+    super.initState();
+
+    _pageController = PageController(
+      initialPage: 0,
     );
   }
 
-  Future<bool> _onWillPop() async {
-    return (await showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text('Möchtest du die Buchung abbrechen?'),
-            content: Text('Dein bisheriger Fortschritt geht verloren.'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(true),
-                child: Text('Ja'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Text('Nein'),
-              ),
-            ],
+  @override
+  void dispose() {
+    _pageController.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Blutspende Termin"),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                FragenWidget(
+                  frage: testFrage,
+                  nextQuestionFunc: () {
+                    _pageController.animateToPage(
+                      1,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  },
+                ),
+                FragenWidget(
+                  frage: testFrage2,
+                  nextQuestionFunc: () {
+                    _pageController.animateToPage(
+                      2,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  },
+                ),
+                FragenWidget(
+                  frage: testFrage,
+                  nextQuestionFunc: () {
+                    _pageController.animateToPage(
+                      3,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  },
+                ),
+                BookingView()
+              ],
+            ),
           ),
-        )) ??
-        false;
+          TextButton(
+            onPressed: () => showCupertinoDialog(
+              context: context,
+              builder: (BuildContext context) => CupertinoAlertDialog(
+                title: Text(
+                  "Möchtest du die Buchung abbrechen?",
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+                content: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    Text(
+                      "Dein bisheriger Fortschritt geht verloren.",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    )
+                  ],
+                ),
+                actions: [
+                  CupertinoDialogAction(
+                    isDestructiveAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Buchung abbrechen'),
+                  ),
+                  CupertinoDialogAction(
+                    isDefaultAction: true,
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Zurück'),
+                  )
+                ],
+              ),
+            ),
+            child: Text(
+              "Buchungsvorgang abbrechen",
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ukmblooddonation/services/services.dart';
@@ -24,7 +25,15 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
-      //theme: Theme.of(context).copyWith(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color.fromARGB(255, 242, 242, 247),
+        appBarTheme: AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Theme.of(context).primaryColor,
+            statusBarIconBrightness: Brightness.light,
+          ),
+        ),
+      ),
       home: FutureBuilder<bool>(
         future: showOnboarding(),
         builder: (buildContext, snapshot) {
