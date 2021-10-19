@@ -1,4 +1,3 @@
-//@dart = 2.9
 import 'package:flutter/cupertino.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,7 +11,7 @@ void main() {
       app.main();
 
       await tester.pumpAndSettle();
-
+      
       final button = find.byKey(ValueKey('karte'));
 
       await tester.tap(button);
