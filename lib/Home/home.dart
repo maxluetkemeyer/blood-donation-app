@@ -63,21 +63,25 @@ class _HomeViewState extends State<HomeView> {
         //labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         destinations: [
           NavigationDestination(
+            key: ValueKey('start'),
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: "Start",
           ),
           NavigationDestination(
+            key: ValueKey('appointment'),
             icon: Icon(Icons.date_range_outlined),
             selectedIcon: Icon(Icons.date_range),
             label: "Termine",
           ),
           NavigationDestination(
+            key: ValueKey('map'),
             icon: Icon(Icons.map_outlined),
             selectedIcon: Icon(Icons.map),
             label: "Karte",
           ),
           NavigationDestination(
+            key: ValueKey('faq'),
             icon: Icon(Icons.help_outline),
             selectedIcon: Icon(Icons.help),
             label: "FAQ",

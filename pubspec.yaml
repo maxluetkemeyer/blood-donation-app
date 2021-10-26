@@ -33,17 +33,19 @@ dependencies:
   syncfusion_flutter_calendar: ^19.2.62
   table_calendar: ^3.0.2
   carousel_slider: ^4.0.0
+  introduction_screen: ^2.1.0
 
   # Firebase
   firebase_core: ^1.7.0
   firebase_messaging: ^10.0.8
-
-  # Introductionscreen
-  introduction_screen: ^2.1.0
-
+  
+  
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+  test: any
 
 flutter:
   uses-material-design: true
@@ -60,4 +62,3 @@ flutter:
     - assets/images/1.png
     - assets/images/daten.json
     - assets/images/UKM_Blutspende_Muenster_Eingang.jpg
-  #   - images/a_dot_ham.jpeg
