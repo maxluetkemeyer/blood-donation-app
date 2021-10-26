@@ -3,16 +3,18 @@ import 'package:integration_test/integration_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:ukmblooddonation/main.dart' as app;
+
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  group('UKMBlutSpende', (){
-
-    testWidgets('Given the Application is started When pressing map on the navigationBar Then the new window pops up', (WidgetTester tester) async {
+  group('UKMBlutSpende', () {
+    testWidgets(
+        'Given the Application is started When pressing map on the navigationBar Then the new window pops up',
+        (WidgetTester tester) async {
       app.main();
 
       await tester.pumpAndSettle();
-      
-      final button = find.byKey(ValueKey('karte'));
+
+      final button = find.byKey(ValueKey('map'));
 
       await tester.tap(button);
 

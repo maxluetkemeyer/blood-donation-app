@@ -48,13 +48,13 @@ class _HomeViewState extends State<HomeView> {
             label: "Start",
           ),
           NavigationDestination(
-            key: ValueKey('termine'),
+            key: ValueKey('appointment'),
             icon: Icon(Icons.date_range_outlined),
             selectedIcon: Icon(Icons.date_range),
             label: "Termine",
           ),
           NavigationDestination(
-            key: ValueKey('karte'),
+            key: ValueKey('map'),
             icon: Icon(Icons.map_outlined),
             selectedIcon: Icon(Icons.map),
             label: "Karte",
