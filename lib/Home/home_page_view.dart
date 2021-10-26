@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ukmblooddonation/termin_buchung/termin_buchung_view.dart';
 
 class HomePageView extends StatelessWidget {
   const HomePageView({Key? key}) : super(key: key);
@@ -9,9 +9,6 @@ class HomePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 20,
-        ),
         SizedBox(
           width: double.infinity,
           height: 250,
@@ -41,37 +38,22 @@ class HomePageView extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: 20,
-              ),
-              FractionallySizedBox(
-                widthFactor: 1,
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TerminBuchung()),
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-                      child: Text(
-                        'Terminanmeldung',
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                    )),
-              )
-            ],
+          padding: const EdgeInsets.only(
+            top: 20,
+          ),
+          child: Text(
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+            ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 80,
+          padding: const EdgeInsets.only(
+            left: 80,
+            right: 80,
+            top: 30,
           ),
           child: Image(
             image: AssetImage(
