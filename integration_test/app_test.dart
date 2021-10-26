@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:ukmblooddonation/main.dart' as app;
+import 'package:blooddonation/main.dart' as app;
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();

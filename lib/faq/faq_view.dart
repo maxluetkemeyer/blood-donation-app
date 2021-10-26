@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:ukmblooddonation/faq/faq_question.dart';
-import 'package:ukmblooddonation/faq/faq_question_list.dart';
-import 'package:ukmblooddonation/faq/faq_question_model.dart';
+import 'faq_question.dart';
+import 'faq_question_list.dart';
+
+
 
 class FaqView extends StatefulWidget {
   const FaqView({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:ukmblooddonation/faq/faq_question_model.dart';
+import 'faq_question_model.dart';
 
 class FaqQuestionList {
   final _questionList = [

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:ukmblooddonation/faq/faq_question_model.dart';
+import 'faq_question_model.dart';
+
+
 
 class FaqQuestion {
   final Question question;

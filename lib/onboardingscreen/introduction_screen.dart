@@ -3,16 +3,17 @@
 //
 // Um Introscreen zu testen bitte in der main.dart die main() Methode auskommentieren und folgendes einfügen:
 // void main() => runApp(IntroScreen());
+import 'package:blooddonation/Home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:ukmblooddonation/Home/home.dart';
-import 'package:ukmblooddonation/Home/home_page_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/link.dart';
 
 class IntroScreen extends StatelessWidget {
   // List of pages which are shown in introductionscreen
   //TODO: Bilder, die benutzt werden sollen zu assets hinzufügen
-  List<PageViewModel> getPages() {
+  List<PageViewModel> getPages(BuildContext context) {
     return [
       // Welcomepage
       PageViewModel(
@@ -88,10 +89,7 @@ class IntroScreen extends StatelessWidget {
         ),
         decoration: getOwnPageDecoration(),
         footer: ElevatedButton(
-          onPressed: () {
-            // Übergangsweise print-Funktion genutzt
-            print("Go to homescreen, start App...");
-          },
+          onPressed: () => goToHomeScreen(context),
           style: ButtonStyle(
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
@@ -114,37 +112,28 @@ class IntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: IntroductionScreen(
-          pages: getPages(),
-          done: Text('', style: TextStyle(fontWeight: FontWeight.w600)),
+    return Scaffold(
+      body: IntroductionScreen(
+        pages: getPages(context),
+        done: Text('', style: TextStyle(fontWeight: FontWeight.w600)),
 
-          //TODO: Button so anpassen, dass man zur Startseite der App gelangt
-          // vgl. Funktion "goToHomeScreen()" unten
-          onDone: () {
-            // Methode to go to homescreen and start app
-            // ondone: () => goToHomeScreen(context);
-          },
-          doneColor: Color(0xff003866),
+        //TODO: Button so anpassen, dass man zur Startseite der App gelangt
+        // vgl. Funktion "goToHomeScreen()" unten
+        onDone: () => goToHomeScreen(context),
+        doneColor: Color(0xff003866),
 
-          //TODO: Button so anpassen, dass man nicht zur letzten Seite springt sondern direkt auf die Startseite der App
-          //onSkip: () => goToHomeScreen(context),
-          onSkip: () {
-            // Übergangsweise print-Funktion genutzt
-            print("Button clicked to skip introscreen..Open Homescreen!");
-          },
-          showSkipButton: true,
-          skip: Text("Weiter"),
-          skipColor: Color(0xff003866),
-          showNextButton: true,
-          nextColor: Color(0xff003866),
-          next: Icon(Icons.arrow_forward_ios),
-          dotsDecorator: getOwnDotsDecoration(),
-          onChange: (index) => print("Page $index clicked"),
-          animationDuration: 1000,
-        ),
+        //TODO: Button so anpassen, dass man nicht zur letzten Seite springt sondern direkt auf die Startseite der App
+        onSkip: () => goToHomeScreen(context),
+
+        showSkipButton: true,
+        skip: Text("Weiter"),
+        skipColor: Color(0xff003866),
+        showNextButton: true,
+        nextColor: Color(0xff003866),
+        next: Icon(Icons.arrow_forward_ios),
+        dotsDecorator: getOwnDotsDecoration(),
+        onChange: (index) => print("Page $index clicked"),
+        animationDuration: 1000,
       ),
     );
   }
@@ -188,17 +177,12 @@ class IntroScreen extends StatelessWidget {
       color: Colors.blueGrey);
 
   // Method to go to the homescreen if button was clicked
-  void goToHomeScreen(context) => Navigator.of(context)
-      .pushReplacement(MaterialPageRoute(builder: (_) => HomePageView()));
-  //TODO: Hinzufügen zur HomePageView damit man wieder zurück kommen kann zum Introscreen (falls man ihn interessant fand und versehentlich geskipt hat ? :D)
-  // Button to go back to Introductionscreen
-  //      ElevatedButton(
-  //        child: Icon(Icons.exit_to_app),
-  //        onPressed: () => goBackToIntroScreen(context),
-  //      )
-  //
-  // Method to go back to the introductionscreen.
-  //void goBackToIntroScreen(context) => Navigator.of(context).pushReplacement(
-  //  MaterialPageRoute(builder: (_) => IntroductionScreen()),
-  //);
+  void goToHomeScreen(BuildContext context) async {
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => HomeView()),
+        (Route<dynamic> route) => false);
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool("alreadyOnboarded", true);
+  }
 }

@@ -2,8 +2,10 @@
 
 import 'dart:io';
 
-import 'package:ukmblooddonation/services/firebase/firebase_service.dart';
-import 'package:ukmblooddonation/services/user/user_service.dart';
+import 'firebase/firebase_service.dart';
+import 'user/user_service.dart';
+
+
 
 class Services {
   static final Services instance = Services._privateConstructor();

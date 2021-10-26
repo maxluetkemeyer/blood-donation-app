@@ -1,4 +1,4 @@
-import '../../lib/termin_buchung/frage_model.dart';
+import '../../lib/appointment_booking/frage_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ukmblooddonation/services/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import './onboard/firstcontact.dart';
 import './Home/home.dart';
+import 'onboardingscreen/introduction_screen.dart';
+import 'services/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,27 +40,24 @@ class MyApp extends StatelessWidget {
         builder: (buildContext, snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!) {
-              // Onboarding
-              return FirstContact();
+              // Home
+              return HomeView();
             }
-            // Home
-            return HomeView();
-          } else {
-            // Return loading screen while reading preferences
-            return Center(child: CircularProgressIndicator());
+
+            // Onboarding
+            return IntroScreen();
           }
+
+          return HomeView();
         },
       ),
     );
   }
 
   Future<bool> showOnboarding() async {
-    return false;
-    /*
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final alreadyOnboarded = prefs.getBool("alreadyOnboarded");
+    final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
-    return alreadyOnboarded == null;
-    */
+    return alreadyOnboarded;
   }
 }

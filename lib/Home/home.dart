@@ -1,11 +1,12 @@
+import 'package:blooddonation/Nutzerdaten/user_data_view.dart';
+import 'package:blooddonation/appointment_booking/booking_start_view.dart';
+import 'package:blooddonation/faq/faq_view.dart';
+import 'package:blooddonation/impressum/impressum.dart';
+import 'package:blooddonation/karte/maps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ukmblooddonation/Home/home_page_view.dart';
-import 'package:ukmblooddonation/Nutzerdaten/user_data_view.dart';
-import 'package:ukmblooddonation/appointment_booking/booking_start_view.dart';
-import 'package:ukmblooddonation/faq/faq_view.dart';
-import 'package:ukmblooddonation/impressum/impressum.dart';
-import 'package:ukmblooddonation/karte/maps.dart';
+
+import 'home_page_view.dart';
 
 class HomeView extends StatefulWidget {
   @override

@@ -75,6 +75,7 @@ pubspeck.lock
 .flutter-plugins-dependencies
 pubspec.lock
 lib/generated_plugin_registrant.dart
+ukmblutspende.iml
 
 # Firebase
 android/app/google-services.json
