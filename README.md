@@ -1,16 +1,4 @@
-### UKM Blutspende App
+### Blood Donation App
 ___
 
-Münster Hack Tasks:
-
-#### Hackbezogen
-
-- Pitch
-- Dokumentation
-
-#### Projektbezogen
-
-- Onboarding
-- Terminbuchungsprozess
-- Beispiel-API
-- Datenbankanschluss
+Project Seminar HACK MÜNSTER - MAKE MÜNSTER JOVEL! WS 2021/22
