@@ -5,7 +5,6 @@
 // void main() => runApp(IntroScreen());
 import 'package:blooddonation/Home/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/link.dart';
@@ -39,8 +38,8 @@ class IntroScreen extends StatelessWidget {
           footer: Link(
             uri:
                 Uri.parse('https://ukm-blutspende.de/index.php?id=wussten-sie'),
-            builder: (context, FollowLink) => GestureDetector(
-              onTap: FollowLink,
+            builder: (context, followLink) => GestureDetector(
+              onTap: followLink,
               child: Text(
                 "Mehr Wissen gibt es hier",
                 style: TextStyle(
