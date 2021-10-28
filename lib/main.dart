@@ -1,4 +1,4 @@
-import 'package:blooddonation/onboarding/onboarding_view.dart';
+import './onboarding/onboarding_view.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

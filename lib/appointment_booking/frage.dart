@@ -44,6 +44,7 @@ class FragenWidget extends StatelessWidget {
               width: double.infinity,
               height: 60,
               child: ElevatedButton.icon(
+                key: ValueKey('noButton'),
                 onPressed: () {
                   if (frage.isYesCorrect) {
                     nextQuestionFunc();
@@ -63,6 +64,7 @@ class FragenWidget extends StatelessWidget {
               width: double.infinity,
               height: 60,
               child: ElevatedButton.icon(
+                key: ValueKey('noButton'),
                 onPressed: () {
                   if (!frage.isYesCorrect) {
                     nextQuestionFunc();

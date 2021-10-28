@@ -8,10 +8,12 @@ class FaqQuestion {
   final Question question;
   final questionTextStyle;
   final answerTextStyle;
+  final Key key;
 
   FaqQuestion(
       {
         required this.question,
+        required this.key,
         this.questionTextStyle =const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         this.answerTextStyle = const TextStyle(fontSize: 20),
         

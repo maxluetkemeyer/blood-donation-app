@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:blooddonation/appointment_booking/frage_model.dart';
-import 'package:blooddonation/appointment_booking/frage.dart';
+import '../../lib/appointment_booking/frage_model.dart';
+import '../../lib/appointment_booking/frage.dart';
 
 void main() {
   testWidgets(
