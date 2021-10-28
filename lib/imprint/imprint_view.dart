@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Impressum extends StatelessWidget {
-  const Impressum({Key? key}) : super(key: key);
+class ImprintView extends StatelessWidget {
+  const ImprintView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

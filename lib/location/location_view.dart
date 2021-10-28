@@ -3,7 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MyMap extends StatelessWidget {
+class LocationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,11 +1,12 @@
+import 'package:blooddonation/onboarding/onboarding_view.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './Home/home.dart';
-import 'onboardingscreen/introduction_screen.dart';
+import './home/home.dart';
 import 'services/services.dart';
 
 void main() {
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
             }
 
             // Onboarding
-            return IntroScreen();
+            return OnboardingView();
           }
 
           return HomeView();
@@ -55,6 +56,8 @@ class MyApp extends StatelessWidget {
   }
 
   Future<bool> showOnboarding() async {
+    if (kIsWeb) return true;
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 

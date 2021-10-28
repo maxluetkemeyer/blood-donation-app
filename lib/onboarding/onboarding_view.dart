@@ -3,13 +3,13 @@
 //
 // Um Introscreen zu testen bitte in der main.dart die main() Methode auskommentieren und folgendes einfügen:
 // void main() => runApp(IntroScreen());
-import 'package:blooddonation/Home/home.dart';
+import 'package:blooddonation/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/link.dart';
 
-class IntroScreen extends StatelessWidget {
+class OnboardingView extends StatelessWidget {
   // List of pages which are shown in introductionscreen
   //TODO: Bilder, die benutzt werden sollen zu assets hinzufügen
   List<PageViewModel> getPages(BuildContext context) {

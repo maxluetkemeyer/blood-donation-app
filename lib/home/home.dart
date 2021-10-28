@@ -1,8 +1,8 @@
-import 'package:blooddonation/Nutzerdaten/user_data_view.dart';
+import 'package:blooddonation/user_data/user_data_view.dart';
 import 'package:blooddonation/appointment_booking/booking_start_view.dart';
 import 'package:blooddonation/faq/faq_view.dart';
-import 'package:blooddonation/impressum/impressum.dart';
-import 'package:blooddonation/karte/maps.dart';
+import 'package:blooddonation/imprint/imprint_view.dart';
+import 'package:blooddonation/location/location_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -18,7 +18,7 @@ class _HomeViewState extends State<HomeView> {
   final screens = [
     HomePageView(),
     BookingStartView(),
-    MyMap(),
+    LocationView(),
     FaqView(),
   ];
 
@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
                   break;
                 case 1:
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Impressum()));
+                      MaterialPageRoute(builder: (context) => ImprintView()));
                   break;
               }
             },
