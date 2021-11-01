@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'frage_model.dart';
+import 'question_model.dart';
 
-class FragenWidget extends StatelessWidget {
-  final Frage frage;
+class QuestionWidget extends StatelessWidget {
+  final Question question;
   final Function nextQuestionFunc;
 
-  FragenWidget({required this.frage, required this.nextQuestionFunc});
+  QuestionWidget({required this.question, required this.nextQuestionFunc});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class FragenWidget extends StatelessWidget {
           children: [
             Container(
               child: Text(
-                frage.text,
+                question.text,
                 style: TextStyle(
                   fontSize: 30,
                 ),
@@ -45,14 +45,14 @@ class FragenWidget extends StatelessWidget {
               height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  if (frage.isYesCorrect) {
+                  if (question.isYesCorrect) {
                     nextQuestionFunc();
                   }
                 },
                 icon: Icon(
                   Icons.done,
                 ),
-                label: Text("Ja"),
+                label: Text("Yes"),
                 style: ButtonStyle(),
               ),
             ),
@@ -64,11 +64,11 @@ class FragenWidget extends StatelessWidget {
               height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  if (!frage.isYesCorrect) {
+                  if (!question.isYesCorrect) {
                     nextQuestionFunc();
                   }
                 },
-                label: Text("Nein"),
+                label: Text("No"),
                 icon: Icon(
                   Icons.close,
                 ),
