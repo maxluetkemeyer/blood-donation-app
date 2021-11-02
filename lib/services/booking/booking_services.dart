@@ -1,9 +1,6 @@
 import 'package:blooddonation/appointment_booking/booking/appointmentBox_widget.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../providers.dart';
-
 class BookingService {
   static final BookingService instance = BookingService._privateConstructor();
 
@@ -22,7 +19,7 @@ class BookingService {
     _init();
   }
 
-  List<Widget> appointmentBoxList(BuildContext context) {
+  List<Widget> appointmentBoxList() {
     List<Widget> boxes = [];
 
     // just to showcase, remove it when online services get implemented
@@ -43,7 +40,6 @@ class BookingService {
           );
 
           print(BookingService.instance.selectedDay);
-          context.read(bookingStateProvider).state++;
         },
       );
 

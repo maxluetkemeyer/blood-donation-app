@@ -19,7 +19,7 @@ class ChooseTime extends StatelessWidget {
         child: Wrap(
           spacing: 20,
           runSpacing: 20,
-          children: BookingService.instance.appointmentBoxList(context),
+          children: BookingService.instance.appointmentBoxList(),
         ),
       ),
     );

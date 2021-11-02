@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../providers.dart';
 
 class AppointmentBox extends StatelessWidget {
   final DateTime time;
@@ -16,7 +19,10 @@ class AppointmentBox extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return CupertinoButton.filled(
       padding: EdgeInsets.symmetric(horizontal: width * 0.09),
-      onPressed: callback,
+      onPressed: () {
+        callback();
+        context.read(bookingStateProvider).state++;
+      },
       child: Text(
         ((time.hour.toString().length == 1)
                 ? "0" + time.hour.toString()
