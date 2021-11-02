@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-///
 /// Firebase Service for Firebase Core and Firebase Cloud Messaging
 /// Service build using the Singleton pattern
 ///
@@ -12,7 +11,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 /// Apple integration
 /// Topics
 /// Connect to Notification service
-///
 class FirebaseService {
   static final FirebaseService instance = FirebaseService._privateConstructor();
 
