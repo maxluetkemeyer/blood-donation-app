@@ -6,33 +6,31 @@ import 'testUtils.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  group('Booking Group 1', () {
+  group('Booking test', () {
     testWidgets(
-      'booking integration test 1',
+      'booking integration test click no two times',
       (WidgetTester tester) async {
         init();
 
-        //Skip Intro
         await wf.skipIntro(tester);
 
         await wf.clickNavAppointments(tester);
 
         await wf.clickStartAppointments(tester);
 
-        final noButton = find.text('No');
+        await wf.clickNoButton(tester);
 
-        expect(noButton, findsOneWidget);
+        await wf.clickNoButton(tester);
       },
     );
   });
 
-  group('Booking Group 1', () {
+  group('Booking test', () {
     testWidgets(
       'booking integration test 1',
       (WidgetTester tester) async {
         init();
 
-        //Skip Intro
         await wf.skipIntro(tester);
 
         await wf.clickNavAppointments(tester);

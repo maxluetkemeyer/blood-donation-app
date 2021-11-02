@@ -8,11 +8,10 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('FAQList Test', () {
     testWidgets(
-      'Given the Application is started When pressing map on the navigationBar FAQ Then the new window pops up and works functionally',
+      'Given the Application is started When pressing map on the navigationBar FAQ Then the new window pops up and works functionally (1 click)',
       (WidgetTester tester) async {
         await init();
 
-        //Skip Intro
         await wf.skipIntro(tester);
 
         await wf.clickNavFaq(tester);
@@ -31,11 +30,10 @@ void main() {
     );
 
     testWidgets(
-      'faq test 2',
+      'Given the Application is started When pressing map on the navigationBar FAQ Then the new window pops up and works functionally (2 clicks)',
       (WidgetTester tester) async {
         await init();
 
-        //Skip Intro
         await wf.skipIntro(tester);
 
         await wf.clickNavFaq(tester);
@@ -50,6 +48,14 @@ void main() {
             'Entweder über den Startbildschirm oder über das Menü kann man Anmeldung auswählen. Bevor man sich einen Termin aussuchen kann, werden ein paar generelle Fragen gestellt, die eine Blutspende verhindern könnten. Sollte nach den Fragen eine Blutspende möglich kein, kann über die Kalenderfunktion ein Termin ausgewählt werden. Der Termin ist verbindlich, wenn er in der App als bestätigt gilt.');
 
         expect(resOneTap, findsOneWidget);
+
+        await tester.tap(question);
+
+        await tester.pumpAndSettle();
+
+        //final resTwoTap = find.text('Entweder über den Startbildschirm oder über das Menü kann man Anmeldung auswählen. Bevor man sich einen Termin aussuchen kann, werden ein paar generelle Fragen gestellt, die eine Blutspende verhindern könnten. Sollte nach den Fragen eine Blutspende möglich kein, kann über die Kalenderfunktion ein Termin ausgewählt werden. Der Termin ist verbindlich, wenn er in der App als bestätigt gilt.');
+
+        //expect(resTwoTap, findsNothing);
       },
     );
   });
