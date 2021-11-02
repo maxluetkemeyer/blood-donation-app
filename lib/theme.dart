@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 //final Color accCol = Color(0xff93001D);
-
+final primCol = Color(0xff003866);
 final ThemeData lightTheme = ThemeData(
   // Primäre Farbe des Dokumentes (UKM Logo-Farbe dunkel)
+
   appBarTheme: AppBarTheme(
-    backgroundColor: Color(0xff003866),
+    backgroundColor: primCol,
   ),
 
-  primaryColor: Color(0xff003866),
+  primaryColor: primCol,
 
   fontFamily: 'Roboto',
 
@@ -22,7 +23,7 @@ final ThemeData lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 5,
-      primary: Color(0xff003866),
+      primary: primCol,
     ),
   ),
 );

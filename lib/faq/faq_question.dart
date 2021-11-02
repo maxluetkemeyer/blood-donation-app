@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'faq_question_model.dart';
 
 
+/* 
+This class creates one Element for the ExpansionPanelList, namely a ExpansionPanelRadio.
 
+Though it can't be seen as a Widget, it can onely be used by first initializing the class object and later called by the method create()
+*/
 class FaqQuestion {
   final Question question;
   final questionTextStyle;
@@ -20,6 +24,9 @@ class FaqQuestion {
       }
   );
 
+  /*
+  Puts out one the ExpansionPanelRadio with variables defined in its constructor
+  */
   ExpansionPanelRadio create() {
     return ExpansionPanelRadio(
       value: question.id,

@@ -1,3 +1,6 @@
+/*
+This class defines the model for a question in the faq question system, meaning the ExpansionPanelList
+*/
 class Question{
   final String id;
   final String question;

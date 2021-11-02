@@ -1,6 +1,12 @@
 import 'faq_question_model.dart';
 
 class FaqQuestionList {
+  /*
+  In this class, every question is listed, that is shown to the user by default.
+
+  These should be set in the localization file, if english version is needed
+  */
+
   final _questionList = [
     Question(
       id: 'q1',

@@ -11,6 +11,9 @@ class FaqView extends StatefulWidget {
   createState() => _FaqState();
 }
 
+/* 
+This Widget or Scaffold is used, to show the user the faq interface. Currently it utilizes the FaqQuestionList and the FaqQuestion and inserts their values into the ExpansionPanelList
+*/
 class _FaqState extends State<FaqView> {
 
   //list of all FAQ Questions
