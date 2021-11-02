@@ -1,23 +1,26 @@
+import 'package:blooddonation/providers.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'booking_view.dart';
-import 'frage.dart';
-import 'frage_model.dart';
+import '../booking/booking_view.dart';
+import 'question_widget.dart';
+import 'question_model.dart';
 
-class TerminBuchung extends StatefulWidget {
-  const TerminBuchung({Key? key}) : super(key: key);
+class QuestionsView extends StatefulWidget {
+  const QuestionsView({Key? key}) : super(key: key);
 
   @override
-  _TerminBuchungState createState() => _TerminBuchungState();
+  _QuestionsViewState createState() => _QuestionsViewState();
 }
 
-class _TerminBuchungState extends State<TerminBuchung> {
-  Frage testFrage = Frage(
+class _QuestionsViewState extends State<QuestionsView> {
+  Question testQuestion = Question(
     "Sind Sie positiv auf HIV getestet worden oder haben Sie die Befürchtung evtl. HIV-positiv zu sein?",
     false,
   );
-  Frage testFrage2 = Frage(
+  Question testQuestion2 = Question(
     "Wurden bei Ihnen oder einem Ihrer Blutsverwandten 1. Grades die Creutzfeldt-Jakob-Krankheit erkannt?",
     false,
   );
@@ -29,7 +32,7 @@ class _TerminBuchungState extends State<TerminBuchung> {
     super.initState();
 
     _pageController = PageController(
-      initialPage: 0,
+      //initialPage: 0,
     );
   }
 
@@ -44,7 +47,7 @@ class _TerminBuchungState extends State<TerminBuchung> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blutspende Termin"),
+        title: Text("Blood Donation Appointment"),
       ),
       body: Column(
         children: [
@@ -53,8 +56,8 @@ class _TerminBuchungState extends State<TerminBuchung> {
               controller: _pageController,
               physics: NeverScrollableScrollPhysics(),
               children: [
-                FragenWidget(
-                  frage: testFrage,
+                QuestionWidget(
+                  question: testQuestion,
                   nextQuestionFunc: () {
                     _pageController.animateToPage(
                       1,
@@ -63,21 +66,11 @@ class _TerminBuchungState extends State<TerminBuchung> {
                     );
                   },
                 ),
-                FragenWidget(
-                  frage: testFrage2,
+                QuestionWidget(
+                  question: testQuestion2,
                   nextQuestionFunc: () {
                     _pageController.animateToPage(
                       2,
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                ),
-                FragenWidget(
-                  frage: testFrage,
-                  nextQuestionFunc: () {
-                    _pageController.animateToPage(
-                      3,
                       duration: Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
@@ -112,21 +105,26 @@ class _TerminBuchungState extends State<TerminBuchung> {
                   CupertinoDialogAction(
                     isDestructiveAction: true,
                     onPressed: () {
+                      //reset booking process
+                      BookingService.instance.reset();
+                      context.read(bookingStateProvider).state = 0;
+
+                      //pop dialog, then pop booking process view
                       Navigator.pop(context);
                       Navigator.pop(context);
                     },
-                    child: const Text('Buchung abbrechen'),
+                    child: const Text('Cancel Booking'),
                   ),
                   CupertinoDialogAction(
                     isDefaultAction: true,
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Zurück'),
+                    child: const Text('Back'),
                   )
                 ],
               ),
             ),
             child: Text(
-              "Buchungsvorgang abbrechen",
+              "Cancel Booking",
             ),
           ),
         ],

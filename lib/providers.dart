@@ -1,19 +1,6 @@
-/*
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import "package:flutter_riverpod/flutter_riverpod.dart";
 
-import 'appointment_booking/termin_model.dart';
-
-// Provider
-
-final tappedDayProvider = StateProvider<bool>((ref) {
-  return false;
+/// Provides the active step value as state
+final bookingStateProvider = StateProvider<int>((ref) {
+  return 0;
 });
-
-final selectedDayProvider = StateProvider<DateTime>((ref) {
-  return DateTime.now();
-});
-
-final selectedTerminProvider = StateProvider<Termin>((ref) {
-  return Termin(id: "", time: DateTime.now());
-});
-*/

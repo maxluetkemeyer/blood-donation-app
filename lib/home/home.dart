@@ -1,8 +1,8 @@
-import '../user_data/user_data_view.dart';
-import '../appointment_booking/booking_start_view.dart';
-import '../faq/faq_view.dart';
-import '../imprint/imprint_view.dart';
-import '../location/location_view.dart';
+import 'package:blooddonation/user_data/user_data_view.dart';
+import 'package:blooddonation/appointment_booking/bookingStart_view.dart';
+import 'package:blooddonation/faq/faq_view.dart';
+import 'package:blooddonation/imprint/imprint_view.dart';
+import 'package:blooddonation/location/location_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

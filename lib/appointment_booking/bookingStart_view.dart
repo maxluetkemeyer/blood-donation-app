@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'termin_buchung_view.dart';
+import 'questions/questions_view.dart';
 
 class BookingStartView extends StatelessWidget {
   const BookingStartView({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class BookingStartView extends StatelessWidget {
               child: Text("Termin buchen"),
               onPressed: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TerminBuchung()),
+                MaterialPageRoute(builder: (context) => QuestionsView()),
               ),
             ),
           ),
