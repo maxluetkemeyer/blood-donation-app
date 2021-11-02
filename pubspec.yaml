@@ -58,14 +58,9 @@ flutter:
   generate: true
 
   assets:
-    - assets/images/Universitätsklinikum_Münster_Logo.png
-    - assets/images/image_1.png
-    - assets/images/image_2.png
-    - assets/images/image_3.png
-    - assets/images/image_4.png
-    - assets/images/1.png
-    - assets/images/daten.json
-    - assets/images/UKM_Blutspende_Muenster_Eingang.jpg
+    - assets/
+    - assets/images/
+    - assets/localization/
 
 flutter_icons:
   android: "launcher_icon"
