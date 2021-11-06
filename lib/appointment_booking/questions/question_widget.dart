@@ -20,20 +20,24 @@ class QuestionWidget extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              child: Text(
-                question.text,
-                style: TextStyle(
-                  fontSize: 30,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  question.text,
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.grey,
+                  color: Color(0xff9d9d9d),
                 ),
-                color: Colors.grey,
+                color: Color(0xff9d9d9d),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(20),
+                  Radius.circular(5),
                 ),
               ),
             ),

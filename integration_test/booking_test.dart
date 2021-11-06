@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -10,7 +13,7 @@ void main() {
     testWidgets(
       'booking integration test click no two times',
       (WidgetTester tester) async {
-        init();
+        await init();
 
         await wf.skipIntro(tester);
 
@@ -20,7 +23,13 @@ void main() {
 
         await wf.clickNoButton(tester);
 
+        
+
         await wf.clickNoButton(tester);
+
+        await wf.abortBooking(tester);
+
+        await wf.clickStartAppointments(tester);
       },
     );
   });
@@ -29,7 +38,7 @@ void main() {
     testWidgets(
       'booking integration test 1',
       (WidgetTester tester) async {
-        init();
+        await init();
 
         await wf.skipIntro(tester);
 

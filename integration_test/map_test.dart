@@ -10,7 +10,9 @@ void main() {
     testWidgets(
       'map integration test testing NavigationBar',
       (WidgetTester tester) async {
-        init();
+        await init();
+
+        await wf.skipIntro(tester);
 
         await wf.clickNavMap(tester);
 

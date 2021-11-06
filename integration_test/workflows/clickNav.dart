@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
 Future<void> workflowApp(WidgetTester tester) async{
-  //clicks the Navigationbar item with the key Appointment
+  //clicks the Navigationbar item with the key appointment
   final navButt = find.byKey(Key('appointment'));
 
   expect(navButt, findsOneWidget);
@@ -15,7 +15,7 @@ Future<void> workflowApp(WidgetTester tester) async{
 }
 
 Future<void> workflowStart(WidgetTester tester) async{
-  //clicks the Navigationbar item with the key Appointment
+  //clicks the Navigationbar item with the key start
   final navButt = find.byKey(Key('start'));
 
   expect(navButt, findsOneWidget);
@@ -28,7 +28,7 @@ Future<void> workflowStart(WidgetTester tester) async{
 }
 
 Future<void> workflowMap(WidgetTester tester) async{
-  //clicks the Navigationbar item with the key Appointment
+  //clicks the Navigationbar item with the key map
   final navButt = find.byKey(Key('map'));
 
   expect(navButt, findsOneWidget);
@@ -41,7 +41,7 @@ Future<void> workflowMap(WidgetTester tester) async{
 }
 
 Future<void> workflowFaq(WidgetTester tester) async{
-  //clicks the Navigationbar item with the key Appointment
+  //clicks the Navigationbar item with the key faq
   final navButt = find.byKey(Key('faq'));
 
   expect(navButt, findsOneWidget);

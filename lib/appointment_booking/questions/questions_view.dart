@@ -113,7 +113,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                       Navigator.pop(context);
                       Navigator.pop(context);
                     },
-                    child: const Text('Cancel Booking'),
+                    child: const Text('Cancel Booking',key: ValueKey('cancelBookingComp'),),
                   ),
                   CupertinoDialogAction(
                     isDefaultAction: true,
@@ -125,6 +125,7 @@ class _QuestionsViewState extends State<QuestionsView> {
             ),
             child: Text(
               "Cancel Booking",
+              key: ValueKey('cancelBooking'),
             ),
           ),
         ],
