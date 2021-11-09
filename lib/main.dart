@@ -11,6 +11,7 @@ import 'services/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // ignore: prefer_const_constructors
   runApp(ProviderScope(child: MyApp()));
 
   final Services services = Services.instance;
@@ -19,16 +20,17 @@ void main() {
 
 /// This is the main application widget.
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromARGB(255, 242, 242, 247),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 242, 242, 247),
         appBarTheme: AppBarTheme(
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Theme.of(context).primaryColor,
@@ -42,14 +44,14 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData) {
             if (snapshot.data!) {
               // Home
-              return HomeView();
+              return const HomeView();
             }
 
             // Onboarding
-            return OnboardingView();
+            return const OnboardingView();
           }
 
-          return HomeView();
+          return const HomeView();
         },
       ),
     );

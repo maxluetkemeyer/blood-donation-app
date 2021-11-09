@@ -22,7 +22,7 @@ class _FaqState extends State<FaqView> {
       body: SingleChildScrollView(
         child: ExpansionPanelList.radio(
           elevation: 3,
-          animationDuration: Duration(milliseconds: 600),
+          animationDuration: const Duration(milliseconds: 600),
           children: [
             for ( var i in  qList) FaqQuestion(question: i).create()
           ],

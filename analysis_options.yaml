@@ -1,0 +1,10 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude: [test/**, integration_test/**]
+
+linter:
+  rules:
+    avoid_print: false
+    sort_child_properties_last: true
+    parameter_assignments: true

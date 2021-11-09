@@ -15,20 +15,20 @@ class ChooseDay extends StatelessWidget {
         lastDay: DateTime.utc(2021, 11, 30),
         focusedDay: DateTime.now(),
         calendarFormat: CalendarFormat.month,
-        headerStyle: HeaderStyle(
+        headerStyle: const HeaderStyle(
           titleCentered: true,
           formatButtonVisible: false,
         ),
-        weekendDays: [6, 7],
+        weekendDays: const [6, 7],
         calendarStyle: CalendarStyle(
-          defaultDecoration: BoxDecoration(
+          defaultDecoration: const BoxDecoration(
             color: Colors.white,
             shape: BoxShape.circle,
           ),
-          defaultTextStyle: TextStyle(
+          defaultTextStyle: const TextStyle(
             fontSize: 20,
           ),
-          weekendTextStyle: TextStyle(
+          weekendTextStyle: const TextStyle(
             color: Colors.grey,
           ),
           outsideDaysVisible: false,
@@ -36,7 +36,7 @@ class ChooseDay extends StatelessWidget {
             color: Theme.of(context).primaryColor,
             shape: BoxShape.circle,
           ),
-          todayTextStyle: TextStyle(
+          todayTextStyle: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 20,

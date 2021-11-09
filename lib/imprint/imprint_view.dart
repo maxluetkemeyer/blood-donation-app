@@ -6,13 +6,13 @@ class ImprintView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Impressum')),
+        appBar: AppBar(title: const Text('Impressum')),
         body: SingleChildScrollView(
             child: Padding(
-                padding: EdgeInsets.only(left: 8),
+                padding: const EdgeInsets.only(left: 8),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: const <Widget>[
                       SizedBox(height: 10),
                       Text('Wer sind wir?',
                           style:

@@ -47,21 +47,21 @@ class _QuestionsViewState extends State<QuestionsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blood Donation Appointment"),
+        title: const Text("Blood Donation Appointment"),
       ),
       body: Column(
         children: [
           Expanded(
             child: PageView(
               controller: _pageController,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 QuestionWidget(
                   question: testQuestion,
                   nextQuestionFunc: () {
                     _pageController.animateToPage(
                       1,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
                   },
@@ -71,12 +71,12 @@ class _QuestionsViewState extends State<QuestionsView> {
                   nextQuestionFunc: () {
                     _pageController.animateToPage(
                       2,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
                   },
                 ),
-                BookingView()
+                const BookingView()
               ],
             ),
           ),
@@ -84,14 +84,14 @@ class _QuestionsViewState extends State<QuestionsView> {
             onPressed: () => showCupertinoDialog(
               context: context,
               builder: (BuildContext context) => CupertinoAlertDialog(
-                title: Text(
+                title: const Text(
                   "Möchtest du die Buchung abbrechen?",
                   style: TextStyle(
                     fontSize: 24,
                   ),
                 ),
                 content: Column(
-                  children: [
+                  children: const [
                     SizedBox(height: 10),
                     Text(
                       "Dein bisheriger Fortschritt geht verloren.",
@@ -123,7 +123,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                 ],
               ),
             ),
-            child: Text(
+            child: const Text(
               "Cancel Booking",
             ),
           ),

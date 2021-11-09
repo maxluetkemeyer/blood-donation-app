@@ -23,6 +23,7 @@ class _UserDataViewState extends State<UserDataView> {
     _birthdayController = TextEditingController();
   }
 
+  @override
   void dispose() {
     _birthdayController.dispose();
 
@@ -40,7 +41,7 @@ class _UserDataViewState extends State<UserDataView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(
                 top: 40,
                 left: 10,
@@ -58,12 +59,12 @@ class _UserDataViewState extends State<UserDataView> {
               ),
             ),
             CupertinoFormSection.insetGrouped(
-              header: Text("Deine Daten"),
-              footer: Divider(),
-              margin: EdgeInsets.all(12),
+              header: const Text("Deine Daten"),
+              footer: const Divider(),
+              margin: const EdgeInsets.all(12),
               children: [
                 CupertinoFormRow(
-                  prefix: Text("Name"),
+                  prefix: const Text("Name"),
                   child: CupertinoTextFormFieldRow(
                     placeholder: "Dein Name",
                     initialValue: UserService.instance.name,
@@ -73,7 +74,7 @@ class _UserDataViewState extends State<UserDataView> {
                   ),
                 ),
                 CupertinoFormRow(
-                  prefix: Text("Geburtsdatum"),
+                  prefix: const Text("Geburtsdatum"),
                   child: CupertinoTextFormFieldRow(
                     placeholder: "Dein Geburtsdatum",
                     readOnly: true,
@@ -95,7 +96,7 @@ class _UserDataViewState extends State<UserDataView> {
                           ),
                         ],
                         cancelButton: CupertinoActionSheetAction(
-                          child: Text("Fertig"),
+                          child: const Text("Fertig"),
                           onPressed: () {
                             _birthdayController.text =
                                 UserService.instance.birthdayAsString;
@@ -110,8 +111,8 @@ class _UserDataViewState extends State<UserDataView> {
               ],
             ),
             CupertinoFormSection.insetGrouped(
-              header: Text("Letzter Blutspendetermin"),
-              margin: EdgeInsets.all(12),
+              header: const Text("Letzter Blutspendetermin"),
+              margin: const EdgeInsets.all(12),
               children: [
                 CupertinoFormRow(
                   child: TableCalendar(
@@ -120,20 +121,20 @@ class _UserDataViewState extends State<UserDataView> {
                     focusedDay: DateTime.utc(2021, 9, 14),
                     calendarFormat: CalendarFormat.month,
                     currentDay: DateTime.utc(2021, 9, 14),
-                    headerStyle: HeaderStyle(
+                    headerStyle: const HeaderStyle(
                       titleCentered: true,
                       formatButtonVisible: false,
                     ),
-                    weekendDays: [6, 7],
+                    weekendDays: const [6, 7],
                     calendarStyle: CalendarStyle(
-                      defaultDecoration: BoxDecoration(
+                      defaultDecoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
-                      defaultTextStyle: TextStyle(
+                      defaultTextStyle: const TextStyle(
                         fontSize: 20,
                       ),
-                      weekendTextStyle: TextStyle(
+                      weekendTextStyle: const TextStyle(
                         color: Colors.grey,
                       ),
                       outsideDaysVisible: false,
@@ -141,7 +142,7 @@ class _UserDataViewState extends State<UserDataView> {
                         color: Theme.of(context).primaryColor,
                         shape: BoxShape.circle,
                       ),
-                      todayTextStyle: TextStyle(
+                      todayTextStyle: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 20,

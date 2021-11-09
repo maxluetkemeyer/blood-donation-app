@@ -10,6 +10,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/link.dart';
 
 class OnboardingView extends StatelessWidget {
+  const OnboardingView({Key? key}) : super(key: key);
+
   // List of pages which are shown in introductionscreen
   //TODO: Bilder, die benutzt werden sollen zu assets hinzufügen
   List<PageViewModel> getPages(BuildContext context) {
@@ -25,7 +27,7 @@ class OnboardingView extends StatelessWidget {
       // Nice to know
       PageViewModel(
           title: "Wussten Sie...",
-          bodyWidget: Text(
+          bodyWidget: const Text(
             "... dass das Blutvolumen eines erwachsenen Menschen ca. 4,5 - 6,0 Liter beträgt (8% des Körpergewichtes in kg) ?\n\n... aus der Armvene werden 500ml Blut entnommen, was nur ca. 5-10 min. dauert ?\n\n... in Deutschland sind 15.000 Blutspenden pro Tag erforderlich, um den täglichen Bedarf zu decken ?",
             style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold, wordSpacing: 3),
@@ -40,7 +42,7 @@ class OnboardingView extends StatelessWidget {
                 Uri.parse('https://ukm-blutspende.de/index.php?id=wussten-sie'),
             builder: (context, followLink) => GestureDetector(
               onTap: followLink,
-              child: Text(
+              child: const Text(
                 "Mehr Wissen gibt es hier",
                 style: TextStyle(
                     fontSize: 15, decoration: TextDecoration.underline),
@@ -52,7 +54,7 @@ class OnboardingView extends StatelessWidget {
 
       // Blood group
       PageViewModel(
-          titleWidget: Text(
+          titleWidget: const Text(
             "Blutgruppen:\nDas A-B-0 System",
             style: TextStyle(
               fontSize: 28,
@@ -61,7 +63,7 @@ class OnboardingView extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          bodyWidget: Text(
+          bodyWidget: const Text(
             "-Mensch mit Blutgruppe A hat hat auf der Oberfläche seiner Blutkörperchen das Antigen A\n\n-Mensch mit Blutgruppe B hat Antigen B\n\n-Blutgruppe AB hat beide Antigene\n\n-Blugruppe 0 hat weder A noch B\n\n-Immunsystem bildet gegen fehlende Antigene Antikörper, dh ein Mensch mit Blutgruppe A hat Antikörper gegen B und umgekehrt\n\n-Bei Blutgruppe AB werden keine Antikörper gebildet\n\n-Blutgruppe 0 bildet keine Antikörper",
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, wordSpacing: 3),
@@ -93,12 +95,12 @@ class OnboardingView extends StatelessWidget {
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Color(0xff003866), width: 2.0))),
-              backgroundColor: MaterialStateProperty.all(Color(0xff003866))),
+                      side: const BorderSide(color: Color(0xff003866), width: 2.0))),
+              backgroundColor: MaterialStateProperty.all(const Color(0xff003866))),
           child: Container(
-            constraints: BoxConstraints(maxWidth: 100, minHeight: 25),
+            constraints: const BoxConstraints(maxWidth: 100, minHeight: 25),
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               "Starte App",
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white, fontSize: 15),
@@ -114,22 +116,22 @@ class OnboardingView extends StatelessWidget {
     return Scaffold(
       body: IntroductionScreen(
         pages: getPages(context),
-        done: Text('', style: TextStyle(fontWeight: FontWeight.w600)),
+        done: const Text('', style: TextStyle(fontWeight: FontWeight.w600)),
 
         //TODO: Button so anpassen, dass man zur Startseite der App gelangt
         // vgl. Funktion "goToHomeScreen()" unten
         onDone: () => goToHomeScreen(context),
-        doneColor: Color(0xff003866),
+        doneColor: const Color(0xff003866),
 
         //TODO: Button so anpassen, dass man nicht zur letzten Seite springt sondern direkt auf die Startseite der App
         onSkip: () => goToHomeScreen(context),
 
         showSkipButton: true,
-        skip: Text("Weiter"),
-        skipColor: Color(0xff003866),
+        skip: const Text("Weiter"),
+        skipColor: const Color(0xff003866),
         showNextButton: true,
-        nextColor: Color(0xff003866),
-        next: Icon(Icons.arrow_forward_ios),
+        nextColor: const Color(0xff003866),
+        next: const Icon(Icons.arrow_forward_ios),
         dotsDecorator: getOwnDotsDecoration(),
         onChange: (index) => print("Page $index clicked"),
         animationDuration: 1000,
@@ -148,28 +150,28 @@ class OnboardingView extends StatelessWidget {
 
   // Get uniform decoration for pages in introductionscreen
   PageDecoration getOwnPageDecoration() => PageDecoration(
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.bold,
           color: Color(0xff003866),
         ),
-        bodyTextStyle: TextStyle(fontSize: 20),
-        descriptionPadding: EdgeInsets.all(16).copyWith(bottom: 0),
-        imagePadding: EdgeInsets.fromLTRB(5, 20, 5, 0),
+        bodyTextStyle: const TextStyle(fontSize: 20),
+        descriptionPadding: const EdgeInsets.all(16).copyWith(bottom: 0),
+        imagePadding: const EdgeInsets.fromLTRB(5, 20, 5, 0),
         pageColor: Colors.white,
       );
 
   // Get uniform decoration for Dots
   DotsDecorator getOwnDotsDecoration() => DotsDecorator(
-      color: Color(0xff003866),
-      size: Size(10, 10),
-      activeSize: Size(22, 10),
+      color: const Color(0xff003866),
+      size: const Size(10, 10),
+      activeSize: const Size(22, 10),
       activeShape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
       activeColor: Colors.red);
 
   // Get uniform Textstyle for bodyWidget
-  TextStyle getOwnTextStyle() => TextStyle(
+  TextStyle getOwnTextStyle() => const TextStyle(
       fontSize: 18,
       wordSpacing: 3,
       fontWeight: FontWeight.bold,
@@ -178,7 +180,7 @@ class OnboardingView extends StatelessWidget {
   // Method to go to the homescreen if button was clicked
   void goToHomeScreen(BuildContext context) async {
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => HomeView()),
+        MaterialPageRoute(builder: (context) => const HomeView()),
         (Route<dynamic> route) => false);
 
     SharedPreferences prefs = await SharedPreferences.getInstance();

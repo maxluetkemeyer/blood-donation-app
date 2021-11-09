@@ -1,5 +1,5 @@
 import 'package:blooddonation/user_data/user_data_view.dart';
-import 'package:blooddonation/appointment_booking/bookingStart_view.dart';
+import 'package:blooddonation/appointment_booking/bookingstart_view.dart';
 import 'package:blooddonation/faq/faq_view.dart';
 import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
@@ -9,6 +9,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'home_page_view.dart';
 
 class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
+
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -16,10 +18,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int pageIndex = 0;
   final screens = [
-    HomePageView(),
-    BookingStartView(),
-    LocationView(),
-    FaqView(),
+    const HomePageView(),
+    const BookingStartView(),
+    const LocationView(),
+    const FaqView(),
   ];
 
   @override
@@ -33,23 +35,23 @@ class _HomeViewState extends State<HomeView> {
               switch (value) {
                 case 0:
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => UserDataView()));
+                      MaterialPageRoute(builder: (context) => const UserDataView()));
                   break;
                 case 1:
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ImprintView()));
+                      MaterialPageRoute(builder: (context) => const ImprintView()));
                   break;
               }
             },
             itemBuilder: (context) => [
-              PopupMenuItem(
-                child: Text("Nutzerdaten"),
+              const PopupMenuItem(
                 value: 0,
+                child: Text("Nutzerdaten"),
               ),
-              PopupMenuDivider(),
-              PopupMenuItem(
-                child: Text("Impressum"),
+              const PopupMenuDivider(),
+              const PopupMenuItem(
                 value: 1,
+                child: Text("Impressum"),
               ),
             ],
           ),
@@ -62,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
           pageIndex = index;
         }),
         //labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        destinations: [
+        destinations: const [
           NavigationDestination(
             key: ValueKey('start'),
             icon: Icon(Icons.home_outlined),

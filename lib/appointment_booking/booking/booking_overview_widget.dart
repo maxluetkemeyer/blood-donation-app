@@ -7,6 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 class BookingOverview extends StatefulWidget {
+  const BookingOverview({Key? key}) : super(key: key);
+
   @override
   State<BookingOverview> createState() => _BookingOverviewState();
 }
@@ -25,6 +27,7 @@ class _BookingOverviewState extends State<BookingOverview> {
     _birthdayController.text = UserService.instance.birthdayAsString;
   }
 
+  @override
   void dispose() {
     _birthdayController.dispose();
 
@@ -42,12 +45,12 @@ class _BookingOverviewState extends State<BookingOverview> {
       child: Column(
         children: [
           CupertinoFormSection.insetGrouped(
-            header: Text("Deine Daten"),
-            footer: Divider(),
-            margin: EdgeInsets.all(12),
+            header: const Text("Deine Daten"),
+            footer: const Divider(),
+            margin: const EdgeInsets.all(12),
             children: [
               CupertinoFormRow(
-                prefix: Text("Name"),
+                prefix: const Text("Name"),
                 child: CupertinoTextFormFieldRow(
                   placeholder: "Dein Name",
                   initialValue: UserService.instance.name,
@@ -55,7 +58,7 @@ class _BookingOverviewState extends State<BookingOverview> {
                 ),
               ),
               CupertinoFormRow(
-                prefix: Text("Geburtsdatum"),
+                prefix: const Text("Geburtsdatum"),
                 child: CupertinoTextFormFieldRow(
                   placeholder: "Dein Geburtsdatum",
                   readOnly: true,
@@ -77,7 +80,7 @@ class _BookingOverviewState extends State<BookingOverview> {
                         ),
                       ],
                       cancelButton: CupertinoActionSheetAction(
-                        child: Text("Fertig"),
+                        child: const Text("Fertig"),
                         onPressed: () {
                           _birthdayController.text =
                               UserService.instance.birthdayAsString;
@@ -92,11 +95,11 @@ class _BookingOverviewState extends State<BookingOverview> {
             ],
           ),
           CupertinoFormSection.insetGrouped(
-            header: Text("Dein Termin"),
-            margin: EdgeInsets.all(12),
+            header: const Text("Dein Termin"),
+            margin: const EdgeInsets.all(12),
             children: [
               CupertinoFormRow(
-                prefix: Text("Termin"),
+                prefix: const Text("Termin"),
                 child: CupertinoTextFormFieldRow(
                   placeholder: "Dein Termin",
                   initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm")
@@ -105,7 +108,7 @@ class _BookingOverviewState extends State<BookingOverview> {
                   onTap: () => showCupertinoDialog(
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
-                      title: Text(
+                      title: const Text(
                         "Blutspendetermin",
                         style: TextStyle(
                           fontSize: 24,
@@ -113,15 +116,15 @@ class _BookingOverviewState extends State<BookingOverview> {
                       ),
                       content: Column(
                         children: [
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
                             DateFormat("dd.MM.yyyy 'um' HH:mm")
                                 .format(BookingService.instance.selectedDay),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                             ),
                           ),
-                          Text(
+                          const Text(
                             "ist dein ausgewählter Termin. Möchtest du deinen Termin ändern und die Buchung nochmal starten?",
                             style: TextStyle(
                               fontSize: 16,
@@ -154,12 +157,12 @@ class _BookingOverviewState extends State<BookingOverview> {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 12),
+            margin: const EdgeInsets.symmetric(horizontal: 12),
             width: double.infinity,
             child: CupertinoButton.filled(
-              child: Text("Termin buchen"),
+              child: const Text("Termin buchen"),
               onPressed: () async {
                 print("Termin buchen button pressed");
 

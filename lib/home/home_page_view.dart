@@ -13,7 +13,7 @@ class HomePageView extends StatelessWidget {
           width: double.infinity,
           height: 250,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(4)),
             ),
             child: CarouselSlider(
@@ -23,8 +23,8 @@ class HomePageView extends StatelessWidget {
                   builder: (BuildContext context) {
                     return Container(
                         width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: BoxDecoration(color: Color(0xff003866)),
+                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: const BoxDecoration(color: Color(0xff003866)),
                         child: Image(
                           image: AssetImage(
                             './assets/images/image_$i.png',
@@ -37,8 +37,8 @@ class HomePageView extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(
+        const Padding(
+          padding: EdgeInsets.only(
             top: 20,
           ),
           child: Text(
@@ -49,8 +49,8 @@ class HomePageView extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(
+        const Padding(
+          padding: EdgeInsets.only(
             left: 80,
             right: 80,
             top: 30,

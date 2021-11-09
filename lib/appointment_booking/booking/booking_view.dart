@@ -7,6 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:im_stepper/stepper.dart';
 
 class BookingView extends ConsumerWidget {
+  const BookingView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     int activeStep = watch(bookingStateProvider).state;
@@ -15,32 +17,30 @@ class BookingView extends ConsumerWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 20),
-          Container(
-            child: IconStepper(
-              direction: Axis.horizontal,
-              enableNextPreviousButtons: false,
-              activeStep: activeStep,
-              activeStepColor: Theme.of(context).primaryColor,
-              activeStepBorderWidth: 6,
-              stepRadius: 30,
-              activeStepBorderPadding: 0,
-              lineDotRadius: 1.4,
-              lineLength: width * 0.2,
-              icons: [
-                Icon(
-                  Icons.date_range_rounded,
-                  color: Colors.white,
-                  size: 3,
-                ),
-                Icon(Icons.access_time_filled, color: Colors.white),
-                Icon(Icons.send, color: Colors.white),
-              ],
-              enableStepTapping: false,
-            ),
+          const SizedBox(height: 20),
+          IconStepper(
+            direction: Axis.horizontal,
+            enableNextPreviousButtons: false,
+            activeStep: activeStep,
+            activeStepColor: Theme.of(context).primaryColor,
+            activeStepBorderWidth: 6,
+            stepRadius: 30,
+            activeStepBorderPadding: 0,
+            lineDotRadius: 1.4,
+            lineLength: width * 0.2,
+            icons: const [
+              Icon(
+                Icons.date_range_rounded,
+                color: Colors.white,
+                size: 3,
+              ),
+              Icon(Icons.access_time_filled, color: Colors.white),
+              Icon(Icons.send, color: Colors.white),
+            ],
+            enableStepTapping: false,
           ),
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               top: 20,
               left: 10,
               bottom: 40,
@@ -49,7 +49,7 @@ class BookingView extends ConsumerWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 _stepperHeader(activeStep),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w600,
                 ),
@@ -78,11 +78,11 @@ class BookingView extends ConsumerWidget {
   Widget _stepperBody(activeStep) {
     switch (activeStep) {
       case 0:
-        return ChooseDay();
+        return const ChooseDay();
       case 1:
-        return ChooseTime();
+        return const ChooseTime();
       case 2:
-        return BookingOverview();
+        return const BookingOverview();
       default:
         return Container();
     }

@@ -9,10 +9,11 @@ class AppointmentBox extends StatelessWidget {
   final VoidCallback callback;
 
   const AppointmentBox({
+    Key? key,
     required this.time,
     required this.id,
     required this.callback,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

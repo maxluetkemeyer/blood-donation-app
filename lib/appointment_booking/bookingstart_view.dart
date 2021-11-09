@@ -18,7 +18,7 @@ class BookingStartView extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(
               top: 60,
               bottom: 40,
@@ -34,29 +34,30 @@ class BookingStartView extends StatelessWidget {
               ),
             ),
           ),
-          Text(
+          const Text(
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
             style: TextStyle(
               fontSize: 20,
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 12),
+            margin: const EdgeInsets.symmetric(horizontal: 12),
             width: double.infinity,
             child: CupertinoButton.filled(
-              child: Text("Termin buchen"),
+              child: const Text("Termin buchen"),
               onPressed: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => QuestionsView()),
+                MaterialPageRoute(builder: (context) => const QuestionsView()),
               ),
             ),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
+          // ignore: sized_box_for_whitespace
           Container(
             width: width * 0.6,
             height: height * 0.3,
-            child: Placeholder(),
+            child: const Placeholder(),
           ),
         ],
       ),

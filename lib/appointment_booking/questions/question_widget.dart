@@ -6,13 +6,17 @@ class QuestionWidget extends StatelessWidget {
   final Question question;
   final Function nextQuestionFunc;
 
-  QuestionWidget({required this.question, required this.nextQuestionFunc});
+  const QuestionWidget({
+    Key? key,
+    required this.question,
+    required this.nextQuestionFunc,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 20,
           left: 20,
           right: 20,
@@ -20,24 +24,24 @@ class QuestionWidget extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              child: Text(
-                question.text,
-                style: TextStyle(
-                  fontSize: 30,
-                ),
-              ),
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.grey,
                 ),
                 color: Colors.grey,
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(20),
                 ),
               ),
+              child: Text(
+                question.text,
+                style: const TextStyle(
+                  fontSize: 30,
+                ),
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             SizedBox(
@@ -49,14 +53,14 @@ class QuestionWidget extends StatelessWidget {
                     nextQuestionFunc();
                   }
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.done,
                 ),
-                label: Text("Yes"),
-                style: ButtonStyle(),
+                label: const Text("Yes"),
+                style: const ButtonStyle(),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SizedBox(
@@ -68,8 +72,8 @@ class QuestionWidget extends StatelessWidget {
                     nextQuestionFunc();
                   }
                 },
-                label: Text("No"),
-                icon: Icon(
+                label: const Text("No"),
+                icon: const Icon(
                   Icons.close,
                 ),
               ),

@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 final ThemeData lightTheme = ThemeData(
   // Primäre Farbe des Dokumentes (UKM Logo-Farbe dunkel)
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xff003866),
   ),
 
-  primaryColor: Color(0xff003866),
+  primaryColor: const Color(0xff003866),
 
   fontFamily: 'Roboto',
 
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
       bodyText1: TextStyle(fontSize: 20, color: Colors.white),
       headline1: TextStyle(
           fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
@@ -22,7 +22,7 @@ final ThemeData lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 5,
-      primary: Color(0xff003866),
+      primary: const Color(0xff003866),
     ),
   ),
 );

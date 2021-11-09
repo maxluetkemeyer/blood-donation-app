@@ -4,14 +4,16 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocationView extends StatelessWidget {
+  const LocationView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         //TODO: Implement Android 12 physics
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: <Widget>[
-          Container(
+          SizedBox(
             height: 300,
             child: FlutterMap(
               options: MapOptions(
@@ -44,7 +46,7 @@ class LocationView extends StatelessWidget {
             ),
           ),
           //Überschrift
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Center(
               child: Text(
@@ -61,7 +63,7 @@ class LocationView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               //UKM Image
-              Container(
+              SizedBox(
                 width: 100,
                 height: 100,
                 child: Image.asset(
@@ -70,9 +72,9 @@ class LocationView extends StatelessWidget {
               Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(15, 15, 15, 8),
+                    padding: const EdgeInsets.fromLTRB(15, 15, 15, 8),
                     child: InkWell(
-                      child: Text(
+                      child: const Text(
                         "Albert-Schweitzer-Campus 1\n48149 Münster\nAnfahrtsadresse:\nDomagkstr. 11, Gebäude D11",
                       ),
                       onTap: () => launch(
@@ -80,11 +82,11 @@ class LocationView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(2),
                     child: Text("Telelefonnr.: 0251 - 83 58000"),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(3),
                     child: Text("blutspende@­ukmuenster.de"),
                   )
@@ -92,10 +94,10 @@ class LocationView extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
-          Image(
+          const Image(
             image: AssetImage(
               "assets/images/UKM_Blutspende_Muenster_Eingang.jpg",
             ),
