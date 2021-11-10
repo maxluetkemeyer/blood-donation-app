@@ -1,6 +1,4 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -11,7 +9,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('Booking test', () {
     testWidgets(
-      'booking integration test click no two times',
+      'booking integration test click through booking correctly',
       (WidgetTester tester) async {
         await init();
 
@@ -23,20 +21,22 @@ void main() {
 
         await wf.clickNoButton(tester);
 
-        
-
         await wf.clickNoButton(tester);
 
-        await wf.abortBooking(tester);
+        await wf.clickDate(tester);
 
-        await wf.clickStartAppointments(tester);
+        await wf.clickTime(tester);
+
+        //await wf.abortBooking(tester);
+
+        //await wf.clickStartAppointments(tester);
       },
     );
   });
 
   group('Booking test', () {
     testWidgets(
-      'booking integration test 1',
+      'booking integration test click No buttons as many times as possible',
       (WidgetTester tester) async {
         await init();
 
@@ -48,7 +48,10 @@ void main() {
 
         final noButton = find.text('No');
 
-        expect(noButton, findsOneWidget);
+        while(noButton.precache()){
+          await wf.clickNoButton(tester);
+          noButton.evaluate();
+        }
       },
     );
   });

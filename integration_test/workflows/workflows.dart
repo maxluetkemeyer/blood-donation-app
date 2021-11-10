@@ -4,6 +4,7 @@ import 'skipIntro.dart' as skipIntroAS;
 import 'clickNav.dart' as clickNavAS;
 import 'clickButtons.dart' as clickButtonsAS;
 import 'abortBooking.dart' as abortBookingAS;
+import 'bookingActions.dart' as bookingActionsAS;
 
 //Skipping Introduction
 final skipIntro = (WidgetTester tester)=>skipIntroAS.workflow(tester);
@@ -18,5 +19,9 @@ final clickNavFaq = (WidgetTester tester)=>clickNavAS.workflowFaq(tester);
 final clickStartAppointments = (WidgetTester tester)=>clickButtonsAS.workflow(tester);
 final clickNoButton = (WidgetTester tester)=>clickButtonsAS.workflowNoButton(tester);
 
-//abort the booking process
+//Abort the booking process
 final abortBooking = (WidgetTester tester)=>abortBookingAS.workflow(tester);
+
+//CLick Buttons during Booking process
+final clickDate = (WidgetTester tester)=>bookingActionsAS.workflowClickDate(tester);
+final clickTime = (WidgetTester tester)=>bookingActionsAS.workflowClickTime(tester);

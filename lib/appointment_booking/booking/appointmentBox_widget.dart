@@ -18,6 +18,7 @@ class AppointmentBox extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return CupertinoButton.filled(
+      key: ValueKey(this.id+'Cup'),
       padding: EdgeInsets.symmetric(horizontal: width * 0.09),
       onPressed: () {
         callback();
