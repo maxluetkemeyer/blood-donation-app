@@ -10,31 +10,51 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/link.dart';
 
+// Empty-Widget
+//import 'package:empty_widget/empty_widget.dart';
+
 class IntroScreen extends StatelessWidget {
   // List of pages which are shown in introductionscreen
-  //TODO: Bilder, die benutzt werden sollen zu assets hinzufügen
   List<PageViewModel> getPages(BuildContext context) {
     return [
+      // If you get an error message when you add multiple pages, adjust the (active-)size of the navigation points in the getOwnDotsDecoration() method
+
       // Welcomepage
       PageViewModel(
           title: "Herzlich Willkommen in der UKM Blutspende App",
           body: "",
-          image:
-              buildImage("assets/images/Universitätsklinikum_Münster_Logo.png"),
+          //image: buildImage("assets/images/Universitätsklinikum_Münster_Logo.png"),
+          image: Placeholder(),
           decoration: getOwnPageDecoration()),
+
+      // Testpage for emptywidget
+      // To see widget just uncomment import empty-widget package & text below
+      //
+      // PageViewModel(
+      //     title: "Empty-widget",
+      //     body:
+      //         "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      //     image: EmptyWidget(
+      //       image: null,
+      //       packageImage: PackageImage.Image_2,
+      //       title: "You can put your image right here",
+      //     ),
+      //     decoration: getOwnPageDecoration()),
 
       // Nice to know
       PageViewModel(
           title: "Wussten Sie...",
           bodyWidget: Text(
-            "... dass das Blutvolumen eines erwachsenen Menschen ca. 4,5 - 6,0 Liter beträgt (8% des Körpergewichtes in kg) ?\n\n... aus der Armvene werden 500ml Blut entnommen, was nur ca. 5-10 min. dauert ?\n\n... in Deutschland sind 15.000 Blutspenden pro Tag erforderlich, um den täglichen Bedarf zu decken ?",
+            "... dass das Blutvolumen eines erwachsenen Menschen ca. 4,5 - 6,0 Liter beträgt (8% des Körpergewichtes in kg) ?\n\n... aus der Armvene werden 500ml Blut entnommen, was nur ca. 5-10 min. dauert ?\n\n... in Deutschland sind ca. 15.000 Blutspenden pro Tag erforderlich , um den täglichen Bedarf zu decken ?",
             style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold, wordSpacing: 3),
             textAlign: TextAlign.justify,
           ),
-          //TODO: verwendetes Bild zu assets hinzufügen
-          image: Image.network(
-              "https://media.istockphoto.com/vectors/blood-donation-transfusion-vector-cartoon-illustration-volunteer-male-vector-id1159682984?k=20&m=1159682984&s=612x612&w=0&h=3X4pTHyovnAXotv1ipA9LecJ6xbnmpXRTsC7cKAsMdc="),
+          // Image from earlier version.
+          // image: buildImage("assets/images/temp_blooddonation_placeholder.jpg"),
+          image: Placeholder(
+            color: Color(0xff003866),
+          ),
           //TODO: Link öffnen funktioniert manchmal nicht, anpassen/überprüfen
           footer: Link(
             uri:
@@ -63,30 +83,33 @@ class IntroScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           bodyWidget: Text(
-            "-Mensch mit Blutgruppe A hat hat auf der Oberfläche seiner Blutkörperchen das Antigen A\n\n-Mensch mit Blutgruppe B hat Antigen B\n\n-Blutgruppe AB hat beide Antigene\n\n-Blugruppe 0 hat weder A noch B\n\n-Immunsystem bildet gegen fehlende Antigene Antikörper, dh ein Mensch mit Blutgruppe A hat Antikörper gegen B und umgekehrt\n\n-Bei Blutgruppe AB werden keine Antikörper gebildet\n\n-Blutgruppe 0 bildet keine Antikörper",
+            "-Mensch mit Blutgruppe A hat auf der Oberfläche seiner Blutkörperchen das Antigen A\n\n-Mensch mit Blutgruppe B hat Antigen B\n\n-Blutgruppe AB hat beide Antigene\n\n-Blugruppe 0 hat weder A noch B\n\n-Immunsystem bildet gegen fehlende Antigene Antikörper, dh ein Mensch mit Blutgruppe A hat Antikörper gegen B und umgekehrt\n\n-Bei Blutgruppe AB werden keine Antikörper gebildet\n\n-Blutgruppe 0 bildet keine Antikörper",
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, wordSpacing: 3),
           ),
-          //TODO: verwendetes Bild zu assets hinzufügen
-          image: Image.network(
-              "https://img.graphicsurf.com/2020/08/blood-donation-vector-illustration.jpg"),
+          // Image from earlier version.
+          //image: buildImage("assets/images/temp_blooddonation_placeholder2.jpg"),
+          image: Placeholder(
+            color: Color(0xff003866),
+          ),
           decoration: getOwnPageDecoration()),
 
       // Current information about UKM, ...
       PageViewModel(
         title: "Aktuelle Informationen zur Blutspende am UKM",
         bodyWidget: Text(
-          "Für alle Blutspenden gilt die 3G-Regel.\nDas bedeutet: Zum Blutspende-Termin muss entweder ein Impfnachweis,eine Bescheiigung über Genesung oder ein Antigen-Schnalltest (nicht äter als 48 Std.) vorgelegt werden.",
+          "Für alle Blutspenden gilt die 3G-Regel.\nDas bedeutet: Zum Blutspende-Termin muss entweder ein Impfnachweis,eine Bescheinigung über Genesung oder ein Antigen-Schnelltest (nicht älter als 48 Std.) vorgelegt werden.",
           style: getOwnTextStyle(),
           textAlign: TextAlign.left,
         ),
-        //TODO: verwendetes Bild zu assets hinzufügen
-        image: Center(
-          child: Image.network(
-            "https://www.kino-wolfratshausen.de/images/news/92580_0_big.jpg",
-            width: 500,
-          ),
-        ),
+        // Image from earlier version.
+        // image: Center(
+        //   child: Image.asset(
+        //     "assets/images/temp_3G_placeholder.jpg",
+        //     width: 500,
+        //   ),
+        // ),
+        image: Placeholder(),
         decoration: getOwnPageDecoration(),
         footer: ElevatedButton(
           onPressed: () => goToHomeScreen(context),
@@ -117,14 +140,10 @@ class IntroScreen extends StatelessWidget {
         pages: getPages(context),
         done: Text('', style: TextStyle(fontWeight: FontWeight.w600)),
 
-        //TODO: Button so anpassen, dass man zur Startseite der App gelangt
         // vgl. Funktion "goToHomeScreen()" unten
         onDone: () => goToHomeScreen(context),
         doneColor: Color(0xff003866),
-
-        //TODO: Button so anpassen, dass man nicht zur letzten Seite springt sondern direkt auf die Startseite der App
         onSkip: () => goToHomeScreen(context),
-
         showSkipButton: true,
         skip: Text("Weiter"),
         skipColor: Color(0xff003866),
@@ -163,8 +182,8 @@ class IntroScreen extends StatelessWidget {
   // Get uniform decoration for Dots
   DotsDecorator getOwnDotsDecoration() => DotsDecorator(
       color: Color(0xff003866),
-      size: Size(10, 10),
-      activeSize: Size(22, 10),
+      size: Size(5, 5),
+      activeSize: Size(11, 5),
       activeShape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
       activeColor: Colors.red);
