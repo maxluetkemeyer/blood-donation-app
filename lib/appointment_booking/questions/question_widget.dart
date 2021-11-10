@@ -56,7 +56,8 @@ class QuestionWidget extends StatelessWidget {
                 icon: const Icon(
                   Icons.done,
                 ),
-                label: const Text("Yes"),
+                //label: const Text("Yes"),
+                label: const Text("Ja"),
                 style: const ButtonStyle(),
               ),
             ),
@@ -72,7 +73,8 @@ class QuestionWidget extends StatelessWidget {
                     nextQuestionFunc();
                   }
                 },
-                label: const Text("No"),
+                //label: const Text("No"),
+                label: const Text("Nein"),
                 icon: const Icon(
                   Icons.close,
                 ),

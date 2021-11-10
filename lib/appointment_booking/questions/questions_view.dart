@@ -32,8 +32,8 @@ class _QuestionsViewState extends State<QuestionsView> {
     super.initState();
 
     _pageController = PageController(
-      //initialPage: 0,
-    );
+        //initialPage: 0,
+        );
   }
 
   @override
@@ -47,7 +47,8 @@ class _QuestionsViewState extends State<QuestionsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Blood Donation Appointment"),
+        //title: const Text("Blood Donation Appointment"),
+        title: const Text("Termin buchen"),
       ),
       body: Column(
         children: [
@@ -113,19 +114,20 @@ class _QuestionsViewState extends State<QuestionsView> {
                       Navigator.pop(context);
                       Navigator.pop(context);
                     },
-                    child: const Text('Cancel Booking'),
+                    //child: const Text('Cancel Booking'),
+                    child: const Text("Buchungsvorgang abbrechen"),
                   ),
                   CupertinoDialogAction(
                     isDefaultAction: true,
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Back'),
+                    //child: const Text('Back'),
+                    child: const Text("Zurück"),
                   )
                 ],
               ),
             ),
-            child: const Text(
-              "Cancel Booking",
-            ),
+            //child: const Text("Cancel Booking"),
+            child: const Text("Buchungsvorgang abbrechen"),
           ),
         ],
       ),

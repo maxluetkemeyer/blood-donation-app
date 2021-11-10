@@ -28,18 +28,23 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.appTitle),
+        //title: Text(AppLocalizations.of(context)!.appTitle),
+        title: Text("UKM Blutspende App"),
         actions: [
           PopupMenuButton<int>(
             onSelected: (value) {
               switch (value) {
                 case 0:
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const UserDataView()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UserDataView()));
                   break;
                 case 1:
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const ImprintView()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ImprintView()));
                   break;
               }
             },
