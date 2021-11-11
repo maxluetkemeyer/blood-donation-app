@@ -35,7 +35,7 @@ class BookingStartView extends StatelessWidget {
             ),
           ),
           const Text(
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+            "Wenn Sie „Termin buchen“ auswählen, können Sie einfach und unkompliziert einen Blutspendetermin am Universitätsklinikum Münster buchen. \nAls ersten Schritt müssen Sie dafür ein paar Fragen beantworten, damit mögliche Ausschlusskriterien für Ihre Spende festgestellt werden können.\nHaben Sie keine der Ausschlusskriterien erfüllt, können Sie auch schon einen Termin und eine Uhrzeit für Ihren Blutspendetermin auswählen.\nDann müssen Sie nur noch einmal Ihre Daten überprüfen - und schon haben Sie einen Blutspendetermin!",
             style: TextStyle(
               fontSize: 20,
             ),
