@@ -24,7 +24,8 @@ class HomePageView extends StatelessWidget {
                     return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: const BoxDecoration(color: Color(0xff003866)),
+                        decoration:
+                            const BoxDecoration(color: Color(0xff003866)),
                         child: Image(
                           image: AssetImage(
                             './assets/images/image_$i.png',
@@ -39,10 +40,12 @@ class HomePageView extends StatelessWidget {
         ),
         const Padding(
           padding: EdgeInsets.only(
+            left: 15,
             top: 20,
+            right: 15,
           ),
           child: Text(
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+            "Unter „Termine“ können Sie einfach und unkompliziert einen Blutspendetermin am Universitätsklinikum Münster buchen.\nWenn Sie die Anschrift der UKM-Blutspende oder eine Wegbeschreibung suchen, wählen Sie „Karte“ aus. \nAlle häufigen Fragen und Antworten auf diese Fragen finden Sie unter „FAQ“.",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
