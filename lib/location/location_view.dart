@@ -60,7 +60,7 @@ class LocationView extends StatelessWidget {
           ),
           // Für jede Zeile Text eine neue Row hinzufügen
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               //UKM Image
               SizedBox(
@@ -75,16 +75,21 @@ class LocationView extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(15, 15, 15, 8),
                     child: InkWell(
                       child: const Text(
-                        "Albert-Schweitzer-Campus 1\n48149 Münster\nAnfahrtsadresse:\nDomagkstr. 11, Gebäude D11",
+                        "Albert-Schweitzer-Campus 1\n48149 Münster\n\nAnfahrtsadresse:\nDomagkstr. 11, Gebäude D11",
                       ),
                       onTap: () => launch(
                         'https://www.google.de/maps/dir//UKM+Blutspende,+Domagkstra%C3%9Fe+11,+48149+M%C3%BCnster/@51.9609801,7.5971615,17z/data=!4m16!1m6!3m5!1s0x47b9baa498c7d0c9:0x3de4d6b0e7ea3f0d!2sUKM+Blutspende!8m2!3d51.9616783!4d7.600453!4m8!1m0!1m5!1m1!1s0x47b9baa498c7d0c9:0x3de4d6b0e7ea3f0d!2m2!1d7.600453!2d51.9616783!3e3',
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(2),
-                    child: Text("Telelefonnr.: 0251 - 83 58000"),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 15, 15, 8),
+                    child: InkWell(
+                      child: const Text("Tel.: +49 251 8358000"),
+                      onTap: () => launch(
+                        'tel:+492518358000',
+                      ),
+                    ),
                   ),
                   const Padding(
                     padding: EdgeInsets.all(3),
