@@ -14,11 +14,11 @@ class ImprintView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const <Widget>[
                       SizedBox(height: 10),
-                      Text('Wer sind wir?',
+                      Text('Angaben des Herausgebers',
                           style:
                               TextStyle(color: Colors.black, fontSize: 23.0)),
                       SizedBox(height: 7),
-                      Text('Wir sind ein Projektseminar der Uni Münster',
+                      Text('European Research Center for Information Systems (ERCIS) \nLeonardo-Campus 3 \n48149 Münster	\n\nTel.: +49 251 8338100 \nFax: +49 251 8338109 \ninfo@ercis.org ',
                           style:
                               TextStyle(color: Colors.black, fontSize: 18.0)),
                       SizedBox(height: 30),
@@ -26,11 +26,11 @@ class ImprintView extends StatelessWidget {
                           style:
                               TextStyle(color: Colors.black, fontSize: 23.0)),
                       SizedBox(height: 7),
-                      Text('UKM',
+                      Text('Universitätsklinikum Münster',
                           style:
                               TextStyle(color: Colors.black, fontSize: 20.0)),
                       Text(
-                          'Zentralklinikum\nAlbert-Schweitzer-Campus 1, Gebäude: A1\nAnfahrtsadresse: Albert-Schweitzer-Straße 33\n48149 Münster\nT +49 251 83-55555\nT +49 251 83-56960\ninfo@­ukmuenster.­de',
+                          'Zentralklinikum\nAlbert-Schweitzer-Campus 1, Gebäude: A1\nAnfahrtsadresse: Albert-Schweitzer-Straße 33\n48149 Münster\n\nTel.: +49 251 8355555\nFax: +49 251 8356960\ninfo@­ukmuenster.­de',
                           style:
                               TextStyle(color: Colors.black, fontSize: 18.0)),
                       SizedBox(height: 30),
@@ -38,9 +38,6 @@ class ImprintView extends StatelessWidget {
                           style:
                               TextStyle(color: Colors.black, fontSize: 23.0)),
                       SizedBox(height: 7),
-                      Text('Lizenzen',
-                          style:
-                              TextStyle(color: Colors.black, fontSize: 18.0)),
                       Text('https://www.openstreetmap.org/copyright',
                           style:
                               TextStyle(color: Colors.black, fontSize: 18.0)),

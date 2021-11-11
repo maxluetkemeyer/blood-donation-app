@@ -6,6 +6,7 @@ import 'package:blooddonation/location/location_view.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+
 import 'home_page_view.dart';
 
 class HomeView extends StatefulWidget {
