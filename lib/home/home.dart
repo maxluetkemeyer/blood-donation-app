@@ -4,6 +4,8 @@ import 'package:blooddonation/faq/faq_view.dart';
 import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
 import 'package:flutter/material.dart';
+//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import 'home_page_view.dart';
 
