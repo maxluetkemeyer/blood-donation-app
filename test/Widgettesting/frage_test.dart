@@ -23,8 +23,8 @@ void main() {
 
     //ACT
     final questionFinder = find.text('Testfrage');
-    final elButtonFinderJ = find.text('Yes');
-    final elButtonFinderN = find.text('No');
+    final elButtonFinderJ = find.text('Ja');
+    final elButtonFinderN = find.text('Nein');
 
     //ASSERT
     expect(questionFinder, findsOneWidget);
