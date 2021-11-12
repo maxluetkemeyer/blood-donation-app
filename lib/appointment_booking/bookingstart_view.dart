@@ -1,7 +1,8 @@
+import 'package:blooddonation/appointment_booking/booking/booking_view.dart';
+import 'package:blooddonation/appointment_booking/firstbooking_view.dart';
+import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'questions/questions_view.dart';
 
 class BookingStartView extends StatelessWidget {
   const BookingStartView({Key? key}) : super(key: key);
@@ -46,10 +47,21 @@ class BookingStartView extends StatelessWidget {
             width: double.infinity,
             child: CupertinoButton.filled(
               child: const Text("Termin buchen"),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const QuestionsView()),
-              ),
+              onPressed: () async {
+                if (UserService.instance.birthdayAsString == "") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FirstBooking()),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BookingView()),
+                  );
+                }
+              },
             ),
           ),
           const SizedBox(height: 40),

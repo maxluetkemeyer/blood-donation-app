@@ -3,7 +3,7 @@ description: Blood Donation App from the Hackathon Muenster 2021
 publish_to: "none"
 version: 1.0.0+1
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.15.0-178.0.dev <3.0.0"
 
 dependencies:
   # Infrastructure
@@ -15,7 +15,7 @@ dependencies:
 
   # Basic
   cupertino_icons: ^1.0.2
-  flutter_riverpod: ^0.14.0+3
+  flutter_riverpod: ^1.0.0
   shared_preferences: ^2.0.8
   http: ^0.13.3
   google_fonts: ^2.1.0
@@ -37,9 +37,12 @@ dependencies:
   carousel_slider: ^4.0.0
   introduction_screen: ^2.1.0
 
+  # Crypto
+  uuid: ^3.0.5
+
   # Firebase
   firebase_core: ^1.7.0
-  firebase_messaging: ^10.0.8
+  firebase_messaging: ^11.1.0
 
 dev_dependencies:
   # Dynamic Tests

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'faq_question.dart';
+import 'faq_question_widget.dart';
 import 'faq_question_list.dart';
 
 
@@ -24,7 +24,7 @@ class _FaqState extends State<FaqView> {
           elevation: 3,
           animationDuration: const Duration(milliseconds: 600),
           children: [
-            for ( var i in  qList) FaqQuestion(question: i).create()
+            for ( var i in  qList) FaqQuestionWidget(question: i).create()
           ],
         ),
       ),

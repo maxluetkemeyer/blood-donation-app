@@ -25,10 +25,14 @@ class UserService {
       name: _prefs.getString("name") ?? "",
       birthday: DateTime.parse(
           _prefs.getString("birthday") ?? "1970-01-01 01:00:00.000"),
+      gender: User.stringToGender(_prefs.getString("gender") ?? ""),
     );
   }
 
+  // Getter ###########################################################
+
   String get name => _user.name;
+
   String get birthdayAsString {
     if (_user.birthday.millisecondsSinceEpoch == 0) return "";
 
@@ -36,6 +40,10 @@ class UserService {
   }
 
   DateTime get birthday => _user.birthday;
+
+  Gender get gender => _user.gender;
+
+  // Setter ##########################################################
 
   set name(String name) {
     _user.name = name;
@@ -47,6 +55,8 @@ class UserService {
     _prefs.setString("birthday", birthday.toString());
   }
 
-  // Onboarding
-  
+  set gender(Gender gender) {
+    _user.gender = gender;
+    _prefs.setString("gender", gender.toString());
+  }
 }
