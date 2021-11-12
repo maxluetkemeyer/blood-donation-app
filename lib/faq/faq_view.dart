@@ -12,12 +12,10 @@ class FaqView extends StatefulWidget {
 }
 
 class _FaqState extends State<FaqView> {
-
-  //list of all FAQ Questions
-  final qList = FaqQuestionList().qList;
-
   @override
   Widget build(BuildContext context) {
+    final qList = faqQuestionList(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: ExpansionPanelList.radio(
