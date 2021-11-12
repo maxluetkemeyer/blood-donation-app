@@ -26,6 +26,8 @@ class UserService {
       birthday: DateTime.parse(
           _prefs.getString("birthday") ?? "1970-01-01 01:00:00.000"),
     );
+    print("User Service finished!");
+    print(_user.birthday.toString());
   }
 
   String get name => _user.name;

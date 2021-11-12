@@ -5,6 +5,6 @@ Future<void> init() async{
   //initializing the testsuite by clearing all shared preferences and starting the app
   SharedPreferences preferences = await SharedPreferences.getInstance();
   await preferences.clear();
-
+  
   app.main();
 }
