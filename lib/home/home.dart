@@ -4,7 +4,7 @@ import 'package:blooddonation/faq/faq_view.dart';
 import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'home_page_view.dart';
 
@@ -28,8 +28,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //title: Text(AppLocalizations.of(context)!.appTitle),
-        title: const Text("UKM Blutspende App"),
+        title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
           PopupMenuButton<int>(
             onSelected: (value) {
@@ -49,14 +48,14 @@ class _HomeViewState extends State<HomeView> {
               }
             },
             itemBuilder: (context) => [
-              const PopupMenuItem(
+              PopupMenuItem(
                 value: 0,
-                child: Text("Nutzerdaten"),
+                child: Text(AppLocalizations.of(context)!.homeMenuUserData),
               ),
               const PopupMenuDivider(),
-              const PopupMenuItem(
+              PopupMenuItem(
                 value: 1,
-                child: Text("Impressum"),
+                child: Text(AppLocalizations.of(context)!.homeMenuImprint),
               ),
             ],
           ),
@@ -68,37 +67,33 @@ class _HomeViewState extends State<HomeView> {
         onDestinationSelected: (index) => setState(() {
           pageIndex = index;
         }),
-        //labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            key: ValueKey('start'),
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: "Start",
+            key: const ValueKey('start'),
+            icon: const Icon(Icons.home_outlined),
+            selectedIcon: const Icon(Icons.home),
+            label: AppLocalizations.of(context)!.homeMenuStart,
           ),
           NavigationDestination(
-            key: ValueKey('appointment'),
-            icon: Icon(Icons.date_range_outlined),
-            selectedIcon: Icon(Icons.date_range),
-            label: "Termine",
+            key: const ValueKey('appointment'),
+            icon: const Icon(Icons.date_range_outlined),
+            selectedIcon: const Icon(Icons.date_range),
+            label: AppLocalizations.of(context)!.homeMenuAppointment,
           ),
           NavigationDestination(
-            key: ValueKey('map'),
-            icon: Icon(Icons.map_outlined),
-            selectedIcon: Icon(Icons.map),
-            label: "Karte",
+            key: const ValueKey('map'),
+            icon: const Icon(Icons.map_outlined),
+            selectedIcon: const Icon(Icons.map),
+            label: AppLocalizations.of(context)!.homeMenuMap,
           ),
           NavigationDestination(
-            key: ValueKey('faq'),
-            icon: Icon(Icons.help_outline),
-            selectedIcon: Icon(Icons.help),
-            label: "FAQ",
+            key: const ValueKey('faq'),
+            icon: const Icon(Icons.help_outline),
+            selectedIcon: const Icon(Icons.help),
+            label: AppLocalizations.of(context)!.homeMenuFaq,
           ),
         ],
       ),
     );
   }
 }
-
-//Home, Anmeldung, Karte, FAQ
-//More: Daten, Impressum

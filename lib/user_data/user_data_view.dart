@@ -41,8 +41,8 @@ class _UserDataViewState extends State<UserDataView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                 top: 40,
                 left: 10,
                 bottom: 40,
@@ -50,8 +50,8 @@ class _UserDataViewState extends State<UserDataView> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Nutzerdaten",
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.userDataHeading,
+                  style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w600,
                   ),
@@ -59,14 +59,14 @@ class _UserDataViewState extends State<UserDataView> {
               ),
             ),
             CupertinoFormSection.insetGrouped(
-              header: const Text("Deine Daten"),
+              header: Text(AppLocalizations.of(context)!.userDataDataHeading),
               footer: const Divider(),
               margin: const EdgeInsets.all(12),
               children: [
                 CupertinoFormRow(
-                  prefix: const Text("Name"),
+                  prefix: Text(AppLocalizations.of(context)!.name),
                   child: CupertinoTextFormFieldRow(
-                    placeholder: "Dein Name",
+                    placeholder: AppLocalizations.of(context)!.yourName,
                     initialValue: UserService.instance.name,
                     onChanged: (value) => setState(() {
                       UserService.instance.name = value;
@@ -74,9 +74,9 @@ class _UserDataViewState extends State<UserDataView> {
                   ),
                 ),
                 CupertinoFormRow(
-                  prefix: const Text("Geburtsdatum"),
+                  prefix: Text(AppLocalizations.of(context)!.birthday),
                   child: CupertinoTextFormFieldRow(
-                    placeholder: "Dein Geburtsdatum",
+                    placeholder: AppLocalizations.of(context)!.yourBirthday,
                     readOnly: true,
                     controller: _birthdayController,
                     onTap: () => showCupertinoModalPopup(
@@ -111,7 +111,7 @@ class _UserDataViewState extends State<UserDataView> {
               ],
             ),
             CupertinoFormSection.insetGrouped(
-              header: const Text("Letzter Blutspendetermin"),
+              header: Text(AppLocalizations.of(context)!.userDataLastDonation),
               margin: const EdgeInsets.all(12),
               children: [
                 CupertinoFormRow(
