@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'faq_question_model.dart';
 
-class FaqQuestion {
-  final Question question;
+class FaqQuestionWidget {
+  final FaqQuestion question;
   final TextStyle questionTextStyle;
   final TextStyle answerTextStyle;
 
-  FaqQuestion({
+  FaqQuestionWidget({
     required this.question,
     this.questionTextStyle =
         const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

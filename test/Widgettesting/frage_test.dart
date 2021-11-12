@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:blooddonation/appointment_booking/questions/question_model.dart';
+import 'package:blooddonation/appointment_booking/questions/donationquestion_model.dart';
 import 'package:blooddonation/appointment_booking/questions/question_widget.dart';
 
 void main() {
@@ -9,7 +9,7 @@ void main() {
       'Given the Question Widget When a Question and Function is given Then a Card with the Question text is created and two Elevated Buttons',
       (WidgetTester tester) async {
     //ARRANGE
-    Question testfrage = Question('Testfrage', true);
+    DonationQuestion testfrage = DonationQuestion('Testfrage', true);
     await tester.pumpWidget(ProviderScope(
       child: MaterialApp(
         home: QuestionWidget(

@@ -1,10 +1,19 @@
-import 'package:blooddonation/appointment_booking/booking/appointmentbox_widget.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
+import 'appointment_model.dart';
+import 'package:blooddonation/env.dart' as env;
 
 class BookingService {
   static final BookingService instance = BookingService._privateConstructor();
 
+  // For booking process
   late DateTime selectedDay;
+  // Final choice in booking
+  Appointment? selectedAppointment;
+  // Appointment List to work with
+  late List<Appointment> freeAppointments;
 
   BookingService._privateConstructor() {
     print("Starting Booking Service");
@@ -13,39 +22,31 @@ class BookingService {
 
   void _init() {
     selectedDay = DateTime.fromMillisecondsSinceEpoch(0);
+    freeAppointments = [];
   }
 
   void reset() {
     _init();
   }
 
-  List<Widget> appointmentBoxList() {
-    List<Widget> boxes = [];
+  //bool wegmachen
+  Future<bool> getFreeAppointments() async {
+    final response =
+        await http.get(Uri.parse(env.backendAdress + "/appointments"));
 
-    // just to showcase, remove it when online services get implemented
-    for (int i = 0; i < 24; i++) {
-      int hour = (i % 2 == 0) ? (i / 2).floor() + 8 : (i / 2).ceil() + 7;
-      int minute = (i % 2 == 0) ? 0 : 30;
+    if (response.statusCode == 200) {
+      var appObjsJson = jsonDecode(response.body) as List;
+      List<Appointment> appointments =
+          appObjsJson.map((appJson) => Appointment.fromJson(appJson)).toList();
 
-      AppointmentBox box = AppointmentBox(
-        time: DateTime.utc(0, 0, 0, hour, minute),
-        id: i.toString(),
-        callback: () {
-          DateTime selectedDay = BookingService.instance.selectedDay;
-          BookingService.instance.selectedDay = selectedDay.add(
-            Duration(
-              hours: hour,
-              minutes: minute,
-            ),
-          );
+      freeAppointments = appointments;
+      print(appointments);
 
-          print(BookingService.instance.selectedDay);
-        },
-      );
-
-      boxes.add(box);
+      return true;
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
     }
-
-    return boxes;
   }
 }

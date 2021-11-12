@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChooseDay extends StatelessWidget {
+class ChooseDay extends ConsumerWidget {
   const ChooseDay({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: TableCalendar(
         firstDay: DateTime.utc(2021, 10, 1),
@@ -46,7 +46,7 @@ class ChooseDay extends StatelessWidget {
         onDaySelected: (selectedDay, focusedDay) {
           BookingService.instance.selectedDay = selectedDay;
           print(BookingService.instance.selectedDay);
-          context.read(bookingStateProvider).state++;
+          ref.read(bookingStateProvider.state).state++;
         },
       ),
     );

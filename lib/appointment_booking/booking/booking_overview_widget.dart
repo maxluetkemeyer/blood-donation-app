@@ -6,14 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class BookingOverview extends StatefulWidget {
+class BookingOverview extends ConsumerStatefulWidget {
   const BookingOverview({Key? key}) : super(key: key);
 
   @override
-  State<BookingOverview> createState() => _BookingOverviewState();
+  _BookingOverviewState createState() => _BookingOverviewState();
 }
 
-class _BookingOverviewState extends State<BookingOverview> {
+class _BookingOverviewState extends ConsumerState<BookingOverview> {
   final DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(
       DateTime.now().millisecondsSinceEpoch - 568036800000);
 
@@ -38,7 +38,7 @@ class _BookingOverviewState extends State<BookingOverview> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        context.read(bookingStateProvider).state--;
+        ref.read(bookingStateProvider.state).state--;
 
         return false;
       },
@@ -102,8 +102,8 @@ class _BookingOverviewState extends State<BookingOverview> {
                 prefix: const Text("Termin"),
                 child: CupertinoTextFormFieldRow(
                   placeholder: "Dein Termin",
-                  initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm")
-                      .format(BookingService.instance.selectedDay),
+                  initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm").format(
+                      BookingService.instance.selectedAppointment!.start),
                   readOnly: true,
                   onTap: () => showCupertinoDialog(
                     context: context,
@@ -139,7 +139,7 @@ class _BookingOverviewState extends State<BookingOverview> {
                             //reset
                             BookingService.instance.reset();
 
-                            context.read(bookingStateProvider).state = 0;
+                            ref.read(bookingStateProvider.state).state = 0;
 
                             Navigator.pop(context);
                           },
