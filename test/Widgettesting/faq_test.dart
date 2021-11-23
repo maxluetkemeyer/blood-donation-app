@@ -1,5 +1,5 @@
-import '../../lib/faq/faq_question.dart';
 import '../../lib/faq/faq_question_model.dart';
+import '../../lib/faq/faq_question_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,9 +9,9 @@ void main() {
         'Given One FaqQuestion is created When a Question is Tapped on once Then a FaqAnswer is shown',
         (WidgetTester tester) async {
       //ARRANGE - generate the testquestion
-      Question testfrage = const Question(
+      FaqQuestion testfrage = const FaqQuestion(
           id: 'q1', question: 'testquestion', answer: 'testanswer');
-      bool isExpanded=false;
+      bool isExpanded = false;
 
       await tester.pumpWidget(MaterialApp(
         home: SingleChildScrollView(
@@ -20,7 +20,8 @@ void main() {
               isExpanded = _isExpanded;
             },
             children: <ExpansionPanel>[
-              FaqQuestion(question: testfrage, key: ValueKey('test')).create(),
+              FaqQuestionWidget(question: testfrage, key: ValueKey('test'))
+                  .create(),
             ],
           ),
         ),
@@ -32,16 +33,16 @@ void main() {
       await tester.pumpAndSettle();
 
       //ASSERT - check if the testanswer can be seen
-      expect(isExpanded,false);
+      expect(isExpanded, false);
     });
 
     testWidgets(
         'Given One FaqQuestion is created When a Question is Tapped twice Then no FaqAnswer is shown',
         (WidgetTester tester) async {
       //ARRANGE - generate the testquestion
-      Question testfrage = const Question(
+      FaqQuestion testfrage = const FaqQuestion(
           id: 'q1', question: 'testquestion', answer: 'testanswer');
-      bool isExpanded=false;
+      bool isExpanded = false;
 
       await tester.pumpWidget(MaterialApp(
         home: SingleChildScrollView(
@@ -50,7 +51,7 @@ void main() {
               isExpanded = _isExpanded;
             },
             children: <ExpansionPanel>[
-              FaqQuestion(question: testfrage, key: ValueKey('test')).create(),
+              FaqQuestionWidget(question: testfrage, key: ValueKey('test')).create(),
             ],
           ),
         ),
@@ -64,7 +65,7 @@ void main() {
       await tester.pumpAndSettle();
 
       //ASSERT - check, if the testanswer can be seen
-      expect(isExpanded,true);
+      expect(isExpanded, true);
     });
   });
 }

@@ -23,7 +23,11 @@ class _FaqState extends State<FaqView> {
           elevation: 3,
           animationDuration: const Duration(milliseconds: 600),
           children: [
-            for (var i in qList) FaqQuestionWidget(question: i).create()
+            for (var i in qList)
+              FaqQuestionWidget(
+                question: i,
+                key: ValueKey(i),
+              ).create()
           ],
         ),
       ),

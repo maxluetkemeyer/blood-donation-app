@@ -6,8 +6,10 @@ class FaqQuestionWidget {
   final FaqQuestion question;
   final TextStyle questionTextStyle;
   final TextStyle answerTextStyle;
+  final Key? key;
 
   FaqQuestionWidget({
+    this.key,
     required this.question,
     this.questionTextStyle =
         const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
