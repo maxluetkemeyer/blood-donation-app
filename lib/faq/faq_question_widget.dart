@@ -6,14 +6,19 @@ class FaqQuestionWidget {
   final FaqQuestion question;
   final TextStyle questionTextStyle;
   final TextStyle answerTextStyle;
+  final Key? key;
 
   FaqQuestionWidget({
+    this.key,
     required this.question,
     this.questionTextStyle =
         const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
     this.answerTextStyle = const TextStyle(fontSize: 20),
   });
 
+  /*
+  Puts out one the ExpansionPanelRadio with variables defined in its constructor
+  */
   ExpansionPanelRadio create() {
     return ExpansionPanelRadio(
       value: question.id,
