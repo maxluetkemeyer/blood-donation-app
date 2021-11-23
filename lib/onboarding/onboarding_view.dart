@@ -3,7 +3,7 @@
 //
 // Um Introscreen zu testen bitte in der main.dart die main() Methode auskommentieren und folgendes einfügen:
 // void main() => runApp(IntroScreen());
-import 'package:blooddonation/home/home.dart';
+import '../home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';

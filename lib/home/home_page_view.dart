@@ -56,8 +56,8 @@ class HomePageView extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              left: 0.3*width,
-              right: 0.3*width,
+              left: 0.3 * width,
+              right: 0.3 * width,
               top: 30,
             ),
             child: const Image(
