@@ -27,6 +27,8 @@ class UserService {
           _prefs.getString("birthday") ?? "1970-01-01 01:00:00.000"),
       gender: User.stringToGender(_prefs.getString("gender") ?? ""),
     );
+    print("User Service finished!");
+    print(_user.birthday.toString());
   }
 
   // Getter ###########################################################
