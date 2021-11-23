@@ -24,11 +24,9 @@ void main() {
 
         await wf.clickDate(tester);
 
-        await wf.clickTime(tester);
+        await wf.abortBooking(tester);
 
-        //await wf.abortBooking(tester);
-
-        //await wf.clickStartAppointments(tester);
+        await wf.clickStartAppointments(tester);
       },
     );
   });

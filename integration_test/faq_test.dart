@@ -53,8 +53,6 @@ void main() {
 
         await tester.pumpAndSettle();
 
-        //final resTwoTap = find.text('Entweder über den Startbildschirm oder über das Menü kann man Anmeldung auswählen. Bevor man sich einen Termin aussuchen kann, werden ein paar generelle Fragen gestellt, die eine Blutspende verhindern könnten. Sollte nach den Fragen eine Blutspende möglich kein, kann über die Kalenderfunktion ein Termin ausgewählt werden. Der Termin ist verbindlich, wenn er in der App als bestätigt gilt.');
-
         //expect(resTwoTap, findsNothing);
       },
     );

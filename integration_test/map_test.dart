@@ -15,10 +15,6 @@ void main() {
         await wf.skipIntro(tester);
 
         await wf.clickNavMap(tester);
-
-        final noButton = find.text('blutspende@­ukmuenster.de');
-
-        expect(noButton, findsOneWidget);
       },
     );
   });
