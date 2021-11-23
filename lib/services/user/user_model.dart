@@ -1,14 +1,17 @@
+///Class to model the User, who is saved inside the [UserService]
 class User {
   String name;
   DateTime birthday;
   Gender gender;
 
+  ///Constructor for the User class
   User({
     required this.name,
     required this.birthday,
     required this.gender,
   });
 
+  ///Function to get the Enum value for each fitting String
   static Gender stringToGender(String string) {
     switch (string) {
       case "male":
@@ -23,4 +26,5 @@ class User {
   }
 }
 
+///Enum for the Gender of the user. Gender can be [none], [male], [female] or [diverse]
 enum Gender { none, male, female, diverse }

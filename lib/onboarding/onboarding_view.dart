@@ -12,7 +12,7 @@ import 'package:url_launcher/link.dart';
 class OnboardingView extends StatelessWidget {
   const OnboardingView({Key? key}) : super(key: key);
 
-  // List of pages which are shown in introductionscreen
+  /// List of pages which are shown in [OnboardingView]
   List<PageViewModel> getPages(BuildContext context) {
     return [
       // If you get an error message when you add multiple pages, adjust the (active-)size of the navigation points in the getOwnDotsDecoration() method
@@ -131,6 +131,7 @@ class OnboardingView extends StatelessWidget {
     ];
   }
 
+  ///Build method for the [OnboardingView]
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,7 +156,7 @@ class OnboardingView extends StatelessWidget {
     );
   }
 
-  // Import images with fixed size
+  /// Import images with fixed size by setting the asset [path]
   Widget buildImage(String path) => Center(
         child: Image.asset(
           path,
@@ -164,7 +165,7 @@ class OnboardingView extends StatelessWidget {
         ),
       );
 
-  // Get uniform decoration for pages in introductionscreen
+  /// Get uniform decoration for pages in inside [OnboardingView]
   PageDecoration getOwnPageDecoration() => PageDecoration(
         titleTextStyle: const TextStyle(
           fontSize: 28,
@@ -177,7 +178,7 @@ class OnboardingView extends StatelessWidget {
         pageColor: Colors.white,
       );
 
-  // Get uniform decoration for Dots
+  /// Get uniform decoration for Dots inside [OnboardingView]
   DotsDecorator getOwnDotsDecoration() => DotsDecorator(
       color: const Color(0xff003866),
       size: const Size(5, 5),
@@ -186,14 +187,14 @@ class OnboardingView extends StatelessWidget {
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
       activeColor: Colors.red);
 
-  // Get uniform Textstyle for bodyWidget
+  /// Get uniform Textstyle for bodyWidget inside [OnboardingView]
   TextStyle getOwnTextStyle() => const TextStyle(
       fontSize: 18,
       wordSpacing: 3,
       fontWeight: FontWeight.bold,
       color: Colors.blueGrey);
 
-  // Method to go to the homescreen if button was clicked
+  ///Method to go to the homescreen if button was clicked. Sets "alreadyOnboarded" inside [SharedPreferences] to true
   void goToHomeScreen(BuildContext context) async {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const HomeView()),

@@ -6,31 +6,42 @@ import 'appointment_model.dart';
 import 'package:blooddonation/env.dart' as env;
 
 class BookingService {
+  ///A static instance of the [BookingService].
   static final BookingService instance = BookingService._privateConstructor();
 
-  // For booking process
+  ///The variable saves the selected day during the booking process.
   late DateTime selectedDay;
-  // Final choice in booking
+
+  ///Saves the user selected appointment during the booking process.
   Appointment? selectedAppointment;
-  // Appointment List to work with
+
+  ///List of Appointments that saves all Free Appointments.
   late List<Appointment> freeAppointments;
 
+  ///The private Constructor that is called to when calling BookingService.instance.
   BookingService._privateConstructor() {
     print("Starting Booking Service");
     _init();
   }
 
+  ///Initializes BookingService by initializing [selectedDay] and [freeAppointments].
   void _init() {
     selectedDay = DateTime.fromMillisecondsSinceEpoch(0);
     freeAppointments = [];
   }
 
+  ///Resets the BookingService by calling [_init].
   void reset() {
     _init();
   }
 
-  //bool wegmachen
-  Future<bool> getFreeAppointments() async {
+  ///Function to set the [freeAppointments].
+  ///
+  ///To access the data stored in the backend, a HTTP GET request is called.
+  ///
+  ///If the connection was successful, the fetched data is stored inside [freeAppointments].
+  ///An [Exception] is thrown, if the server response does not match the expected response.
+  Future<void> getFreeAppointments() async {
     final response =
         await http.get(Uri.parse(env.backendAdress + "/appointments"));
 
@@ -42,7 +53,7 @@ class BookingService {
       freeAppointments = appointments;
       print(appointments);
 
-      return true;
+      return;
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.

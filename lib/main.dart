@@ -9,10 +9,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import './home/home.dart';
 import 'services/services.dart';
 
+///Starting the blood-donation application 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // ignore: prefer_const_constructors
-  runApp(ProviderScope(child: MyApp()));
+  
+  runApp(const ProviderScope(child: MyApp()));
 
   final Services services = Services.instance;
   services.initServices();
@@ -22,6 +23,21 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  ///Generate the Theme for the application. The function utilizes [context] to let the function access
+  ///the app data
+  ThemeData createTheme(BuildContext context){
+    return ThemeData(
+        scaffoldBackgroundColor: const Color.fromARGB(255, 242, 242, 247),
+        appBarTheme: AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Theme.of(context).primaryColor,
+            statusBarIconBrightness: Brightness.light,
+          ),
+        ),
+      );
+  }
+
+  ///Builds the blood-donation application
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,34 +48,30 @@ class MyApp extends StatelessWidget {
       ],
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 242, 242, 247),
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Theme.of(context).primaryColor,
-            statusBarIconBrightness: Brightness.light,
-          ),
-        ),
-      ),
+      //generating the Theme
+      theme: createTheme(context),
       home: FutureBuilder<bool>(
-        future: showOnboarding(),
-        builder: (buildContext, snapshot) {
+        future: showOnboarding(), // a previously-obtained Future<bool> or null
+        builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!) {
-              // Home
+              // Open HomeView, if the built Future is existing and false
               return const HomeView();
             }
-
-            // Onboarding
+            // Open Onboarding, if the built Future is existing and true
             return const OnboardingView();
           }
-
+          // Open HomeView, if the built Future isn't existing
           return const HomeView();
         },
       ),
     );
   }
 
+  ///Confirms whether the application shows the Onboarding screen or not.
+  ///
+  ///Checks [kIsWeb] if the application is run in a web browser, no Onboarding is shown. If not, the function checks whether
+  ///the user has already onboarded before.
   Future<bool> showOnboarding() async {
     //Do not show onboarding in web version
     if (kIsWeb) return true;
