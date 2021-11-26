@@ -1,50 +1,52 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'build_carousel.dart';
 
 class HomePageView extends StatelessWidget {
   const HomePageView({Key? key}) : super(key: key);
 
+  ///Build method to build the entrance page, also functioning as the home page.
+  ///
+  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: 250,
-            child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(4)),
-                ),
-                child: buildImageCarousel()),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(
-              top: 20,
+    return ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
+      SizedBox(
+        width: double.infinity,
+        height: 250,
+        child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(4)),
             ),
-            child: Text(
-              "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(
-              left: 80,
-              right: 80,
-              top: 30,
-            ),
-            child: Image(
-              image: AssetImage(
-                  "./assets/images/Universitätsklinikum_Münster_Logo.png"),
-            ),
-          )
-        ],
+            child: createImageCarousel()),
       ),
-    );
+      Padding(
+        padding: const EdgeInsets.only(
+          top: 20,
+          left: 30,
+          right: 30,
+        ),
+        child: Text(
+          AppLocalizations.of(context)!.homePageViewInfo,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 18,
+          ),
+        ),
+      ),
+      const Padding(
+        padding: EdgeInsets.only(
+          left: 80,
+          right: 80,
+          top: 30,
+        ),
+        child: Image(
+          image: AssetImage(
+              "./assets/images/Universitätsklinikum_Münster_Logo.png"),
+        ),
+      )
+    ]);
   }
 }

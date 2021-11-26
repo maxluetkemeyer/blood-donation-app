@@ -13,6 +13,8 @@ class OnboardingView extends StatelessWidget {
   const OnboardingView({Key? key}) : super(key: key);
 
   /// List of pages which are shown in [OnboardingView]
+  /// 
+  ///returns [List] of [PageViewModel]'s
   List<PageViewModel> getPages(BuildContext context) {
     return [
       // If you get an error message when you add multiple pages, adjust the (active-)size of the navigation points in the getOwnDotsDecoration() method

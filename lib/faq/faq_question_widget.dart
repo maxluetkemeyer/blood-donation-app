@@ -16,9 +16,7 @@ class FaqQuestionWidget {
     this.answerTextStyle = const TextStyle(fontSize: 20),
   });
 
-  /*
-  Puts out one the ExpansionPanelRadio with variables defined in its constructor
-  */
+  ///Returns one [ExpansionPanelRadio] with variables defined in its constructor [FaqQuestionWidget]
   ExpansionPanelRadio create() {
     return ExpansionPanelRadio(
       value: question.id,

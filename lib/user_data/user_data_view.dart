@@ -43,6 +43,8 @@ class _UserDataViewState extends State<UserDataView> {
   }
 
   ///Build method for the User Data Screen
+  ///
+  ///returns [Widget] specifically [Scaffold]
   @override
   Widget build(BuildContext context) {
     //the Controller for the birthday is set to the already input birthday.
@@ -52,8 +54,7 @@ class _UserDataViewState extends State<UserDataView> {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
       ),
-      body: SingleChildScrollView(
-        child: Column(
+      body: ListView(physics: const BouncingScrollPhysics(), children: <Widget>[ Column(
           children: [
             Padding(
               padding: const EdgeInsets.only(
@@ -76,13 +77,15 @@ class _UserDataViewState extends State<UserDataView> {
             createLastBloodVisit(),
           ],
         ),
-      ),
+      ]),
     );
   }
 
   ///Builder-Function to create a [CupertinoFormSection] where the user can input the name and birthday,
   ///if the user hasn't already input the data during the booking process. In case the user has already
   ///input the data before, the data can be seen inside the Input fields via [UserService].
+  ///
+  ///returns [Widget] specifically [CupertinoFormSection]
   Widget createInputUserData() {
     return CupertinoFormSection.insetGrouped(
       header: Text(AppLocalizations.of(context)!.userDataDataHeading),
@@ -140,6 +143,8 @@ class _UserDataViewState extends State<UserDataView> {
 
   ///Builder-Function to create a [TableCalendar] inside a [CupertinoFormSection] including the date, when the user last
   ///donated blood.
+  ///
+  ///returns [Widget] specifically [CupertinoFormSection]
   Widget createLastBloodVisit() {
     return CupertinoFormSection.insetGrouped(
       header: Text(AppLocalizations.of(context)!.userDataLastDonation),

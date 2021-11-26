@@ -12,6 +12,8 @@ class User {
   });
 
   ///Function to get the Enum value for each fitting String
+  ///
+  ///returns [Gender] specifically as [String]
   static Gender stringToGender(String string) {
     switch (string) {
       case "male":

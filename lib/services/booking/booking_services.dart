@@ -41,7 +41,9 @@ class BookingService {
   ///
   ///If the connection was successful, the fetched data is stored inside [freeAppointments].
   ///An [Exception] is thrown, if the server response does not match the expected response.
-  Future<void> getFreeAppointments() async {
+  ///
+  ///returns [Future] specifically [void]
+  Future<bool> getFreeAppointments() async {
     final response =
         await http.get(Uri.parse(env.backendAdress + "/appointments"));
 
@@ -53,7 +55,7 @@ class BookingService {
       freeAppointments = appointments;
       print(appointments);
 
-      return;
+      return true;
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.

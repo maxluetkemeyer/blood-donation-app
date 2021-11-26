@@ -72,6 +72,8 @@ class MyApp extends StatelessWidget {
   ///
   ///Checks [kIsWeb] if the application is run in a web browser, no Onboarding is shown. If not, the function checks whether
   ///the user has already onboarded before.
+  ///
+  ///returns [Future] specifically [boolean]
   Future<bool> showOnboarding() async {
     //Do not show onboarding in web version
     if (kIsWeb) return true;

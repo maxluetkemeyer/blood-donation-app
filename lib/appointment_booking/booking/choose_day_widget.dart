@@ -1,6 +1,7 @@
 import 'package:blooddonation/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,6 +12,7 @@ class ChooseDay extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: TableCalendar(
+        locale: AppLocalizations.of(context)!.localeName,
         firstDay: DateTime.utc(2021, 10, 1),
         lastDay: DateTime.utc(2021, 11, 30),
         focusedDay: DateTime.now(),
