@@ -9,9 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:im_stepper/stepper.dart';
 
+///Class to define the appointment booking process.
+///
+///Widget requires no Input
 class BookingView extends ConsumerWidget {
   const BookingView({Key? key}) : super(key: key);
 
+  ///Build method to build the Frame for the booking process, including an [IconStepper], to show the current
+  ///slide and screen information.
+  ///
+  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int activeStep = ref.watch(bookingStateProvider.state).state;
@@ -40,6 +47,7 @@ class BookingView extends ConsumerWidget {
                     children: [
                       const SizedBox(height: 20),
                       IconStepper(
+                        stepColor: Theme.of(context).colorScheme.onBackground,
                         direction: Axis.horizontal,
                         enableNextPreviousButtons: false,
                         activeStep: activeStep,
@@ -49,6 +57,7 @@ class BookingView extends ConsumerWidget {
                         activeStepBorderPadding: 0,
                         lineDotRadius: 1.4,
                         lineLength: width * 0.12,
+                        activeStepBorderColor: Theme.of(context).primaryColor,
                         icons: const [
                           Icon(
                             Icons.date_range_rounded,
@@ -132,7 +141,7 @@ class BookingView extends ConsumerWidget {
                     ),
                   ),
                   //child: const Text("Cancel Booking"),
-                  child: const Text("Buchungsvorgang abbrechen"),
+                  child: const Text("Buchungsvorgang abbrechen",style: TextStyle(color: Color(0xff0b4874)),),
                 ),
               ),
             ],
@@ -142,6 +151,11 @@ class BookingView extends ConsumerWidget {
     );
   }
 
+  ///Function to show the current slide header.
+  ///
+  ///Input requires [activeStep] as [int] operator.
+  ///
+  ///Returns type [String].
   String _stepperHeader(activeStep) {
     switch (activeStep) {
       case 0:
@@ -157,6 +171,11 @@ class BookingView extends ConsumerWidget {
     }
   }
 
+  ///Function to show the current slide body.
+  ///
+  ///Input requires [activeStep] as [int] operator.
+  ///
+  ///Returns type [Widget].
   Widget _stepperBody(activeStep) {
     switch (activeStep) {
       case 0:

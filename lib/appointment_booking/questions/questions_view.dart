@@ -9,6 +9,9 @@ import 'donationquestion_model.dart';
 class QuestionsView extends ConsumerWidget {
   const QuestionsView({Key? key}) : super(key: key);
 
+  ///Build method to build the question iterable page. Utilizes [questionStepStateProvier] to access the current question.
+  ///
+  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int questionStep = ref.watch(questionStepStateProvier.state).state;
@@ -16,6 +19,11 @@ class QuestionsView extends ConsumerWidget {
     return getQuestion(questionStep, ref);
   }
 
+  ///Fetches the next donation relevant question for the [build] method.
+  ///
+  ///Needs the [questionStep], meaning the current question that is asked of the user and [ref] to access the provider.
+  ///
+  ///Returns a [Widget], specifically a [QuestionWidget]
   Widget getQuestion(int questionStep, WidgetRef ref) {
     final DonationQuestion testQuestion = DonationQuestion(
       "Sind Sie positiv auf HIV getestet worden oder haben Sie die Befürchtung evtl. HIV-positiv zu sein?",

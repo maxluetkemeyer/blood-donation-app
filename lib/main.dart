@@ -26,13 +26,45 @@ class MyApp extends StatelessWidget {
   ///Generate the Theme for the application. The function utilizes [context] to let the function access
   ///the app data
   ThemeData createTheme(BuildContext context){
+    //pink design
+    Color primaryColor = const Color(0xff0b4874);
+    Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
+    Color accentDark = const Color(0xff5f7a8e);
+    Color accentBlueLight = const Color(0xff81a4bd);
+    /*
+    //blue design
+    Color primaryColor = const Color(0xff0b4874);
+    Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
+    Color accentDark = const Color(0xff5f7a8e);
+    Color accentBlueLight = const Color(0xff81a4bd);
+    */
+
     return ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(255, 242, 242, 247),
         appBarTheme: AppBarTheme(
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Theme.of(context).primaryColor,
+            statusBarColor: primaryColor,
             statusBarIconBrightness: Brightness.light,
           ),
+          backgroundColor: primaryColor,
+          iconTheme: IconThemeData(color: accentDark),
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: accentDark,
+        ),
+        //iconTheme: const IconThemeData(color: Colors.white),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+            textStyle: MaterialStateProperty.all(TextStyle(color: accentLight)),
+          ),
+        ),
+        primaryColor: primaryColor,
+        colorScheme: ColorScheme.light(
+          primary: primaryColor,
+          secondary: accentLight,
+          onBackground: accentDark,
+          outline: accentBlueLight, 
         ),
       );
   }
@@ -41,6 +73,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: const [
         Locale('en', ''), // English, no country code

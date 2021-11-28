@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'faq_question_model.dart';
 
+
+///Class to define one Faq question.
+///
+///Inputs include the [key] variable, a required [question] from the type [FaqQuestion] to define
+///the shown question itself and last but not least the [questionTextStyle] and the [answerTextStyle] to
+///define the optics of the shown [FaqQuestionWidget].
 class FaqQuestionWidget {
   final FaqQuestion question;
   final TextStyle questionTextStyle;
   final TextStyle answerTextStyle;
   final Key? key;
 
+  ///Constructor of the class FaqQuestionWidget.
   FaqQuestionWidget({
     this.key,
     required this.question,

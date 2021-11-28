@@ -6,6 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+///Class to define the booking overview widget.
+///
+///Inputs are not required.
 class BookingOverview extends ConsumerStatefulWidget {
   const BookingOverview({Key? key}) : super(key: key);
 
@@ -14,11 +17,16 @@ class BookingOverview extends ConsumerStatefulWidget {
 }
 
 class _BookingOverviewState extends ConsumerState<BookingOverview> {
+  ///Defines the earliest date, where the user is a minimum of 18 years old
   final DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(
       DateTime.now().millisecondsSinceEpoch - 568036800000);
 
+  ///Controller for the birthday input field.
   late TextEditingController _birthdayController;
 
+  ///Function is called when [_BookingOverviewState] is initialized.
+  ///
+  ///Initializes [_birthdayController], by accessing [UserService].
   @override
   void initState() {
     super.initState();
@@ -27,6 +35,9 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
     _birthdayController.text = UserService.instance.birthdayAsString;
   }
 
+  ///Function is called when [_BookingOverviewState] is disposed.
+  ///
+  ///Disposes [_birthdayController]
   @override
   void dispose() {
     _birthdayController.dispose();
@@ -34,6 +45,9 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
     super.dispose();
   }
 
+  ///Build method for the booking overview.
+  ///
+  ///Returns a [Widget].
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -161,7 +175,8 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 12),
             width: double.infinity,
-            child: CupertinoButton.filled(
+            child: CupertinoButton(
+              color: Theme.of(context).primaryColor,
               child: const Text("Termin buchen"),
               onPressed: () async {
                 print("Termin buchen button pressed");

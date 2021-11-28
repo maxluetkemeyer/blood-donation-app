@@ -65,37 +65,45 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       body: screens[pageIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: pageIndex,
-        onDestinationSelected: (index) => setState(() {
-          pageIndex = index;
-        }),
-        destinations: [
-          NavigationDestination(
-            key: const ValueKey('start'),
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
-            label: AppLocalizations.of(context)!.homeMenuStart,
-          ),
-          NavigationDestination(
-            key: const ValueKey('appointment'),
-            icon: const Icon(Icons.date_range_outlined),
-            selectedIcon: const Icon(Icons.date_range),
-            label: AppLocalizations.of(context)!.homeMenuAppointment,
-          ),
-          NavigationDestination(
-            key: const ValueKey('map'),
-            icon: const Icon(Icons.map_outlined),
-            selectedIcon: const Icon(Icons.map),
-            label: AppLocalizations.of(context)!.homeMenuMap,
-          ),
-          NavigationDestination(
-            key: const ValueKey('faq'),
-            icon: const Icon(Icons.help_outline),
-            selectedIcon: const Icon(Icons.help),
-            label: AppLocalizations.of(context)!.homeMenuFaq,
-          ),
-        ],
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          labelTextStyle: MaterialStateProperty.all(TextStyle(color: Theme.of(context).colorScheme.secondary)),
+          iconTheme: MaterialStateProperty.all(IconThemeData(color: Theme.of(context).colorScheme.secondary)),
+          indicatorColor: Theme.of(context).colorScheme.outline,
+          backgroundColor: Theme.of(context).primaryColor
+        ),
+        child: NavigationBar(
+          selectedIndex: pageIndex,
+          onDestinationSelected: (index) => setState(() {
+            pageIndex = index;
+          }),
+          destinations: [
+            NavigationDestination(
+              key: const ValueKey('start'),
+              icon: const Icon(Icons.home_outlined),
+              selectedIcon: const Icon(Icons.home),
+              label: AppLocalizations.of(context)!.homeMenuStart,
+            ),
+            NavigationDestination(
+              key: const ValueKey('appointment'),
+              icon: const Icon(Icons.date_range_outlined),
+              selectedIcon: const Icon(Icons.date_range),
+              label: AppLocalizations.of(context)!.homeMenuAppointment,
+            ),
+            NavigationDestination(
+              key: const ValueKey('map'),
+              icon: const Icon(Icons.map_outlined),
+              selectedIcon: const Icon(Icons.map),
+              label: AppLocalizations.of(context)!.homeMenuMap,
+            ),
+            NavigationDestination(
+              key: const ValueKey('faq'),
+              icon: const Icon(Icons.help_outline),
+              selectedIcon: const Icon(Icons.help),
+              label: AppLocalizations.of(context)!.homeMenuFaq,
+            ),
+          ],
+        ),
       ),
     );
   }
