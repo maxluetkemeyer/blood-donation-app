@@ -26,18 +26,21 @@ class MyApp extends StatelessWidget {
   ///Generate the Theme for the application. The function utilizes [context] to let the function access
   ///the app data
   ThemeData createTheme(BuildContext context){
-    //pink design
-    Color primaryColor = const Color(0xff0b4874);
-    Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
-    Color accentDark = const Color(0xff5f7a8e);
-    Color accentBlueLight = const Color(0xff81a4bd);
+    //doesn't really work
     /*
+    //pink design
+    Color primaryColor = const Color(0xffe491b7);
+    Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
+    Color accentDark = const Color(0xff0b4874);
+    Color accentBlueLight = const Color(0xff81a4bd);
+    */
+    
     //blue design
     Color primaryColor = const Color(0xff0b4874);
     Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
     Color accentDark = const Color(0xff5f7a8e);
     Color accentBlueLight = const Color(0xff81a4bd);
-    */
+    
 
     return ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(255, 242, 242, 247),
@@ -47,10 +50,8 @@ class MyApp extends StatelessWidget {
             statusBarIconBrightness: Brightness.light,
           ),
           backgroundColor: primaryColor,
-          iconTheme: IconThemeData(color: accentDark),
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: accentDark,
+          iconTheme: IconThemeData(color: accentLight),
+          foregroundColor: accentLight
         ),
         //iconTheme: const IconThemeData(color: Colors.white),
         elevatedButtonTheme: ElevatedButtonThemeData(

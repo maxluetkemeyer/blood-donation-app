@@ -8,7 +8,7 @@ class UserService {
   ///A static instance of the [UserService].
   static final UserService instance = UserService._privateConstructor();
 
-  ///Variable that stores connection to the local data saves-
+  ///Variable that stores connection to the local data saves:
   late SharedPreferences _prefs;
 
   ///Variable that stores an instance of the Userdata to access Userdata via Singleton Object-
