@@ -13,8 +13,8 @@ class BookingStartView extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return SingleChildScrollView(
-      child: Padding(
+    return ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
+      Padding(
         padding: const EdgeInsets.only(
           left: 10,
           right: 10,
@@ -76,6 +76,6 @@ class BookingStartView extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ]);
   }
 }

@@ -20,10 +20,13 @@ class _HomeViewState extends State<HomeView> {
   final screens = [
     const HomePageView(),
     const BookingStartView(),
-    const LocationView(),
+    LocationView(),
     const FaqView(),
   ];
 
+  ///Defines the Page Design for every Navigation oriented screen.
+  ///
+  ///New pages are accessed by the [screens] array-defined [Widget]'s. 
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+
 //final Color accCol = Color(0xff93001D);
 const primCol = Color(0xff003866);
 
+///This ThemeData is currently not used
 final ThemeData lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: primCol,

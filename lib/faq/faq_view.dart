@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'faq_question_widget.dart';
+import 'faq_question_model.dart';
 import 'faq_question_list.dart';
 
 class FaqView extends StatefulWidget {
@@ -9,17 +10,18 @@ class FaqView extends StatefulWidget {
   createState() => _FaqState();
 }
 
-/* 
-This Widget or Scaffold is used, to show the user the faq interface. Currently it utilizes the FaqQuestionList and the FaqQuestion and inserts their values into the ExpansionPanelList
-*/
+///This Widget or Scaffold is used, to show the user the faq interface.
 class _FaqState extends State<FaqView> {
+  ///Build method to build the faq page, utilizing the [faqQuestionList] which is a list of [FaqQuestion]'s.
+  ///
+  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context) {
     final qList = faqQuestionList(context);
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: ExpansionPanelList.radio(
+      body: ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
+        ExpansionPanelList.radio(
           elevation: 3,
           animationDuration: const Duration(milliseconds: 600),
           children: [
@@ -30,7 +32,7 @@ class _FaqState extends State<FaqView> {
               ).create()
           ],
         ),
-      ),
+      ]),
     );
   }
 }
