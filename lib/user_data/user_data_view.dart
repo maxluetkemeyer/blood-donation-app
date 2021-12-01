@@ -53,6 +53,7 @@ class _UserDataViewState extends State<UserDataView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
+        
       ),
       body: ListView(physics: const BouncingScrollPhysics(), children: <Widget>[ Column(
           children: [

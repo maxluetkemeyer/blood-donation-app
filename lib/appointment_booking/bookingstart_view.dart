@@ -8,9 +8,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BookingStartView extends StatelessWidget {
   const BookingStartView({Key? key}) : super(key: key);
 
+  ///Build method to build the booking page. Here, the user can access the booking process.
+  ///
+  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context) {
+    ///The width of the ported media
     double width = MediaQuery.of(context).size.width;
+    ///The height of the ported media
     double height = MediaQuery.of(context).size.height;
 
     return ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
@@ -47,7 +52,8 @@ class BookingStartView extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 12),
               width: double.infinity,
-              child: CupertinoButton.filled(
+              child: CupertinoButton(
+                color: Theme.of(context).primaryColor,
                 child: Text(AppLocalizations.of(context)!.bookingStartButton),
                 onPressed: () async {
                   if (UserService.instance.birthdayAsString == "") {

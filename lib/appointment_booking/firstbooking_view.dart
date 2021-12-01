@@ -11,9 +11,12 @@ class FirstBooking extends StatefulWidget {
 }
 
 class _FirstBookingState extends State<FirstBooking> {
+  ///Controller for the birthday input field on the page
   late TextEditingController _birthdayController;
+  ///Is true, when the next button is pressed. It is used to validate the birthday.
   bool tappedBirthday = false;
 
+  ///Is called, when the Widget is initialized. The [_birthdayController] is started.
   @override
   void initState() {
     super.initState();
@@ -21,6 +24,7 @@ class _FirstBookingState extends State<FirstBooking> {
     _birthdayController = TextEditingController();
   }
 
+  ///Is called, when the Widget is disposed. The [_birthdayController] is deleted.
   @override
   void dispose() {
     _birthdayController.dispose();
@@ -28,6 +32,9 @@ class _FirstBookingState extends State<FirstBooking> {
     super.dispose();
   }
 
+  ///Build method to build the booking page, given the user hasn't already input his birthday.
+  ///
+  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,6 +134,9 @@ class _FirstBookingState extends State<FirstBooking> {
     );
   }
 
+  ///Validates, whether the given Birthday fits to the expected values (older than 18).
+  ///
+  ///Returns [bool]. True, if the Birthday isn't empty nor too early (younger than 18).
   bool birthdayValidation() {
     DateTime userBirthday = UserService.instance.birthday;
     DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(

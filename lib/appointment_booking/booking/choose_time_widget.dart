@@ -6,9 +6,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'appointmentbox_widget.dart';
 
+///Class to define the time choosing widget.
+///
+///Inputs are not required.
 class ChooseTime extends ConsumerWidget {
   const ChooseTime({Key? key}) : super(key: key);
 
+  ///Build method to build the Widget that allows the user to choose the desired time to donate.
+  ///
+  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return WillPopScope(
@@ -28,6 +34,11 @@ class ChooseTime extends ConsumerWidget {
     );
   }
 
+
+  ///Private Function to fetch the [List] of appointment [Widget]s from the [BookingService],
+  ///only fetching the data from the current date and creating an [AppointmentBox] for each time.
+  ///
+  ///Returns [List] of [AppointmentBox] [Widget]s
   List<Widget> _appointmentBoxList() {
     DateTime selectedDay = BookingService.instance.selectedDay;
     List<Appointment> freeAppointments =
