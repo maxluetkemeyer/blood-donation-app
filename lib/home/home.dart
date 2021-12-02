@@ -26,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
 
   ///Defines the Page Design for every Navigation oriented screen.
   ///
-  ///New pages are accessed by the [screens] array-defined [Widget]'s. 
+  ///New pages are accessed by the [screens] array-defined [Widget]'s.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,16 +37,10 @@ class _HomeViewState extends State<HomeView> {
             onSelected: (value) {
               switch (value) {
                 case 0:
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const UserDataView()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const UserDataView()));
                   break;
                 case 1:
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ImprintView()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ImprintView()));
                   break;
               }
             },
@@ -67,11 +61,10 @@ class _HomeViewState extends State<HomeView> {
       body: screens[pageIndex],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          labelTextStyle: MaterialStateProperty.all(TextStyle(color: Theme.of(context).colorScheme.secondary)),
-          iconTheme: MaterialStateProperty.all(IconThemeData(color: Theme.of(context).colorScheme.secondary)),
-          indicatorColor: Theme.of(context).colorScheme.outline,
-          backgroundColor: Theme.of(context).primaryColor
-        ),
+            labelTextStyle: MaterialStateProperty.all(TextStyle(color: Theme.of(context).colorScheme.secondary)),
+            iconTheme: MaterialStateProperty.all(IconThemeData(color: Theme.of(context).colorScheme.secondary)),
+            //indicatorColor: Theme.of(context).colorScheme.outline,
+            backgroundColor: Theme.of(context).primaryColor),
         child: NavigationBar(
           selectedIndex: pageIndex,
           onDestinationSelected: (index) => setState(() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'faq_question_model.dart';
+import '../models/faq_question_model.dart';
 
 
 ///Class to define one Faq question.

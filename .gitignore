@@ -74,6 +74,7 @@ pubspeck.lock
 pubspec.lock
 lib/generated_plugin_registrant.dart
 ukmblutspende.iml
+linux/
 
 # Firebase
 android/app/google-services.json

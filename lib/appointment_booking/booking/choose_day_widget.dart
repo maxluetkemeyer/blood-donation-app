@@ -16,47 +16,45 @@ class ChooseDay extends ConsumerWidget {
   ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      child: TableCalendar(
-        locale: AppLocalizations.of(context)!.localeName,
-        firstDay: DateTime.utc(2021, 10, 1),
-        lastDay: DateTime.utc(2021, 11, 30),
-        focusedDay: DateTime.now(),
-        calendarFormat: CalendarFormat.month,
-        headerStyle: const HeaderStyle(
-          titleCentered: true,
-          formatButtonVisible: false,
-        ),
-        weekendDays: const [6, 7],
-        calendarStyle: CalendarStyle(
-          defaultDecoration: const BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-          ),
-          defaultTextStyle: const TextStyle(
-            fontSize: 20,
-          ),
-          weekendTextStyle: const TextStyle(
-            color: Colors.grey,
-          ),
-          outsideDaysVisible: false,
-          todayDecoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            shape: BoxShape.circle,
-          ),
-          todayTextStyle: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-        startingDayOfWeek: StartingDayOfWeek.monday,
-        onDaySelected: (selectedDay, focusedDay) {
-          BookingService.instance.selectedDay = selectedDay;
-          print(BookingService.instance.selectedDay);
-          ref.read(bookingStateProvider.state).state++;
-        },
+    return TableCalendar(
+      locale: AppLocalizations.of(context)!.localeName,
+      firstDay: DateTime.utc(2021, 10, 1),
+      lastDay: DateTime.now().add(const Duration(days: 60)),
+      focusedDay: DateTime.now(),
+      calendarFormat: CalendarFormat.month,
+      headerStyle: const HeaderStyle(
+        titleCentered: true,
+        formatButtonVisible: false,
       ),
+      weekendDays: const [6, 7],
+      calendarStyle: CalendarStyle(
+        defaultDecoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+        ),
+        defaultTextStyle: const TextStyle(
+          fontSize: 20,
+        ),
+        weekendTextStyle: const TextStyle(
+          color: Colors.grey,
+        ),
+        outsideDaysVisible: false,
+        todayDecoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          shape: BoxShape.circle,
+        ),
+        todayTextStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+      startingDayOfWeek: StartingDayOfWeek.monday,
+      onDaySelected: (selectedDay, focusedDay) {
+        BookingService.instance.selectedDay = selectedDay;
+        print(BookingService.instance.selectedDay);
+        ref.read(bookingStateProvider.state).state++;
+      },
     );
   }
 }

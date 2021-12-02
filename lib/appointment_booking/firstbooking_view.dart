@@ -13,6 +13,7 @@ class FirstBooking extends StatefulWidget {
 class _FirstBookingState extends State<FirstBooking> {
   ///Controller for the birthday input field on the page
   late TextEditingController _birthdayController;
+
   ///Is true, when the next button is pressed. It is used to validate the birthday.
   bool tappedBirthday = false;
 
@@ -83,8 +84,7 @@ class _FirstBookingState extends State<FirstBooking> {
                             maximumDate: DateTime.now(),
                             mode: CupertinoDatePickerMode.date,
                             dateOrder: DatePickerDateOrder.dmy,
-                            onDateTimeChanged: (DateTime dateTime) =>
-                                UserService.instance.birthday = dateTime,
+                            onDateTimeChanged: (DateTime dateTime) => UserService.instance.birthday = dateTime,
                           ),
                         ),
                       ],
@@ -92,8 +92,7 @@ class _FirstBookingState extends State<FirstBooking> {
                         child: const Text("Fertig"),
                         onPressed: () {
                           tappedBirthday = true;
-                          _birthdayController.text =
-                              UserService.instance.birthdayAsString;
+                          _birthdayController.text = UserService.instance.birthdayAsString;
                           setState(() {});
                           Navigator.pop(context);
                         },
@@ -121,8 +120,7 @@ class _FirstBookingState extends State<FirstBooking> {
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const BookingView()),
+                        MaterialPageRoute(builder: (context) => const BookingView()),
                       );
                     }
                   : null,
@@ -138,9 +136,10 @@ class _FirstBookingState extends State<FirstBooking> {
   ///
   ///Returns [bool]. True, if the Birthday isn't empty nor too early (younger than 18).
   bool birthdayValidation() {
-    DateTime userBirthday = UserService.instance.birthday;
-    DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(
-        DateTime.now().millisecondsSinceEpoch - 568036800000);
+    if (UserService.instance.birthday == null) return false;
+
+    DateTime userBirthday = UserService.instance.birthday!;
+    DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(DateTime.now().millisecondsSinceEpoch - 568036800000);
 
     if (UserService.instance.birthdayAsString == "") return false;
     if (userBirthday.isAfter(earliestDonationBirthday)) return false;

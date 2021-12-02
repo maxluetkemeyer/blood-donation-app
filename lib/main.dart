@@ -1,18 +1,18 @@
 import './onboarding/onboarding_view.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './home/home.dart';
+import 'misc/theme.dart';
 import 'services/services.dart';
 
-///Starting the blood-donation application 
+///Starting the blood-donation application
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   runApp(const ProviderScope(child: MyApp()));
 
   final Services services = Services.instance;
@@ -22,53 +22,6 @@ void main() {
 /// This is the main application widget.
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  ///Generate the Theme for the application. The function utilizes [context] to let the function access
-  ///the app data
-  ThemeData createTheme(BuildContext context){
-    //doesn't really work
-    /*
-    //pink design
-    Color primaryColor = const Color(0xffe491b7);
-    Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
-    Color accentDark = const Color(0xff0b4874);
-    Color accentBlueLight = const Color(0xff81a4bd);
-    */
-    
-    //blue design
-    Color primaryColor = const Color(0xff0b4874);
-    Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
-    Color accentDark = const Color(0xff5f7a8e);
-    Color accentBlueLight = const Color(0xff81a4bd);
-    
-
-    return ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 242, 242, 247),
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: primaryColor,
-            statusBarIconBrightness: Brightness.light,
-          ),
-          backgroundColor: primaryColor,
-          iconTheme: IconThemeData(color: accentLight),
-          foregroundColor: accentLight
-        ),
-        //iconTheme: const IconThemeData(color: Colors.white),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
-            textStyle: MaterialStateProperty.all(TextStyle(color: accentLight)),
-          ),
-        ),
-        primaryColor: primaryColor,
-        colorScheme: ColorScheme.light(
-          primary: primaryColor,
-          secondary: accentLight,
-          onBackground: accentDark,
-          outline: accentBlueLight, 
-        ),
-      );
-  }
 
   ///Builds the blood-donation application
   @override
@@ -80,10 +33,9 @@ class MyApp extends StatelessWidget {
         Locale('en', ''), // English, no country code
         Locale('de', ''), // German, no country code
       ],
-      onGenerateTitle: (BuildContext context) =>
-          AppLocalizations.of(context)!.appTitle,
+      onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
       //generating the Theme
-      theme: createTheme(context),
+      theme: lightTheme,
       home: FutureBuilder<bool>(
         future: showOnboarding(), // a previously-obtained Future<bool> or null
         builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {

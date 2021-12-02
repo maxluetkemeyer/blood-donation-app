@@ -1,4 +1,4 @@
-import 'package:blooddonation/services/booking/appointment_model.dart';
+import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,13 +33,9 @@ class AppointmentBox extends ConsumerWidget {
         ref.read(bookingStateProvider.state).state++;
       },
       child: Text(
-        ((appointment.start.hour.toString().length == 1)
-                ? "0" + appointment.start.hour.toString()
-                : appointment.start.hour.toString()) +
+        ((appointment.start.hour.toString().length == 1) ? "0" + appointment.start.hour.toString() : appointment.start.hour.toString()) +
             ":" +
-            ((appointment.start.minute.toString().length == 1)
-                ? "0" + appointment.start.minute.toString()
-                : appointment.start.minute.toString()),
+            ((appointment.start.minute.toString().length == 1) ? "0" + appointment.start.minute.toString() : appointment.start.minute.toString()),
       ),
     );
   }

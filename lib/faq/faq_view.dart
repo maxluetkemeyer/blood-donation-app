@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'faq_question_widget.dart';
-import 'faq_question_model.dart';
+import '../models/faq_question_model.dart';
 import 'faq_question_list.dart';
 
 class FaqView extends StatefulWidget {
@@ -20,19 +20,22 @@ class _FaqState extends State<FaqView> {
     final qList = faqQuestionList(context);
 
     return Scaffold(
-      body: ListView(physics: const BouncingScrollPhysics(), children: <Widget>[
-        ExpansionPanelList.radio(
-          elevation: 3,
-          animationDuration: const Duration(milliseconds: 600),
-          children: [
-            for (var i in qList)
-              FaqQuestionWidget(
-                question: i,
-                key: ValueKey(i),
-              ).create()
-          ],
-        ),
-      ]),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: <Widget>[
+          ExpansionPanelList.radio(
+            elevation: 3,
+            animationDuration: const Duration(milliseconds: 600),
+            children: [
+              for (var i in qList)
+                FaqQuestionWidget(
+                  question: i,
+                  key: ValueKey(i),
+                ).create()
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

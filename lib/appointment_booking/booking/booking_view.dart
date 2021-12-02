@@ -3,6 +3,7 @@ import 'package:blooddonation/appointment_booking/booking/choose_day_widget.dart
 import 'package:blooddonation/appointment_booking/booking/choose_time_widget.dart';
 import 'package:blooddonation/appointment_booking/questions/questions_view.dart';
 import 'package:blooddonation/providers.dart';
+import 'package:blooddonation/services/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class BookingView extends ConsumerWidget {
         title: Text(_stepperHeader(activeStep)),
       ),
       body: FutureBuilder(
-        future: BookingService.instance.getFreeAppointments(),
+        future: BackendService.instance.getFreeAppointments(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -121,7 +122,7 @@ class BookingView extends ConsumerWidget {
                           isDestructiveAction: true,
                           onPressed: () {
                             //reset booking process
-                            BookingService.instance.reset();
+                            BookingService.instance.resetBookingProcess();
                             ref.read(bookingStateProvider.state).state = 0;
 
                             //pop dialog, then pop booking process view
@@ -141,7 +142,10 @@ class BookingView extends ConsumerWidget {
                     ),
                   ),
                   //child: const Text("Cancel Booking"),
-                  child: const Text("Buchungsvorgang abbrechen",style: TextStyle(color: Color(0xff0b4874)),),
+                  child: const Text(
+                    "Buchungsvorgang abbrechen",
+                    style: TextStyle(color: Color(0xff0b4874)),
+                  ),
                 ),
               ),
             ],
