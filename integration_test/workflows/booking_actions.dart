@@ -14,7 +14,7 @@ Future<void> workflowClickDate(WidgetTester tester) async{
 
 Future<void> workflowClickTime(WidgetTester tester) async{
   //Click the '8:00h' time during the booking process
-  final findTime = find.byKey(Key('0Cup'));
+  final findTime = find.byKey(const Key('0Cup'));
 
   expect(findTime, findsOneWidget);
 

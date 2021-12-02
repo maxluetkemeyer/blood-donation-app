@@ -1,10 +1,12 @@
+// ignore_for_file: library_prefixes, prefer_function_declarations_over_variables
+
 import 'package:flutter_test/flutter_test.dart';
 
-import 'skipIntro.dart' as skipIntroAS;
-import 'clickNav.dart' as clickNavAS;
-import 'clickButtons.dart' as clickButtonsAS;
-import 'abortBooking.dart' as abortBookingAS;
-import 'bookingActions.dart' as bookingActionsAS;
+import 'skip_intro.dart' as skipIntroAS;
+import 'click_nav.dart' as clickNavAS;
+import 'click_buttons.dart' as clickButtonsAS;
+import 'abort_booking.dart' as abortBookingAS;
+import 'booking_actions.dart' as bookingActionsAS;
 
 //Skipping Introduction
 final skipIntro = (WidgetTester tester)=>skipIntroAS.workflow(tester);

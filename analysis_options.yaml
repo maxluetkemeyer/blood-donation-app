@@ -1,7 +1,7 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  exclude: [test/**, integration_test/**]
+  #exclude: [test/**, integration_test/**]
 
 linter:
   rules:

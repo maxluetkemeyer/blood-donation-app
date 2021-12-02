@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 Future<void> workflow(WidgetTester tester) async{
   //aborts the Booking process
-  final cancelBooking = find.byKey(ValueKey('cancelBooking'));
+  final cancelBooking = find.byKey(const ValueKey('cancelBooking'));
 
   expect(cancelBooking, findsOneWidget);
 
@@ -11,7 +11,7 @@ Future<void> workflow(WidgetTester tester) async{
 
   await tester.pumpAndSettle();
 
-  final cancelBookingComp = find.byKey(ValueKey('cancelBookingComp'));
+  final cancelBookingComp = find.byKey(const ValueKey('cancelBookingComp'));
 
   expect(cancelBookingComp, findsOneWidget);
 

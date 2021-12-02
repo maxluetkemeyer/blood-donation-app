@@ -2,7 +2,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import './workflows/workflows.dart' as wf;
-import 'testUtils.dart';
+import 'test_utils.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -12,11 +12,14 @@ void main() {
       (WidgetTester tester) async {
         await init();
 
-        await wf.skipIntro(tester);
+        //await wf.skipIntro(tester);
+        await tester.pumpAndSettle();
 
         await wf.clickNavAppointments(tester);
 
         await wf.clickStartAppointments(tester);
+
+        // Birthday selection on first try
 
         await wf.clickNoButton(tester);
 
@@ -37,7 +40,8 @@ void main() {
       (WidgetTester tester) async {
         await init();
 
-        await wf.skipIntro(tester);
+        //await wf.skipIntro(tester);
+        await tester.pumpAndSettle();
 
         await wf.clickNavAppointments(tester);
 
@@ -45,7 +49,7 @@ void main() {
 
         final noButton = find.text('No');
 
-        while(noButton.precache()){
+        while (noButton.precache()) {
           await wf.clickNoButton(tester);
           noButton.evaluate();
         }
