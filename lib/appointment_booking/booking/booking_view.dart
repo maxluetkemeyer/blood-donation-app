@@ -101,7 +101,7 @@ class BookingView extends ConsumerWidget {
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
                       title: const Text(
-                        "Möchtest du die Buchung abbrechen?",
+                        "Möchten Sie die Buchung abbrechen?",
                         style: TextStyle(
                           fontSize: 24,
                         ),
@@ -110,7 +110,7 @@ class BookingView extends ConsumerWidget {
                         children: const [
                           SizedBox(height: 10),
                           Text(
-                            "Dein bisheriger Fortschritt geht verloren.",
+                            "Ihr bisheriger Fortschritt geht verloren.",
                             style: TextStyle(
                               fontSize: 16,
                             ),
@@ -167,7 +167,7 @@ class BookingView extends ConsumerWidget {
       case 1:
         return "Verfügbare Zeiten";
       case 2:
-        return "Darfst du Blutspenden?";
+        return "Dürfen Sie Blut spenden?";
       case 3:
         return "Daten überprüfen";
       default:

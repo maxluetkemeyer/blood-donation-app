@@ -130,7 +130,7 @@ class AppointmentBookedView extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: TextButton.icon(
               label: const Icon(Icons.open_in_new_outlined),
-              icon: const Text("Dein Blutspendetermin am UKM"),
+              icon: const Text("Ihr Blutspendetermin am UKM"),
               onPressed: () {},
             ),
           ),

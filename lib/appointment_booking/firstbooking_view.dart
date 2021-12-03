@@ -40,7 +40,7 @@ class _FirstBookingState extends State<FirstBooking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Deine erste Blutspende"),
+        title: const Text("Ihre erste Blutspende"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +55,7 @@ class _FirstBookingState extends State<FirstBooking> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Wann bist du geboren?",
+                "Wann wurden Sie geboren?",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w600,
@@ -70,7 +70,7 @@ class _FirstBookingState extends State<FirstBooking> {
               CupertinoFormRow(
                 prefix: const Text("Geburtsdatum"),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Dein Geburtsdatum",
+                  placeholder: "Ihr Geburtsdatum",
                   readOnly: true,
                   controller: _birthdayController,
                   onTap: () => showCupertinoModalPopup(
@@ -106,7 +106,7 @@ class _FirstBookingState extends State<FirstBooking> {
           birthdayValidation() || !tappedBirthday
               ? Container()
               : const Text(
-                  "Du musst mindestens 18. Jahre alt sein, um Blut zu spenden!",
+                  "Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",
                   style: TextStyle(
                     color: Colors.red,
                   ),
