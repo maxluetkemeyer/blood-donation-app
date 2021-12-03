@@ -26,11 +26,11 @@ class QuestionsView extends ConsumerWidget {
   ///Returns a [Widget], specifically a [QuestionWidget]
   Widget getQuestion(int questionStep, WidgetRef ref) {
     final DonationQuestion testQuestion = DonationQuestion(
-      "Sind Sie positiv auf HIV getestet worden oder haben Sie die Befürchtung evtl. HIV-positiv zu sein?",
+      "Fühlen Sie sich heute am Spendetag krank oder sind Sie aktuell krankgeschrieben?",
       false,
     );
     final DonationQuestion testQuestion2 = DonationQuestion(
-      "Wurden bei Ihnen oder einem Ihrer Blutsverwandten 1. Grades die Creutzfeldt-Jakob-Krankheit erkannt?",
+      "Wiegen Sie weniger als 50kg??",
       false,
     );
 

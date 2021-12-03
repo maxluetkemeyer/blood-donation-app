@@ -43,7 +43,7 @@
 
   "userDataHeading": "Your Data",
   "userDataDataHeading": "Your Data",
-  "userDataLastDonation": "Your last blood donation",
+  "userDataLastDonation": "Date of your last blood donation",
 
   "bookingStartHeader": "Blood donation",
   "bookingStartInfo": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
