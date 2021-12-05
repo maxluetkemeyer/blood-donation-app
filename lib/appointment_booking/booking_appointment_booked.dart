@@ -1,14 +1,36 @@
+import 'package:blooddonation/appointment_booking/booking_appointment_card_widget.dart';
 import 'package:blooddonation/appointment_booking/step_widget.dart';
 import 'package:flutter/material.dart';
 
-class AppointmentBookedView extends StatelessWidget {
-  AppointmentBookedView({Key? key}) : super(key: key);
+class AppointmentBookedView extends StatefulWidget {
+  const AppointmentBookedView({Key? key}) : super(key: key);
+
+  @override
+  State<AppointmentBookedView> createState() => _AppointmentBookedViewState();
+}
+
+class _AppointmentBookedViewState extends State<AppointmentBookedView> {
+  bool tapped = false;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        myCard,
+        tapped
+            ? AppointmentCard(
+                backgroundColor: Colors.lightGreen.shade600,
+                onTapFooter: () => setState(() {
+                  tapped = !tapped;
+                }),
+                status: "accepted",
+              )
+            : AppointmentCard(
+                backgroundColor: Colors.amber.shade400,
+                onTapFooter: () => setState(() {
+                  tapped = !tapped;
+                }),
+                status: "pending",
+              ),
         Padding(
           padding: const EdgeInsets.only(left: 10, right: 10, top: 40, bottom: 10),
           child: Column(
@@ -67,75 +89,4 @@ class AppointmentBookedView extends StatelessWidget {
       ],
     );
   }
-
-  final Widget myCard = Card(
-    color: Colors.amber.shade400,
-    child: Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                children: const [
-                  Text(
-                    "11",
-                    style: TextStyle(
-                      fontSize: 60,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "Dez",
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                ],
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 38, left: 20),
-                child: Text(
-                  "10:30",
-                  style: TextStyle(
-                    fontSize: 35,
-                  ),
-                ),
-              ),
-              const Expanded(
-                child: SizedBox(),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: const [
-                  Text(
-                    "Status",
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text(
-                    "pending",
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: TextButton.icon(
-              label: const Icon(Icons.open_in_new_outlined),
-              icon: const Text("Dein Blutspendetermin am UKM"),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
 }

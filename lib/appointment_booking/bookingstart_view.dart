@@ -25,7 +25,7 @@ class BookingStartView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       children: <Widget>[
         BookingService.instance.bookedAppointment != null
-            ? AppointmentBookedView()
+            ? const AppointmentBookedView()
             : Padding(
                 padding: const EdgeInsets.only(
                   left: 10,
