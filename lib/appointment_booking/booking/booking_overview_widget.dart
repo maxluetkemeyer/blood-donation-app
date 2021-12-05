@@ -62,14 +62,14 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
       child: Column(
         children: [
           CupertinoFormSection.insetGrouped(
-            header: const Text("Deine Daten"),
+            header: const Text("Ihre Daten"),
             footer: const Divider(),
             margin: const EdgeInsets.all(12),
             children: [
               CupertinoFormRow(
                 prefix: const Text("Name"),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Dein Name",
+                  placeholder: "Ihr Name",
                   initialValue: UserService.instance.name,
                   onChanged: (value) => UserService.instance.name = value,
                 ),
@@ -77,7 +77,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
               CupertinoFormRow(
                 prefix: const Text("Geburtsdatum"),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Dein Geburtsdatum",
+                  placeholder: "Ihr Geburtsdatum",
                   readOnly: true,
                   controller: _birthdayController,
                   onTap: () => showCupertinoModalPopup(
@@ -110,13 +110,13 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
             ],
           ),
           CupertinoFormSection.insetGrouped(
-            header: const Text("Dein Termin"),
+            header: const Text("Ihr Termin"),
             margin: const EdgeInsets.all(12),
             children: [
               CupertinoFormRow(
                 prefix: const Text("Termin"),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Dein Termin",
+                  placeholder: "Ihr Termin",
                   initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService.instance.selectedAppointment!.start),
                   readOnly: true,
                   onTap: () => showCupertinoDialog(
@@ -138,7 +138,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                             ),
                           ),
                           const Text(
-                            "ist dein ausgewählter Termin. Möchtest du deinen Termin ändern und die Buchung nochmal starten?",
+                            "ist Ihr ausgewählter Termin. Möchten Sie Ihren Termin ändern und den Buchungsvorgang noch einmal starten?",
                             style: TextStyle(
                               fontSize: 16,
                             ),

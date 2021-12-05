@@ -22,7 +22,7 @@ class OnboardingView extends StatelessWidget {
 
       // Welcomepage
       PageViewModel(
-        title: "Herzlich Willkommen in der UKM Blutspende App",
+        title: "Herzlich Willkommen in der Blutspende-App des UKM",
         body: "",
         //image: buildImage("assets/images/Universitätsklinikum_Münster_Logo.png"),
         image: const RiveAnimation.network(
@@ -32,9 +32,9 @@ class OnboardingView extends StatelessWidget {
       ),
 
       PageViewModel(
-        title: "Wussten Sie...",
+        title: "Wussten Sie..",
         bodyWidget: const Text(
-          "... dass das Blutvolumen eines erwachsenen Menschen ca. 4,5 - 6,0 Liter beträgt (8% des Körpergewichtes in kg) ?\n\n... aus der Armvene werden 500ml Blut entnommen, was nur ca. 5-10 min. dauert ?\n\n... in Deutschland sind ca. 15.000 Blutspenden pro Tag erforderlich , um den täglichen Bedarf zu decken ?",
+          ".. dass in Deutschland täglich über 15.000 Blutspenden benötigt werden?\n\n..dass eine einzelne Blutspende bis zu drei Leben retten kann?\n\n..dass der menschliche Körper ca. fünf Liter Blut enthält?",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, wordSpacing: 3),
           textAlign: TextAlign.justify,
         ),
@@ -49,7 +49,7 @@ class OnboardingView extends StatelessWidget {
           builder: (context, followLink) => GestureDetector(
             onTap: followLink,
             child: const Text(
-              "Mehr Wissen gibt es hier",
+              "Mehr Wissen finden Sie hier",
               style: TextStyle(fontSize: 15, decoration: TextDecoration.underline),
             ),
           ),
