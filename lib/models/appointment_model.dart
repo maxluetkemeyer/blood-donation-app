@@ -22,7 +22,7 @@ class Appointment {
     return Appointment(
       id: json["id"].toString(), //?? ""
       //start: DateTime.parse(json['start']),
-      start: DateTime.parse(json["datetime"]),
+      start: DateTime.parse(json["datetime"]), // + "T" + json["time"]
       duration: const Duration(
         //hours: json["duration"] ?? 1,
         hours: 1,
@@ -41,8 +41,8 @@ class Appointment {
     if (person != null) {
       personMap = {
         "name": person!.name,
-        "birthday": person!.birthday?.toIso8601String(),
-        "gender": person!.gender,
+        "birthday": person!.birthday!.year.toString() + "-" + person!.birthday!.month.toString() + "-" + person!.birthday!.day.toString(),
+        "gender": "male",
       };
     }
 
@@ -60,7 +60,7 @@ class Appointment {
       "time": start.hour.toString() + ":" + start.minute.toString() + ":" + start.second.toString(),
       //"duration": duration.toString(),
       "duration": 60,
-      //"person": personMap,
+      "person": personMap,
       //"request": requestMap,
     };
 

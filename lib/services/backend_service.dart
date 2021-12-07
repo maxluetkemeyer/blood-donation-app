@@ -43,6 +43,8 @@ class BackendService {
       body: json.encode(appointment.toJson()),
     );
 
+    print(response.body);
+
     return response;
   }
 }
