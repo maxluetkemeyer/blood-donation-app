@@ -3,7 +3,6 @@ import 'package:blooddonation/appointment_booking/booking/choose_day_widget.dart
 import 'package:blooddonation/appointment_booking/booking/choose_time_widget.dart';
 import 'package:blooddonation/appointment_booking/questions/questions_view.dart';
 import 'package:blooddonation/providers.dart';
-import 'package:blooddonation/services/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,128 +28,117 @@ class BookingView extends ConsumerWidget {
       appBar: AppBar(
         title: Text(_stepperHeader(activeStep)),
       ),
-      body: FutureBuilder(
-        future: BackendService.instance.getFreeAppointments(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          return Column(
-            children: [
-              Flexible(
-                fit: FlexFit.tight,
-                flex: 14,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      IconStepper(
-                        stepColor: Theme.of(context).colorScheme.onBackground,
-                        direction: Axis.horizontal,
-                        enableNextPreviousButtons: false,
-                        activeStep: activeStep,
-                        activeStepColor: Theme.of(context).primaryColor,
-                        activeStepBorderWidth: 6,
-                        stepRadius: 28,
-                        activeStepBorderPadding: 0,
-                        lineDotRadius: 1.4,
-                        lineLength: width * 0.12,
-                        activeStepBorderColor: Theme.of(context).primaryColor,
-                        icons: const [
-                          Icon(
-                            Icons.date_range_rounded,
-                            color: Colors.white,
-                            size: 3,
-                          ),
-                          Icon(Icons.access_time_filled, color: Colors.white),
-                          Icon(Icons.question_answer, color: Colors.white),
-                          Icon(Icons.send, color: Colors.white),
-                        ],
-                        enableStepTapping: false,
+      body: Column(
+        children: [
+          Flexible(
+            fit: FlexFit.tight,
+            flex: 14,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  IconStepper(
+                    stepColor: Theme.of(context).colorScheme.onBackground,
+                    direction: Axis.horizontal,
+                    enableNextPreviousButtons: false,
+                    activeStep: activeStep,
+                    activeStepColor: Theme.of(context).primaryColor,
+                    activeStepBorderWidth: 6,
+                    stepRadius: 28,
+                    activeStepBorderPadding: 0,
+                    lineDotRadius: 1.4,
+                    lineLength: width * 0.12,
+                    activeStepBorderColor: Theme.of(context).primaryColor,
+                    icons: const [
+                      Icon(
+                        Icons.date_range_rounded,
+                        color: Colors.white,
+                        size: 3,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 20,
-                          left: 10,
-                          bottom: 40,
-                        ),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            _stepperHeader(activeStep),
-                            style: const TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ),
-                      _stepperBody(activeStep),
+                      Icon(Icons.access_time_filled, color: Colors.white),
+                      Icon(Icons.question_answer, color: Colors.white),
+                      Icon(Icons.send, color: Colors.white),
                     ],
+                    enableStepTapping: false,
                   ),
-                ),
-              ),
-              Flexible(
-                fit: FlexFit.tight,
-                flex: 1,
-                child: TextButton(
-                  onPressed: () => showCupertinoDialog(
-                    context: context,
-                    builder: (BuildContext context) => CupertinoAlertDialog(
-                      title: const Text(
-                        "Möchten Sie die Buchung abbrechen?",
-                        style: TextStyle(
-                          fontSize: 24,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      left: 10,
+                      bottom: 40,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        _stepperHeader(activeStep),
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      content: Column(
-                        children: const [
-                          SizedBox(height: 10),
-                          Text(
-                            "Ihr bisheriger Fortschritt geht verloren.",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          )
-                        ],
-                      ),
-                      actions: [
-                        CupertinoDialogAction(
-                          isDestructiveAction: true,
-                          onPressed: () {
-                            //reset booking process
-                            BookingService.instance.resetBookingProcess();
-                            ref.read(bookingStateProvider.state).state = 0;
-
-                            //pop dialog, then pop booking process view
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                          //child: const Text('Cancel Booking'),
-                          child: const Text("Buchungsvorgang abbrechen"),
-                        ),
-                        CupertinoDialogAction(
-                          isDefaultAction: true,
-                          onPressed: () => Navigator.pop(context),
-                          //child: const Text('Back'),
-                          child: const Text("Zurück"),
-                        )
-                      ],
                     ),
                   ),
-                  //child: const Text("Cancel Booking"),
-                  child: const Text(
-                    "Buchungsvorgang abbrechen",
-                    style: TextStyle(color: Color(0xff0b4874)),
+                  _stepperBody(activeStep),
+                ],
+              ),
+            ),
+          ),
+          Flexible(
+            fit: FlexFit.tight,
+            flex: 1,
+            child: TextButton(
+              onPressed: () => showCupertinoDialog(
+                context: context,
+                builder: (BuildContext context) => CupertinoAlertDialog(
+                  title: const Text(
+                    "Möchten Sie die Buchung abbrechen?",
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
                   ),
+                  content: Column(
+                    children: const [
+                      SizedBox(height: 10),
+                      Text(
+                        "Ihr bisheriger Fortschritt geht verloren.",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
+                  actions: [
+                    CupertinoDialogAction(
+                      isDestructiveAction: true,
+                      onPressed: () {
+                        //reset booking process
+                        BookingService.instance.resetBookingProcess();
+                        ref.read(bookingStateProvider.state).state = 0;
+
+                        //pop dialog, then pop booking process view
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      },
+                      //child: const Text('Cancel Booking'),
+                      child: const Text("Buchungsvorgang abbrechen"),
+                    ),
+                    CupertinoDialogAction(
+                      isDefaultAction: true,
+                      onPressed: () => Navigator.pop(context),
+                      //child: const Text('Back'),
+                      child: const Text("Zurück"),
+                    )
+                  ],
                 ),
               ),
-            ],
-          );
-        },
+              //child: const Text("Cancel Booking"),
+              child: const Text(
+                "Buchungsvorgang abbrechen",
+                style: TextStyle(color: Color(0xff0b4874)),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

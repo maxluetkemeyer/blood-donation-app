@@ -20,11 +20,12 @@ class Appointment {
   factory Appointment.fromJson(Map<String, dynamic> json) {
     print(json);
     return Appointment(
-      id: json["id"] ?? "",
+      id: json["id"].toString(), //?? ""
       //start: DateTime.parse(json['start']),
-      start: DateTime.fromMillisecondsSinceEpoch(json["start"]),
-      duration: Duration(
-        hours: json["duration"] ?? 1,
+      start: DateTime.parse(json["datetime"]),
+      duration: const Duration(
+        //hours: json["duration"] ?? 1,
+        hours: 1,
       ),
       request: json["request"],
       person: json["person"],
@@ -32,7 +33,9 @@ class Appointment {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: unused_local_variable
     Map<String, dynamic>? personMap;
+    // ignore: unused_local_variable
     Map<String, dynamic>? requestMap;
 
     if (person != null) {
@@ -51,11 +54,14 @@ class Appointment {
     }
 
     Map<String, dynamic> map = {
-      "id": id,
-      "start": start.toIso8601String(),
-      "duration": duration.toString(),
-      "person": personMap,
-      "request": requestMap,
+      //"id": id,
+      //"start": start.toIso8601String(),
+      "date": start.year.toString() + "-" + start.month.toString() + "-" + start.day.toString(),
+      "time": start.hour.toString() + ":" + start.minute.toString() + ":" + start.second.toString(),
+      //"duration": duration.toString(),
+      "duration": 60,
+      //"person": personMap,
+      //"request": requestMap,
     };
 
     return map;

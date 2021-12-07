@@ -12,8 +12,12 @@ class BackendService {
     print("Starting Booking Service");
   }
 
-  Future<List<Appointment>> getFreeAppointments() async {
-    final response = await http.get(Uri.parse(env.backendAdress + "/appointments"));
+  Future<List<Appointment>> getFreeAppointments(DateTime day) async {
+    final response = await http.get(
+      Uri.parse(
+        env.backendAdress + "/appointments?date=" + day.year.toString() + "-" + day.month.toString() + "-" + day.day.toString(),
+      ),
+    );
 
     if (response.statusCode == 200) {
       var appObjsJson = jsonDecode(response.body) as List;
@@ -31,11 +35,12 @@ class BackendService {
   }
 
   Future<http.Response> bookAppointment(Appointment appointment) async {
-    print(appointment.toJson());
+    print(appointment.toJson().toString());
 
     final response = await http.post(
       Uri.parse(env.backendAdress + "/appointment"),
-      body: appointment.toJson().toString(),
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(appointment.toJson()),
     );
 
     return response;

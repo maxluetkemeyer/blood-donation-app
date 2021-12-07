@@ -1,7 +1,8 @@
 import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/providers.dart';
+import 'package:blooddonation/services/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'appointmentbox_widget.dart';
@@ -23,13 +24,24 @@ class ChooseTime extends ConsumerWidget {
 
         return false;
       },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 30),
-        child: Wrap(
-          spacing: 20,
-          runSpacing: 20,
-          children: _appointmentBoxList(),
-        ),
+      child: FutureBuilder(
+        future: BackendService.instance.getFreeAppointments(BookingService.instance.selectedDay!),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          return Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Wrap(
+              spacing: 20,
+              runSpacing: 20,
+              children: _appointmentBoxList(),
+            ),
+          );
+        },
       ),
     );
   }
