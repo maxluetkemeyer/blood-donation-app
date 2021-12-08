@@ -17,12 +17,11 @@ void main() {
     expect(result, "Appointment 1 1999-10-10 00:00:00.000Z 1:00:00.000000");
   });
 
-  
   test(
       'Given the function Appointment.fromJson when a Json with the identifier start, then the function returns an appointment with the data from the json as start value',
       () {
     //ARRANGE
-    Map<String, dynamic> json = {'datetime': "1970-01-01 01:00:15.000"};
+    Map<String, dynamic> json = {'datetime': DateTime.fromMillisecondsSinceEpoch(15000).toString()};
     //ACT
     Appointment testAppointment = Appointment.fromJson(json);
     //ASSERT
