@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-///Outsourced builder method to show the user a rotating picture Carousel of current hospital information.
-///
-///Returns a [Widget] tree including a [CarouselSlider]
-Widget createImageCarousel() {
+///Show the user a rotating picture Carousel of current hospital information.
+class ImageCarousel extends StatelessWidget {
+  const ImageCarousel({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
       child: CarouselSlider(
         options: CarouselOptions(
           height: 400.0,
@@ -36,3 +38,4 @@ Widget createImageCarousel() {
       ),
     );
   }
+}

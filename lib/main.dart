@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './home/home.dart';
+import 'app.dart';
 import 'misc/theme.dart';
 import 'services/services.dart';
 
@@ -42,13 +42,13 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData) {
             if (snapshot.data!) {
               // Open HomeView, if the built Future is existing and false
-              return const HomeView();
+              return const AppStructure();
             }
             // Open Onboarding, if the built Future is existing and true
             return const OnboardingView();
           }
           // Open HomeView, if the built Future isn't existing
-          return const HomeView();
+          return const AppStructure();
         },
       ),
     );

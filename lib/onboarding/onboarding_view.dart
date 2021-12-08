@@ -3,7 +3,7 @@
 //
 // Um Introscreen zu testen bitte in der main.dart die main() Methode auskommentieren und folgendes einfügen:
 // void main() => runApp(IntroScreen());
-import '../home/home.dart';
+import '../app.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -182,7 +182,11 @@ class OnboardingView extends StatelessWidget {
 
   ///Method to go to the homescreen if button was clicked. Sets "alreadyOnboarded" inside [SharedPreferences] to true
   void goToHomeScreen(BuildContext context) async {
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const HomeView()), (Route<dynamic> route) => false);
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const AppStructure(),
+        ),
+        (Route<dynamic> route) => false);
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool("alreadyOnboarded", true);

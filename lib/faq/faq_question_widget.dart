@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../models/faq_question_model.dart';
 
-
 ///Class to define one Faq question.
 ///
 ///Inputs include the [key] variable, a required [question] from the type [FaqQuestion] to define
@@ -18,8 +17,7 @@ class FaqQuestionWidget {
   FaqQuestionWidget({
     this.key,
     required this.question,
-    this.questionTextStyle =
-        const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    this.questionTextStyle = const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
     this.answerTextStyle = const TextStyle(fontSize: 20),
   });
 

@@ -5,22 +5,22 @@ import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'home/home_view.dart';
 
-import 'home_page_view.dart';
-
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class AppStructure extends StatefulWidget {
+  const AppStructure({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<AppStructure> createState() => _AppStructureState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _AppStructureState extends State<AppStructure> {
   int pageIndex = 0;
+
   final screens = [
     const HomePageView(),
     const BookingStartView(),
-    LocationView(),
+    const LocationView(),
     const FaqView(),
   ];
 
