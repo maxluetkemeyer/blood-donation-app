@@ -1,4 +1,4 @@
-import 'package:blooddonation/providers.dart';
+import 'package:blooddonation/misc/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

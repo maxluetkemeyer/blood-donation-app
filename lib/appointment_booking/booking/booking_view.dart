@@ -2,7 +2,7 @@ import 'package:blooddonation/appointment_booking/booking/booking_overview_widge
 import 'package:blooddonation/appointment_booking/booking/choose_day_widget.dart';
 import 'package:blooddonation/appointment_booking/booking/choose_time_widget.dart';
 import 'package:blooddonation/appointment_booking/questions/questions_view.dart';
-import 'package:blooddonation/providers.dart';
+import 'package:blooddonation/misc/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

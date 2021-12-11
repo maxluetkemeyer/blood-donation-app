@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:http/http.dart' as http;
-import 'package:blooddonation/env.dart' as env;
+import 'package:blooddonation/misc/env.dart' as env;
 
 class BackendService {
   static final BackendService instance = BackendService._privateConstructor();

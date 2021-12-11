@@ -1,4 +1,4 @@
-import 'package:blooddonation/env.dart' as env;
+import 'package:blooddonation/misc/env.dart' as env;
 import 'package:blooddonation/location/map_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
