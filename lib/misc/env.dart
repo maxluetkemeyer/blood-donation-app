@@ -1,6 +1,6 @@
 ///Provides the backend Address as a [String]. The Adress is used to access and send data
 ///via HTTP-requests
-const String backendAdress = "http://hack-muenster.uni-muenster.de:5000";
+const String backendAdress = "https://hack-muenster.uni-muenster.de:5000";
 
 ///Location variable to show the user the location of the blood donation location.
 const locationLat = 51.96168675419829;

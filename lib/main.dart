@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import './onboarding/onboarding_view.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
@@ -12,6 +14,9 @@ import 'services/services.dart';
 ///Starting the blood-donation application
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //TODO: Certificate Error
+  HttpOverrides.global = DevHttpOverrides();
 
   runApp(const ProviderScope(child: MyApp()));
 
@@ -70,5 +75,13 @@ class MyApp extends StatelessWidget {
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
     return alreadyOnboarded;
+  }
+}
+
+/// Remove in future
+class DevHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }

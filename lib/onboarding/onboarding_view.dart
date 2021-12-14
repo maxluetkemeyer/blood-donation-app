@@ -1,3 +1,5 @@
+///TODO: New structure with link to backend
+
 // This is supposed to be an introductionscreen ("Welcome") that greets you when you start the app,
 // so that the app does not simply start with all its functions
 //
