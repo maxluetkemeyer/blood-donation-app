@@ -9,6 +9,9 @@
   "birthday": "Birthday",
   "yourBirthday": "Your Birthday",
   "doneButton": "Done",
+  "back":"back",
+  "next":"next",
+  "ageQuestion":"Age check",
 
   "homeMenuUserData": "Your Data",
   "homeMenuImprint": "Imprint",
@@ -17,7 +20,7 @@
   "homeMenuMap": "Map",
   "homeMenuFaq": "FAQ",
 
-  "homePageViewInfo": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+  "homePageViewInfo": "Under 'Appointments' you can easily book a blood donation appointment at Münster University Hospital. If you are looking for the address of the UKM blood donation center or directions, select 'Map'. All frequently asked questions and answers to these questions can be found under 'FAQ'.",
 
   "mapHeading": "Blood donation at UKM",
   "mapDirections": "Directions",
@@ -46,6 +49,19 @@
   "userDataLastDonation": "Date of your last blood donation",
 
   "bookingStartHeader": "Blood donation",
-  "bookingStartInfo": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-  "bookingStartButton": "Book appointment"
+  "bookingStartInfo": "If you select 'Book appointment', you can easily book a blood donation appointment at Münster University Hospital. As a first step, you will have to answer a few questions so that possible exclusion criteria for your donation can be determined. If you do not meet any of the exclusion criteria, you can already select a date and time for your blood donation appointment. Then you only have to check your data once more - and you already have a blood donation appointment!",
+  "bookingStartButton": "Book appointment",
+  "bookingYourAppointment": "Your appointment",
+  "bookingAppointment": "Appointment",
+  "bookingBreakText": "is your selected appointment. Do you want to change your appointment and start the booking process again?",
+  "boockingChangeDate": "change Appointment",
+  "bookingStopBooking":"Stop booking process",
+  "bookingChooseDayTitle":"Choose Date",
+  "bookingChooseTimeTitle":"Choose Time",
+  "bookingAnswerQuestionsTitle":"Can you donate blood?",
+  "bookingDatenTitle":"Check data",
+  "bookingProgressLoss":"Your previous progress will be lost.",
+  "bookingAgeWarning":"You must be at least 18 years old to donate blood!",
+  "bookingFirstPrompt":"Your first blood donation",
+  "bookingFirstAge":"When were you born?"
 }

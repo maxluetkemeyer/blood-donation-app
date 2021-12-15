@@ -2,6 +2,7 @@ import 'package:blooddonation/appointment_booking/booking/booking_view.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstBooking extends StatefulWidget {
   const FirstBooking({Key? key}) : super(key: key);
@@ -40,14 +41,14 @@ class _FirstBookingState extends State<FirstBooking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ihre erste Blutspende"),
+        title: Text(AppLocalizations.of(context)!.bookingFirstPrompt),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
               top: 20,
               left: 14,
               bottom: 40,
@@ -55,8 +56,8 @@ class _FirstBookingState extends State<FirstBooking> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Wann wurden Sie geboren?",
-                style: TextStyle(
+                AppLocalizations.of(context)!.bookingFirstAge,
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w600,
                 ),
@@ -64,13 +65,13 @@ class _FirstBookingState extends State<FirstBooking> {
             ),
           ),
           CupertinoFormSection.insetGrouped(
-            header: const Text("Altersabfrage"),
+            header: Text(AppLocalizations.of(context)!.ageQuestion),
             margin: const EdgeInsets.all(12),
             children: [
               CupertinoFormRow(
-                prefix: const Text("Geburtsdatum"),
+                prefix: Text(AppLocalizations.of(context)!.birthday),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Ihr Geburtsdatum",
+                  placeholder: AppLocalizations.of(context)!.yourBirthday,
                   readOnly: true,
                   controller: _birthdayController,
                   onTap: () => showCupertinoModalPopup(
@@ -89,7 +90,7 @@ class _FirstBookingState extends State<FirstBooking> {
                         ),
                       ],
                       cancelButton: CupertinoActionSheetAction(
-                        child: const Text("Fertig"),
+                        child: Text(AppLocalizations.of(context)!.doneButton),
                         onPressed: () {
                           tappedBirthday = true;
                           _birthdayController.text = UserService.instance.birthdayAsString;
@@ -105,9 +106,9 @@ class _FirstBookingState extends State<FirstBooking> {
           ),
           birthdayValidation() || !tappedBirthday
               ? Container()
-              : const Text(
-                  "Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",
-                  style: TextStyle(
+              : Text(
+                  AppLocalizations.of(context)!.bookingAgeWarning,
+                  style: const TextStyle(
                     color: Colors.red,
                   ),
                 ),
@@ -124,7 +125,7 @@ class _FirstBookingState extends State<FirstBooking> {
                       );
                     }
                   : null,
-              child: const Text("Weiter"),
+              child: Text(AppLocalizations.of(context)!.next),
             ),
           ),
         ],
