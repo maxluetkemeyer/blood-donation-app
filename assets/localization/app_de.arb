@@ -54,7 +54,7 @@
   "bookingYourAppointment": "Ihr Termin",
   "bookingAppointment": "Termin",
   "bookingBreakText": "ist Ihr ausgewählter Termin. Möchten Sie Ihren Termin ändern und den Buchungsvorgang noch einmal starten?",
-  "boockingChangeDate": "Termin ändern",
+  "bookingChangeDate": "Termin ändern",
   "bookingStopBooking":"Buchungsvorgang abbrechen",
   "bookingChooseDayTitle":"Tag auswählen",
   "bookingChooseTimeTitle":"Verfügbare Zeiten",
