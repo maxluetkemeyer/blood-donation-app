@@ -26,7 +26,7 @@ void main() {
       await tester.tap(appointment);
       await tester.pumpAndSettle();
       //ASSERT
-      expect(BookingService.instance.selectedAppointment, testAppointment);
+      expect(BookingService().selectedAppointment, testAppointment);
     });
   });
 }

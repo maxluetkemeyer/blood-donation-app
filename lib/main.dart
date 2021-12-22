@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'package:blooddonation/services/notification/notification_service.dart';
+import 'package:blooddonation/services/provider/provider_service.dart';
 
 import './onboarding/onboarding_view.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -9,52 +10,73 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
 import 'misc/theme.dart';
-import 'services/services.dart';
+import 'services/services.dart' as services;
 
-///Starting the blood-donation application
+///Start of application
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //TODO: Certificate Error
-  HttpOverrides.global = DevHttpOverrides();
+  services.startServices();
 
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const App());
 
-  final Services services = Services.instance;
-  services.initServices();
+  Future.delayed(const Duration(seconds: 4)).then(
+    (_) => NotificationService().displayNotification(
+      channelID: "booking_response",
+      channelName: "Booking Status Response",
+      channelDescription: "Booking Response Channel Description",
+      notificationTitle: "notificationTitle",
+      notificationBody: "notificationBody",
+      payload: "payload",
+    ),
+  );
 }
 
 /// This is the main application widget.
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
 
-  ///Builds the blood-donation application
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  @override
+  void dispose() {
+    ProviderService().container.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: const [
-        Locale('en', ''), // English, no country code
-        Locale('de', ''), // German, no country code
-      ],
-      onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
-      //generating the Theme
-      theme: lightTheme,
-      home: FutureBuilder<bool>(
-        future: showOnboarding(), // a previously-obtained Future<bool> or null
-        builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data!) {
-              // Open HomeView, if the built Future is existing and false
-              return const AppStructure();
+    return UncontrolledProviderScope(
+      container: ProviderService().container,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: const [
+          Locale('en', ''), // English, no country code
+          Locale('de', ''), // German, no country code
+        ],
+        onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
+        //generating the Theme
+        theme: lightTheme,
+        home: FutureBuilder<bool>(
+          future: showOnboarding(), // a previously-obtained Future<bool> or null
+          builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data!) {
+                // Open HomeView, if the built Future is existing and false
+                return const AppStructure();
+              }
+              // Open Onboarding, if the built Future is existing and true
+              return const OnboardingView();
             }
-            // Open Onboarding, if the built Future is existing and true
-            return const OnboardingView();
-          }
-          // Open HomeView, if the built Future isn't existing
-          return const AppStructure();
-        },
+            // Open HomeView, if the built Future isn't existing
+            return const AppStructure();
+          },
+        ),
       ),
     );
   }
@@ -75,13 +97,5 @@ class MyApp extends StatelessWidget {
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
     return alreadyOnboarded;
-  }
-}
-
-/// Remove in future
-class DevHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }

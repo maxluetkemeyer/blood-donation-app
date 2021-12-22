@@ -4,20 +4,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 ///Service to manage Userdata inside a Singleton instance and the [SharedPreferences].
 class UserService {
-  ///A static instance of the [UserService].
-  static final UserService instance = UserService._privateConstructor();
+  //Singleton
+  static final UserService _instance = UserService._private();
+  factory UserService() => _instance;
+  UserService._private() {
+    print("Starting User Service");
+    _init();
+  }
 
   ///Variable that stores connection to the local data saves:
   late SharedPreferences _prefs;
 
   ///Variable that stores an instance of the Userdata to access Userdata via Singleton Object-
   late Person _user;
-
-  ///The private Constructor that is called to when calling UserService.instance.
-  UserService._privateConstructor() {
-    print("Starting User Service");
-    _init();
-  }
 
   ///Initializes UserData by setting [User] and accessing the local data inside [SharedPreferences].
   ///If the [SharedPreferences] are already set, [User] is initialized with the values stored inside

@@ -39,7 +39,7 @@ class _InputFieldsState extends State<InputFields> {
   @override
   Widget build(BuildContext context) {
     //the Controller for the birthday is set to the already input birthday.
-    _birthdayController.text = UserService.instance.birthdayAsString;
+    _birthdayController.text = UserService().birthdayAsString;
 
     return CupertinoFormSection.insetGrouped(
       header: Text(AppLocalizations.of(context)!.userDataDataHeading),
@@ -50,9 +50,9 @@ class _InputFieldsState extends State<InputFields> {
           prefix: Text(AppLocalizations.of(context)!.name),
           child: CupertinoTextFormFieldRow(
             placeholder: AppLocalizations.of(context)!.yourName,
-            initialValue: UserService.instance.name,
+            initialValue: UserService().name,
             onChanged: (value) => setState(() {
-              UserService.instance.name = value;
+              UserService().name = value;
             }),
           ),
         ),
@@ -73,14 +73,14 @@ class _InputFieldsState extends State<InputFields> {
                       maximumDate: earliestDonationBirthday,
                       mode: CupertinoDatePickerMode.date,
                       dateOrder: DatePickerDateOrder.dmy,
-                      onDateTimeChanged: (DateTime dateTime) => UserService.instance.birthday = dateTime,
+                      onDateTimeChanged: (DateTime dateTime) => UserService().birthday = dateTime,
                     ),
                   ),
                 ],
                 cancelButton: CupertinoActionSheetAction(
                   child: const Text("Fertig"),
                   onPressed: () {
-                    _birthdayController.text = UserService.instance.birthdayAsString;
+                    _birthdayController.text = UserService().birthdayAsString;
 
                     Navigator.pop(context);
                   },

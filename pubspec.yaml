@@ -15,7 +15,8 @@ dependencies:
 
   # Basic
   cupertino_icons: ^1.0.2
-  flutter_riverpod: ^1.0.0
+  flutter_hooks: ^0.18.0
+  hooks_riverpod: ^1.0.2
   shared_preferences: ^2.0.8
   http: ^0.13.3
   google_fonts: ^2.1.0
@@ -37,6 +38,7 @@ dependencies:
   table_calendar: ^3.0.2
   carousel_slider: ^4.0.0
   introduction_screen: ^2.1.0
+  flutter_local_notifications: ^9.1.5
 
   # Crypto
   uuid: ^3.0.5

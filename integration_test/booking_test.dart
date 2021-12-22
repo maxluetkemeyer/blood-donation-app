@@ -1,3 +1,4 @@
+import 'package:blooddonation/services/user/user_service.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,26 +16,30 @@ void main() {
         //await wf.skipIntro(tester);
         await tester.pumpAndSettle();
 
+        UserService().birthday = DateTime.now();
+
         await wf.clickNavAppointments(tester);
 
         await wf.clickStartAppointments(tester);
 
         // Birthday selection on first try
 
-        await wf.clickNoButton(tester);
-
-        await wf.clickNoButton(tester);
-
         await wf.clickDate(tester);
+
+        await wf.clickTime(tester);
+
+        await wf.clickNoButton(tester);
+
+        await wf.clickNoButton(tester);
 
         await wf.abortBooking(tester);
 
-        await wf.clickStartAppointments(tester);
+        //await wf.clickStartAppointments(tester);
       },
     );
   });
 
-  group('Booking test', () {
+  /*group('Booking test', () {
     testWidgets(
       'booking integration test click No buttons as many times as possible',
       (WidgetTester tester) async {
@@ -55,5 +60,5 @@ void main() {
         }
       },
     );
-  });
+  });*/
 }

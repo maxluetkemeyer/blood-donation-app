@@ -6,10 +6,11 @@ import 'package:http/http.dart' as http;
 import 'package:blooddonation/misc/env.dart' as env;
 
 class BackendService {
-  static final BackendService instance = BackendService._privateConstructor();
-
-  BackendService._privateConstructor() {
-    print("Starting Booking Service");
+  //Singleton
+  static final BackendService _instance = BackendService._private();
+  factory BackendService() => _instance;
+  BackendService._private() {
+    print("Starting Backend Service");
   }
 
   Future<List<Appointment>> getFreeAppointments(DateTime day) async {
@@ -25,7 +26,7 @@ class BackendService {
       List<Appointment> appointments = appObjsJson.map((appJson) => Appointment.fromJson(appJson)).toList();
 
       //todo: set free appointments here or when future used?
-      BookingService.instance.freeAppointments = appointments;
+      BookingService().freeAppointments = appointments;
       return appointments;
     } else {
       // If the server did not return a 200 OK response,

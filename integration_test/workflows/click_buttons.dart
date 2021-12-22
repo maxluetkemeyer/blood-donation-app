@@ -13,7 +13,7 @@ Future<void> workflow(WidgetTester tester) async {
 
 Future<void> workflowNoButton(WidgetTester tester) async {
   //click no button in the pre-appointment questions
-  final noButton = find.text('No');
+  final noButton = find.text('Nein');
 
   expect(noButton, findsOneWidget);
 

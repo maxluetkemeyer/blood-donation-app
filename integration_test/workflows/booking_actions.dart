@@ -1,9 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter/material.dart';
 
-Future<void> workflowClickDate(WidgetTester tester) async{
+Future<void> workflowClickDate(WidgetTester tester) async {
   //Click the 29th as Date during the current month in the booking process
-  final findDate = find.text('29');
+  final findDate = find.text('13');
 
   expect(findDate, findsOneWidget);
 
@@ -12,14 +11,14 @@ Future<void> workflowClickDate(WidgetTester tester) async{
   await tester.pumpAndSettle();
 }
 
-Future<void> workflowClickTime(WidgetTester tester) async{
+Future<void> workflowClickTime(WidgetTester tester) async {
   //Click the '8:00h' time during the booking process
-  final findTime = find.byKey(const Key('0Cup'));
+  //final findTime = find.byKey(const Key('0Cup'));
+  final findTime = find.text("20:00");
 
-  expect(findTime, findsOneWidget);
+  expect(findTime, findsWidgets);
 
-  await tester.tap(findTime);
+  await tester.tap(findTime.first);
 
   await tester.pumpAndSettle();
 }
-

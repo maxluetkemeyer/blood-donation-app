@@ -1,7 +1,7 @@
 import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/models/person_model.dart';
-import 'package:blooddonation/misc/providers.dart';
-import 'package:blooddonation/services/backend_service.dart';
+import 'package:blooddonation/services/provider/providers.dart';
+import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
     super.initState();
 
     _birthdayController = TextEditingController();
-    _birthdayController.text = UserService.instance.birthdayAsString;
+    _birthdayController.text = UserService().birthdayAsString;
   }
 
   ///Function is called when [_BookingOverviewState] is disposed.
@@ -70,8 +70,8 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                 prefix: const Text("Name"),
                 child: CupertinoTextFormFieldRow(
                   placeholder: "Ihr Name",
-                  initialValue: UserService.instance.name,
-                  onChanged: (value) => UserService.instance.name = value,
+                  initialValue: UserService().name,
+                  onChanged: (value) => UserService().name = value,
                 ),
               ),
               CupertinoFormRow(
@@ -91,14 +91,14 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                             maximumDate: earliestDonationBirthday,
                             mode: CupertinoDatePickerMode.date,
                             dateOrder: DatePickerDateOrder.dmy,
-                            onDateTimeChanged: (DateTime dateTime) => UserService.instance.birthday = dateTime,
+                            onDateTimeChanged: (DateTime dateTime) => UserService().birthday = dateTime,
                           ),
                         ),
                       ],
                       cancelButton: CupertinoActionSheetAction(
                         child: const Text("Fertig"),
                         onPressed: () {
-                          _birthdayController.text = UserService.instance.birthdayAsString;
+                          _birthdayController.text = UserService().birthdayAsString;
 
                           Navigator.pop(context);
                         },
@@ -117,7 +117,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                 prefix: const Text("Termin"),
                 child: CupertinoTextFormFieldRow(
                   placeholder: "Ihr Termin",
-                  initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService.instance.selectedAppointment!.start),
+                  initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService().selectedAppointment!.start),
                   readOnly: true,
                   onTap: () => showCupertinoDialog(
                     context: context,
@@ -132,7 +132,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                         children: [
                           const SizedBox(height: 10),
                           Text(
-                            DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService.instance.selectedDay!),
+                            DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService().selectedDay!),
                             style: const TextStyle(
                               fontSize: 20,
                             ),
@@ -150,7 +150,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                           isDestructiveAction: true,
                           onPressed: () {
                             //reset
-                            BookingService.instance.resetBookingProcess();
+                            BookingService().resetBookingProcess();
 
                             ref.read(bookingStateProvider.state).state = 0;
 
@@ -180,15 +180,15 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
               onPressed: () async {
                 print("Termin buchen button pressed");
 
-                http.Response response = await BackendService.instance.bookAppointment(
+                http.Response response = await BackendService().bookAppointment(
                   Appointment(
                     id: "-1",
                     start: DateTime.now(),
                     duration: const Duration(hours: 1),
                     person: Person(
-                      birthday: UserService.instance.birthday,
-                      gender: UserService.instance.gender,
-                      name: UserService.instance.name,
+                      birthday: UserService().birthday,
+                      gender: UserService().gender,
+                      name: UserService().name,
                     ),
                   ),
                 );
@@ -198,9 +198,9 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                   //return;
                 }
 
-                //BookingService.instance.bookedAppointment = Appointment.fromJson(jsonDecode(response.body));
+                //BookingService().bookedAppointment = Appointment.fromJson(jsonDecode(response.body));
 
-                BookingService.instance.bookedAppointment = EmptyAppointment();
+                BookingService().bookedAppointment = EmptyAppointment();
 
                 Navigator.pop(context); //Reload required at home page
               },
