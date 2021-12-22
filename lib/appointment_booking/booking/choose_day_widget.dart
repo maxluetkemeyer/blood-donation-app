@@ -1,4 +1,4 @@
-import 'package:blooddonation/misc/providers.dart';
+import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -51,8 +51,8 @@ class ChooseDay extends ConsumerWidget {
       ),
       startingDayOfWeek: StartingDayOfWeek.monday,
       onDaySelected: (selectedDay, focusedDay) {
-        BookingService.instance.selectedDay = selectedDay;
-        print(BookingService.instance.selectedDay);
+        BookingService().selectedDay = selectedDay;
+        print(BookingService().selectedDay);
         ref.read(bookingStateProvider.state).state++;
       },
     );

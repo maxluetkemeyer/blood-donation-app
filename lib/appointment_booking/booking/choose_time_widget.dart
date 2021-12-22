@@ -1,6 +1,6 @@
 import 'package:blooddonation/models/appointment_model.dart';
-import 'package:blooddonation/misc/providers.dart';
-import 'package:blooddonation/services/backend_service.dart';
+import 'package:blooddonation/services/provider/providers.dart';
+import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +25,7 @@ class ChooseTime extends ConsumerWidget {
         return false;
       },
       child: FutureBuilder(
-        future: BackendService.instance.getFreeAppointments(BookingService.instance.selectedDay!),
+        future: BackendService().getFreeAppointments(BookingService().selectedDay!),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -51,8 +51,8 @@ class ChooseTime extends ConsumerWidget {
   ///
   ///Returns [List] of [AppointmentBox] [Widget]s
   List<Widget> _appointmentBoxList() {
-    DateTime selectedDay = BookingService.instance.selectedDay!;
-    List<Appointment> freeAppointments = BookingService.instance.freeAppointments;
+    DateTime selectedDay = BookingService().selectedDay!;
+    List<Appointment> freeAppointments = BookingService().freeAppointments;
 
     List<Widget> boxes = [];
     List freeAppointmentsAtThisDay = [];

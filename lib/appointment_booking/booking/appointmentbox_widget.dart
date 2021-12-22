@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../misc/providers.dart';
+import '../../services/provider/providers.dart';
 
 ///Class to define one Appointment.
 ///
@@ -29,7 +29,7 @@ class AppointmentBox extends ConsumerWidget {
       color: Theme.of(context).primaryColor,
       padding: EdgeInsets.symmetric(horizontal: width * 0.09),
       onPressed: () {
-        BookingService.instance.selectedAppointment = appointment;
+        BookingService().selectedAppointment = appointment;
         ref.read(bookingStateProvider.state).state++;
       },
       child: Text(

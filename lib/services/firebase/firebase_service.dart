@@ -12,10 +12,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 /// Topics
 /// Connect to Notification service
 class FirebaseService {
-  static final FirebaseService instance = FirebaseService._privateConstructor();
-
-  FirebaseService._privateConstructor() {
-    print("Try to init fb");
+  //Singleton
+  static final FirebaseService _instance = FirebaseService._private();
+  factory FirebaseService() => _instance;
+  FirebaseService._private() {
+    print("Starting Firebase Service");
     Firebase.initializeApp().then((FirebaseApp fbApp) {
       fbApp.setAutomaticDataCollectionEnabled(false);
 

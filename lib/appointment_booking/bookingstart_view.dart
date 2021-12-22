@@ -24,7 +24,7 @@ class BookingStartView extends StatelessWidget {
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: <Widget>[
-        BookingService.instance.bookedAppointment != null
+        BookingService().bookedAppointment != null
             ? const AppointmentBookedView()
             : Padding(
                 padding: const EdgeInsets.only(
@@ -62,7 +62,7 @@ class BookingStartView extends StatelessWidget {
                         color: Theme.of(context).primaryColor,
                         child: Text(AppLocalizations.of(context)!.bookingStartButton),
                         onPressed: () async {
-                          if (UserService.instance.birthdayAsString == "") {
+                          if (UserService().birthdayAsString == "") {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const FirstBooking()),

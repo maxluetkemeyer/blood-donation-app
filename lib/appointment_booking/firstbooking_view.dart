@@ -85,7 +85,7 @@ class _FirstBookingState extends State<FirstBooking> {
                             maximumDate: DateTime.now(),
                             mode: CupertinoDatePickerMode.date,
                             dateOrder: DatePickerDateOrder.dmy,
-                            onDateTimeChanged: (DateTime dateTime) => UserService.instance.birthday = dateTime,
+                            onDateTimeChanged: (DateTime dateTime) => UserService().birthday = dateTime,
                           ),
                         ),
                       ],
@@ -93,7 +93,7 @@ class _FirstBookingState extends State<FirstBooking> {
                         child: Text(AppLocalizations.of(context)!.doneButton),
                         onPressed: () {
                           tappedBirthday = true;
-                          _birthdayController.text = UserService.instance.birthdayAsString;
+                          _birthdayController.text = UserService().birthdayAsString;
                           setState(() {});
                           Navigator.pop(context);
                         },
@@ -137,12 +137,12 @@ class _FirstBookingState extends State<FirstBooking> {
   ///
   ///Returns [bool]. True, if the Birthday isn't empty nor too early (younger than 18).
   bool birthdayValidation() {
-    if (UserService.instance.birthday == null) return false;
+    if (UserService().birthday == null) return false;
 
-    DateTime userBirthday = UserService.instance.birthday!;
+    DateTime userBirthday = UserService().birthday!;
     DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(DateTime.now().millisecondsSinceEpoch - 568036800000);
 
-    if (UserService.instance.birthdayAsString == "") return false;
+    if (UserService().birthdayAsString == "") return false;
     if (userBirthday.isAfter(earliestDonationBirthday)) return false;
 
     return true;

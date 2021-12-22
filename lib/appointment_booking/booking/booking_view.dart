@@ -2,7 +2,7 @@ import 'package:blooddonation/appointment_booking/booking/booking_overview_widge
 import 'package:blooddonation/appointment_booking/booking/choose_day_widget.dart';
 import 'package:blooddonation/appointment_booking/booking/choose_time_widget.dart';
 import 'package:blooddonation/appointment_booking/questions/questions_view.dart';
-import 'package:blooddonation/misc/providers.dart';
+import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +88,7 @@ class BookingView extends ConsumerWidget {
             fit: FlexFit.tight,
             flex: 1,
             child: TextButton(
+              key: const ValueKey('cancelBooking'),
               onPressed: () => showCupertinoDialog(
                 context: context,
                 builder: (BuildContext context) => CupertinoAlertDialog(
@@ -110,10 +111,11 @@ class BookingView extends ConsumerWidget {
                   ),
                   actions: [
                     CupertinoDialogAction(
+                      key: const ValueKey('cancelBookingComp'),
                       isDestructiveAction: true,
                       onPressed: () {
                         //reset booking process
-                        BookingService.instance.resetBookingProcess();
+                        BookingService().resetBookingProcess();
                         ref.read(bookingStateProvider.state).state = 0;
 
                         //pop dialog, then pop booking process view
