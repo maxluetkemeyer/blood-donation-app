@@ -9,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 ///Class to define the booking overview widget.
 ///
 ///Inputs are not required.
@@ -62,22 +62,22 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
       child: Column(
         children: [
           CupertinoFormSection.insetGrouped(
-            header: const Text("Ihre Daten"),
+            header: Text(AppLocalizations.of(context)!.homeMenuUserData),
             footer: const Divider(),
             margin: const EdgeInsets.all(12),
             children: [
               CupertinoFormRow(
-                prefix: const Text("Name"),
+                prefix: Text(AppLocalizations.of(context)!.name),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Ihr Name",
+                  placeholder: AppLocalizations.of(context)!.yourName,
                   initialValue: UserService().name,
                   onChanged: (value) => UserService().name = value,
                 ),
               ),
               CupertinoFormRow(
-                prefix: const Text("Geburtsdatum"),
+                prefix: Text(AppLocalizations.of(context)!.birthday),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Ihr Geburtsdatum",
+                  placeholder: AppLocalizations.of(context)!.yourBirthday,
                   readOnly: true,
                   controller: _birthdayController,
                   onTap: () => showCupertinoModalPopup(
@@ -96,7 +96,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                         ),
                       ],
                       cancelButton: CupertinoActionSheetAction(
-                        child: const Text("Fertig"),
+                        child: Text(AppLocalizations.of(context)!.doneButton),
                         onPressed: () {
                           _birthdayController.text = UserService().birthdayAsString;
 
@@ -110,21 +110,21 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
             ],
           ),
           CupertinoFormSection.insetGrouped(
-            header: const Text("Ihr Termin"),
+            header: Text(AppLocalizations.of(context)!.bookingYourAppointment),
             margin: const EdgeInsets.all(12),
             children: [
               CupertinoFormRow(
-                prefix: const Text("Termin"),
+                prefix: Text(AppLocalizations.of(context)!.bookingAppointment),
                 child: CupertinoTextFormFieldRow(
-                  placeholder: "Ihr Termin",
+                  placeholder: AppLocalizations.of(context)!.bookingYourAppointment,
                   initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService().selectedAppointment!.start),
                   readOnly: true,
                   onTap: () => showCupertinoDialog(
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
-                      title: const Text(
-                        "Blutspendetermin",
-                        style: TextStyle(
+                      title: Text(
+                        AppLocalizations.of(context)!.bookingStartHeader,
+                        style: const TextStyle(
                           fontSize: 24,
                         ),
                       ),
@@ -137,9 +137,9 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                               fontSize: 20,
                             ),
                           ),
-                          const Text(
-                            "ist Ihr ausgewählter Termin. Möchten Sie Ihren Termin ändern und den Buchungsvorgang noch einmal starten?",
-                            style: TextStyle(
+                          Text(
+                            AppLocalizations.of(context)!.bookingBreakText,
+                            style: const TextStyle(
                               fontSize: 16,
                             ),
                           )
@@ -156,12 +156,12 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
 
                             Navigator.pop(context);
                           },
-                          child: const Text('Termin ändern'),
+                          child: Text(AppLocalizations.of(context)!.bookingChangeDate),
                         ),
                         CupertinoDialogAction(
                           isDefaultAction: true,
                           onPressed: () => Navigator.pop(context),
-                          child: const Text('Zurück'),
+                          child: Text(AppLocalizations.of(context)!.back),
                         )
                       ],
                     ),
@@ -176,9 +176,9 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
             width: double.infinity,
             child: CupertinoButton(
               color: Theme.of(context).primaryColor,
-              child: const Text("Termin buchen"),
+              child: Text(AppLocalizations.of(context)!.bookingStartButton),
               onPressed: () async {
-                print("Termin buchen button pressed");
+                print("Book date button has been pressed");
 
                 http.Response response = await BackendService().bookAppointment(
                   Appointment(

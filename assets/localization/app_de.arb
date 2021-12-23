@@ -9,6 +9,9 @@
   "birthday": "Geburtsdatum",
   "yourBirthday": "Ihr Geburtsdatum",
   "doneButton": "Fertig",
+  "back":"Zurück",
+  "next":"Weiter",
+  "ageQuestion":"Altersabfrage",
 
   "homeMenuUserData": "Ihre Daten",
   "homeMenuImprint": "Impressum",
@@ -47,7 +50,18 @@
 
   "bookingStartHeader": "Blutspendetermin",
   "bookingStartInfo": "Wenn Sie „Termin buchen“ auswählen, können Sie einfach und unkompliziert einen Blutspendetermin am Universitätsklinikum Münster buchen. \nAls ersten Schritt müssen Sie dafür ein paar Fragen beantworten, damit mögliche Ausschlusskriterien für Ihre Spende festgestellt werden können.\nHaben Sie keine der Ausschlusskriterien erfüllt, können Sie auch schon einen Termin und eine Uhrzeit für Ihren Blutspendetermin auswählen.\nDann müssen Sie nur noch einmal Ihre Daten überprüfen - und schon haben Sie einen Blutspendetermin!",
-  "bookingStartButton": "Termin buchen"
-
-  
+  "bookingStartButton": "Termin buchen",
+  "bookingYourAppointment": "Ihr Termin",
+  "bookingAppointment": "Termin",
+  "bookingBreakText": "ist Ihr ausgewählter Termin. Möchten Sie Ihren Termin ändern und den Buchungsvorgang noch einmal starten?",
+  "bookingChangeDate": "Termin ändern",
+  "bookingStopBooking":"Buchungsvorgang abbrechen",
+  "bookingChooseDayTitle":"Tag auswählen",
+  "bookingChooseTimeTitle":"Verfügbare Zeiten",
+  "bookingAnswerQuestionsTitle":"Dürfen Sie Blut spenden?",
+  "bookingDatenTitle":"Daten überprüfen",
+  "bookingProgressLoss":"Ihr bisheriger Fortschritt geht verloren.",
+  "bookingAgeWarning":"Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",
+  "bookingFirstPrompt":"Ihre erste Blutspende",
+  "bookingFirstAge":"Wann wurden Sie geboren?"
 }

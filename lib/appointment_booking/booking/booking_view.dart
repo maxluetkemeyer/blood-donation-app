@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:im_stepper/stepper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///Class to define the appointment booking process.
 ///
@@ -26,7 +27,7 @@ class BookingView extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_stepperHeader(activeStep)),
+        title: Text(_stepperHeader(activeStep,context)),
       ),
       body: Column(
         children: [
@@ -70,7 +71,7 @@ class BookingView extends ConsumerWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        _stepperHeader(activeStep),
+                        _stepperHeader(activeStep,context),
                         style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w600,
@@ -91,18 +92,18 @@ class BookingView extends ConsumerWidget {
               onPressed: () => showCupertinoDialog(
                 context: context,
                 builder: (BuildContext context) => CupertinoAlertDialog(
-                  title: const Text(
-                    "Möchten Sie die Buchung abbrechen?",
-                    style: TextStyle(
+                  title: Text(
+                    AppLocalizations.of(context)!.bookingStopBooking,
+                    style: const TextStyle(
                       fontSize: 24,
                     ),
                   ),
                   content: Column(
-                    children: const [
-                      SizedBox(height: 10),
+                    children:  [
+                      const SizedBox(height: 10),
                       Text(
-                        "Ihr bisheriger Fortschritt geht verloren.",
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.bookingProgressLoss,
+                        style: const TextStyle(
                           fontSize: 16,
                         ),
                       )
@@ -122,21 +123,21 @@ class BookingView extends ConsumerWidget {
                         Navigator.pop(context);
                       },
                       //child: const Text('Cancel Booking'),
-                      child: const Text("Buchungsvorgang abbrechen"),
+                      child: Text(AppLocalizations.of(context)!.bookingStopBooking),
                     ),
                     CupertinoDialogAction(
                       isDefaultAction: true,
                       onPressed: () => Navigator.pop(context),
                       //child: const Text('Back'),
-                      child: const Text("Zurück"),
+                      child: Text(AppLocalizations.of(context)!.back),
                     )
                   ],
                 ),
               ),
               //child: const Text("Cancel Booking"),
-              child: const Text(
-                "Buchungsvorgang abbrechen",
-                style: TextStyle(color: Color(0xff0b4874)),
+              child: Text(
+                  AppLocalizations.of(context)!.bookingStopBooking,
+                style: const TextStyle(color: Color(0xff0b4874)),
               ),
             ),
           ),
@@ -150,16 +151,16 @@ class BookingView extends ConsumerWidget {
   ///Input requires [activeStep] as [int] operator.
   ///
   ///Returns type [String].
-  String _stepperHeader(activeStep) {
+  String _stepperHeader(activeStep,BuildContext context) {
     switch (activeStep) {
       case 0:
-        return "Tag auswählen";
+        return AppLocalizations.of(context)!.bookingChooseDayTitle;
       case 1:
-        return "Verfügbare Zeiten";
+        return AppLocalizations.of(context)!.bookingChooseTimeTitle;
       case 2:
-        return "Dürfen Sie Blut spenden?";
+        return AppLocalizations.of(context)!.bookingAnswerQuestionsTitle;
       case 3:
-        return "Daten überprüfen";
+        return AppLocalizations.of(context)!.bookingDatenTitle;
       default:
         return "";
     }
