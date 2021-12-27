@@ -1,8 +1,11 @@
+import 'package:blooddonation/location/map_fullscreen_view.dart';
+import 'package:blooddonation/location/pan_fullscreen_view.dart';
 import 'package:blooddonation/misc/env.dart' as env;
 import 'package:blooddonation/location/map_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:panorama/panorama.dart';
 
 class LocationView extends StatelessWidget {
   const LocationView({Key? key}) : super(key: key);
@@ -21,9 +24,40 @@ class LocationView extends StatelessWidget {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          const SizedBox(
-            height: 300,
-            child: MyMap(),
+          ClipRect(
+            child: SizedBox(
+              height: 300,
+              child: Stack(
+                children: [
+                  Hero(
+                    tag: "panorama",
+                    child: Panorama(
+                      key: GlobalKey(),
+                      onTap: (longitude, latitude, tilt) => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PanFullScreen(
+                            initialLatitude: latitude,
+                            initialLongitude: longitude,
+                            initialTilt: tilt,
+                          ),
+                        ),
+                      ),
+                      child: Image.asset("assets/images/entrance_panorama.jpg"),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    right: 10,
+                    child: Icon(
+                      Icons.touch_app_rounded,
+                      color: Colors.white.withOpacity(0.7),
+                      size: 40,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -89,10 +123,33 @@ class LocationView extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
-          const Image(
-            image: AssetImage("assets/images/UKM_Blutspende_Muenster_Eingang.jpg"),
+          SizedBox(
+            height: 300,
+            child: Stack(
+              children: [
+                Hero(
+                  tag: "map",
+                  child: MyMap(
+                    key: GlobalKey(),
+                    onTap: (tapPosition, point) => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MapFullScreen()),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 10,
+                  right: 10,
+                  child: Icon(
+                    Icons.touch_app_rounded,
+                    color: Colors.white.withOpacity(0.7),
+                    size: 40,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

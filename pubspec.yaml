@@ -26,6 +26,7 @@ dependencies:
   flutter_blurhash: ^0.6.0
   empty_widget: ^0.0.5
   rive: ^0.7.22
+  panorama: ^0.4.1
 
   # add map
   latlong2: ^0.8.0
@@ -46,6 +47,7 @@ dependencies:
   # Firebase
   firebase_core: ^1.7.0
   firebase_messaging: ^11.1.0
+  
 
 dev_dependencies:
   # Dynamic Tests

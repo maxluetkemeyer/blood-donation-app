@@ -22,6 +22,20 @@ class FaqView extends StatelessWidget {
             elevation: 3,
             animationDuration: const Duration(milliseconds: 600),
             children: [
+              ExpansionPanelRadio(
+                value: "tesst",
+                canTapOnHeader: true,
+                headerBuilder: (_, isExpanded) => Container(
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  child: const Text(
+                    "Test",
+                  ),
+                ),
+                body: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  child: WebView(),
+                ),
+              ),
               for (var i in qList)
                 FaqQuestionWidget(
                   question: i,

@@ -1,10 +1,16 @@
-import 'package:blooddonation/misc/env.dart' as env;
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import 'package:blooddonation/misc/env.dart' as env;
+
 class MyMap extends StatelessWidget {
-  const MyMap({Key? key}) : super(key: key);
+  final TapCallback? onTap;
+
+  const MyMap({
+    Key? key,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +18,7 @@ class MyMap extends StatelessWidget {
       options: MapOptions(
         center: LatLng(env.locationLat, env.locationLng),
         zoom: 15.0,
+        onTap: onTap,
       ),
       layers: [
         TileLayerOptions(
