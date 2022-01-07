@@ -27,6 +27,7 @@ dependencies:
   empty_widget: ^0.0.5
   rive: ^0.7.22
   panorama: ^0.4.1
+  flutter_html: ^2.2.1
 
   # add map
   latlong2: ^0.8.0
