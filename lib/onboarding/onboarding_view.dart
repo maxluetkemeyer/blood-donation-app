@@ -36,7 +36,7 @@ class OnboardingView extends StatelessWidget {
       PageViewModel(
         title: "Wussten Sie..",
         bodyWidget: const Text(
-          ".. dass in Deutschland täglich über 15.000 Blutspenden benötigt werden?\n\n..dass eine einzelne Blutspende bis zu drei Leben retten kann?\n\n..dass der menschliche Körper ca. fünf Liter Blut enthält?",
+          "..dass in Deutschland täglich über 15.000 Blutspenden benötigt werden?\n\n..dass eine einzelne Blutspende bis zu drei Leben retten kann?\n\n..dass der menschliche Körper ca. fünf Liter Blut enthält?",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, wordSpacing: 3),
           textAlign: TextAlign.justify,
         ),
@@ -51,7 +51,7 @@ class OnboardingView extends StatelessWidget {
           builder: (context, followLink) => GestureDetector(
             onTap: followLink,
             child: const Text(
-              "Mehr Wissen finden Sie hier",
+              "Mehr Informationen finden Sie hier",
               style: TextStyle(fontSize: 15, decoration: TextDecoration.underline),
             ),
           ),
@@ -62,34 +62,53 @@ class OnboardingView extends StatelessWidget {
 
       // Blood group
       PageViewModel(
-        titleWidget: const Text(
-          "Blutgruppen:\nDas A-B-0 System",
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff003866),
+        titleWidget: const Padding(
+          padding: EdgeInsets.only(top: 60),
+          child: Text(
+            "Mit einem Bruchteil Ihrer Zeit..",
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff003866),
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
-        bodyWidget: const Text(
-          "-Mensch mit Blutgruppe A hat auf der Oberfläche seiner Blutkörperchen das Antigen A\n\n-Mensch mit Blutgruppe B hat Antigen B\n\n-Blutgruppe AB hat beide Antigene\n\n-Blugruppe 0 hat weder A noch B\n\n-Immunsystem bildet gegen fehlende Antigene Antikörper, dh ein Mensch mit Blutgruppe A hat Antikörper gegen B und umgekehrt\n\n-Bei Blutgruppe AB werden keine Antikörper gebildet\n\n-Blutgruppe 0 bildet keine Antikörper",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, wordSpacing: 3),
+        bodyWidget: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const[
+            Text(
+            "also etwa eine gute Stunde – mehr Zeit müssen Sie nicht mitbringen. Die Blutspende selbst dauert beispielsweise bei einer Vollblutspende nur maximal 12 Minuten. Die Voruntersuchung, das Ausfüllen des Fragebogens und das anschließende Ausruhen brauchen aber auch etwas Zeit.",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, wordSpacing: 3),
+             textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 40),
+            Text(
+          "..retten Sie vielleicht ein ganzes Leben.",
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xff003866)),
+          textAlign: TextAlign.center,
+          ),
+          ],
         ),
         // Image from earlier version.
         //image: buildImage("assets/images/temp_blooddonation_placeholder2.jpg"),
-        image: const Placeholder(
-          color: Color(0xff003866),
-        ),
         decoration: getOwnPageDecoration(),
-      ),
+        footer: const Text(
+          "Alles in allem für Sie kaum mehr als ein Augenblick, der für einen schwer erkrankten oder verletzten Menschen jedoch das Leben bedeuten kann.",
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, wordSpacing: 3),
+         textAlign: TextAlign.center,
+        ),
+
+      )
+      ,
 
       // Current information about UKM, ...
       PageViewModel(
         title: "Aktuelle Informationen zur Blutspende am UKM",
-        bodyWidget: Text(
-          "Für alle Blutspenden gilt die 3G-Regel.\nDas bedeutet: Zum Blutspende-Termin muss entweder ein Impfnachweis,eine Bescheinigung über Genesung oder ein Antigen-Schnelltest (nicht älter als 48 Std.) vorgelegt werden.",
-          style: getOwnTextStyle(),
-          textAlign: TextAlign.left,
+        bodyWidget: const Text(
+          "Für alle Blutspender:innen gilt die 3G-Regel.\nDas bedeutet: Zum Blutspende-Termin muss entweder ein Impfnachweis, eine Bescheinigung über Genesung oder ein Antigen-Schnelltest (nicht älter als 48 Std.) vorgelegt werden.",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, wordSpacing: 3),
+          textAlign: TextAlign.center,
         ),
         // Image from earlier version.
         // image: Center(

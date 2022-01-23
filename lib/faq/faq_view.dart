@@ -1,6 +1,6 @@
 import 'package:blooddonation/faq/html.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
+//import 'package:flutter_html/flutter_html.dart';
 
 import 'faq_question_widget.dart';
 import '../models/faq_question_model.dart';
@@ -36,11 +36,11 @@ class FaqView extends StatelessWidget {
                 ),
                 body: Container(
                   padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                  child: Html(
-                    data: htmlData,
+                  //child: Html(
+                    //data: htmlData,
                   ),
                 ),
-              ),
+              //),
               for (var i in qList)
                 FaqQuestionWidget(
                   question: i,
