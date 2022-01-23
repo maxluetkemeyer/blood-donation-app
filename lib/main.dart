@@ -88,9 +88,6 @@ class _AppState extends State<App> {
   ///
   ///returns [Future] specifically [boolean]
   Future<bool> showOnboarding() async {
-    //Do not show onboarding in web version
-    if (kIsWeb) return true;
-
     //maybe use UserService for this
     //load persistent data to check onboarded status
     SharedPreferences prefs = await SharedPreferences.getInstance();
