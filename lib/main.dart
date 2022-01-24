@@ -90,8 +90,9 @@ class _AppState extends State<App> {
   Future<bool> showOnboarding() async {
     //maybe use UserService for this
     //load persistent data to check onboarded status
-    //SharedPreferences prefs = await SharedPreferences.getInstance();
-    //final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // ignore: unused_local_variable
+    final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
     return false;
 
