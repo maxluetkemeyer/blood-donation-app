@@ -1,7 +1,6 @@
 import 'package:blooddonation/app.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:rive/rive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../style.dart';
@@ -13,7 +12,6 @@ PageViewModel covidPage(BuildContext context) => PageViewModel(
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, wordSpacing: 3),
         textAlign: TextAlign.center,
       ),
-      image: const RiveAnimation.asset("images/blood_drop.riv"),
       decoration: getOwnPageDecoration(),
       footer: ElevatedButton(
         onPressed: () => goToHomeScreen(context),

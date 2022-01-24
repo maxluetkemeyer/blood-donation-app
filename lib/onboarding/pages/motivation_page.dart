@@ -4,17 +4,14 @@ import 'package:introduction_screen/introduction_screen.dart';
 import '../style.dart';
 
 PageViewModel motivationPage() => PageViewModel(
-      titleWidget: const Padding(
-        padding: EdgeInsets.only(top: 60),
-        child: Text(
-          "Mit einem Bruchteil Ihrer Zeit..",
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff003866),
-          ),
-          textAlign: TextAlign.center,
+      titleWidget: const Text(
+        "Mit einem Bruchteil Ihrer Zeit..",
+        style: TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+          color: Color(0xff003866),
         ),
+        textAlign: TextAlign.center,
       ),
       bodyWidget: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:rive/rive.dart';
 import 'package:url_launcher/link.dart';
 
 import '../style.dart';
@@ -12,7 +11,6 @@ PageViewModel didyouknowPage() => PageViewModel(
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, wordSpacing: 3),
         textAlign: TextAlign.justify,
       ),
-      image: const RiveAnimation.asset("images/blood_drop.riv"),
       footer: Link(
         uri: Uri.parse('https://ukm-blutspende.de/index.php?id=wussten-sie'),
         builder: (context, followLink) => GestureDetector(
