@@ -7,7 +7,7 @@ void main() {
       () {
     //ARRANGE
     Appointment testAppointment = Appointment(
-      id: "1",
+      id: 1,
       start: DateTime.utc(1999, 10, 10),
       duration: const Duration(hours: 1),
     );

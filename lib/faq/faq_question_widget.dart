@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/faq_question_model.dart';
+import '../models/faqquestion_model.dart';
 
 ///Class to define one Faq question.
 ///
@@ -29,13 +29,13 @@ class FaqQuestionWidget {
       headerBuilder: (_, isExpanded) => Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
           child: Text(
-            question.question,
+            "question.question",
             style: questionTextStyle,
           )),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: Text(
-          question.answer,
+          "question.answer",
           style: answerTextStyle,
         ),
       ),

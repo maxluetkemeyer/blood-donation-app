@@ -186,7 +186,7 @@ class OnboardingView extends StatelessWidget {
   void goToHomeScreen(BuildContext context) async {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
-          builder: (context) => const AppStructure(),
+          builder: (context) => const App(),
         ),
         (Route<dynamic> route) => false);
 

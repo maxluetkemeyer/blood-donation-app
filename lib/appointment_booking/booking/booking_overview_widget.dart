@@ -182,7 +182,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
 
                 http.Response response = await BackendService().bookAppointment(
                   Appointment(
-                    id: "-1",
+                    id: -1,
                     start: DateTime.now(),
                     duration: const Duration(hours: 1),
                     person: Person(

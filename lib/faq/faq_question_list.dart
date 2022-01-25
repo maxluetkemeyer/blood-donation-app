@@ -1,7 +1,16 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../models/faq_question_model.dart';
+import '../models/faqquestion_model.dart';
 
 ///List saves all the [FaqQuestion]'s. A new question can be created by adding a new FaqQuestion to this List.
+List<FaqQuestion> faqQuestionList(context) => [
+      FaqQuestion(
+        id: -1,
+        position: 0,
+      ),
+    ];
+
+
+
+/*
 List<FaqQuestion> faqQuestionList(context) => [
       FaqQuestion(
         id: 'q1',
@@ -49,3 +58,4 @@ List<FaqQuestion> faqQuestionList(context) => [
         answer: AppLocalizations.of(context)!.faqQ9Body,
       ),
     ];
+*/

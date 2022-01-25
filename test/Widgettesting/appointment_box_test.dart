@@ -12,7 +12,7 @@ void main() {
         (WidgetTester tester) async {
       //ARRANGE
       Appointment testAppointment = Appointment(
-        id: '1',
+        id: 1,
         start: DateTime.utc(2020, 2, 20),
         duration: const Duration(hours: 1),
       );

@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'home/home_view.dart';
 
-class AppStructure extends StatefulWidget {
-  const AppStructure({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
-  State<AppStructure> createState() => _AppStructureState();
+  State<App> createState() => _AppState();
 }
 
-class _AppStructureState extends State<AppStructure> {
+class _AppState extends State<App> {
   int pageIndex = 0;
 
   final screens = [

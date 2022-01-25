@@ -2,7 +2,7 @@ import 'person_model.dart';
 import 'request_model.dart';
 
 class Appointment {
-  String id;
+  int id;
   DateTime start;
   Duration duration;
   Request? request;
@@ -16,19 +16,37 @@ class Appointment {
     this.person,
   });
 
-  ///Factory Constructor to generate an [Appointment] object out of a json map
-  factory Appointment.fromJson(Map<String, dynamic> json) {
-    print(json);
+  factory Appointment.fromJson(Map<String, dynamic> json) => Appointment(
+        id: json["id"] ?? -1,
+        start: DateTime.parse(json["start"]),
+        duration: Duration(minutes: json["duration"]),
+        request: json["request"] != null ? Request.fromJson(json["request"]) : null,
+        person: json["person"] != null ? Person.fromJson(json["person"]) : null,
+      );
+
+  @override
+  String toString() {
+    String requestS = "";
+    if (request != null) {
+      requestS = request!.status;
+    }
+
+    return "Appointment $id " + start.toString() + " " + duration.toString() + " " + requestS;
+  }
+
+  Appointment copyWith({
+    int? id,
+    DateTime? start,
+    Duration? duration,
+    Request? request,
+    Person? person,
+  }) {
     return Appointment(
-      id: json["id"].toString(), //?? ""
-      //start: DateTime.parse(json['start']),
-      start: DateTime.parse(json["datetime"]), // + "T" + json["time"]
-      duration: const Duration(
-        //hours: json["duration"] ?? 1,
-        hours: 1,
-      ),
-      request: json["request"],
-      person: json["person"],
+      id: id ?? this.id,
+      start: start ?? this.start,
+      duration: duration ?? this.duration,
+      request: request ?? this.request,
+      person: person ?? this.person,
     );
   }
 
@@ -54,30 +72,31 @@ class Appointment {
     }
 
     Map<String, dynamic> map = {
-      //"id": id,
-      //"start": start.toIso8601String(),
-      "date": start.year.toString() + "-" + start.month.toString() + "-" + start.day.toString(),
-      "time": start.hour.toString() + ":" + start.minute.toString() + ":" + start.second.toString(),
-      //"duration": duration.toString(),
-      "duration": 60,
+      "id": id,
+      "start": start.toIso8601String(),
+      "duration": duration.inMinutes,
       "person": personMap,
       //"request": requestMap,
     };
 
     return map;
   }
-
-  @override
-  String toString() {
-    return "Appointment " + id + " " + start.toString() + " " + duration.toString();
-  }
 }
 
 class EmptyAppointment extends Appointment {
   EmptyAppointment()
       : super(
-          id: "-1",
+          id: -1,
           start: DateTime(0),
           duration: const Duration(),
+        );
+
+  EmptyAppointment.free({
+    required DateTime start,
+    required Duration duration,
+  }) : super(
+          id: -1,
+          start: start,
+          duration: duration,
         );
 }
