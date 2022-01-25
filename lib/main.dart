@@ -97,9 +97,10 @@ class _MainWidgetState extends State<MainWidget> {
     //maybe use UserService for this
     //load persistent data to check onboarded status
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    // ignore: unused_local_variable
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
     // ignore: dead_code
-    return true || alreadyOnboarded;
+    return false && alreadyOnboarded;
   }
 }
