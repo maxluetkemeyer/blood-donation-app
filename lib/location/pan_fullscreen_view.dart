@@ -20,7 +20,9 @@ class PanFullScreen extends StatelessWidget {
     return Hero(
       tag: "panorama",
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          backgroundColor: Colors.white.withOpacity(0.7),
           actions: [
             IconButton(
               onPressed: () => launch(env.locationLink),

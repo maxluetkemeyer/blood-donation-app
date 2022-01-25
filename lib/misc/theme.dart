@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 Color _primaryColor = const Color(0xff0b4874);
 Color _accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
 Color _accentDark = const Color(0xff5f7a8e);
-Color _accentBlueLight = const Color(0xff81a4bd);
+//Color _accentBlueLight = const Color(0xff81a4bd);
 
 final ThemeData lightTheme = ThemeData(
   primaryColor: _primaryColor,

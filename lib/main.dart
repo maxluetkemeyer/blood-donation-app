@@ -26,7 +26,7 @@ void main() {
 
   runApp(const MainWidget());
 
-  Future.delayed(const Duration(seconds: 4)).then(
+  Future.delayed(const Duration(minutes: 4)).then(
     (_) => NotificationService().displayNotification(
       channelID: "booking_response",
       channelName: "Booking Status Response",
