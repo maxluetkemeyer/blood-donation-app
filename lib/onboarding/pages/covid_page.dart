@@ -35,7 +35,7 @@ PageViewModel covidPage(BuildContext context) => PageViewModel(
 void goToHomeScreen(BuildContext context) async {
   Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(
-        builder: (context) => const AppStructure(),
+        builder: (context) => const App(),
       ),
       (Route<dynamic> route) => false);
   SharedPreferences prefs = await SharedPreferences.getInstance();
