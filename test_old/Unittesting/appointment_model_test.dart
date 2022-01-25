@@ -21,7 +21,7 @@ void main() {
       'Given the function Appointment.fromJson when a Json with the identifier start, then the function returns an appointment with the data from the json as start value',
       () {
     //ARRANGE
-    Map<String, dynamic> json = {'datetime': DateTime.fromMillisecondsSinceEpoch(15000).toString()};
+    Map<String, dynamic> json = {'start': DateTime.fromMillisecondsSinceEpoch(15000).toString()};
     //ACT
     Appointment testAppointment = Appointment.fromJson(json);
     //ASSERT

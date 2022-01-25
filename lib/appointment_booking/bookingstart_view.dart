@@ -3,9 +3,7 @@ import 'package:blooddonation/appointment_booking/booking_appointment_booked.dar
 import 'package:blooddonation/appointment_booking/firstbooking_view.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/user/user_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookingStartView extends StatelessWidget {
   const BookingStartView({Key? key}) : super(key: key);
@@ -15,77 +13,29 @@ class BookingStartView extends StatelessWidget {
   ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context) {
-    ///The width of the ported media
-    double width = MediaQuery.of(context).size.width;
-
-    ///The height of the ported media
-    double height = MediaQuery.of(context).size.height;
-
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      children: <Widget>[
-        BookingService().bookedAppointment != null
-            ? const AppointmentBookedView()
-            : Padding(
-                padding: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 60,
-                        bottom: 40,
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          AppLocalizations.of(context)!.bookingStartHeader,
-                          style: const TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.bookingStartInfo,
-                      style: const TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 32, left: 12, right: 12),
-                      width: double.infinity,
-                      child: CupertinoButton(
-                        color: Theme.of(context).primaryColor,
-                        child: Text(AppLocalizations.of(context)!.bookingStartButton),
-                        onPressed: () async {
-                          if (UserService().birthdayAsString == "") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const FirstBooking()),
-                            );
-                          } else {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const BookingView()),
-                            );
-                          }
-                        },
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 40, bottom: 40),
-                      width: width * 0.6,
-                      height: height * 0.3,
-                      child: const Placeholder(),
-                    ),
-                  ],
-                ),
+    return BookingService().bookedAppointment != null
+        ? const AppointmentBookedView()
+        : GestureDetector(
+            onTap: () async {
+              if (UserService().birthdayAsString == "") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FirstBooking()),
+                );
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BookingView()),
+                );
+              }
+            },
+            child: const SizedBox(
+              height: double.infinity,
+              child: Image(
+                image: AssetImage("./assets/images/book_screen_design_mock.png"),
+                fit: BoxFit.fitHeight,
               ),
-      ],
-    );
+            ),
+          );
   }
 }

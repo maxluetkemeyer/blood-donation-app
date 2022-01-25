@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 //blue design
-const Color _primaryColor = Color(0xff0b4874);
+Color _primaryColor = const Color(0xff0b4874);
 Color _accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
 Color _accentDark = const Color(0xff5f7a8e);
-//Color _accentBlueLight = const Color(0xff81a4bd);
+Color _accentBlueLight = const Color(0xff81a4bd);
 
 final ThemeData lightTheme = ThemeData(
   primaryColor: _primaryColor,
@@ -25,14 +25,14 @@ final ThemeData lightTheme = ThemeData(
   ),
   appBarTheme: AppBarTheme(
     systemOverlayStyle: const SystemUiOverlayStyle(
-      statusBarColor: _primaryColor,
+      statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.light,
     ),
-    backgroundColor: _primaryColor,
+    backgroundColor: Colors.white,
     iconTheme: IconThemeData(
-      color: _accentLight,
+      color: _primaryColor,
     ),
-    foregroundColor: _accentLight,
+    foregroundColor: _primaryColor,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(

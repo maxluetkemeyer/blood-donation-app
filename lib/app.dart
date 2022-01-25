@@ -31,9 +31,13 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //elevation: 0,
+        //backgroundColor: Colors.white,
+        //foregroundColor: Theme.of(context).primaryColor,
         title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
           PopupMenuButton<int>(
+            elevation: 14,
             onSelected: (value) {
               switch (value) {
                 case 0:
@@ -47,11 +51,21 @@ class _AppState extends State<App> {
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: 0,
+                textStyle: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
                 child: Text(AppLocalizations.of(context)!.homeMenuUserData),
               ),
               const PopupMenuDivider(),
               PopupMenuItem(
                 value: 1,
+                textStyle: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
                 child: Text(AppLocalizations.of(context)!.homeMenuImprint),
               ),
             ],
@@ -61,10 +75,14 @@ class _AppState extends State<App> {
       body: screens[pageIndex],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            labelTextStyle: MaterialStateProperty.all(TextStyle(color: Theme.of(context).colorScheme.secondary)),
-            iconTheme: MaterialStateProperty.all(IconThemeData(color: Theme.of(context).colorScheme.secondary)),
-            //indicatorColor: Theme.of(context).colorScheme.outline,
-            backgroundColor: Theme.of(context).primaryColor),
+          labelTextStyle: MaterialStateProperty.all(
+            TextStyle(color: Theme.of(context).primaryColor),
+          ),
+          iconTheme: MaterialStateProperty.all(
+            IconThemeData(color: Theme.of(context).primaryColor),
+          ),
+          backgroundColor: Colors.white,
+        ),
         child: NavigationBar(
           selectedIndex: pageIndex,
           onDestinationSelected: (index) => setState(() {
