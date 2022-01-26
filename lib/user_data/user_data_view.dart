@@ -6,8 +6,6 @@ class UserDataView extends StatelessWidget {
   const UserDataView({Key? key}) : super(key: key);
 
   ///Build method for the User Data Screen
-  ///
-  ///returns [Widget] specifically [Scaffold]
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +21,7 @@ class UserDataView extends StatelessWidget {
               SizedBox(height: 10),
               InputFields(),
               LastBloodDonation(),
+              
             ],
           ),
         ],

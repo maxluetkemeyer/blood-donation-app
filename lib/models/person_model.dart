@@ -3,7 +3,7 @@ class Person {
   String? name;
   DateTime? birthday;
   String? gender;
-  bool? firstDonation;
+  bool firstDonation;
   String? telephoneNumber;
 
   Person({
@@ -11,7 +11,7 @@ class Person {
     this.name,
     this.birthday,
     this.gender,
-    this.firstDonation,
+    this.firstDonation = true,
     this.telephoneNumber,
   });
 

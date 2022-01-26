@@ -30,6 +30,8 @@ class UserService {
       name: _prefs.getString("name") ?? "",
       birthday: DateTime.parse(_prefs.getString("birthday") ?? "1970-01-01 01:00:00.000"),
       gender: _prefs.getString("gender") ?? "",
+      telephoneNumber: _prefs.getString("telephoneNumber") ?? "",
+      firstDonation: _prefs.getBool("firstDonation") ?? true,
     );
     print("User Service finished!");
     print(_user.birthday.toString());
@@ -54,6 +56,9 @@ class UserService {
   ///Get the [gender] by accessing the Singleton instance [_user].
   String? get gender => _user.gender;
 
+  String? get telephoneNumber => _user.telephoneNumber;
+  bool get firstDonation => _user.firstDonation;
+
   // Setter
 
   ///Set [name] of the user inside the Singleton instance [_user] and inside the [SharedPreferences].
@@ -72,5 +77,15 @@ class UserService {
   set gender(String? gender) {
     _user.gender = gender;
     _prefs.setString("gender", gender ?? "");
+  }
+
+  set telephoneNumber(String? telephoneNumber) {
+    _user.telephoneNumber = telephoneNumber;
+    _prefs.setString("telephoneNumber", telephoneNumber ?? "");
+  }
+
+  set firstDonation(bool value) {
+    _user.firstDonation = value;
+    _prefs.setBool("firstDonation", value);
   }
 }
