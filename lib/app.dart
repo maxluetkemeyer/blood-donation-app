@@ -1,14 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:blooddonation/booking/booking_view.dart';
-import 'package:blooddonation/user_data/user_data_view.dart';
 import 'package:blooddonation/faq/faq_view.dart';
 import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:blooddonation/user_data/user_data_view.dart';
+
 import 'home/home_view.dart';
 
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+  final int initalPageIndex;
+
+  const App({
+    Key? key,
+    this.initalPageIndex = 0,
+  }) : super(key: key);
 
   @override
   State<App> createState() => _AppState();
@@ -23,6 +30,12 @@ class _AppState extends State<App> {
     const LocationView(),
     const FaqView(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    pageIndex = widget.initalPageIndex;
+  }
 
   ///Defines the Page Design for every Navigation oriented screen.
   ///

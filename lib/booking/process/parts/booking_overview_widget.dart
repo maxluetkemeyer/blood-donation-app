@@ -1,3 +1,4 @@
+import 'package:blooddonation/app.dart';
 import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 ///Class to define the booking overview widget.
 ///
 ///Inputs are not required.
@@ -201,7 +203,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
 
                 BookingService().bookedAppointment = EmptyAppointment();
 
-                Navigator.pop(context); //Reload required at home page
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
               },
             ),
           ),
