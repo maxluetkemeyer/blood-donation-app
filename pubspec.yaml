@@ -37,6 +37,7 @@ dependencies:
   introduction_screen: ^2.1.0
   flutter_local_notifications: ^9.1.5
   crypto: ^3.0.1
+  workmanager: ^0.4.1
 
   
 

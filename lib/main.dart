@@ -1,8 +1,9 @@
 import 'package:blooddonation/services/backend/backend_service.dart';
+import 'package:blooddonation/services/background/notification_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
-import 'package:blooddonation/services/notification/notification_service.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
+import 'package:blooddonation/services/background/background_service.dart';
 
 import './onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
@@ -22,22 +23,17 @@ void main() {
   BookingService();
   BackendService();
   NotificationService();
+  BackgroundService();
+  BackgroundService.initWorkmanager();
 
   runApp(const MainWidget());
 
-  Future.delayed(const Duration(minutes: 4)).then(
-    (_) => NotificationService().displayNotification(
-      channelID: "booking_response",
-      channelName: "Booking Status Response",
-      channelDescription: "Booking Response Channel Description",
-      notificationTitle: "notificationTitle",
-      notificationBody: "notificationBody",
-      payload: "payload",
-    ),
-  );
-
   Future.delayed(const Duration(seconds: 3)).then((_) {
     getFreeAppointments(DateTime.now());
+  });
+
+  Future.delayed(const Duration(seconds: 10)).then((_) {
+    BackgroundService().startBackgroundTask();
   });
 }
 
