@@ -1,4 +1,4 @@
-import 'package:blooddonation/location/map_widget.dart';
+import 'package:blooddonation/location/map/map_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:blooddonation/misc/env.dart' as env;
 import 'package:url_launcher/url_launcher.dart';
@@ -19,7 +19,7 @@ class MapFullScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: MyMap(
+        body: MapWidget(
           key: GlobalKey(),
         ),
       ),

@@ -36,6 +36,7 @@ dependencies:
   table_calendar: ^3.0.2
   introduction_screen: ^2.1.0
   flutter_local_notifications: ^9.1.5
+  crypto: ^3.0.1
 
   
 

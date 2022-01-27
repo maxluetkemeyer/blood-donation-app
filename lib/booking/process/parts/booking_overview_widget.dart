@@ -1,13 +1,10 @@
 import 'package:blooddonation/models/appointment_model.dart';
-import 'package:blooddonation/models/person_model.dart';
 import 'package:blooddonation/services/provider/providers.dart';
-import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 ///Class to define the booking overview widget.
@@ -179,7 +176,7 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
               child: Text(AppLocalizations.of(context)!.bookingStartButton),
               onPressed: () async {
                 print("Book date button has been pressed");
-
+                /*
                 http.Response response = await BackendService().bookAppointment(
                   Appointment(
                     id: -1,
@@ -192,11 +189,13 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
                     ),
                   ),
                 );
+                
 
                 if (response.statusCode != 200) {
                   //error
                   //return;
                 }
+                */
 
                 //BookingService().bookedAppointment = Appointment.fromJson(jsonDecode(response.body));
 

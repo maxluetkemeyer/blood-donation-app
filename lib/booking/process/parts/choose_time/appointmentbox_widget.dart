@@ -1,10 +1,10 @@
 import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
+import 'package:blooddonation/services/provider/providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../services/provider/providers.dart';
 
 ///Class to define one Appointment.
 ///
@@ -20,8 +20,6 @@ class AppointmentBox extends ConsumerWidget {
   }) : super(key: key);
 
   ///Build method for one [AppointmentBox].
-  ///
-  ///Returns a [Widget].
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     double width = MediaQuery.of(context).size.width;

@@ -1,6 +1,11 @@
+// ignore_for_file: constant_identifier_names
+
 ///Provides the backend Address as a [String]. The Adress is used to access and send data
 ///via HTTP-requests
-const String backendAdress = "https://hack-muenster.uni-muenster.de:5000";
+const String API_ADDRESS = "https://hack-muenster.uni-muenster.de:5000";
+
+///API Token
+const String API_TOKEN = "pgAsiSKXwysRvg6ZnftqkLrVjdUlgvj7rBXPKemt8tT3RAPh6lbJM40hvAba";
 
 ///Location variable to show the user the location of the blood donation location.
 const locationLat = 51.96168675419829;

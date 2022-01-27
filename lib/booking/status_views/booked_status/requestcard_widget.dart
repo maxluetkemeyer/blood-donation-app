@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AppointmentCard extends StatelessWidget {
+class RequestCard extends StatelessWidget {
   final Color backgroundColor;
   final String status;
   final VoidCallback onTapFooter;
 
-  const AppointmentCard({
+  const RequestCard({
     Key? key,
     required this.backgroundColor,
     required this.status,

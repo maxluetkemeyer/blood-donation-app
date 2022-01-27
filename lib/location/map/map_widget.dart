@@ -4,12 +4,14 @@ import 'package:latlong2/latlong.dart';
 
 import 'package:blooddonation/misc/env.dart' as env;
 
-class MyMap extends StatelessWidget {
+class MapWidget extends StatelessWidget {
   final TapCallback? onTap;
+  final int interactiveFlag;
 
-  const MyMap({
+  const MapWidget({
     Key? key,
     this.onTap,
+    this.interactiveFlag = InteractiveFlag.all,
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class MyMap extends StatelessWidget {
         center: LatLng(env.locationLat, env.locationLng),
         zoom: 15.0,
         onTap: onTap,
+        interactiveFlags: interactiveFlag,
       ),
       layers: [
         TileLayerOptions(

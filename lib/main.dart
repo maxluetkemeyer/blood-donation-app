@@ -5,7 +5,6 @@ import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 
 import './onboarding/onboarding_view.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,6 +35,10 @@ void main() {
       payload: "payload",
     ),
   );
+
+  Future.delayed(const Duration(seconds: 3)).then((_) {
+    getFreeAppointments(DateTime.now());
+  });
 }
 
 /// This is the main application widget.
@@ -88,11 +91,7 @@ class _MainWidgetState extends State<MainWidget> {
   }
 
   ///Confirms whether the application shows the Onboarding screen or not.
-  ///
-  ///Checks [kIsWeb] if the application is run in a web browser, no Onboarding is shown. If not, the function checks whether
-  ///the user has already onboarded before.
-  ///
-  ///returns [Future] specifically [boolean]
+  ///The function checks whether the user has already onboarded before.
   Future<bool> showOnboarding() async {
     //maybe use UserService for this
     //load persistent data to check onboarded status

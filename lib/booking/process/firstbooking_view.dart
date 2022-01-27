@@ -1,4 +1,4 @@
-import 'package:blooddonation/appointment_booking/booking/booking_view.dart';
+import 'package:blooddonation/booking/process/bookprocess_view.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -121,7 +121,7 @@ class _FirstBookingState extends State<FirstBooking> {
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const BookingView()),
+                        MaterialPageRoute(builder: (context) => const BookProcessView()),
                       );
                     }
                   : null,

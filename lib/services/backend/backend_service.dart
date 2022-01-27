@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
-import 'package:blooddonation/models/appointment_model.dart';
-import 'package:blooddonation/services/booking/booking_services.dart';
+import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:blooddonation/misc/env.dart' as env;
+
+export './requests/get_free_appointments.dart';
 
 class BackendService {
   //Singleton
@@ -13,39 +15,57 @@ class BackendService {
     print("Starting Backend Service");
   }
 
-  Future<List<Appointment>> getFreeAppointments(DateTime day) async {
-    final response = await http.get(
-      Uri.parse(
-        env.backendAdress + "/appointments?date=" + day.year.toString() + "-" + day.month.toString() + "-" + day.day.toString(),
-      ),
-    );
+  Future<http.Response> getRequest({
+    required String path,
+    Map<String, String>? headers,
+  }) async {
+    Uri uri = Uri.parse(env.API_ADDRESS + path);
+    Map<String, String> newHeaders = headers ?? {};
+    newHeaders["signature"] = _genSignature(body: "", method: "GET", path: path);
 
-    if (response.statusCode == 200) {
-      var appObjsJson = jsonDecode(response.body) as List;
-
-      List<Appointment> appointments = appObjsJson.map((appJson) => Appointment.fromJson(appJson)).toList();
-
-      //todo: set free appointments here or when future used?
-      BookingService().freeAppointments = appointments;
-      return appointments;
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load free appointments');
-    }
+    return http.get(uri, headers: newHeaders);
   }
 
-  Future<http.Response> bookAppointment(Appointment appointment) async {
-    print(appointment.toJson().toString());
+  Future<http.Response> postRequest({
+    required String path,
+    required String body,
+    Map<String, String>? headers,
+  }) {
+    Uri uri = Uri.parse(env.API_ADDRESS + path);
+    Map<String, String> newHeaders = headers ?? {};
 
-    final response = await http.post(
-      Uri.parse(env.backendAdress + "/appointment"),
-      headers: {"Content-Type": "application/json"},
-      body: json.encode(appointment.toJson()),
-    );
+    newHeaders["Content-Type"] = "application/json";
+    newHeaders["signature"] = _genSignature(body: body, method: "POST", path: path);
 
-    print(response.body);
-
-    return response;
+    return http.post(uri, body: body, headers: newHeaders);
   }
+}
+
+String genParam({required String key, required String value}) => key + "=" + value;
+
+String _genSignature({
+  required String body,
+  required String method,
+  required String path,
+}) {
+  var body = "";
+  var method = "GET";
+  var pathS = "/appointments";
+
+  var secret = env.API_TOKEN;
+  var secretEnc = utf8.encode(secret);
+
+  var bytes = utf8.encode(secret + "-" + method + "-" + pathS + "-" + body);
+
+  print("bytes");
+  print(secret + "-" + method + "-" + pathS + "-" + body);
+
+  var hmac = Hmac(sha256, secretEnc);
+  var hash = hmac.convert(bytes);
+
+  var signature = base64Encode(hash.bytes);
+
+  print("signature " + signature);
+
+  return signature;
 }

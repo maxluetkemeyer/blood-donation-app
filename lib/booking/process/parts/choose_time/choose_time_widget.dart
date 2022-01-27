@@ -25,7 +25,8 @@ class ChooseTime extends ConsumerWidget {
         return false;
       },
       child: FutureBuilder(
-        future: BackendService().getFreeAppointments(BookingService().selectedDay!),
+        //future: BackendService().getFreeAppointments(BookingService().selectedDay!),
+        future: getFreeAppointments(BookingService().selectedDay!),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(

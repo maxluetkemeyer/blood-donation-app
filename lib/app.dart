@@ -1,5 +1,5 @@
+import 'package:blooddonation/booking/booking_view.dart';
 import 'package:blooddonation/user_data/user_data_view.dart';
-import 'package:blooddonation/appointment_booking/bookingstart_view.dart';
 import 'package:blooddonation/faq/faq_view.dart';
 import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
@@ -19,7 +19,7 @@ class _AppState extends State<App> {
 
   final screens = [
     const HomePageView(),
-    const BookingStartView(),
+    const BookingView(),
     const LocationView(),
     const FaqView(),
   ];
@@ -31,9 +31,6 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //elevation: 0,
-        //backgroundColor: Colors.white,
-        //foregroundColor: Theme.of(context).primaryColor,
         title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
           PopupMenuButton<int>(

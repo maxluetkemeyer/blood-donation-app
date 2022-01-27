@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+///Entrance page, also functioning as the home page.
 class HomePageView extends StatelessWidget {
   const HomePageView({Key? key}) : super(key: key);
 
-  ///Build method to build the entrance page, also functioning as the home page.
   @override
   Widget build(BuildContext context) {
     return ListView(

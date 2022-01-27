@@ -1,7 +1,7 @@
-import 'package:blooddonation/appointment_booking/booking/booking_overview_widget.dart';
-import 'package:blooddonation/appointment_booking/booking/choose_day_widget.dart';
-import 'package:blooddonation/appointment_booking/booking/choose_time_widget.dart';
-import 'package:blooddonation/appointment_booking/questions/questions_view.dart';
+import 'package:blooddonation/booking/process/parts/booking_overview_widget.dart';
+import 'package:blooddonation/booking/process/parts/choose_day_widget.dart';
+import 'package:blooddonation/booking/process/parts/choose_time/choose_time_widget.dart';
+import 'package:blooddonation/booking/process/parts/donation_questions/questions_view.dart';
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,8 +13,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 ///Class to define the appointment booking process.
 ///
 ///Widget requires no Input
-class BookingView extends ConsumerWidget {
-  const BookingView({Key? key}) : super(key: key);
+class BookProcessView extends ConsumerWidget {
+  const BookProcessView({Key? key}) : super(key: key);
 
   ///Build method to build the Frame for the booking process, including an [IconStepper], to show the current
   ///slide and screen information.
