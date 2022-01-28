@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:blooddonation/services/backend/requests/get_status.dart';
 import 'package:blooddonation/services/background/notification_service.dart';
 import 'package:workmanager/workmanager.dart';
 
@@ -30,11 +33,30 @@ class BackgroundService {
   void stopBackgroundTask() {
     Workmanager().cancelAll();
   }
+
+  void startOnActiveBackgroundTask() {
+    Timer.periodic(const Duration(seconds: 15), (timer) async {
+      bool response = await getRequestStatus(-1);
+      if (!response) return;
+      
+      timer.cancel();
+      NotificationService().displayNotification(
+        channelID: "booking_response",
+        channelName: "Booking Status Response",
+        channelDescription: "Booking Response Channel Description",
+        notificationTitle: "notificationTitle",
+        notificationBody: "notificationBody",
+        payload: "payload",
+      );
+    });
+  }
 }
 
 void callbackDispatcher() {
-  Workmanager().executeTask((String task, Map<String, dynamic>? inputData) {
-    print("Native called background task: $task"); //simpleTask will be emitted here.
+  Workmanager().executeTask((String task, Map<String, dynamic>? inputData) async {
+    print("Native called background task: $task");
+    bool response = await getRequestStatus(-1);
+    if (!response) return Future.value(false);
 
     NotificationService().displayNotification(
       channelID: "booking_response",
@@ -44,6 +66,8 @@ void callbackDispatcher() {
       notificationBody: "notificationBody",
       payload: "payload",
     );
+
+    Workmanager().cancelAll();
 
     return Future.value(true);
   });

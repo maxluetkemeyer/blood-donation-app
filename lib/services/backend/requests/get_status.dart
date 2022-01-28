@@ -1,6 +1,6 @@
 import 'package:blooddonation/services/backend/backend_service.dart';
 
-Future<bool> getDonationQuestions(int appointmentId) async {
+Future<bool> getRequestStatus(int appointmentId) async {
   String path = "/appointment_status";
   String dateParam = genParam(key: "id", value: appointmentId.toString());
   path = path + "?" + dateParam;
