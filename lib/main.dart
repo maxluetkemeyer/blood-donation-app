@@ -23,8 +23,8 @@ void main() {
   BookingService();
   BackendService();
   NotificationService();
-  BackgroundService();
-  BackgroundService.initWorkmanager();
+  //BackgroundService();
+  //BackgroundService.initWorkmanager();
 
   runApp(const MainWidget());
 
@@ -33,7 +33,7 @@ void main() {
   });
 
   Future.delayed(const Duration(seconds: 10)).then((_) {
-    BackgroundService().startBackgroundTask();
+    //BackgroundService().startBackgroundTask();
   });
 }
 
