@@ -1,13 +1,12 @@
+import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:flutter/material.dart';
 
-import 'faq_question_widget.dart';
-import 'faq_question_list.dart';
+import 'faqquestion_panel.dart';
 
 ///This Widget is used, to show the user the faq interface.
 class FaqView extends StatelessWidget {
   const FaqView({Key? key}) : super(key: key);
 
-  ///Build method to build the faq page, utilizing the [faqQuestionList] which is a list of [FaqQuestion]'s.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +17,10 @@ class FaqView extends StatelessWidget {
             elevation: 3,
             animationDuration: const Duration(milliseconds: 600),
             children: [
-              for (var i in faqQuestionList(context))
-                FaqQuestionWidget(
-                  question: i,
-                  key: ValueKey(i),
-                ).create(),
+              for (FaqQuestion question in FaqService().faqQuestions) 
+                FaqQuestionPanel(
+                  question: question,
+                ),
             ],
           ),
         ],

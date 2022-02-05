@@ -2,6 +2,8 @@ import 'package:blooddonation/models/person_model.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+export 'package:blooddonation/models/person_model.dart';
+
 ///Service to manage Userdata inside a Singleton instance and the [SharedPreferences].
 class UserService {
   //Singleton

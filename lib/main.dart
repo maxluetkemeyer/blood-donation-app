@@ -23,7 +23,7 @@ void main() {
   BookingService();
   BackendService();
   NotificationService();
-  //BackgroundService();
+  BackgroundService();
   //BackgroundService.initWorkmanager();
 
   runApp(const MainWidget());

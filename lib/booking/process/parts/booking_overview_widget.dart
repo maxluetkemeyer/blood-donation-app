@@ -1,5 +1,4 @@
 import 'package:blooddonation/app.dart';
-import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/user/user_service.dart';
