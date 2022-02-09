@@ -18,7 +18,7 @@ class Appointment {
 
   factory Appointment.fromJson(Map<String, dynamic> json) => Appointment(
         id: json["id"] ?? -1,
-        start: DateTime.parse(json["start"]),
+        start: _removeTimeZone(DateTime.parse(json["start"])),
         duration: Duration(minutes: json["duration"]),
         request: json["request"] != null ? Request.fromJson(json["request"]) : null,
         person: json["person"] != null ? Person.fromJson(json["person"]) : null,
@@ -66,14 +66,14 @@ class Appointment {
 
     if (request != null) {
       requestMap = {
-        "created": request!.created.toIso8601String(),
+        "created": _removeTimeZone(request!.created).toIso8601String(),
         "status": request!.status,
       };
     }
 
     Map<String, dynamic> map = {
       "id": id,
-      "start": start.toIso8601String(),
+      "start": _removeTimeZone(start).toIso8601String(),
       "duration": duration.inMinutes,
       "person": personMap,
       //"request": requestMap,
@@ -99,4 +99,9 @@ class EmptyAppointment extends Appointment {
           start: start,
           duration: duration,
         );
+}
+
+DateTime _removeTimeZone(DateTime dateTime) {
+  //TODO: Not pretty when send to Server
+  return dateTime.toLocal().subtract(dateTime.timeZoneOffset);
 }
