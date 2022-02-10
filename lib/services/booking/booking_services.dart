@@ -1,5 +1,7 @@
 import 'package:blooddonation/models/appointment_model.dart';
 
+export 'package:blooddonation/models/appointment_model.dart';
+
 class BookingService {
   //Singleton
   static final BookingService _instance = BookingService._private();

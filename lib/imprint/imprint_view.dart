@@ -4,8 +4,6 @@ class ImprintView extends StatelessWidget {
   const ImprintView({Key? key}) : super(key: key);
 
   ///Build method to show the user imprint information and licenses utilized by the application.
-  ///
-  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,48 +12,66 @@ class ImprintView extends StatelessWidget {
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(12),
         children: [
+          const Text(
+            'Angaben des Herausgebers',
+            style: _headTextStyle,
+          ),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                SizedBox(height: 10),
-                Text(
-                  'Angaben des Herausgebers',
-                  style: TextStyle(color: Colors.black, fontSize: 23.0),
+          const SelectableText(
+            'European Research Center for Information Systems (ERCIS) \nLeonardo-Campus 3 \n48149 Münster	\n\nTel.: +49 251 8338100 \nFax: +49 251 8338109 \ninfo@ercis.org ',
+            style: _bodyTextStyle,
+          ),
+          const SizedBox(height: 30),
+          const Text(
+            'Kontakt',
+            style: _headTextStyle,
+          ),
+          const SizedBox(height: 10),
+          const SelectableText(
+            'Universitätsklinikum Münster',
+            style: _bodyTextStyle,
+          ),
+          const SelectableText(
+            'Zentralklinikum\nAlbert-Schweitzer-Campus 1, Gebäude: A1\nAnfahrtsadresse: Albert-Schweitzer-Straße 33\n48149 Münster\n\nTel.: +49 251 8355555\nFax: +49 251 8356960\ninfo@­ukmuenster.­de',
+            style: _bodyTextStyle,
+          ),
+          const SizedBox(height: 30),
+          const Text(
+            'Lizenzen',
+            style: _headTextStyle,
+          ),
+          const SizedBox(height: 10),
+          const SelectableText(
+            'https://www.openstreetmap.org/copyright',
+            style: _bodyTextStyle,
+          ),
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.topLeft,
+            child: ElevatedButton(
+              onPressed: () => showAboutDialog(
+                context: context,
+                applicationIcon: const Image(
+                  width: 50,
+                  image: AssetImage("assets/images/logo_square.png"),
                 ),
-                SizedBox(height: 7),
-                Text(
-                  'European Research Center for Information Systems (ERCIS) \nLeonardo-Campus 3 \n48149 Münster	\n\nTel.: +49 251 8338100 \nFax: +49 251 8338109 \ninfo@ercis.org ',
-                  style: TextStyle(color: Colors.black, fontSize: 18.0),
+                applicationVersion: "0.3",
+                applicationName: "UKM Blutspende",
+                children: [
+                  const Image(
+                    //width: 50,
+                    image: AssetImage("assets/images/logo.png"),
+                  ),
+                ],
+              ),
+              child: const Text(
+                "More Info",
+                style: TextStyle(
+                  fontSize: 20,
                 ),
-                SizedBox(height: 30),
-                Text(
-                  'Kontakt',
-                  style: TextStyle(color: Colors.black, fontSize: 23.0),
-                ),
-                SizedBox(height: 7),
-                Text(
-                  'Universitätsklinikum Münster',
-                  style: TextStyle(color: Colors.black, fontSize: 20.0),
-                ),
-                Text(
-                  'Zentralklinikum\nAlbert-Schweitzer-Campus 1, Gebäude: A1\nAnfahrtsadresse: Albert-Schweitzer-Straße 33\n48149 Münster\n\nTel.: +49 251 8355555\nFax: +49 251 8356960\ninfo@­ukmuenster.­de',
-                  style: TextStyle(color: Colors.black, fontSize: 18.0),
-                ),
-                SizedBox(height: 30),
-                Text(
-                  'Lizenzen',
-                  style: TextStyle(color: Colors.black, fontSize: 23.0),
-                ),
-                SizedBox(height: 7),
-                Text(
-                  'https://www.openstreetmap.org/copyright',
-                  style: TextStyle(color: Colors.black, fontSize: 18.0),
-                ),
-              ],
+              ),
             ),
           ),
         ],
@@ -63,3 +79,6 @@ class ImprintView extends StatelessWidget {
     );
   }
 }
+
+const TextStyle _headTextStyle = TextStyle(color: Colors.black, fontSize: 23.0);
+const TextStyle _bodyTextStyle = TextStyle(color: Colors.black, fontSize: 18.0);

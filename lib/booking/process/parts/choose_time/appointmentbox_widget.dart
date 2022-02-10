@@ -1,4 +1,3 @@
-import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:flutter/cupertino.dart';
