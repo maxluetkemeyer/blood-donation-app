@@ -10,20 +10,33 @@ class FaqView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          ExpansionPanelList.radio(
-            elevation: 3,
-            animationDuration: const Duration(milliseconds: 600),
+      body: FutureBuilder(
+        future: FaqService().cacheQuestions(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          List<FaqQuestionTranslation> tList = FaqService().extractTranslations(locale: "de_DE");
+          
+          return ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
-              for (FaqQuestion question in FaqService().faqQuestions) 
-                FaqQuestionPanel(
-                  question: question,
-                ),
+              ExpansionPanelList.radio(
+                elevation: 3,
+                animationDuration: const Duration(milliseconds: 600),
+                children: [
+                  for (FaqQuestionTranslation translation in tList)
+                    FaqQuestionPanel(
+                      translation: translation,
+                    ),
+                ],
+              ),
             ],
-          ),
-        ],
+          );
+        },
       ),
     );
   }
