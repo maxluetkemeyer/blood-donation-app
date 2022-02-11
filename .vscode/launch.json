@@ -31,7 +31,7 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
-            "deviceId": "YOUR_IPHONE_DEVICE_ID",
+            "deviceId": "ca744d5f9c8ec53d3b72c3ea322640aa27222920",
         },
     ],
     "compounds": [
