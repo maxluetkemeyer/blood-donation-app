@@ -36,7 +36,7 @@ class BackgroundService {
 
   void startOnActiveBackgroundTask() {
     Timer.periodic(const Duration(seconds: 15), (timer) async {
-      bool response = await getRequestStatus(-1);
+      bool response = await getRequestStatus(appointmentId: -1);
       if (!response) return;
       
       timer.cancel();
@@ -55,7 +55,7 @@ class BackgroundService {
 void callbackDispatcher() {
   Workmanager().executeTask((String task, Map<String, dynamic>? inputData) async {
     print("Native called background task: $task");
-    bool response = await getRequestStatus(-1);
+    bool response = await getRequestStatus(appointmentId: -1);
     if (!response) return Future.value(false);
 
     NotificationService().displayNotification(

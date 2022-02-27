@@ -1,21 +1,29 @@
 import 'dart:convert';
 
-import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/services/backend/backend_service.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
 
-Future<String> bookAppointment(Appointment appointment) async {
+Future<bool> bookAppointment({required Appointment appointment}) async {
   print(appointment.toJson().toString());
 
   String path = "/appointment";
-  String body = json.encode(appointment.toJson());
+  String body = jsonEncode(appointment.toJson());
 
   final response = await BackendService().postRequest(path: path, body: body);
 
-  if (response.statusCode == 200) {
-    return response.body;
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load free appointments');
+  if (response.statusCode != 201) {
+    print("error getFaqQuestions");
+    return false;
   }
+
+  //Convert String to Map
+  Map<String, dynamic> json = jsonDecode(response.body);
+
+  //Convert Map to Appointment
+  Appointment responseAppointment = Appointment.fromJson(json);
+
+  //Update BookingService reference
+  BookingService().bookedAppointment = responseAppointment;
+
+  return true;
 }

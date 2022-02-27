@@ -1,6 +1,9 @@
 import 'package:blooddonation/models/appointment_model.dart';
+import 'package:blooddonation/models/donationquestions_model.dart';
+import 'package:blooddonation/models/donationquestiontranslation_model.dart';
 
 export 'package:blooddonation/models/appointment_model.dart';
+export 'package:blooddonation/models/request_model.dart';
 
 class BookingService {
   //Singleton
@@ -10,20 +13,50 @@ class BookingService {
     print("Starting Booking Service");
   }
 
+  List<DonationQuestion> donationQuestions = [];
+  List<DonationQuestionTranslation> donationQuestionTranslations = [];
+
+  ///List of Appointments that saves all Free Appointments.
+  List<Appointment> freeAppointments = [];
+
   ///The variable saves the selected day during the booking process.
   DateTime? selectedDay;
 
   ///Saves the user selected appointment during the booking process.
   Appointment? selectedAppointment;
 
-  ///List of Appointments that saves all Free Appointments.
-  List<Appointment> freeAppointments = [];
-
   Appointment? bookedAppointment;
+
 
   ///Resets the BookingService.
   void resetBookingProcess() {
     selectedDay = null;
     freeAppointments = [];
+  }
+
+  List<Map<String, dynamic>> getDonationQuestionList({required String locale}) {
+    List<Map<String, dynamic>> output = [];
+
+    // Iterate through the questions and return the translation in correct order
+    for (int position = 0; position < donationQuestions.length; position++) {
+      Map<String, dynamic> tupel = {};
+
+      // Find question
+      for (DonationQuestion question in donationQuestions) {
+        if (question.position == position) {
+          tupel["donationQuestion"] = question;
+          break;
+        }
+      }
+
+      // Find translation
+      for (DonationQuestionTranslation translation in donationQuestionTranslations) {
+        if (translation.donationQuestion == tupel["donationQuestion"].id && translation.language == locale) {
+          tupel["donationQuestionTranslation"] = translation;
+          break;
+        }
+      }
+    }
+    return output;
   }
 }

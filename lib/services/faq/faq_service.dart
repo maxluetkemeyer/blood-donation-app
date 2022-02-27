@@ -1,6 +1,6 @@
-import 'package:blooddonation/mock.dart';
 import 'package:blooddonation/models/faqquestion_model.dart';
 import 'package:blooddonation/models/faqquestiontranslation_model.dart';
+import 'package:blooddonation/services/backend/requests/get_faq_questions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:blooddonation/misc/env.dart' as env;
 
@@ -30,13 +30,15 @@ class FaqService {
 
   Future<bool> cacheQuestions() async {
     // Regulary fetch data
-    if (DateTime.now().difference(_cacheTime).inSeconds > env.FAQ_CACHE_DURATION.inSeconds) return await mockFaq();
+    if (DateTime.now().difference(_cacheTime).inSeconds > env.FAQ_CACHE_DURATION.inSeconds) {
+      return await getFaqQuestions();
+    }
 
     // Are questions already downloaded?
     if (faqQuestions.isNotEmpty) return true;
 
     // Otherwise download Faq Questions
-    return await mockFaq();
+    return await getFaqQuestions();
   }
 
   List<FaqQuestionTranslation> extractTranslations({required String locale}) {

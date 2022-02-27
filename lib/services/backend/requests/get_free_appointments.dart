@@ -11,17 +11,19 @@ Future<bool> getFreeAppointments(DateTime day) async {
 
   final response = await BackendService().getRequest(path: path);
 
-  if (response.statusCode == 200) {
-    var appObjsJson = jsonDecode(response.body) as List;
-
-    List<Appointment> appointments = appObjsJson.map((appJson) => Appointment.fromJson(appJson)).toList();
-
-    BookingService().freeAppointments = appointments;
-
-    print(appointments);
-    return true;
-  } else {
+  if (response.statusCode != 200) {
     print("error getFreeAppointments");
     return false;
   }
+
+  //Convert json String to List of dynamic (will be Maps)
+  List<dynamic> json = jsonDecode(response.body) as List;
+
+  //Convert the List to a List of Appointments
+  List<Appointment> appointments = json.map((appointmentMap) => Appointment.fromJson(appointmentMap)).toList();
+
+  //Update BookingService reference
+  BookingService().freeAppointments = appointments;
+
+  return true;
 }

@@ -1,10 +1,8 @@
+import 'package:blooddonation/services/backend/requests/get_donationquestions.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/providers.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'donationquestion_model.dart';
-import 'question_widget.dart';
 
 class QuestionsView extends ConsumerWidget {
   const QuestionsView({Key? key}) : super(key: key);
@@ -14,40 +12,26 @@ class QuestionsView extends ConsumerWidget {
   ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: unused_local_variable
     int questionStep = ref.watch(questionStepStateProvier.state).state;
 
-    return getQuestion(questionStep, ref);
-  }
+    return FutureBuilder(
+      future: getDonationQuestions(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
 
-  ///Fetches the next donation relevant question for the [build] method.
-  ///
-  ///Needs the [questionStep], meaning the current question that is asked of the user and [ref] to access the provider.
-  ///
-  ///Returns a [Widget], specifically a [QuestionWidget]
-  Widget getQuestion(int questionStep, WidgetRef ref) {
-    final DonationQuestion testQuestion = DonationQuestion(
-      "Sind Sie positiv auf HIV getestet worden oder haben Sie die Befürchtung evtl. HIV-positiv zu sein?",
-      false,
-    );
-    
-    final DonationQuestion testQuestion2 = DonationQuestion(
-      "Wurden bei Ihnen oder einem Ihrer Blutsverwandten 1. Grades die Creutzfeldt-Jakob-Krankheit erkannt?",
-      false,
-    );
+        if (!(snapshot.data as bool)) {
+          return const Center(child: Text("Es ist ein Fehler aufgetreten beim Laden der Spende Fragen."));
+        }
 
-    if (questionStep == 0) {
-      return QuestionWidget(
-        question: testQuestion,
-        nextQuestionFunc: () {
-          ref.read(questionStepStateProvier.state).state++;
-        },
-      );
-    }
+        // ignore: unused_local_variable
+        List<Map<String, dynamic>> questions = BookingService().getDonationQuestionList(locale: "de_DE");
 
-    return QuestionWidget(
-      question: testQuestion2,
-      nextQuestionFunc: () {
-        ref.read(bookingStateProvider.state).state++;
+        return Container();
       },
     );
   }

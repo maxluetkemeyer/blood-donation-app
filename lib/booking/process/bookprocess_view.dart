@@ -27,7 +27,7 @@ class BookProcessView extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_stepperHeader(activeStep,context)),
+        title: Text(_stepperHeader(activeStep, context)),
       ),
       body: Column(
         children: [
@@ -71,7 +71,7 @@ class BookProcessView extends ConsumerWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        _stepperHeader(activeStep,context),
+                        _stepperHeader(activeStep, context),
                         style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w600,
@@ -99,7 +99,7 @@ class BookProcessView extends ConsumerWidget {
                     ),
                   ),
                   content: Column(
-                    children:  [
+                    children: [
                       const SizedBox(height: 10),
                       Text(
                         AppLocalizations.of(context)!.bookingProgressLoss,
@@ -136,7 +136,7 @@ class BookProcessView extends ConsumerWidget {
               ),
               //child: const Text("Cancel Booking"),
               child: Text(
-                  AppLocalizations.of(context)!.bookingStopBooking,
+                AppLocalizations.of(context)!.bookingStopBooking,
                 style: const TextStyle(color: Color(0xff0b4874)),
               ),
             ),
@@ -151,7 +151,7 @@ class BookProcessView extends ConsumerWidget {
   ///Input requires [activeStep] as [int] operator.
   ///
   ///Returns type [String].
-  String _stepperHeader(activeStep,BuildContext context) {
+  String _stepperHeader(activeStep, BuildContext context) {
     switch (activeStep) {
       case 0:
         return AppLocalizations.of(context)!.bookingChooseDayTitle;

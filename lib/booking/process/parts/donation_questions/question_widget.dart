@@ -1,6 +1,5 @@
+import 'package:blooddonation/models/donationquestions_model.dart';
 import 'package:flutter/material.dart';
-
-import 'donationquestion_model.dart';
 
 ///Class to define one booking question.
 ///
@@ -44,7 +43,7 @@ class QuestionWidget extends StatelessWidget {
               ),
             ),
             child: Text(
-              question.text,
+              "question.text",
               style: TextStyle(
                 fontSize: 30,
                 color: Theme.of(context).colorScheme.secondary

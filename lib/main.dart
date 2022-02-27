@@ -6,7 +6,6 @@ import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
-import 'package:blooddonation/services/background/background_service.dart';
 
 import './onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,8 @@ void main() {
   BookingService();
   BackendService();
   NotificationService();
-  BackgroundService();
+  
+  //BackgroundService();
 
   runApp(const MainWidget());
 
@@ -37,8 +37,8 @@ void main() {
 
   Future.delayed(const Duration(seconds: 10)).then((_) {
     if (Platform.isAndroid) {
-      BackgroundService.initWorkmanager();
-      BackgroundService().startBackgroundTask();
+      //BackgroundService.initWorkmanager();
+      //BackgroundService().startBackgroundTask();
     }
   });
 }
