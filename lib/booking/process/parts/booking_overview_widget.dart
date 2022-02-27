@@ -9,8 +9,6 @@ import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///Class to define the booking overview widget.
-///
-///Inputs are not required.
 class BookingOverview extends ConsumerStatefulWidget {
   const BookingOverview({Key? key}) : super(key: key);
 
@@ -25,8 +23,6 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
   ///Controller for the birthday input field.
   late TextEditingController _birthdayController;
 
-  ///Function is called when [_BookingOverviewState] is initialized.
-  ///
   ///Initializes [_birthdayController], by accessing [UserService].
   @override
   void initState() {
@@ -37,8 +33,6 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
   }
 
   ///Function is called when [_BookingOverviewState] is disposed.
-  ///
-  ///Disposes [_birthdayController]
   @override
   void dispose() {
     _birthdayController.dispose();
@@ -47,167 +41,158 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
   }
 
   ///Build method for the booking overview.
-  ///
-  ///Returns a [Widget].
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        ref.read(bookingStateProvider.state).state--;
-
-        return false;
-      },
-      child: Column(
-        children: [
-          CupertinoFormSection.insetGrouped(
-            header: Text(AppLocalizations.of(context)!.homeMenuUserData),
-            footer: const Divider(),
-            margin: const EdgeInsets.all(12),
-            children: [
-              CupertinoFormRow(
-                prefix: Text(AppLocalizations.of(context)!.name),
-                child: CupertinoTextFormFieldRow(
-                  placeholder: AppLocalizations.of(context)!.yourName,
-                  initialValue: UserService().name,
-                  onChanged: (value) => UserService().name = value,
-                ),
+    return Column(
+      children: [
+        CupertinoFormSection.insetGrouped(
+          header: Text(AppLocalizations.of(context)!.homeMenuUserData),
+          footer: const Divider(),
+          margin: const EdgeInsets.all(12),
+          children: [
+            CupertinoFormRow(
+              prefix: Text(AppLocalizations.of(context)!.name),
+              child: CupertinoTextFormFieldRow(
+                placeholder: AppLocalizations.of(context)!.yourName,
+                initialValue: UserService().name,
+                onChanged: (value) => UserService().name = value,
               ),
-              CupertinoFormRow(
-                prefix: Text(AppLocalizations.of(context)!.birthday),
-                child: CupertinoTextFormFieldRow(
-                  placeholder: AppLocalizations.of(context)!.yourBirthday,
-                  readOnly: true,
-                  controller: _birthdayController,
-                  onTap: () => showCupertinoModalPopup(
-                    context: context,
-                    builder: (BuildContext context) => CupertinoActionSheet(
-                      actions: [
-                        SizedBox(
-                          height: 220,
-                          child: CupertinoDatePicker(
-                            initialDateTime: earliestDonationBirthday,
-                            maximumDate: earliestDonationBirthday,
-                            mode: CupertinoDatePickerMode.date,
-                            dateOrder: DatePickerDateOrder.dmy,
-                            onDateTimeChanged: (DateTime dateTime) => UserService().birthday = dateTime,
-                          ),
+            ),
+            CupertinoFormRow(
+              prefix: Text(AppLocalizations.of(context)!.birthday),
+              child: CupertinoTextFormFieldRow(
+                placeholder: AppLocalizations.of(context)!.yourBirthday,
+                readOnly: true,
+                controller: _birthdayController,
+                onTap: () => showCupertinoModalPopup(
+                  context: context,
+                  builder: (BuildContext context) => CupertinoActionSheet(
+                    actions: [
+                      SizedBox(
+                        height: 220,
+                        child: CupertinoDatePicker(
+                          initialDateTime: earliestDonationBirthday,
+                          maximumDate: earliestDonationBirthday,
+                          mode: CupertinoDatePickerMode.date,
+                          dateOrder: DatePickerDateOrder.dmy,
+                          onDateTimeChanged: (DateTime dateTime) => UserService().birthday = dateTime,
                         ),
-                      ],
-                      cancelButton: CupertinoActionSheetAction(
-                        child: Text(AppLocalizations.of(context)!.doneButton),
-                        onPressed: () {
-                          _birthdayController.text = UserService().birthdayAsString;
-
-                          Navigator.pop(context);
-                        },
                       ),
+                    ],
+                    cancelButton: CupertinoActionSheetAction(
+                      child: Text(AppLocalizations.of(context)!.doneButton),
+                      onPressed: () {
+                        _birthdayController.text = UserService().birthdayAsString;
+
+                        Navigator.pop(context);
+                      },
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
-          CupertinoFormSection.insetGrouped(
-            header: Text(AppLocalizations.of(context)!.bookingYourAppointment),
-            margin: const EdgeInsets.all(12),
-            children: [
-              CupertinoFormRow(
-                prefix: Text(AppLocalizations.of(context)!.bookingAppointment),
-                child: CupertinoTextFormFieldRow(
-                  placeholder: AppLocalizations.of(context)!.bookingYourAppointment,
-                  initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService().selectedAppointment!.start),
-                  readOnly: true,
-                  onTap: () => showCupertinoDialog(
-                    context: context,
-                    builder: (BuildContext context) => CupertinoAlertDialog(
-                      title: Text(
-                        AppLocalizations.of(context)!.bookingStartHeader,
-                        style: const TextStyle(
-                          fontSize: 24,
-                        ),
+            ),
+          ],
+        ),
+        CupertinoFormSection.insetGrouped(
+          header: Text(AppLocalizations.of(context)!.bookingYourAppointment),
+          margin: const EdgeInsets.all(12),
+          children: [
+            CupertinoFormRow(
+              prefix: Text(AppLocalizations.of(context)!.bookingAppointment),
+              child: CupertinoTextFormFieldRow(
+                placeholder: AppLocalizations.of(context)!.bookingYourAppointment,
+                initialValue: DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService().selectedAppointment!.start),
+                readOnly: true,
+                onTap: () => showCupertinoDialog(
+                  context: context,
+                  builder: (BuildContext context) => CupertinoAlertDialog(
+                    title: Text(
+                      AppLocalizations.of(context)!.bookingStartHeader,
+                      style: const TextStyle(
+                        fontSize: 24,
                       ),
-                      content: Column(
-                        children: [
-                          const SizedBox(height: 10),
-                          Text(
-                            DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService().selectedDay!),
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
+                    ),
+                    content: Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        Text(
+                          DateFormat("dd.MM.yyyy 'um' HH:mm").format(BookingService().selectedDay!),
+                          style: const TextStyle(
+                            fontSize: 20,
                           ),
-                          Text(
-                            AppLocalizations.of(context)!.bookingBreakText,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          )
-                        ],
-                      ),
-                      actions: [
-                        CupertinoDialogAction(
-                          isDestructiveAction: true,
-                          onPressed: () {
-                            //reset
-                            BookingService().resetBookingProcess();
-
-                            ref.read(bookingStateProvider.state).state = 0;
-
-                            Navigator.pop(context);
-                          },
-                          child: Text(AppLocalizations.of(context)!.bookingChangeDate),
                         ),
-                        CupertinoDialogAction(
-                          isDefaultAction: true,
-                          onPressed: () => Navigator.pop(context),
-                          child: Text(AppLocalizations.of(context)!.back),
+                        Text(
+                          AppLocalizations.of(context)!.bookingBreakText,
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
                         )
                       ],
                     ),
+                    actions: [
+                      CupertinoDialogAction(
+                        isDestructiveAction: true,
+                        onPressed: () {
+                          //reset
+                          BookingService().resetBookingProcess();
+
+                          ref.read(bookingStateProvider.state).state = 0;
+
+                          Navigator.pop(context);
+                        },
+                        child: Text(AppLocalizations.of(context)!.bookingChangeDate),
+                      ),
+                      CupertinoDialogAction(
+                        isDefaultAction: true,
+                        onPressed: () => Navigator.pop(context),
+                        child: Text(AppLocalizations.of(context)!.back),
+                      )
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            width: double.infinity,
-            child: CupertinoButton(
-              color: Theme.of(context).primaryColor,
-              child: Text(AppLocalizations.of(context)!.bookingStartButton),
-              onPressed: () async {
-                print("Book date button has been pressed");
-                /*
-                http.Response response = await BackendService().bookAppointment(
-                  Appointment(
-                    id: -1,
-                    start: DateTime.now(),
-                    duration: const Duration(hours: 1),
-                    person: Person(
-                      birthday: UserService().birthday,
-                      gender: UserService().gender,
-                      name: UserService().name,
-                    ),
-                  ),
-                );
-                
-
-                if (response.statusCode != 200) {
-                  //error
-                  //return;
-                }
-                */
-
-                //BookingService().bookedAppointment = Appointment.fromJson(jsonDecode(response.body));
-
-                BookingService().bookedAppointment = EmptyAppointment();
-
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
-              },
             ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 12),
+          width: double.infinity,
+          child: CupertinoButton(
+            color: Theme.of(context).primaryColor,
+            child: Text(AppLocalizations.of(context)!.bookingStartButton),
+            onPressed: () async {
+              print("Book date button has been pressed");
+              /*
+              http.Response response = await BackendService().bookAppointment(
+                Appointment(
+                  id: -1,
+                  start: DateTime.now(),
+                  duration: const Duration(hours: 1),
+                  person: Person(
+                    birthday: UserService().birthday,
+                    gender: UserService().gender,
+                    name: UserService().name,
+                  ),
+                ),
+              );
+              
+
+              if (response.statusCode != 200) {
+                //error
+                //return;
+              }
+              */
+
+              //BookingService().bookedAppointment = Appointment.fromJson(jsonDecode(response.body));
+
+              BookingService().bookedAppointment = EmptyAppointment();
+
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -6,14 +6,10 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 ///Class to define the date choosing widget.
-///
-///Inputs are not required.
 class ChooseDay extends ConsumerWidget {
   const ChooseDay({Key? key}) : super(key: key);
 
   ///Build method to build the Widget that allows the user to choose the desired date to donate.
-  ///
-  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return TableCalendar(
@@ -52,7 +48,6 @@ class ChooseDay extends ConsumerWidget {
       startingDayOfWeek: StartingDayOfWeek.monday,
       onDaySelected: (selectedDay, focusedDay) {
         BookingService().selectedDay = selectedDay;
-        print(BookingService().selectedDay);
         ref.read(bookingStateProvider.state).state++;
       },
     );

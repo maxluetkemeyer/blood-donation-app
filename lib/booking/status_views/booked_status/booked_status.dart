@@ -1,37 +1,46 @@
 import 'package:blooddonation/booking/status_views/booked_status/requestcard_widget.dart';
 import 'package:blooddonation/booking/status_views/booked_status/stepsection_widget.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
+import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BookingBookedStatus extends StatefulWidget {
+class BookingBookedStatus extends StatelessWidget {
   const BookingBookedStatus({Key? key}) : super(key: key);
-
-  @override
-  State<BookingBookedStatus> createState() => _BookingBookedStatusState();
-}
-
-class _BookingBookedStatusState extends State<BookingBookedStatus> {
-  bool tapped = false;
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
-        tapped
-            ? RequestCard(
-                backgroundColor: Colors.lightGreen.shade600,
-                onTapFooter: () => setState(() {
-                  tapped = !tapped;
-                }),
-                status: "accepted",
-              )
-            : RequestCard(
+        Consumer(
+          builder: (context, ref, child) {
+            // ignore: unused_local_variable
+            int update = ref.watch(bookedAppointmentUpdateProvider.state).state;
+            Appointment? appointment = BookingService().bookedAppointment;
+
+            if (appointment?.request?.status == RequestStatus.declined.toString()) {
+              return RequestCard(
+                backgroundColor: Colors.grey.shade400,
+                onTapFooter: () {},
+                status: "declined",
+              );
+            }
+            if (appointment?.request?.status == RequestStatus.pending.toString()) {
+              return RequestCard(
                 backgroundColor: Colors.amber.shade400,
-                onTapFooter: () => setState(() {
-                  tapped = !tapped;
-                }),
+                onTapFooter: () {},
                 status: "pending",
-              ),
+              );
+            }
+
+            return RequestCard(
+              backgroundColor: Colors.lightGreen.shade600,
+              onTapFooter: () {},
+              status: "accepted",
+            );
+          },
+        ),
         Padding(
           padding: const EdgeInsets.only(left: 10, right: 10, top: 40, bottom: 10),
           child: Column(

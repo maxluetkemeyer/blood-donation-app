@@ -27,3 +27,9 @@ class Request {
     );
   }
 }
+
+enum RequestStatus {
+  pending,
+  accepted,
+  declined
+}

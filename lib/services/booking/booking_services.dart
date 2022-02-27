@@ -1,6 +1,7 @@
 import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/models/donationquestions_model.dart';
 import 'package:blooddonation/models/donationquestiontranslation_model.dart';
+import 'package:blooddonation/services/provider/provider_service.dart';
 
 export 'package:blooddonation/models/appointment_model.dart';
 export 'package:blooddonation/models/request_model.dart';
@@ -21,17 +22,17 @@ class BookingService {
 
   ///The variable saves the selected day during the booking process.
   DateTime? selectedDay;
-
   ///Saves the user selected appointment during the booking process.
   Appointment? selectedAppointment;
 
+  ///Current booked appointment
   Appointment? bookedAppointment;
-
 
   ///Resets the BookingService.
   void resetBookingProcess() {
     selectedDay = null;
     freeAppointments = [];
+    ProviderService().container.read(bookingStateProvider.state).state = 0;
   }
 
   List<Map<String, dynamic>> getDonationQuestionList({required String locale}) {

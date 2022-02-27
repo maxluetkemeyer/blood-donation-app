@@ -1,11 +1,10 @@
+import 'package:blooddonation/misc/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:blooddonation/booking/booking_view.dart';
 import 'package:blooddonation/faq/faq_view.dart';
-import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
-import 'package:blooddonation/user_data/user_data_view.dart';
 
 import 'home/home_view.dart';
 
@@ -45,42 +44,7 @@ class _AppState extends State<App> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
-        actions: [
-          PopupMenuButton<int>(
-            elevation: 14,
-            onSelected: (value) {
-              switch (value) {
-                case 0:
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const UserDataView()));
-                  break;
-                case 1:
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ImprintView()));
-                  break;
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 0,
-                textStyle: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-                child: Text(AppLocalizations.of(context)!.homeMenuUserData),
-              ),
-              const PopupMenuDivider(),
-              PopupMenuItem(
-                value: 1,
-                textStyle: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-                child: Text(AppLocalizations.of(context)!.homeMenuImprint),
-              ),
-            ],
-          ),
-        ],
+        actions: const [AppBarMenuButton()],
       ),
       body: screens[pageIndex],
       bottomNavigationBar: NavigationBarTheme(

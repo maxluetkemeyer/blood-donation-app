@@ -1,3 +1,4 @@
+import 'package:blooddonation/booking/process/parts/donation_questions/slider.dart';
 import 'package:blooddonation/services/backend/requests/get_donationquestions.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/providers.dart';
@@ -8,17 +9,14 @@ class QuestionsView extends ConsumerWidget {
   const QuestionsView({Key? key}) : super(key: key);
 
   ///Build method to build the question iterable page. Utilizes [questionStepStateProvier] to access the current question.
-  ///
-  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ignore: unused_local_variable
-    int questionStep = ref.watch(questionStepStateProvier.state).state;
-
     return FutureBuilder(
       future: getDonationQuestions(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
+          ref.read(questionStepStateProvier.state).state = 0;
+
           return const Center(
             child: CircularProgressIndicator(),
           );
@@ -28,10 +26,9 @@ class QuestionsView extends ConsumerWidget {
           return const Center(child: Text("Es ist ein Fehler aufgetreten beim Laden der Spende Fragen."));
         }
 
-        // ignore: unused_local_variable
-        List<Map<String, dynamic>> questions = BookingService().getDonationQuestionList(locale: "de_DE");
-
-        return Container();
+        return QuestionSlider(
+          questions: BookingService().getDonationQuestionList(locale: "de_DE"),
+        );
       },
     );
   }

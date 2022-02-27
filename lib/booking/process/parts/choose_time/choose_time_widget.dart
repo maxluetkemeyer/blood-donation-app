@@ -1,4 +1,3 @@
-import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
@@ -7,49 +6,36 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'appointmentbox_widget.dart';
 
 ///Class to define the time choosing widget.
-///
-///Inputs are not required.
 class ChooseTime extends ConsumerWidget {
   const ChooseTime({Key? key}) : super(key: key);
 
   ///Build method to build the Widget that allows the user to choose the desired time to donate.
-  ///
-  ///Returns a [Widget] tree.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return WillPopScope(
-      onWillPop: () async {
-        ref.read(bookingStateProvider.state).state--;
-
-        return false;
-      },
-      child: FutureBuilder(
-        //future: BackendService().getFreeAppointments(BookingService().selectedDay!),
-        future: getFreeAppointments(BookingService().selectedDay!),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          return Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Wrap(
-              spacing: 20,
-              runSpacing: 20,
-              children: _appointmentBoxList(),
-            ),
+    return FutureBuilder(
+      //future: BackendService().getFreeAppointments(BookingService().selectedDay!),
+      future: getFreeAppointments(BookingService().selectedDay!),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
           );
-        },
-      ),
+        }
+
+        return Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            children: _appointmentBoxList(),
+          ),
+        );
+      },
     );
   }
 
   ///Private Function to fetch the [List] of appointment [Widget]s from the [BookingService],
   ///only fetching the data from the current date and creating an [AppointmentBox] for each time.
-  ///
-  ///Returns [List] of [AppointmentBox] [Widget]s
   List<Widget> _appointmentBoxList() {
     DateTime selectedDay = BookingService().selectedDay!;
     List<Appointment> freeAppointments = BookingService().freeAppointments;
