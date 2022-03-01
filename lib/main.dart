@@ -6,6 +6,7 @@ import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
+import 'package:blooddonation/services/background/background_service.dart' as background;
 
 import './onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,8 @@ void main() {
   FaqService();
   BookingService();
   BackendService();
-  NotificationService();
-  
-  //BackgroundService();
+  NotificationService().init();
+  background.init();
 
   runApp(const MainWidget());
 
