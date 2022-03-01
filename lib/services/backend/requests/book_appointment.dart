@@ -11,16 +11,18 @@ Future<bool> bookAppointment({required Appointment appointment}) async {
 
   final response = await BackendService().postRequest(path: path, body: body);
 
+  print(response.body);
+
   if (response.statusCode != 201) {
-    print("error getFaqQuestions");
+    print("error bookAppointment");
     return false;
   }
 
   //Convert String to Map
-  Map<String, dynamic> json = jsonDecode(response.body);
+  Map<String, dynamic> jsonAppointment = jsonDecode(response.body);
 
   //Convert Map to Appointment
-  Appointment responseAppointment = Appointment.fromJson(json);
+  Appointment responseAppointment = Appointment.fromJson(jsonAppointment);
 
   //Update BookingService reference
   BookingService().bookedAppointment = responseAppointment;

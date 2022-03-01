@@ -22,6 +22,7 @@ class BookingService {
 
   ///The variable saves the selected day during the booking process.
   DateTime? selectedDay;
+
   ///Saves the user selected appointment during the booking process.
   Appointment? selectedAppointment;
 
@@ -57,6 +58,7 @@ class BookingService {
           break;
         }
       }
+      output.add(tupel);
     }
     return output;
   }

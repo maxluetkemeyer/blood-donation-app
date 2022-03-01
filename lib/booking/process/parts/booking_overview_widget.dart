@@ -1,4 +1,5 @@
 import 'package:blooddonation/app.dart';
+import 'package:blooddonation/services/backend/requests/book_appointment.dart';
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/user/user_service.dart';
@@ -163,32 +164,27 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
             child: Text(AppLocalizations.of(context)!.bookingStartButton),
             onPressed: () async {
               print("Book date button has been pressed");
-              /*
-              http.Response response = await BackendService().bookAppointment(
-                Appointment(
-                  id: -1,
-                  start: DateTime.now(),
-                  duration: const Duration(hours: 1),
-                  person: Person(
-                    birthday: UserService().birthday,
-                    gender: UserService().gender,
-                    name: UserService().name,
-                  ),
-                ),
-              );
-              
 
-              if (response.statusCode != 200) {
-                //error
-                //return;
-              }
-              */
+              Appointment appointmentToBook = BookingService().selectedAppointment!.copyWith(
+                    //id: 133,
+                    person: Person(
+                      birthday: UserService().birthday,
+                      //gender: UserService().gender,
+                      gender: "male",
+                      name: UserService().name,
+                      telephoneNumber: "1",
+                    ),
+                  );
 
-              //BookingService().bookedAppointment = Appointment.fromJson(jsonDecode(response.body));
+              bookAppointment(appointment: appointmentToBook).then((succsess) {
+                print(succsess);
+                if (!succsess) {
+                  print("Something went wrong!");
+                  return;
+                }
 
-              BookingService().bookedAppointment = EmptyAppointment();
-
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+              });
             },
           ),
         ),

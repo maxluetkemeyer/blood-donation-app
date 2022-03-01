@@ -57,11 +57,7 @@ class Appointment {
     Map<String, dynamic>? requestMap;
 
     if (person != null) {
-      personMap = {
-        "name": person!.name,
-        "birthday": person!.birthday!.year.toString() + "-" + person!.birthday!.month.toString() + "-" + person!.birthday!.day.toString(),
-        "gender": "male",
-      };
+      personMap = person!.toJson();
     }
 
     if (request != null) {
@@ -72,7 +68,7 @@ class Appointment {
     }
 
     Map<String, dynamic> map = {
-      "id": id,
+      //"id": id,
       "start": _removeTimeZone(start).toIso8601String(),
       "duration": duration.inMinutes,
       "person": personMap,
