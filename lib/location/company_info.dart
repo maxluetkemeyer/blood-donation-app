@@ -11,7 +11,7 @@ class CompanyInfo extends StatelessWidget {
       child: Column(
         children: [
           const Image(
-            image: AssetImage("assets/images/logo.png"),
+            image: AssetImage("assets/images/logo_transparent.png"),
           ),
           const SizedBox(height: 20),
           Table(

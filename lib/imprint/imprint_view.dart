@@ -62,7 +62,7 @@ class ImprintView extends StatelessWidget {
                 children: [
                   const Image(
                     //width: 50,
-                    image: AssetImage("assets/images/logo.png"),
+                    image: AssetImage("assets/images/logo_transparent.png"),
                   ),
                 ],
               ),

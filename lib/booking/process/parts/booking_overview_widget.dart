@@ -178,10 +178,10 @@ class _BookingOverviewState extends ConsumerState<BookingOverview> {
 
               bookAppointment(appointment: appointmentToBook).then((succsess) {
                 print(succsess);
-                if (!succsess) {
+                /*if (!succsess) {
                   print("Something went wrong!");
                   return;
-                }
+                }*/
 
                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
               });

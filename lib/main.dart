@@ -102,6 +102,7 @@ class _MainWidgetState extends State<MainWidget> {
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
     // ignore: dead_code
-    return false && alreadyOnboarded;
+    //return true && alreadyOnboarded;
+    return true;
   }
 }

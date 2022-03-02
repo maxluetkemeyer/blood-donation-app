@@ -79,3 +79,9 @@ linux/
 # Firebase
 android/app/google-services.json
 ios/Podfile.lock
+
+# Images
+assets/images/person_1.png
+assets/images/person_2.png
+assets/images/person_3.png
+assets/images/person_4.png

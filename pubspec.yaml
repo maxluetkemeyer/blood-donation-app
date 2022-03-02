@@ -27,6 +27,7 @@ dependencies:
   panorama: ^0.4.1
   table_calendar: ^3.0.2
   introduction_screen: ^2.1.0
+  carousel_slider: ^4.0.0
 
   # map
   latlong2: ^0.8.0

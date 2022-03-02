@@ -43,7 +43,12 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.appTitle),
+        title: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: const Image(
+            image: AssetImage("assets/images/logo.jpeg"),
+          ),
+        ),
         actions: const [AppBarMenuButton()],
       ),
       body: screens[pageIndex],
