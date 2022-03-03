@@ -1,35 +1,42 @@
+import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:flutter/material.dart';
 
-import 'faq_question.dart';
-import 'faq_question_list.dart';
+import 'faqquestion_panel.dart';
 
-
-
-class FaqView extends StatefulWidget {
+///This Widget is used, to show the user the faq interface.
+class FaqView extends StatelessWidget {
   const FaqView({Key? key}) : super(key: key);
-  @override
-  createState() => _FaqState();
-}
-
-/* 
-This Widget or Scaffold is used, to show the user the faq interface. Currently it utilizes the FaqQuestionList and the FaqQuestion and inserts their values into the ExpansionPanelList
-*/
-class _FaqState extends State<FaqView> {
-
-  //list of all FAQ Questions
-  final qList = FaqQuestionList().qList;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: ExpansionPanelList.radio(
-          elevation: 3,
-          animationDuration: Duration(milliseconds: 600),
-          children: [
-            for ( var i in  qList) FaqQuestion(question: i,key: ValueKey(i)).create()
-          ],
-        ),
+      body: FutureBuilder(
+        future: FaqService().cacheQuestions(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          List<FaqQuestionTranslation> tList = FaqService().extractTranslations(locale: "de_DE");
+          
+          return ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              ExpansionPanelList.radio(
+                elevation: 3,
+                animationDuration: const Duration(milliseconds: 600),
+                children: [
+                  for (FaqQuestionTranslation translation in tList)
+                    FaqQuestionPanel(
+                      translation: translation,
+                    ),
+                ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }
