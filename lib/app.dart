@@ -34,6 +34,7 @@ class _AppStructureState extends State<AppStructure> {
         title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
           PopupMenuButton<int>(
+            key: const ValueKey('popUpDots'),
             onSelected: (value) {
               switch (value) {
                 case 0:
@@ -46,11 +47,13 @@ class _AppStructureState extends State<AppStructure> {
             },
             itemBuilder: (context) => [
               PopupMenuItem(
+                key: const ValueKey('userDataButton'),
                 value: 0,
                 child: Text(AppLocalizations.of(context)!.homeMenuUserData),
               ),
               const PopupMenuDivider(),
               PopupMenuItem(
+                key: const ValueKey('imprintButton'),
                 value: 1,
                 child: Text(AppLocalizations.of(context)!.homeMenuImprint),
               ),

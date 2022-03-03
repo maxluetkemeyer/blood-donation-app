@@ -151,9 +151,11 @@ class OnboardingView extends StatelessWidget {
   /// Import images with fixed size by setting the asset [path]
   Widget buildImage(String path) => Center(
         child: Image.asset(
+          
           path,
           width: 250,
           height: 250,
+          key: const ValueKey('nextPageButton'),
         ),
       );
 

@@ -52,3 +52,42 @@ Future<void> workflowFaq(WidgetTester tester) async{
 
   return;
 }
+
+Future<void> workflowPopUpNav(WidgetTester tester) async{
+  //clicks the Pop-Up navigation bar with the key popUpDots
+  final popUpNav = find.byKey(const Key('popUpDots'));
+
+  expect(popUpNav, findsOneWidget);
+
+  await tester.tap(popUpNav);
+
+  await tester.pumpAndSettle();
+
+  return;
+}
+
+Future<void> workflowNavImpr(WidgetTester tester) async{
+  //clicks the imprint navigation bar the key imprintButton
+  final navImpr = find.byKey(const Key('imprintButton'));
+
+  expect(navImpr, findsOneWidget);
+
+  await tester.tap(navImpr);
+
+  await tester.pumpAndSettle();
+
+  return;
+}
+
+Future<void> workflowNavUserData(WidgetTester tester) async{
+  //clicks the imprint navigation bar the key imprintButton
+  final navImpr = find.byKey(const Key('imprintButton'));
+
+  expect(navImpr, findsOneWidget);
+
+  await tester.tap(navImpr);
+
+  await tester.pumpAndSettle();
+
+  return;
+}
