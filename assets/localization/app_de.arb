@@ -20,8 +20,6 @@
   "homeMenuMap": "Karte",
   "homeMenuFaq": "FAQ",
 
-  "homePageViewInfo": "Unter „Termine“ können Sie einfach und unkompliziert einen Blutspendetermin am Universitätsklinikum Münster buchen.\nWenn Sie die Anschrift der UKM-Blutspende oder eine Wegbeschreibung suchen, wählen Sie „Karte“ aus. \nAlle häufigen Fragen und Antworten auf diese Fragen finden Sie unter „FAQ“.",
-
   "mapHeading": "Blutspende am UKM",
   "mapDirections": "Anfahrtsadresse",
 
@@ -45,7 +43,7 @@
   "faqQ9Body": "Frauen dürfen alle zwölf Wochen, jedoch maximal vier Mal im Jahr zur Vollblutspende gehen. Männer dürfen alle acht Wochen, jedoch maximal sechs Mal im Jahr zur Vollblutspende gehen.",
 
   "userDataHeading": "Nutzerdaten",
-  "userDataDataHeading": "Ihre Daten",
+  "userDataDataHeading": "Ihre Daten (Lokal Gespeichert)",
   "userDataLastDonation": "Termin ihrer letzten Blutspende",
 
   "bookingStartHeader": "Blutspendetermin",

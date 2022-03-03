@@ -1,28 +1,41 @@
-import 'package:blooddonation/user_data/user_data_view.dart';
-import 'package:blooddonation/appointment_booking/bookingstart_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:blooddonation/booking/booking_view.dart';
 import 'package:blooddonation/faq/faq_view.dart';
 import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/location/location_view.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:blooddonation/user_data/user_data_view.dart';
+
 import 'home/home_view.dart';
 
-class AppStructure extends StatefulWidget {
-  const AppStructure({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  final int initalPageIndex;
+
+  const App({
+    Key? key,
+    this.initalPageIndex = 0,
+  }) : super(key: key);
 
   @override
-  State<AppStructure> createState() => _AppStructureState();
+  State<App> createState() => _AppState();
 }
 
-class _AppStructureState extends State<AppStructure> {
+class _AppState extends State<App> {
   int pageIndex = 0;
 
   final screens = [
     const HomePageView(),
-    const BookingStartView(),
+    const BookingView(),
     const LocationView(),
     const FaqView(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    pageIndex = widget.initalPageIndex;
+  }
 
   ///Defines the Page Design for every Navigation oriented screen.
   ///
@@ -34,6 +47,7 @@ class _AppStructureState extends State<AppStructure> {
         title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
           PopupMenuButton<int>(
+            elevation: 14,
             key: const ValueKey('popUpDots'),
             onSelected: (value) {
               switch (value) {
@@ -49,12 +63,22 @@ class _AppStructureState extends State<AppStructure> {
               PopupMenuItem(
                 key: const ValueKey('userDataButton'),
                 value: 0,
+                textStyle: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
                 child: Text(AppLocalizations.of(context)!.homeMenuUserData),
               ),
               const PopupMenuDivider(),
               PopupMenuItem(
                 key: const ValueKey('imprintButton'),
                 value: 1,
+                textStyle: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
                 child: Text(AppLocalizations.of(context)!.homeMenuImprint),
               ),
             ],
@@ -64,10 +88,14 @@ class _AppStructureState extends State<AppStructure> {
       body: screens[pageIndex],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            labelTextStyle: MaterialStateProperty.all(TextStyle(color: Theme.of(context).colorScheme.secondary)),
-            iconTheme: MaterialStateProperty.all(IconThemeData(color: Theme.of(context).colorScheme.secondary)),
-            //indicatorColor: Theme.of(context).colorScheme.outline,
-            backgroundColor: Theme.of(context).primaryColor),
+          labelTextStyle: MaterialStateProperty.all(
+            TextStyle(color: Theme.of(context).primaryColor),
+          ),
+          iconTheme: MaterialStateProperty.all(
+            IconThemeData(color: Theme.of(context).primaryColor),
+          ),
+          backgroundColor: Colors.white,
+        ),
         child: NavigationBar(
           selectedIndex: pageIndex,
           onDestinationSelected: (index) => setState(() {

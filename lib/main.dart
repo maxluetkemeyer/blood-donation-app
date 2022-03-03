@@ -1,8 +1,14 @@
-import 'package:blooddonation/services/notification/notification_service.dart';
+import 'dart:io';
+
+import 'package:blooddonation/services/backend/backend_service.dart';
+import 'package:blooddonation/services/background/notification_service.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
+import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
+import 'package:blooddonation/services/user/user_service.dart';
+import 'package:blooddonation/services/background/background_service.dart';
 
 import './onboarding/onboarding_view.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,37 +16,42 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
 import 'misc/theme.dart';
-import 'services/services.dart' as services;
 
 ///Start of application
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  services.startServices();
+  ProviderService();
+  UserService();
+  FaqService();
+  BookingService();
+  BackendService();
+  NotificationService();
+  BackgroundService();
 
-  runApp(const App());
+  runApp(const MainWidget());
 
-  Future.delayed(const Duration(seconds: 4)).then(
-    (_) => NotificationService().displayNotification(
-      channelID: "booking_response",
-      channelName: "Booking Status Response",
-      channelDescription: "Booking Response Channel Description",
-      notificationTitle: "notificationTitle",
-      notificationBody: "notificationBody",
-      payload: "payload",
-    ),
-  );
+  Future.delayed(const Duration(seconds: 3)).then((_) {
+    getFreeAppointments(DateTime.now());
+  });
+
+  Future.delayed(const Duration(seconds: 10)).then((_) {
+    if (Platform.isAndroid) {
+      BackgroundService.initWorkmanager();
+      BackgroundService().startBackgroundTask();
+    }
+  });
 }
 
 /// This is the main application widget.
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+class MainWidget extends StatefulWidget {
+  const MainWidget({Key? key}) : super(key: key);
 
   @override
-  State<App> createState() => _AppState();
+  State<MainWidget> createState() => _MainWidgetState();
 }
 
-class _AppState extends State<App> {
+class _MainWidgetState extends State<MainWidget> {
   @override
   void dispose() {
     ProviderService().container.dispose();
@@ -68,13 +79,13 @@ class _AppState extends State<App> {
             if (snapshot.hasData) {
               if (snapshot.data!) {
                 // Open HomeView, if the built Future is existing and false
-                return const AppStructure();
+                return const App();
               }
               // Open Onboarding, if the built Future is existing and true
               return const OnboardingView();
             }
             // Open HomeView, if the built Future isn't existing
-            return const AppStructure();
+            return const App();
           },
         ),
       ),
@@ -82,20 +93,15 @@ class _AppState extends State<App> {
   }
 
   ///Confirms whether the application shows the Onboarding screen or not.
-  ///
-  ///Checks [kIsWeb] if the application is run in a web browser, no Onboarding is shown. If not, the function checks whether
-  ///the user has already onboarded before.
-  ///
-  ///returns [Future] specifically [boolean]
+  ///The function checks whether the user has already onboarded before.
   Future<bool> showOnboarding() async {
-    //Do not show onboarding in web version
-    if (kIsWeb) return true;
-
     //maybe use UserService for this
     //load persistent data to check onboarded status
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    // ignore: unused_local_variable
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
-    return alreadyOnboarded;
+    // ignore: dead_code
+    return false && alreadyOnboarded;
   }
 }
