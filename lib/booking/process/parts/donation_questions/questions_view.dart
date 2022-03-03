@@ -27,7 +27,7 @@ class QuestionsView extends ConsumerWidget {
         }
 
         return QuestionSlider(
-          questions: BookingService().getDonationQuestionList(locale: "de_DE"),
+          questions: BookingService().getDonationQuestionList(locale: "de"),
         );
       },
     );

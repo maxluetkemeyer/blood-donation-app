@@ -8,7 +8,7 @@ class BookingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (BookingService().bookedAppointment != null) {
+    if (BookingService().bookedAppointment != null || 0 == 0) {
       return const BookingBookedStatus();
     } else {
       return const BookingDefaultStatus();

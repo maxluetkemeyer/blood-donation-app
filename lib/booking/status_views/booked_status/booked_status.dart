@@ -1,3 +1,4 @@
+import 'package:blooddonation/booking/status_views/booked_status/expandable_panorama/expandable_panorama_widget.dart';
 import 'package:blooddonation/booking/status_views/booked_status/requestcard_widget.dart';
 import 'package:blooddonation/booking/status_views/booked_status/stepsection_widget.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
@@ -10,74 +11,110 @@ class BookingBookedStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      children: [
-        Consumer(
-          builder: (context, ref, child) {
-            // ignore: unused_local_variable
-            int update = ref.watch(bookedAppointmentUpdateProvider.state).state;
-            Appointment? appointment = BookingService().bookedAppointment;
+    return RefreshIndicator(
+      onRefresh: () => Future.delayed(const Duration(seconds: 1)),
+      child: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          Consumer(
+            builder: (context, ref, child) {
+              // ignore: unused_local_variable
+              int update = ref.watch(bookedAppointmentUpdateProvider.state).state;
+              Appointment? appointment = BookingService().bookedAppointment;
 
-            if (appointment?.request?.status == RequestStatus.declined.toString()) {
-              return RequestCard(
-                backgroundColor: Colors.grey.shade400,
-                onTapFooter: () {},
-                status: "declined",
-              );
-            }
-            if (appointment?.request?.status == RequestStatus.pending.toString()) {
-              return RequestCard(
-                backgroundColor: Colors.amber.shade400,
-                onTapFooter: () {},
-                status: "pending",
-              );
-            }
+              if (appointment?.request?.status == RequestStatus.declined.toString()) {
+                return RequestCard(
+                  //backgroundColor: const Color.fromRGBO(193, 26, 89, 1),
+                  backgroundColor: Colors.black87,
+                  onTapFooter: () {},
+                  status: "declined",
+                  textColor: Colors.white,
+                );
+              }
+              if (appointment?.request?.status == RequestStatus.pending.toString()) {
+                return RequestCard(
+                  backgroundColor: Colors.blueGrey.shade200,
+                  onTapFooter: () {},
+                  status: "pending",
+                );
+              }
 
-            return RequestCard(
-              backgroundColor: Colors.lightGreen.shade600,
-              onTapFooter: () {},
-              status: "accepted",
-            );
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10, top: 40, bottom: 10),
-          child: Column(
-            children: [
+              return RequestCard(
+                backgroundColor: Theme.of(context).primaryColor,
+                onTapFooter: () {},
+                status: "accepted",
+                textColor: Colors.white,
+              );
+            },
+          ),
+          const SizedBox(height: 10),
+          Column(
+            children: const [
               StepSection(
                 step: "1",
-                textDirection: TextDirection.rtl,
-                body: Column(
-                  children: const [
-                    Image(
-                      height: 200,
-                      image: NetworkImage("https://ukm-blutspende.de/fileadmin/user_upload/Blutspende/ukm-blutspende-gebaeude-1000x700px.png"),
-                    ),
-                    Text("Blut ist lebensnotwendiger Bestandteil des menschlichen Lebens. "),
-                  ],
+                titel: "Willkommen am UKM",
+                body: ExpandablePanorama(
+                  title: "Willkommen am UKM",
+                  image: AssetImage("assets/images/entrance_panorama.jpg"),
                 ),
               ),
-              const StepSection(
+              StepSection(
                 step: "2",
-                textDirection: TextDirection.ltr,
-                body: Image(
-                  height: 200,
-                  image: NetworkImage("https://ukm-blutspende.de/fileadmin/user_upload/Blutspende/ukm-blutspende-gebaeude-1000x700px.png"),
+                titel: "Wir befinden uns im 1. Stock",
+                body: ExpandablePanorama(
+                  title: "Wir befinden uns im 1. Stock",
+                  image: AssetImage("assets/images/pan_0.jpg"),
                 ),
               ),
-              const StepSection(
+              StepSection(
                 step: "3",
-                textDirection: TextDirection.rtl,
+                titel: "Durch die Tür",
+                body: ExpandablePanorama(
+                  title: "Durch die Tür",
+                  image: AssetImage("assets/images/pan_1.jpg"),
+                ),
+              ),
+              StepSection(
+                step: "4",
+                titel: "Anmelden",
+                body: ExpandablePanorama(
+                  title: "Anmelden",
+                  image: AssetImage("assets/images/pan_2.jpg"),
+                ),
+              ),
+              StepSection(
+                step: "5",
+                titel: "Essen genießen",
                 body: Image(
-                  height: 200,
-                  image: NetworkImage("https://ukm-blutspende.de/fileadmin/user_upload/Blutspende/ukm-blutspende-gebaeude-1000x700px.png"),
+                  image: AssetImage("assets/images/room_2.jpg"),
+                ),
+              ),
+              StepSection(
+                step: "6",
+                titel: "Entspannen",
+                body: Image(
+                  image: AssetImage("assets/images/room_1.jpg"),
+                ),
+              ),
+              StepSection(
+                step: "7",
+                titel: "Frische Luft genießen",
+                body: Image(
+                  image: AssetImage("assets/images/room_3.jpg"),
+                ),
+              ),
+              StepSection(
+                step: "8",
+                titel: "Bis zum nächsten mal",
+                body: Image(
+                  image: AssetImage("assets/images/room_0.jpg"),
                 ),
               ),
             ],
           ),
-        ),
-      ],
+          const SizedBox(height: 20),
+        ],
+      ),
     );
   }
 }
