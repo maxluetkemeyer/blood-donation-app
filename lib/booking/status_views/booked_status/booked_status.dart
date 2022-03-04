@@ -1,4 +1,4 @@
-import 'package:blooddonation/booking/status_views/booked_status/expandable_panorama/expandable_panorama_widget.dart';
+import 'package:blooddonation/booking/status_views/booked_status/expandable_panorama_widget.dart';
 import 'package:blooddonation/booking/status_views/booked_status/requestcard_widget.dart';
 import 'package:blooddonation/booking/status_views/booked_status/stepsection_widget.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
