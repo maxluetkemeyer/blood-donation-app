@@ -1,3 +1,4 @@
+import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/models/person_model.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -61,6 +62,13 @@ class UserService {
   String? get telephoneNumber => _user.telephoneNumber;
   bool get firstDonation => _user.firstDonation;
 
+  DateTime? get lastDonation {
+    String dayString = _prefs.getString("lastDonation") ?? "";
+
+    DateTime? day = DateTime.tryParse(dayString);
+    return day;
+  }
+
   // Setter
 
   ///Set [name] of the user inside the Singleton instance [_user] and inside the [SharedPreferences].
@@ -89,5 +97,14 @@ class UserService {
   set firstDonation(bool value) {
     _user.firstDonation = value;
     _prefs.setBool("firstDonation", value);
+  }
+
+  set lastDonation(DateTime? time) {
+    if (time != null) {
+      DateTime day = extractDay(time);
+      _prefs.setString("lastDonation", day.toString());
+    } else {
+      _prefs.setString("lastDonation", "");
+    }
   }
 }

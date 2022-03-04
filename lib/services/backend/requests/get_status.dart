@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
+import 'package:blooddonation/services/provider/provider_service.dart';
 
 Future<bool> getRequestStatus({required int appointmentId}) async {
   String path = "/appointment_status";
@@ -24,6 +25,7 @@ Future<bool> getRequestStatus({required int appointmentId}) async {
 
   //Update BookingService reference
   BookingService().bookedAppointment?.request = request;
+  ProviderService().container.read(bookedAppointmentUpdateProvider.state).state++;
 
   return true;
 }

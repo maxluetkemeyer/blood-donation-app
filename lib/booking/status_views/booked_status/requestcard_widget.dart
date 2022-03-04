@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 class RequestCard extends StatefulWidget {
   final Color backgroundColor;
   final String status;
-  final VoidCallback onTapFooter;
+  final VoidCallback onTap;
   final Color textColor;
 
   const RequestCard({
     Key? key,
     required this.backgroundColor,
     required this.status,
-    required this.onTapFooter,
+    required this.onTap,
     this.textColor = Colors.black,
   }) : super(key: key);
 
@@ -44,7 +44,8 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
     //animation
     controller.forward().then((_) => controller.reset());
     print("animate!");
-    //some provided function (e.g. reload)
+    //some provided function
+    widget.onTap();
   }
 
   @override

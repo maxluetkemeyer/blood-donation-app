@@ -81,28 +81,6 @@ class BookingDefaultStatus extends StatelessWidget {
               ),
             ),
           ),
-          /*Container(
-            margin: const EdgeInsets.symmetric(
-              vertical: 20,
-            ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 45,
-            ),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(6),
-              ),
-            ),
-            child: Text(
-              "Termin buchen",
-              style: TextStyle(
-                fontSize: width * 0.06,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-          ),*/
         ],
       ),
     );

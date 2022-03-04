@@ -1,6 +1,7 @@
 import 'package:blooddonation/booking/status_views/booked_status/expandable_panorama_widget.dart';
 import 'package:blooddonation/booking/status_views/booked_status/requestcard_widget.dart';
 import 'package:blooddonation/booking/status_views/booked_status/stepsection_widget.dart';
+import 'package:blooddonation/services/backend/requests/get_status.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class BookingBookedStatus extends StatelessWidget {
   const BookingBookedStatus({Key? key}) : super(key: key);
 
+  Future refreshStatus() async {
+    return getRequestStatus(appointmentId: BookingService().bookedAppointment!.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: () => Future.delayed(const Duration(seconds: 1)),
+      onRefresh: refreshStatus,
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
@@ -26,7 +31,7 @@ class BookingBookedStatus extends StatelessWidget {
                 return RequestCard(
                   //backgroundColor: const Color.fromRGBO(193, 26, 89, 1),
                   backgroundColor: Colors.black87,
-                  onTapFooter: () {},
+                  onTap: refreshStatus,
                   status: "declined",
                   textColor: Colors.white,
                 );
@@ -34,14 +39,14 @@ class BookingBookedStatus extends StatelessWidget {
               if (appointment?.request?.status == RequestStatus.pending.toString()) {
                 return RequestCard(
                   backgroundColor: Colors.blueGrey.shade200,
-                  onTapFooter: () {},
+                  onTap: refreshStatus,
                   status: "pending",
                 );
               }
 
               return RequestCard(
                 backgroundColor: Theme.of(context).primaryColor,
-                onTapFooter: () {},
+                onTap: refreshStatus,
                 status: "accepted",
                 textColor: Colors.white,
               );

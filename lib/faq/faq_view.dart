@@ -23,7 +23,7 @@ class FaqView extends StatelessWidget {
             return const Center(child: Text("Es ist ein Fehler aufgetreten beim Laden der FAQ Fragen."));
           }
 
-          List<FaqQuestionTranslation> tList = FaqService().extractTranslations(locale: "de_DE");
+          List<FaqQuestionTranslation> tList = FaqService().extractTranslations(locale: "de");
 
           return ListView(
             physics: const BouncingScrollPhysics(),

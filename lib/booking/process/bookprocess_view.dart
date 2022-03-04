@@ -35,7 +35,7 @@ class BookProcessView extends ConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(_stepperHeader(activeStep, context)),
+          title: const Text("Termin buchen"),
           actions: const [AppBarMenuButton()],
         ),
         body: Column(
