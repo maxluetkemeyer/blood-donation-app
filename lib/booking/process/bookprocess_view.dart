@@ -1,6 +1,6 @@
 import 'package:blooddonation/app.dart';
-import 'package:blooddonation/booking/process/parts/booking_overview_widget.dart';
-import 'package:blooddonation/booking/process/parts/choose_day_widget.dart';
+import 'package:blooddonation/booking/process/parts/booking_overview/booking_overview_widget.dart';
+import 'package:blooddonation/booking/process/parts/choose_day/choose_day_widget.dart';
 import 'package:blooddonation/booking/process/parts/choose_time/choose_time_widget.dart';
 import 'package:blooddonation/booking/process/parts/donation_questions/questions_view.dart';
 import 'package:blooddonation/misc/appbar.dart';
@@ -124,12 +124,10 @@ class BookProcessView extends ConsumerWidget {
                         isDestructiveAction: true,
                         onPressed: () {
                           //reset booking process
-                          BookingService().resetBookingProcess();
-                          ref.read(bookingStateProvider.state).state = 0;
+                          BookingService().resetProcess();
 
-                          //pop dialog, then pop booking process view
-                          Navigator.pop(context);
-                          Navigator.pop(context);
+                          //Goto Home Screen
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
                         },
                         //child: const Text('Cancel Booking'),
                         child: Text(AppLocalizations.of(context)!.bookingStopBooking),
@@ -157,9 +155,7 @@ class BookProcessView extends ConsumerWidget {
   }
 
   ///Function to show the current slide header.
-  ///
-  ///Input requires [activeStep] as [int] operator.
-  String _stepperHeader(activeStep, BuildContext context) {
+  String _stepperHeader(int activeStep, BuildContext context) {
     switch (activeStep) {
       case 0:
         return AppLocalizations.of(context)!.bookingChooseDayTitle;
@@ -175,9 +171,7 @@ class BookProcessView extends ConsumerWidget {
   }
 
   ///Function to show the current slide body.
-  ///
-  ///Input requires [activeStep] as [int] operator.
-  Widget _stepperBody(activeStep) {
+  Widget _stepperBody(int activeStep) {
     switch (activeStep) {
       case 0:
         return const ChooseDay();
@@ -186,7 +180,7 @@ class BookProcessView extends ConsumerWidget {
       case 2:
         return const QuestionsView();
       case 3:
-        return const BookingOverview();
+        return BookingOverview();
       default:
         return Container();
     }

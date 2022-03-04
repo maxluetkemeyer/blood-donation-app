@@ -47,7 +47,12 @@ class ChooseDay extends ConsumerWidget {
       ),
       startingDayOfWeek: StartingDayOfWeek.monday,
       onDaySelected: (selectedDay, focusedDay) {
-        BookingService().selectedDay = selectedDay;
+        //BookingService().selectedDay = selectedDay;
+        BookingService().selectedAppointment = Appointment(
+          id: -1,
+          start: selectedDay,
+          duration: const Duration(),
+        );
         ref.read(bookingStateProvider.state).state++;
       },
     );

@@ -13,6 +13,7 @@ Future<bool> getFreeAppointments(DateTime day) async {
 
   if (response.statusCode != 200) {
     print("error getFreeAppointments");
+    //print(response.body);
     return false;
   }
 

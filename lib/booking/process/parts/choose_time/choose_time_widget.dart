@@ -1,3 +1,4 @@
+import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,7 @@ class ChooseTime extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder(
-      //future: BackendService().getFreeAppointments(BookingService().selectedDay!),
-      future: getFreeAppointments(BookingService().selectedDay!),
+      future: getFreeAppointments(extractDay(BookingService().selectedAppointment!.start)),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Center(
@@ -37,7 +37,7 @@ class ChooseTime extends ConsumerWidget {
   ///Private Function to fetch the [List] of appointment [Widget]s from the [BookingService],
   ///only fetching the data from the current date and creating an [AppointmentBox] for each time.
   List<Widget> _appointmentBoxList() {
-    DateTime selectedDay = BookingService().selectedDay!;
+    DateTime selectedDay = extractDay(BookingService().selectedAppointment!.start);
     List<Appointment> freeAppointments = BookingService().freeAppointments;
 
     List<Widget> boxes = [];

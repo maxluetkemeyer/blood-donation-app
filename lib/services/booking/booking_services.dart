@@ -20,20 +20,25 @@ class BookingService {
   ///List of Appointments that saves all Free Appointments.
   List<Appointment> freeAppointments = [];
 
-  ///The variable saves the selected day during the booking process.
-  DateTime? selectedDay;
-
   ///Saves the user selected appointment during the booking process.
   Appointment? selectedAppointment;
 
   ///Current booked appointment
   Appointment? bookedAppointment;
 
-  ///Resets the BookingService.
-  void resetBookingProcess() {
-    selectedDay = null;
+  ///Resets the Process Variables
+  void resetProcess() {
+    selectedAppointment = null;
     freeAppointments = [];
+    donationQuestions.clear();
+    donationQuestionTranslations.clear();
     ProviderService().container.read(bookingStateProvider.state).state = 0;
+  }
+
+  ///Resets the BookingService
+  void resetService() {
+    resetProcess();
+    bookedAppointment = null;
   }
 
   List<Map<String, dynamic>> getDonationQuestionList({required String locale}) {

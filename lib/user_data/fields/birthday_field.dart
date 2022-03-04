@@ -42,9 +42,9 @@ class _BirthdayFieldState extends State<BirthdayField> {
           builder: (BuildContext context) => CupertinoActionSheet(
             actions: [
               SizedBox(
-                height: 220,
+                height: 250,
                 child: CupertinoDatePicker(
-                  initialDateTime: earliestDonationBirthday,
+                  initialDateTime: UserService().birthdayAsString == "" ? earliestDonationBirthday : UserService().birthday,
                   maximumDate: earliestDonationBirthday,
                   mode: CupertinoDatePickerMode.date,
                   dateOrder: DatePickerDateOrder.dmy,
@@ -53,7 +53,7 @@ class _BirthdayFieldState extends State<BirthdayField> {
               ),
             ],
             cancelButton: CupertinoActionSheetAction(
-              child: const Text("Fertig"),
+              child: Text(AppLocalizations.of(context)!.doneButton),
               onPressed: () {
                 controller.text = UserService().birthdayAsString;
 
