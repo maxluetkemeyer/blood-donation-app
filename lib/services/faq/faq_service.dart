@@ -1,6 +1,7 @@
 import 'package:blooddonation/models/faqquestion_model.dart';
 import 'package:blooddonation/models/faqquestiontranslation_model.dart';
 import 'package:blooddonation/services/backend/requests/get_faq_questions.dart';
+import 'package:language_picker/languages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:blooddonation/misc/env.dart' as env;
 
@@ -41,7 +42,7 @@ class FaqService {
     return await getFaqQuestions();
   }
 
-  List<FaqQuestionTranslation> extractTranslations({required String locale}) {
+  List<FaqQuestionTranslation> extractTranslations({required String language}) {
     List<FaqQuestionTranslation> output = [];
 
     // Iterate through the questions and return the translation in correct order
@@ -57,13 +58,34 @@ class FaqService {
 
       // Find translation
       for (FaqQuestionTranslation translation in faqQuestionTranslations) {
-        if (translation.faqQuestion == question!.id && translation.language == locale) {
+        if (translation.faqQuestion == question!.id && translation.language == language) {
           output.add(translation);
           break;
         }
       }
     }
     return output;
+  }
+
+  List<Language> extractLanguages() {
+    //Language myLanguage = Language.fromIsoCode("de");
+    List<Language> languages = [];
+
+    for (FaqQuestionTranslation translation in faqQuestionTranslations) {
+      Language lan = Language.fromIsoCode(translation.language);
+
+      bool found = false;
+      for (Language oldLan in languages) {
+        if (oldLan.isoCode == lan.isoCode) {
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) languages.add(lan);
+    }
+
+    return languages;
   }
 
   set cacheTime(DateTime dateTime) {
