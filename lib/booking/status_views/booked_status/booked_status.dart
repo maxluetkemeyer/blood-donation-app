@@ -71,7 +71,6 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
 
               if (appointment?.request?.status == RequestStatus.declined.name) {
                 return RequestCard(
-                  //backgroundColor: const Color.fromRGBO(193, 26, 89, 1),
                   backgroundColor: Colors.black87,
                   onRefresh: refreshStatus,
                   onCancel: cancel,
@@ -90,7 +89,8 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
 
               if (appointment?.request?.status == RequestStatus.accepted.name) {
                 return RequestCard(
-                  backgroundColor: Colors.blueGrey.shade200,
+                  backgroundColor: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
                   onRefresh: refreshStatus,
                   onCancel: cancel,
                   appointment: appointment!,
