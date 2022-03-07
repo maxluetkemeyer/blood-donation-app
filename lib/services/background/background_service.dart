@@ -1,74 +1,82 @@
-import 'dart:async';
-
-import 'package:blooddonation/services/backend/requests/get_status.dart';
+import 'package:background_fetch/background_fetch.dart';
 import 'package:blooddonation/services/background/notification_service.dart';
-import 'package:workmanager/workmanager.dart';
 
-class BackgroundService {
-  //Singleton
-  static final BackgroundService _instance = BackgroundService._private();
-  factory BackgroundService() => _instance;
-  BackgroundService._private() {
-    print("Starting Background Service");
+// [Android-only] This "Headless Task" is run when the Android app
+// is terminated with enableHeadless: true
+void backgroundFetchHeadlessTask(HeadlessTask task) async {
+  String taskId = task.taskId;
+  bool isTimeout = task.timeout;
+  if (isTimeout) {
+    // This task has exceeded its allowed running-time.
+    // You must stop what you're doing and immediately .finish(taskId)
+    print("[BackgroundFetch] Headless task timed-out: $taskId");
+    BackgroundFetch.finish(taskId);
+    return;
   }
-
-  static void initWorkmanager() {
-    Workmanager().initialize(
-      callbackDispatcher, // The top level function, aka callbackDispatcher
-      isInDebugMode: true, // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
-    );
-  }
-
-  void startBackgroundTask() {
-    Workmanager().registerPeriodicTask(
-      DateTime.now().toString(),
-      "periodicFetchAppointmentStatus",
-      constraints: Constraints(
-        networkType: NetworkType.connected,
-      ),
-      backoffPolicy: BackoffPolicy.linear,
-    );
-  }
-
-  void stopBackgroundTask() {
-    Workmanager().cancelAll();
-  }
-
-  void startOnActiveBackgroundTask() {
-    Timer.periodic(const Duration(seconds: 15), (timer) async {
-      bool response = await getRequestStatus(-1);
-      if (!response) return;
-      
-      timer.cancel();
-      NotificationService().displayNotification(
-        channelID: "booking_response",
-        channelName: "Booking Status Response",
-        channelDescription: "Booking Response Channel Description",
-        notificationTitle: "notificationTitle",
-        notificationBody: "notificationBody",
-        payload: "payload",
-      );
-    });
-  }
+  print('[BackgroundFetch] Headless event received.');
+  // Do your work here...
+  BackgroundFetch.finish(taskId);
 }
 
-void callbackDispatcher() {
-  Workmanager().executeTask((String task, Map<String, dynamic>? inputData) async {
-    print("Native called background task: $task");
-    bool response = await getRequestStatus(-1);
-    if (!response) return Future.value(false);
+Future init() async {
+  // [Android-only]
+  // Register to receive BackgroundFetch events after app is terminated.
+  // Requires {stopOnTerminate: false, enableHeadless: true}
+  BackgroundFetch.registerHeadlessTask(backgroundFetchHeadlessTask);
 
-    NotificationService().displayNotification(
-      channelID: "booking_response",
-      channelName: "Booking Status Response",
-      channelDescription: "Booking Response Channel Description",
-      notificationTitle: "notificationTitle",
-      notificationBody: "notificationBody",
-      payload: "payload",
-    );
+  _initPlatformState();
+}
 
-    Workmanager().cancelAll();
+Future<void> _initPlatformState() async {
+  // Configure BackgroundFetch.
+  int status = await BackgroundFetch.configure(
+    BackgroundFetchConfig(
+      minimumFetchInterval: 15,
+      stopOnTerminate: false,
+      enableHeadless: true,
+      requiresBatteryNotLow: false,
+      requiresCharging: false,
+      requiresStorageNotLow: false,
+      requiresDeviceIdle: false,
+      requiredNetworkType: NetworkType.ANY,
+    ),
+    (String taskId) async {
+      // <-- Event handler
+      // This is the fetch-event callback.
+      print("[BackgroundFetch] Event received $taskId");
+      print("LOLOOLOLOLO");
 
-    return Future.value(true);
+      await NotificationService().init().then(
+        (value) {
+          NotificationService().displayNotification("title bg", "body bg");
+
+          // IMPORTANT:  You must signal completion of your task or the OS can punish your app
+          // for taking too long in the background.
+          BackgroundFetch.finish(taskId);
+        },
+      );
+    },
+    (String taskId) async {
+      // <-- Task timeout handler.
+      // This task has exceeded its allowed running-time.  You must stop what you're doing and immediately .finish(taskId)
+      print("[BackgroundFetch] TASK TIMEOUT taskId: $taskId");
+      BackgroundFetch.finish(taskId);
+    },
+  );
+
+  print('[BackgroundFetch] configure success: $status');
+}
+
+void start() {
+  BackgroundFetch.start().then((int status) {
+    print('[BackgroundFetch] start success: $status');
+  }).catchError((e) {
+    print('[BackgroundFetch] start FAILURE: $e');
+  });
+}
+
+void stop() {
+  BackgroundFetch.stop().then((int status) {
+    print('[BackgroundFetch] stop success: $status');
   });
 }

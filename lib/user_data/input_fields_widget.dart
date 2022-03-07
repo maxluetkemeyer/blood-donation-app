@@ -1,7 +1,7 @@
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:blooddonation/user_data/fields/birthday_field.dart';
-import 'package:blooddonation/user_data/fields/firstdonation_field.dart';
 import 'package:blooddonation/user_data/fields/gender_field.dart';
+import 'package:blooddonation/user_data/fields/language_field.dart';
 import 'package:blooddonation/user_data/fields/name_field.dart';
 import 'package:blooddonation/user_data/fields/telephone_field.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,8 @@ class InputFields extends StatelessWidget {
         BirthdayField(),
         GenderField(),
         TelephoneField(),
-        FirstDonationField(),
+        //FirstDonationField(),
+        LanguageField(),
       ],
     );
   }

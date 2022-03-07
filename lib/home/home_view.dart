@@ -1,3 +1,4 @@
+import 'package:blooddonation/home/get_inspired.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,13 +8,8 @@ class HomePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      children: const [
-        Image(
-          image: AssetImage("./assets/images/home_screen_design_mock.png"),
-        ),
-      ],
-    );
+    //double width = MediaQuery.of(context).size.width;
+
+    return const GetInspired();
   }
 }

@@ -24,14 +24,25 @@ class Appointment {
         person: json["person"] != null ? Person.fromJson(json["person"]) : null,
       );
 
-  @override
-  String toString() {
-    String requestS = "";
-    if (request != null) {
-      requestS = request!.status;
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> map = {
+      "start": _removeTimeZone(start).toIso8601String(),
+      "duration": duration.inMinutes,
+    };
+
+    if (id > 0) {
+      map["id"] = id;
     }
 
-    return "Appointment $id " + start.toString() + " " + duration.toString() + " " + requestS;
+    if (person != null) {
+      map["person"] = person!.toJson();
+    }
+
+    if (request != null) {
+      map["request"] = request!.toJson();
+    }
+
+    return map;
   }
 
   Appointment copyWith({
@@ -50,36 +61,9 @@ class Appointment {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    // ignore: unused_local_variable
-    Map<String, dynamic>? personMap;
-    // ignore: unused_local_variable
-    Map<String, dynamic>? requestMap;
-
-    if (person != null) {
-      personMap = {
-        "name": person!.name,
-        "birthday": person!.birthday!.year.toString() + "-" + person!.birthday!.month.toString() + "-" + person!.birthday!.day.toString(),
-        "gender": "male",
-      };
-    }
-
-    if (request != null) {
-      requestMap = {
-        "created": _removeTimeZone(request!.created).toIso8601String(),
-        "status": request!.status,
-      };
-    }
-
-    Map<String, dynamic> map = {
-      "id": id,
-      "start": _removeTimeZone(start).toIso8601String(),
-      "duration": duration.inMinutes,
-      "person": personMap,
-      //"request": requestMap,
-    };
-
-    return map;
+  @override
+  String toString() {
+    return toJson().toString();
   }
 }
 

@@ -1,6 +1,7 @@
-import 'package:blooddonation/mock.dart';
 import 'package:blooddonation/models/faqquestion_model.dart';
 import 'package:blooddonation/models/faqquestiontranslation_model.dart';
+import 'package:blooddonation/services/backend/requests/get_faq_questions.dart';
+import 'package:language_picker/languages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:blooddonation/misc/env.dart' as env;
 
@@ -30,16 +31,18 @@ class FaqService {
 
   Future<bool> cacheQuestions() async {
     // Regulary fetch data
-    if (DateTime.now().difference(_cacheTime).inSeconds > env.FAQ_CACHE_DURATION.inSeconds) return await mockFaq();
+    if (DateTime.now().difference(_cacheTime).inSeconds > env.FAQ_CACHE_DURATION.inSeconds) {
+      return await getFaqQuestions();
+    }
 
     // Are questions already downloaded?
     if (faqQuestions.isNotEmpty) return true;
 
     // Otherwise download Faq Questions
-    return await mockFaq();
+    return await getFaqQuestions();
   }
 
-  List<FaqQuestionTranslation> extractTranslations({required String locale}) {
+  List<FaqQuestionTranslation> extractTranslations({required Language language}) {
     List<FaqQuestionTranslation> output = [];
 
     // Iterate through the questions and return the translation in correct order
@@ -55,13 +58,33 @@ class FaqService {
 
       // Find translation
       for (FaqQuestionTranslation translation in faqQuestionTranslations) {
-        if (translation.faqQuestion == question!.id && translation.language == locale) {
+        if (translation.faqQuestion == question!.id && translation.language == language.isoCode) {
           output.add(translation);
           break;
         }
       }
     }
     return output;
+  }
+
+  List<Language> extractLanguages() {
+    List<Language> languages = [Languages.german];
+
+    for (FaqQuestionTranslation translation in faqQuestionTranslations) {
+      Language lan = Language.fromIsoCode(translation.language);
+
+      bool found = false;
+      for (Language oldLan in languages) {
+        if (oldLan.isoCode == lan.isoCode) {
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) languages.add(lan);
+    }
+
+    return languages;
   }
 
   set cacheTime(DateTime dateTime) {

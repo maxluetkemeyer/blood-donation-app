@@ -10,6 +10,6 @@ final questionStepStateProvier = StateProvider<int>((ref) {
   return 0;
 });
 
-/*final updateUserDataViewProvider = StateProvider<int>((ref) {
+final bookedAppointmentUpdateProvider = StateProvider<int>((ref) {
   return 0;
-});*/
+});

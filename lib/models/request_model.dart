@@ -15,6 +15,16 @@ class Request {
         status: json["status"],
       );
 
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> map = {
+      "id": id,
+      "created": created.toString(),
+      "status": status,
+    };
+
+    return map;
+  }
+
   Request copyWith({
     int? id,
     DateTime? created,
@@ -27,3 +37,5 @@ class Request {
     );
   }
 }
+
+enum RequestStatus { pending, accepted, declined }
