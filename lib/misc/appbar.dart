@@ -1,3 +1,4 @@
+import 'package:blooddonation/app.dart';
 import 'package:blooddonation/imprint/imprint_view.dart';
 import 'package:blooddonation/user_data/user_data_view.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,9 @@ class AppBarMenuButton extends StatelessWidget {
             break;
           case 1:
             Navigator.push(context, MaterialPageRoute(builder: (context) => const ImprintView()));
+            break;
+          case 2:
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(showShowcase: true)), (Route<dynamic> route) => false);
             break;
         }
       },
@@ -39,6 +43,16 @@ class AppBarMenuButton extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
           child: Text(AppLocalizations.of(context)!.homeMenuImprint),
+        ),
+        const PopupMenuDivider(),
+        PopupMenuItem(
+          value: 2,
+          textStyle: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+          child: const Text("Hilfe"),
         ),
       ],
     );

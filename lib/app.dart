@@ -5,15 +5,18 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:blooddonation/booking/booking_view.dart';
 import 'package:blooddonation/faq/faq_view.dart';
 import 'package:blooddonation/location/location_view.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 import 'home/home_view.dart';
 
 class App extends StatefulWidget {
   final int initalPageIndex;
+  final bool showShowcase;
 
   const App({
     Key? key,
     this.initalPageIndex = 0,
+    this.showShowcase = false,
   }) : super(key: key);
 
   @override
@@ -30,10 +33,29 @@ class _AppState extends State<App> {
     const FaqView(),
   ];
 
+  final showcaseKeys = [
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+    GlobalKey(),
+  ];
+
   @override
   void initState() {
     super.initState();
     pageIndex = widget.initalPageIndex;
+
+    print("showShowcase " + widget.showShowcase.toString());
+    if (widget.showShowcase) {
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
+        //Needed to delay the showcase call due to visual bugs
+        Future.delayed(const Duration(milliseconds: 100)).then(
+          (_) => ShowCaseWidget.of(context)!.startShowCase(showcaseKeys),
+        );
+      });
+    }
   }
 
   ///Defines the Page Design for every Navigation oriented screen.
@@ -45,11 +67,24 @@ class _AppState extends State<App> {
       appBar: AppBar(
         title: SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
-          child: const Image(
-            image: AssetImage("assets/images/logo.jpeg"),
+          child: Showcase(
+            description: "Herzlich Willkommen in der UKM Blutspende App!",
+            key: showcaseKeys[0],
+            descTextStyle: const TextStyle(fontSize: 20),
+            child: const Image(
+              image: AssetImage("assets/images/logo.jpeg"),
+            ),
           ),
         ),
-        actions: const [AppBarMenuButton()],
+        actions: [
+          Showcase(
+            description: "Und hier oben finden sie Weiteres.",
+            key: showcaseKeys[5],
+            descTextStyle: const TextStyle(fontSize: 20),
+            shapeBorder: const CircleBorder(),
+            child: const AppBarMenuButton(),
+          )
+        ],
       ),
       body: screens[pageIndex],
       bottomNavigationBar: NavigationBarTheme(
@@ -68,29 +103,49 @@ class _AppState extends State<App> {
             pageIndex = index;
           }),
           destinations: [
-            NavigationDestination(
-              key: const ValueKey('start'),
-              icon: const Icon(Icons.home_outlined),
-              selectedIcon: const Icon(Icons.home),
-              label: AppLocalizations.of(context)!.homeMenuStart,
+            Showcase(
+              description: "Hier finden sie Impressionen unserer Blutspender:innen",
+              key: showcaseKeys[1],
+              descTextStyle: const TextStyle(fontSize: 20),
+              child: NavigationDestination(
+                key: const ValueKey('start'),
+                icon: const Icon(Icons.home_outlined),
+                selectedIcon: const Icon(Icons.home),
+                label: AppLocalizations.of(context)!.homeMenuStart,
+              ),
             ),
-            NavigationDestination(
-              key: const ValueKey('appointment'),
-              icon: const Icon(Icons.date_range_outlined),
-              selectedIcon: const Icon(Icons.date_range),
-              label: AppLocalizations.of(context)!.homeMenuAppointment,
+            Showcase(
+              description: "Hier können sie einen\nBlutspendetermin buchen",
+              key: showcaseKeys[2],
+              descTextStyle: const TextStyle(fontSize: 20),
+              child: NavigationDestination(
+                key: const ValueKey('appointment'),
+                icon: const Icon(Icons.date_range_outlined),
+                selectedIcon: const Icon(Icons.date_range),
+                label: AppLocalizations.of(context)!.homeMenuAppointment,
+              ),
             ),
-            NavigationDestination(
-              key: const ValueKey('map'),
-              icon: const Icon(Icons.map_outlined),
-              selectedIcon: const Icon(Icons.map),
-              label: AppLocalizations.of(context)!.homeMenuMap,
+            Showcase(
+              description: "Hier zeigen wir ihnen, wie sie zu uns kommen",
+              key: showcaseKeys[3],
+              descTextStyle: const TextStyle(fontSize: 20),
+              child: NavigationDestination(
+                key: const ValueKey('map'),
+                icon: const Icon(Icons.map_outlined),
+                selectedIcon: const Icon(Icons.map),
+                label: AppLocalizations.of(context)!.homeMenuMap,
+              ),
             ),
-            NavigationDestination(
-              key: const ValueKey('faq'),
-              icon: const Icon(Icons.help_outline),
-              selectedIcon: const Icon(Icons.help),
-              label: AppLocalizations.of(context)!.homeMenuFaq,
+            Showcase(
+              description: "Hier beantworten wir die meist gestellten Fragen",
+              key: showcaseKeys[4],
+              descTextStyle: const TextStyle(fontSize: 20),
+              child: NavigationDestination(
+                key: const ValueKey('faq'),
+                icon: const Icon(Icons.help_outline),
+                selectedIcon: const Icon(Icons.help),
+                label: AppLocalizations.of(context)!.homeMenuFaq,
+              ),
             ),
           ],
         ),

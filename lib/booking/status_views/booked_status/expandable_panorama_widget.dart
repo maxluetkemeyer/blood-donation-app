@@ -18,8 +18,8 @@ class ExpandablePanorama extends StatelessWidget {
         AspectRatio(
           aspectRatio: 2 / 1,
           child: ClipRRect(
-            child: Panorama(
-              onTap: (longitude, latitude, tilt) {
+            child: InkWell(
+              onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => _PanoramaFullscreen(title: title, image: image)));
               },
               child: Image(

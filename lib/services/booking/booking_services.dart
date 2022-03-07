@@ -2,6 +2,7 @@ import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/models/donationquestions_model.dart';
 import 'package:blooddonation/models/donationquestiontranslation_model.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
+import 'package:language_picker/languages.dart';
 
 export 'package:blooddonation/models/appointment_model.dart';
 export 'package:blooddonation/models/request_model.dart';
@@ -41,7 +42,7 @@ class BookingService {
     bookedAppointment = null;
   }
 
-  List<Map<String, dynamic>> getDonationQuestionList({required String locale}) {
+  List<Map<String, dynamic>> getDonationQuestionList({required Language language}) {
     List<Map<String, dynamic>> output = [];
 
     // Iterate through the questions and return the translation in correct order
@@ -58,7 +59,7 @@ class BookingService {
 
       // Find translation
       for (DonationQuestionTranslation translation in donationQuestionTranslations) {
-        if (translation.donationQuestion == tupel["donationQuestion"].id && translation.language == locale) {
+        if (translation.donationQuestion == tupel["donationQuestion"].id && translation.language == language.isoCode) {
           tupel["donationQuestionTranslation"] = translation;
           break;
         }

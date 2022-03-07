@@ -29,6 +29,7 @@ dependencies:
   introduction_screen: ^2.1.0
   carousel_slider: ^4.0.0
   language_picker: ^0.4.1
+  showcaseview: ^1.1.5
 
   # map
   latlong2: ^0.8.0

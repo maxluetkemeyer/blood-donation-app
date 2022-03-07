@@ -1,6 +1,7 @@
 import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/models/person_model.dart';
 import 'package:intl/intl.dart';
+import 'package:language_picker/languages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 export 'package:blooddonation/models/person_model.dart';
@@ -21,6 +22,9 @@ class UserService {
   ///Variable that stores an instance of the Userdata to access Userdata via Singleton Object-
   late Person _user;
 
+  ///Preffered Language
+  Language _lan = Languages.german;
+
   ///Initializes UserData by setting [User] and accessing the local data inside [SharedPreferences].
   ///If the [SharedPreferences] are already set, [User] is initialized with the values stored inside
   ///the [SharedPreferences]
@@ -36,8 +40,10 @@ class UserService {
       telephoneNumber: _prefs.getString("telephoneNumber") ?? "",
       firstDonation: _prefs.getBool("firstDonation") ?? true,
     );
+
+    _lan = Language.fromIsoCode(_prefs.getString("user_language") ?? Languages.german.isoCode);
+
     print("User Service finished!");
-    print(_user.birthday.toString());
   }
 
   // Getter
@@ -68,6 +74,8 @@ class UserService {
     DateTime? day = DateTime.tryParse(dayString);
     return day;
   }
+
+  Language get language => _lan;
 
   // Setter
 
@@ -106,5 +114,10 @@ class UserService {
     } else {
       _prefs.setString("lastDonation", "");
     }
+  }
+
+  set language(Language lan) {
+    _lan = lan;
+    _prefs.setString("user_language", lan.isoCode);
   }
 }

@@ -2,6 +2,7 @@ import 'package:blooddonation/booking/process/parts/donation_questions/slider.da
 import 'package:blooddonation/services/backend/requests/get_donationquestions.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/providers.dart';
+import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,7 +28,7 @@ class QuestionsView extends ConsumerWidget {
         }
 
         return QuestionSlider(
-          questions: BookingService().getDonationQuestionList(locale: "de"),
+          questions: BookingService().getDonationQuestionList(language: UserService().language),
         );
       },
     );

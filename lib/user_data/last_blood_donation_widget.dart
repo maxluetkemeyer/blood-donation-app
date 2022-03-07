@@ -12,6 +12,9 @@ class LastBloodDonation extends StatelessWidget {
   Widget build(BuildContext context) {
     DateTime? lastBloodDonation = UserService().lastDonation;
 
+    bool nowIsLater = true;
+    if (lastBloodDonation != null && lastBloodDonation.isAfter(DateTime.now())) nowIsLater = false;
+
     return CupertinoFormSection.insetGrouped(
       header: Text(AppLocalizations.of(context)!.userDataLastDonation),
       margin: const EdgeInsets.all(12),
@@ -19,8 +22,8 @@ class LastBloodDonation extends StatelessWidget {
         CupertinoFormRow(
           child: lastBloodDonation != null
               ? TableCalendar(
-                  firstDay: lastBloodDonation,
-                  lastDay: DateTime.now(),
+                  firstDay: nowIsLater ? lastBloodDonation : DateTime.now(),
+                  lastDay: nowIsLater ? DateTime.now() : lastBloodDonation,
                   focusedDay: lastBloodDonation,
                   calendarFormat: CalendarFormat.month,
                   currentDay: lastBloodDonation,

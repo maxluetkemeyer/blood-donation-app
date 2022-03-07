@@ -7,6 +7,7 @@ import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:blooddonation/services/background/background_service.dart' as background;
+import 'package:showcaseview/showcaseview.dart';
 
 import './onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
@@ -63,30 +64,37 @@ class _MainWidgetState extends State<MainWidget> {
   Widget build(BuildContext context) {
     return UncontrolledProviderScope(
       container: ProviderService().container,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: const [
-          Locale('en', ''), // English, no country code
-          Locale('de', ''), // German, no country code
-        ],
-        onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
-        //generating the Theme
-        theme: lightTheme,
-        home: FutureBuilder<bool>(
-          future: showOnboarding(), // a previously-obtained Future<bool> or null
-          builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.hasData) {
-              if (snapshot.data!) {
-                // Open HomeView, if the built Future is existing and false
+      child: ShowCaseWidget(
+        builder: Builder(
+          builder: (context) => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: const [
+              Locale('en', ''), // English, no country code
+              Locale('de', ''), // German, no country code
+            ],
+            locale: const Locale("de"),
+            onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
+            //generating the Theme
+            theme: lightTheme,
+            home: FutureBuilder<bool>(
+              future: showOnboarding(), // a previously-obtained Future<bool> or null
+              builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.data!) {
+                    NotificationService().requestIosPermissions();
+
+                    // Open HomeView, if the built Future is existing and false
+                    return const App();
+                  }
+                  // Open Onboarding, if the built Future is existing and true
+                  return const OnboardingView();
+                }
+                // Open HomeView, if the built Future isn't existing
                 return const App();
-              }
-              // Open Onboarding, if the built Future is existing and true
-              return const OnboardingView();
-            }
-            // Open HomeView, if the built Future isn't existing
-            return const App();
-          },
+              },
+            ),
+          ),
         ),
       ),
     );
@@ -98,11 +106,8 @@ class _MainWidgetState extends State<MainWidget> {
     //maybe use UserService for this
     //load persistent data to check onboarded status
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // ignore: unused_local_variable
     final alreadyOnboarded = prefs.getBool("alreadyOnboarded") ?? false;
 
-    // ignore: dead_code
-    //return true && alreadyOnboarded;
-    return true;
+    return alreadyOnboarded;
   }
 }

@@ -16,12 +16,14 @@ Future<bool> getRequestStatus({required int appointmentId}) async {
     return false;
   }
 
+  print("[get_status]: " + response.body);
+
   //Convert String to Map
   List jsonList = jsonDecode(response.body) as List; //TODO: Has to be fixed in django.
   Map<String, dynamic> json = jsonList[0];
 
   //Convert each List of Map to a List of a model
-  Request request = Request.fromJson(json);
+  Request request = Request.fromJson(json["request"]);
 
   //Update BookingService reference
   BookingService().bookedAppointment?.request = request;

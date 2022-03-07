@@ -13,7 +13,10 @@ Future<bool> cancelAppointment({required int appointmentId}) async {
     return false;
   }
 
-  if (response.body != "succesful") {
+  print("body " + response.body.toString());
+
+  if (response.body != '"successful"') {
+    //TODO: Bug here are String literals inside the string
     print(response.body);
     return false;
   }

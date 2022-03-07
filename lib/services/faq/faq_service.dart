@@ -42,7 +42,7 @@ class FaqService {
     return await getFaqQuestions();
   }
 
-  List<FaqQuestionTranslation> extractTranslations({required String language}) {
+  List<FaqQuestionTranslation> extractTranslations({required Language language}) {
     List<FaqQuestionTranslation> output = [];
 
     // Iterate through the questions and return the translation in correct order
@@ -58,7 +58,7 @@ class FaqService {
 
       // Find translation
       for (FaqQuestionTranslation translation in faqQuestionTranslations) {
-        if (translation.faqQuestion == question!.id && translation.language == language) {
+        if (translation.faqQuestion == question!.id && translation.language == language.isoCode) {
           output.add(translation);
           break;
         }
@@ -68,8 +68,7 @@ class FaqService {
   }
 
   List<Language> extractLanguages() {
-    //Language myLanguage = Language.fromIsoCode("de");
-    List<Language> languages = [];
+    List<Language> languages = [Languages.german];
 
     for (FaqQuestionTranslation translation in faqQuestionTranslations) {
       Language lan = Language.fromIsoCode(translation.language);

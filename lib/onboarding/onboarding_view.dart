@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:blooddonation/onboarding/pages/covid_page.dart';
 import 'package:blooddonation/onboarding/pages/didyouknow_page.dart';
 import 'package:blooddonation/onboarding/pages/motivation_page.dart';
@@ -52,6 +54,8 @@ class _OnboardingViewState extends State<OnboardingView> {
                 welcomePage(),
                 didyouknowPage(),
                 motivationPage(),
+                if(Platform.isIOS)
+                
                 covidPage(context),
               ],
               onChange: (value) {

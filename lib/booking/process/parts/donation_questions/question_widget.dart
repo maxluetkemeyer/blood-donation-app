@@ -1,6 +1,10 @@
+import 'package:blooddonation/app.dart';
 import 'package:blooddonation/models/donationquestions_model.dart';
 import 'package:blooddonation/models/donationquestiontranslation_model.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///Class to define one booking question.
 ///
@@ -12,7 +16,6 @@ class QuestionWidget extends StatelessWidget {
   final DonationQuestionTranslation translation;
   final Function nextQuestionFunc;
 
-  ///Constructor of the class QuestionWidget.
   const QuestionWidget({
     Key? key,
     required this.question,
@@ -51,6 +54,8 @@ class QuestionWidget extends StatelessWidget {
               onPressed: () {
                 if (question.isYesCorrect) {
                   nextQuestionFunc();
+                } else {
+                  wrongAnswere(context);
                 }
               },
               icon: const Icon(Icons.done),
@@ -66,11 +71,53 @@ class QuestionWidget extends StatelessWidget {
               onPressed: () {
                 if (!question.isYesCorrect) {
                   nextQuestionFunc();
+                } else {
+                  wrongAnswere(context);
                 }
               },
               label: const Text("Nein"),
               icon: const Icon(Icons.close),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void wrongAnswere(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text(
+          "Zulassung zur Blutspende",
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+        content: Column(
+          children: const [
+            SizedBox(height: 10),
+            Text(
+              "Auf Grund ihrer Antwort kommen sie wahrscheinlich nicht als Blutspender:in in Frage. Schauen sie sich gerne unser FAQ an.",
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            )
+          ],
+        ),
+        actions: [
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            onPressed: () => Navigator.pop(context),
+            child: Text(AppLocalizations.of(context)!.back),
+          ),
+          CupertinoDialogAction(
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 3)), (route) => false);
+              BookingService().resetProcess();
+            },
+            child: const Text("Zum FAQ"),
           ),
         ],
       ),

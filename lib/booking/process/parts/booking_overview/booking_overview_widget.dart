@@ -1,4 +1,5 @@
 import 'package:blooddonation/app.dart';
+import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/services/backend/requests/book_appointment.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/user/user_service.dart';
@@ -111,7 +112,11 @@ class BookingOverview extends StatelessWidget {
                   return;
                 }
 
+                UserService().lastDonation = extractDay(BookingService().bookedAppointment!.start);
+
                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+
+                BookingService().resetProcess();
               });
             },
           ),
