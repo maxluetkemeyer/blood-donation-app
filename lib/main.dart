@@ -7,6 +7,7 @@ import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:blooddonation/services/background/background_service.dart' as background;
+import 'package:flutter/services.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import './onboarding/onboarding_view.dart';
@@ -54,6 +55,16 @@ class MainWidget extends StatefulWidget {
 
 class _MainWidgetState extends State<MainWidget> {
   @override
+  void initState() {
+    super.initState();
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
+  @override
   void dispose() {
     ProviderService().container.dispose();
 
@@ -77,6 +88,7 @@ class _MainWidgetState extends State<MainWidget> {
             onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
             //generating the Theme
             theme: lightTheme,
+
             home: FutureBuilder<bool>(
               future: showOnboarding(), // a previously-obtained Future<bool> or null
               builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {

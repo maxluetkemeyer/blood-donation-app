@@ -11,6 +11,7 @@ class DonationQuestionTranslation {
     required this.donationQuestion,
   });
 
+  ///Following the abstract factory pattern, an object of [DonationQuestionTranslation] can be created by using the [json] formatted Map.
   factory DonationQuestionTranslation.fromJson(Map<String, dynamic> json) => DonationQuestionTranslation(
         id: json["id"],
         body: json["body"],
@@ -18,6 +19,7 @@ class DonationQuestionTranslation {
         donationQuestion: json["donationQuestion"],
       );
 
+  ///Returns the Object in the form of a Map in [Json] format.
   Map<String, dynamic> toJson() {
     Map<String, dynamic> map = {
       "id": id,
