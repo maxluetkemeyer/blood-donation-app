@@ -35,7 +35,7 @@ class ExpandablePanorama extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => _PanoramaFullscreen(title: title, image: image)));
               },
               icon: Icon(
-                Icons.touch_app_rounded,
+                Icons.threesixty_rounded,
                 size: 50,
                 color: Colors.white.withOpacity(0.9),
               ),

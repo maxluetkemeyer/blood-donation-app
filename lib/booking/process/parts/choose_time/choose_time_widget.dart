@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'appointmentbox_widget.dart';
 
@@ -23,10 +26,8 @@ class ChooseTime extends ConsumerWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Wrap(
-            spacing: 20,
-            runSpacing: 20,
+          padding: const EdgeInsets.only(top: 30, left: 2, right: 2),
+          child: Column(
             children: _appointmentBoxList(),
           ),
         );
@@ -37,14 +38,13 @@ class ChooseTime extends ConsumerWidget {
   ///Private Function to fetch the [List] of appointment [Widget]s from the [BookingService],
   ///only fetching the data from the current date and creating an [AppointmentBox] for each time.
   List<Widget> _appointmentBoxList() {
-    DateTime selectedDay = extractDay(BookingService().selectedAppointment!.start);
+    DateTime day = extractDay(BookingService().selectedAppointment!.start);
     List<Appointment> freeAppointments = BookingService().freeAppointments;
 
-    List<Widget> boxes = [];
+    List<AppointmentBox> tiles = [];
     List freeAppointmentsAtThisDay = [];
 
-    DateTime day = DateTime(selectedDay.year, selectedDay.month, selectedDay.day);
-    DateTime nextDay = day.add(const Duration(hours: 23, minutes: 59));
+    DateTime nextDay = day.add(const Duration(days: 1));
 
     for (Appointment app in freeAppointments) {
       if ((app.start.isAfter(day) || app.start.isAtSameMomentAs(day)) && app.start.isBefore(nextDay)) {
@@ -52,13 +52,33 @@ class ChooseTime extends ConsumerWidget {
       }
     }
 
+    Map<String, int> map = {};
+    Map<String, Appointment> map2 = {};
+
     for (Appointment app in freeAppointmentsAtThisDay) {
-      AppointmentBox box = AppointmentBox(
-        appointment: app,
-      );
-      boxes.add(box);
+      String key = DateFormat("HH:mm").format(app.start);
+
+      if (map.containsKey(key)) {
+        map[key] = map[key]! + 1;
+      } else {
+        map.addAll({
+          key: 1,
+        });
+        map2[key] = app;
+      }
     }
 
-    return boxes;
+    map.forEach((key, value) {
+      tiles.add(
+        AppointmentBox(
+          appointment: map2[key]!,
+          maxSlots: 4,
+          usedSlots: 4 - map[key]!,
+          //usedSlots: Random().nextInt(5),
+        ),
+      );
+    });
+
+    return tiles;
   }
 }

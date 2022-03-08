@@ -1,3 +1,4 @@
+import 'package:blooddonation/home/home_static_view.dart';
 import 'package:blooddonation/home/person_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class GetInspired extends StatefulWidget {
 
 class _GetInspiredState extends State<GetInspired> {
   int current = 0;
-  final int amount = 4;
+  final int amount = 5;
   final CarouselController controller = CarouselController(); //not disposeable?
 
   @override
@@ -39,6 +40,7 @@ class _GetInspiredState extends State<GetInspired> {
               },
             ),
             items: const [
+              HomeStatic(),
               PersonWiget(
                 image: AssetImage("assets/images/person_1.png"),
                 text: "Ich spende beim UKM, weil ich mich hier gut aufgehoben fühle.",
