@@ -61,18 +61,16 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) => CupertinoAlertDialog(
-        title: const Text(
-          "Termin stornieren?",
-          style: TextStyle(
+        title: Text(AppLocalizations.of(context)!.requestCardCancelAppointment, 
+          style: const TextStyle(
             fontSize: 24,
           ),
         ),
         content: Column(
-          children: const [
-            SizedBox(height: 10),
-            Text(
-              "Diese Aktion kann nicht rückgängig gemacht werden!",
-              style: TextStyle(
+          children: [
+            const SizedBox(height: 10),
+            Text(AppLocalizations.of(context)!.requestCardCancelAppointmentAttentionWarning,
+              style: const TextStyle(
                 fontSize: 16,
               ),
             )
@@ -83,7 +81,7 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
             key: const ValueKey('cancelBookingComp'),
             isDestructiveAction: true,
             onPressed: widget.onCancel,
-            child: const Text("Termin stornieren"),
+            child: Text(AppLocalizations.of(context)!.requestCardCancelAppointment),
           ),
           CupertinoDialogAction(
             isDefaultAction: true,
@@ -121,7 +119,7 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
                 children: [
                   RichText(
                     text: TextSpan(
-                      text: "Termin:",
+                      text: AppLocalizations.of(context)!.requestCardAppointment,
                       style: TextStyle(
                         color: widget.textColor,
                         fontSize: 20,
@@ -147,7 +145,7 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
                   RichText(
                     textAlign: TextAlign.right,
                     text: TextSpan(
-                      text: "Status:",
+                      text: AppLocalizations.of(context)!.requestCardState,
                       style: TextStyle(
                         color: widget.textColor,
                         fontSize: 20,

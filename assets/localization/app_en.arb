@@ -19,11 +19,26 @@
   "homeMenuAppointment": "Appointments",
   "homeMenuMap": "Map",
   "homeMenuFaq": "FAQ",
+  "homeMenuCatchPhrase": "Noch keinen\nBlutspendetermin?\nÄndern wir.",
+  "homeMenuCatchPhraseButton": "Termin finden",
+  "homeMenuGetInspiredCatchPhrase": "Warum Blut spenden gar\nnicht schwer ist",
+  "homeMenuGetInspiredCatchPhraseSwipe": "Inspirieren lassen",
 
+  "getInspiredCarouselSliderPerson1": "Ich spende beim UKM, weil ich mich hier gut aufgehoben fühle.",
+  "getInspiredCarouselSliderPerson2": "Ich spende Blut, weil ich damit anderen Menschen helfen kann.",
+  "getInspiredCarouselSliderPerson3": "Ich spende beim UKM, weil die Nussecken hier so lecker sind.",
+  "getInspiredCarouselSliderPerson4": "Ich gehe immer mit meiner WG Blut spenden - so ist es direkt viel lustiger.",
 
   "mapHeading": "Blood donation at UKM",
   "mapDirections": "Directions",
 
+  "donationQuestionAnswerYes": "Ja",
+  "donationQuestionAnswerNo": "Nein",
+  "donationQuestionAnswerApprovement": "Zulassung zur Blutspende",
+  "donationQuestionAnswerRefusal": "Auf Grund ihrer Antwort kommen sie wahrscheinlich nicht als Blutspender:in in Frage. Schauen sie sich gerne unser FAQ an.",
+  "forwardingToFAQ": "Zum FAQ", 
+
+  "faqErrorLoadingQuestions": "",
   "faqQ1Heading": "How to schedule an appointment??",
   "faqQ1Body": "Select “Appointments” in the navigation bar at the bottom of the screen. Following you will be guided through the booking process for a blood donation appointment. ",
   "faqQ2Heading": "Why is blood donation so important?",
@@ -48,6 +63,7 @@
   "userDataLastDonation": "Date of your last blood donation",
 
   "bookingStartHeader": "Blood donation",
+  "bookingMotivation": "Spenden Sie Blut am UKM\n- in Münster für Münster.",
   "bookingStartInfo": "If you select 'Book appointment', you can easily book a blood donation appointment. As a first step, you will have to answer a few questions so that possible exclusion criteria for your donation can be determined. If you do not meet any of the exclusion criteria, you can already select a date and time for your blood donation appointment. Then you only have to check your data once more - and you already have a blood donation appointment!",
   "bookingStartButton": "Book appointment",
   "bookingYourAppointment": "Your appointment",
@@ -62,5 +78,22 @@
   "bookingProgressLoss":"Your previous progress will be lost.",
   "bookingAgeWarning":"You must be at least 18 years old to donate blood!",
   "bookingFirstPrompt":"Your first blood donation",
-  "bookingFirstAge":"What is your date of birth?"
+  "bookingFirstAge":"What is your date of birth?",
+  "bookingErrorLoadingQuestions": "Es ist ein Fehler aufgetreten beim Laden der Spende Fragen.",
+  "bookingErrorProcessFailure": "[BookingProcess] Something went wrong!",
+
+  "bookedStepSection1": "Willkommen am UKM",
+  "bookedStepSection2": "Wir befinden uns im 1. Stock",
+  "bookedStepSection3": "Durch die Tür",
+  "bookedStepSection4": "Anmelden",
+  "bookedStepSection5": "Essen genießen",
+  "bookedStepSection6": "Entspannen",
+  "bookedStepSection7": "Frische Luft genießen",
+  "bookedStepSection8": "Bis zum nächsten mal",
+
+  "requestCardCancelAppointment": "Termin stornieren",
+  "requestCardCancelAppointmentAttentionWarning": "Diese Aktion kann nicht rückgängig gemacht werden!",
+  "requestCardAppointment": "Termin:", 
+  "requestCardState": "Status:"
+
 }

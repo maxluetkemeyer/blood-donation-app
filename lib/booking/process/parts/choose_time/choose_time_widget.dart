@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/services/backend/backend_service.dart';

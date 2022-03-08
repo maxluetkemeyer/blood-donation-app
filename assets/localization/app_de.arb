@@ -19,10 +19,26 @@
   "homeMenuAppointment": "Termine",
   "homeMenuMap": "Karte",
   "homeMenuFaq": "FAQ",
+  "homeMenuCatchPhrase": "Noch keinen\nBlutspendetermin?\nÄndern wir.",
+  "homeMenuCatchPhraseButton": "Termin finden",
+  "homeMenuGetInspiredCatchPhrase": "Warum Blut spenden gar\nnicht schwer ist",
+  "homeMenuGetInspiredCatchPhraseSwipe": "Inspirieren lassen",
+
+  "getInspiredCarouselSliderPerson1": "Ich spende beim UKM, weil ich mich hier gut aufgehoben fühle.",
+  "getInspiredCarouselSliderPerson2": "Ich spende Blut, weil ich damit anderen Menschen helfen kann.",
+  "getInspiredCarouselSliderPerson3": "Ich spende beim UKM, weil die Nussecken hier so lecker sind.",
+  "getInspiredCarouselSliderPerson4": "Ich gehe immer mit meiner WG Blut spenden - so ist es direkt viel lustiger.",
 
   "mapHeading": "Blutspende am UKM",
   "mapDirections": "Anfahrtsadresse",
 
+  "donationQuestionAnswerYes": "Ja",
+  "donationQuestionAnswerNo": "Nein",
+  "donationQuestionAnswerApprovement": "Zulassung zur Blutspende",
+  "donationQuestionAnswerRefusal": "Auf Grund ihrer Antwort kommen sie wahrscheinlich nicht als Blutspender:in in Frage. Schauen sie sich gerne unser FAQ an.",
+  "forwardingToFAQ": "Zum FAQ", 
+
+  "faqErrorLoadingQuestions": "Es ist ein Fehler aufgetreten beim Laden der FAQ Fragen.",
   "faqQ1Heading": "Wie kann ich in dieser App einen Termin zum Blutspenden buchen?",
   "faqQ1Body": "Wenn Sie unten auf dem Startbildschirm die Option „Termine“ auswählen, werden Sie durch den Buchungsvorgang für einen Blutspendetermin geführt.",
   "faqQ2Heading": "Warum sollte ich Blut spenden?",
@@ -47,6 +63,7 @@
   "userDataLastDonation": "Termin ihrer letzten Blutspende",
 
   "bookingStartHeader": "Blutspendetermin",
+  "bookingMotivation": "Spenden Sie Blut am UKM\n- in Münster für Münster.",
   "bookingStartInfo": "Wenn Sie „Termin buchen“ auswählen, können Sie einfach und unkompliziert einen Blutspendetermin am Universitätsklinikum Münster buchen. \nAls ersten Schritt müssen Sie dafür ein paar Fragen beantworten, damit mögliche Ausschlusskriterien für Ihre Spende festgestellt werden können.\nHaben Sie keine der Ausschlusskriterien erfüllt, können Sie auch schon einen Termin und eine Uhrzeit für Ihren Blutspendetermin auswählen.\nDann müssen Sie nur noch einmal Ihre Daten überprüfen - und schon haben Sie einen Blutspendetermin!",
   "bookingStartButton": "Termin buchen",
   "bookingYourAppointment": "Ihr Termin",
@@ -61,5 +78,22 @@
   "bookingProgressLoss":"Ihr bisheriger Fortschritt geht verloren.",
   "bookingAgeWarning":"Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",
   "bookingFirstPrompt":"Ihre erste Blutspende",
-  "bookingFirstAge":"Wann wurden Sie geboren?"
-}
+  "bookingFirstAge":"Wann wurden Sie geboren?",
+  "bookingErrorLoadingQuestions": "Es ist ein Fehler aufgetreten beim Laden der Spende Fragen.",
+  "bookingErrorProcessFailure": "[BookingProcess] Something went wrong!",
+
+  "bookedStepSection1": "Willkommen am UKM",
+  "bookedStepSection2": "Wir befinden uns im 1. Stock",
+  "bookedStepSection3": "Durch die Tür",
+  "bookedStepSection4": "Anmelden",
+  "bookedStepSection5": "Essen genießen",
+  "bookedStepSection6": "Entspannen",
+  "bookedStepSection7": "Frische Luft genießen",
+  "bookedStepSection8": "Bis zum nächsten mal",
+
+  "requestCardCancelAppointment": "Termin stornieren",
+  "requestCardCancelAppointmentAttentionWarning": "Diese Aktion kann nicht rückgängig gemacht werden!",
+  "requestCardAppointment": "Termin:", 
+  "requestCardState": "Status:"
+  
+  }

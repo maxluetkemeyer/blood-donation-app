@@ -10,6 +10,7 @@ import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookingBookedStatus extends StatefulWidget {
   const BookingBookedStatus({Key? key}) : super(key: key);
@@ -107,70 +108,70 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
             },
           ),
           const SizedBox(height: 10),
-          const StepSection(
+          StepSection(
             step: "1",
-            titel: "Willkommen am UKM",
+            titel: (AppLocalizations.of(context)!.bookedStepSection1),
             body: ExpandablePanorama(
-              key: ValueKey("step_section_1"),
-              title: "Willkommen am UKM",
-              image: AssetImage("assets/images/entrance_panorama.jpg"),
+              key: const ValueKey("step_section_1"),
+              title: (AppLocalizations.of(context)!.bookedStepSection1),
+              image: const AssetImage("assets/images/entrance_panorama.jpg"),
             ),
           ),
-          const StepSection(
+          StepSection(
             step: "2",
-            titel: "Wir befinden uns im 1. Stock",
+            titel: (AppLocalizations.of(context)!.bookedStepSection2),
             body: ExpandablePanorama(
-              key: ValueKey("step_section_2"),
-              title: "Wir befinden uns im 1. Stock",
-              image: AssetImage("assets/images/pan_0.jpg"),
+              key: const ValueKey("step_section_2"),
+              title: (AppLocalizations.of(context)!.bookedStepSection2),
+              image: const AssetImage("assets/images/pan_0.jpg"),
             ),
           ),
-          const StepSection(
+          StepSection(
             step: "3",
-            titel: "Durch die Tür",
+            titel: (AppLocalizations.of(context)!.bookedStepSection3),
             body: ExpandablePanorama(
-              key: ValueKey("step_section_3"),
-              title: "Durch die Tür",
-              image: AssetImage("assets/images/pan_1.jpg"),
+              key: const ValueKey("step_section_3"),
+              title: (AppLocalizations.of(context)!.bookedStepSection3),
+              image: const AssetImage("assets/images/pan_1.jpg"),
             ),
           ),
-          const StepSection(
+          StepSection(
             step: "4",
-            titel: "Anmelden",
+            titel: (AppLocalizations.of(context)!.bookedStepSection4),
             body: ExpandablePanorama(
-              key: ValueKey("step_section_4"),
-              title: "Anmelden",
-              image: AssetImage("assets/images/pan_2.jpg"),
+              key: const ValueKey("step_section_4"),
+              title: (AppLocalizations.of(context)!.bookedStepSection4),
+              image: const AssetImage("assets/images/pan_2.jpg"),
             ),
           ),
-          const StepSection(
+          StepSection(
             step: "5",
-            titel: "Essen genießen",
-            body: Image(
+            titel: (AppLocalizations.of(context)!.bookedStepSection5),
+            body: const Image(
               key: ValueKey("step_section_5"),
               image: AssetImage("assets/images/room_2.jpg"),
             ),
           ),
-          const StepSection(
+          StepSection(
             step: "6",
-            titel: "Entspannen",
-            body: Image(
+            titel: (AppLocalizations.of(context)!.bookedStepSection6),
+            body: const Image(
               key: ValueKey("step_section_6"),
               image: AssetImage("assets/images/room_1.jpg"),
             ),
           ),
-          const StepSection(
+          StepSection(
             step: "7",
-            titel: "Frische Luft genießen",
-            body: Image(
+            titel: (AppLocalizations.of(context)!.bookedStepSection7),
+            body: const Image(
               key: ValueKey("step_section_7"),
               image: AssetImage("assets/images/room_3.jpg"),
             ),
           ),
-          const StepSection(
+          StepSection(
             step: "8",
-            titel: "Bis zum nächsten mal",
-            body: Image(
+            titel: (AppLocalizations.of(context)!.bookedStepSection8),
+            body: const Image(
               key: ValueKey("step_section_8"),
               image: AssetImage("assets/images/room_0.jpg"),
             ),

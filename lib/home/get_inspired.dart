@@ -2,6 +2,7 @@ import 'package:blooddonation/home/home_static_view.dart';
 import 'package:blooddonation/home/person_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GetInspired extends StatefulWidget {
   const GetInspired({Key? key}) : super(key: key);
@@ -39,23 +40,23 @@ class _GetInspiredState extends State<GetInspired> {
                 });
               },
             ),
-            items: const [
-              HomeStatic(),
+            items: [
+              const HomeStatic(),
               PersonWiget(
-                image: AssetImage("assets/images/person_1.png"),
-                text: "Ich spende beim UKM, weil ich mich hier gut aufgehoben fühle.",
+                image: const AssetImage("assets/images/person_1.png"),
+                text: AppLocalizations.of(context)!.getInspiredCarouselSliderPerson1,
               ),
               PersonWiget(
-                image: AssetImage("assets/images/person_2.png"),
-                text: "Ich spende Blut, weil ich damit anderen Menschen helfen kann.",
+                image: const AssetImage("assets/images/person_2.png"),
+                text: AppLocalizations.of(context)!.getInspiredCarouselSliderPerson2,
               ),
               PersonWiget(
-                image: AssetImage("assets/images/person_3.png"),
-                text: "Ich spende beim UKM, weil die Nussecken hier so unglaublich lecker sind.",
+                image: const AssetImage("assets/images/person_3.png"),
+                text: AppLocalizations.of(context)!.getInspiredCarouselSliderPerson3,
               ),
               PersonWiget(
-                image: AssetImage("assets/images/person_4.png"),
-                text: "Wir gehen immer mit unserer WG Blut spenden. Das ist direkt viel lustiger.",
+                image: const AssetImage("assets/images/person_4.png"),
+                text: AppLocalizations.of(context)!.getInspiredCarouselSliderPerson4,
               ),
             ],
           ),
