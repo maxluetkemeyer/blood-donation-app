@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CompanyInfo extends StatelessWidget {
   const CompanyInfo({Key? key}) : super(key: key);
@@ -30,8 +31,8 @@ class CompanyInfo extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
-                  const TableCell(
-                    child: Text("Albert-Schweitzer-Campus 1\n48149 Münster\nDomagkstr. 11, Gebäude D11"),
+                  TableCell(
+                    child: Text(AppLocalizations.of(context)!.institutionAdress),
                   ),
                 ],
               ),
@@ -47,7 +48,7 @@ class CompanyInfo extends StatelessWidget {
                   TableCell(
                     child: GestureDetector(
                       onTap: () => launch('tel:+492518358000'),
-                      child: const Text("Tel.: +49 251 8358000"),
+                      child: Text(AppLocalizations.of(context)!.institutionTelephoneNumber),
                     ),
                   ),
                 ],
@@ -64,7 +65,7 @@ class CompanyInfo extends StatelessWidget {
                   TableCell(
                     child: GestureDetector(
                       onTap: () => launch("mailto:blutspende@ukmuenster.de"),
-                      child: const Text("blutspende@ukmuenster.de"),
+                      child: Text(AppLocalizations.of(context)!.institutionMailAdress),
                     ),
                   ),
                 ],

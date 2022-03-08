@@ -32,6 +32,20 @@
   "mapHeading": "Blutspende am UKM",
   "mapDirections": "Anfahrtsadresse",
 
+  "imprintHeader": "Impressum",
+  "imprintInformationOfPublisher": "Angaben des Herausgebers",
+  "imprintPublisherInformation":"European Research Center for Information Systems (ERCIS)\nLeonardo-Campus 3\n48149 Münster\n\nTel.: +49 251 8338100\nFax: +49 251 8338109\ninfo@ercis.org",
+  "imprintContact":"Kontakt",
+  "imprintContactInstitution":"Universitätsklinikum Münster",
+  "imprintContactAdress":"Zentralklinikum\nAlbert-Schweitzer-Campus 1, Gebäude: A1\nAnfahrtsadresse: Albert-Schweitzer-Straße 33\n48149 Münster\n\nTel.: +49 251 8355555\nFax: +49 251 8356960\ninfo@­ukmuenster.­de'",
+  "imprintLicenses":"Lizenzen",
+  "imprintLicensesOpenStreetMap":"https://www.openstreetmap.org/copyright",
+  "imprintMoreInformation": "More Info",
+
+  "institutionAdress": "Albert-Schweitzer-Campus 1\n48149 Münster\nDomagkstr. 11, Gebäude D11",
+  "institutionTelephoneNumber": "Tel.: +49 251 8358000",
+  "institutionMailAdress": "blutspende@ukmuenster.de",
+  
   "donationQuestionAnswerYes": "Ja",
   "donationQuestionAnswerNo": "Nein",
   "donationQuestionAnswerApprovement": "Zulassung zur Blutspende",
@@ -94,6 +108,8 @@
   "requestCardCancelAppointment": "Termin stornieren",
   "requestCardCancelAppointmentAttentionWarning": "Diese Aktion kann nicht rückgängig gemacht werden!",
   "requestCardAppointment": "Termin:", 
-  "requestCardState": "Status:"
+  "requestCardState": "Status:",
+
+  "miscAppbarHelp": "Hilfe"
   
   }
