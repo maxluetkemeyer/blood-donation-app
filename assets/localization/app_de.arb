@@ -4,6 +4,13 @@
     "description": "The title of the application"
   },
 
+  "userOnboardingIntroduction": "Herzlich Willkommen in der UKM Blutspende-App!",
+  "userOnboardingMore": "Und hier oben finden Sie alle Spender:innen-Daten und das Impressum.",
+  "userOnboardinImpressions": "Hier finden Sie Impressionen unserer Blutspender:innen",
+  "userOnboardingBooking": "Hier können Sie einen\nBlutspendetermin buchen",
+  "userOnboardingLocation": "Hier zeigen wir Ihnen, wie Sie zu uns kommen",
+  "userOnboardingFAQ": "Hier beantworten wir für Sie häufig gestellte Fragen",
+
   "name": "Name",
   "yourName": "Ihr Name",
   "birthday": "Geburtsdatum",
