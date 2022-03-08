@@ -50,11 +50,3 @@ final ThemeData lightTheme = ThemeData(
 
 //ThemeData darkTheme = ThemeData.dark();
 final ThemeData darkTheme = lightTheme;
-
-/*
-//pink design
-Color primaryColor = const Color(0xffe491b7);
-Color accentLight = const Color(0xfff2f9fa); // should be lighter than accentBlueLight
-Color accentDark = const Color(0xff0b4874);
-Color accentBlueLight = const Color(0xff81a4bd);
-*/

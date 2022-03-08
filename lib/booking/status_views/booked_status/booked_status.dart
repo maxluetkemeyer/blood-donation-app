@@ -10,6 +10,7 @@ import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:blooddonation/services/background/background_service.dart' as background;
 
 class BookingBookedStatus extends StatefulWidget {
   const BookingBookedStatus({Key? key}) : super(key: key);
@@ -34,6 +35,9 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
 
     //Clear BookingService reference
     BookingService().bookedAppointment = null;
+
+    //Stop background task
+    background.stop();
 
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
   }

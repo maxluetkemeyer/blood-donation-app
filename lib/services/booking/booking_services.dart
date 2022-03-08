@@ -1,8 +1,10 @@
 import 'package:blooddonation/models/appointment_model.dart';
 import 'package:blooddonation/models/donationquestions_model.dart';
 import 'package:blooddonation/models/donationquestiontranslation_model.dart';
+import 'package:blooddonation/models/request_model.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:language_picker/languages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 export 'package:blooddonation/models/appointment_model.dart';
 export 'package:blooddonation/models/request_model.dart';
@@ -13,8 +15,10 @@ class BookingService {
   factory BookingService() => _instance;
   BookingService._private() {
     print("Starting Booking Service");
+    _init();
   }
 
+  late SharedPreferences _prefs;
   List<DonationQuestion> donationQuestions = [];
   List<DonationQuestionTranslation> donationQuestionTranslations = [];
 
@@ -25,7 +29,50 @@ class BookingService {
   Appointment? selectedAppointment;
 
   ///Current booked appointment
-  Appointment? bookedAppointment;
+  Appointment? _bookedAppointment;
+  Appointment? get bookedAppointment => _bookedAppointment;
+  set bookedAppointment(Appointment? appointment) {
+    _bookedAppointment = appointment;
+
+    //delete persistent
+    if (appointment == null) {
+      _prefs.remove("bookedAppointment");
+      return;
+    }
+
+    _prefs.setStringList("bookedAppointment", [
+      appointment.id.toString(),
+      appointment.start.toString(),
+      appointment.duration.inMilliseconds.toString(),
+      appointment.request!.id.toString(),
+      appointment.request!.created.toString(),
+      appointment.request!.status.toString(),
+    ]);
+  }
+
+  Future _init() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    if (_prefs.containsKey("bookedAppointment")) {
+      List<String>? values = _prefs.getStringList("bookedAppointment");
+
+      if (values == null) {
+        _prefs.remove("bookedAppointment");
+        return;
+      }
+
+      _bookedAppointment = Appointment(
+        id: int.parse(values[0]),
+        start: DateTime.parse(values[1]),
+        duration: Duration(milliseconds: int.parse(values[2])),
+        request: Request(
+          id: int.parse(values[3]),
+          created: DateTime.parse(values[4]),
+          status: values[5],
+        ),
+      );
+    }
+  }
 
   ///Resets the Process Variables
   void resetProcess() {

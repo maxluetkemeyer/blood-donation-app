@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/background/notification_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
-import 'package:blooddonation/services/background/background_service.dart' as background;
 import 'package:flutter/services.dart';
 import 'package:showcaseview/showcaseview.dart';
 
@@ -29,20 +26,8 @@ void main() {
   BookingService();
   BackendService();
   NotificationService().init();
-  background.init();
 
   runApp(const MainWidget());
-
-  Future.delayed(const Duration(seconds: 3)).then((_) {
-    getFreeAppointments(DateTime.now());
-  });
-
-  Future.delayed(const Duration(seconds: 10)).then((_) {
-    if (Platform.isAndroid) {
-      //BackgroundService.initWorkmanager();
-      //BackgroundService().startBackgroundTask();
-    }
-  });
 }
 
 /// This is the main application widget.
@@ -75,36 +60,38 @@ class _MainWidgetState extends State<MainWidget> {
   Widget build(BuildContext context) {
     return UncontrolledProviderScope(
       container: ProviderService().container,
-      child: ShowCaseWidget(
-        builder: Builder(
-          builder: (context) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: const [
-              Locale('en', ''), // English, no country code
-              Locale('de', ''), // German, no country code
-            ],
-            locale: const Locale("de"),
-            onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
-            //generating the Theme
-            theme: lightTheme,
-
-            home: FutureBuilder<bool>(
-              future: showOnboarding(), // a previously-obtained Future<bool> or null
-              builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {
-                if (snapshot.hasData) {
-                  if (snapshot.data!) {
+      child: Consumer(
+        builder: (context, ref, child) => ShowCaseWidget(
+          builder: Builder(
+            builder: (context) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: const [
+                Locale('en', ''), // English, no country code
+                Locale('de', ''), // German, no country code
+              ],
+              locale: ref.watch(localeProvider.state).state,
+              onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
+              theme: lightTheme,
+              home: FutureBuilder<bool>(
+                future: showOnboarding(), // a previously-obtained Future<bool> or null
+                builder: (BuildContext buildContext, AsyncSnapshot<bool> snapshot) {
+                  if (snapshot.hasData) {
+                    if (snapshot.data!) {
+                      NotificationService().requestIosPermissions();
+      
+                      // Open HomeView, if the built Future is resolved and false
+                      return const App();
+                    }
                     NotificationService().requestIosPermissions();
-
-                    // Open HomeView, if the built Future is existing and false
-                    return const App();
+      
+                    // Open Onboarding, if the built Future is resolved and true
+                    return const OnboardingView();
                   }
-                  // Open Onboarding, if the built Future is existing and true
-                  return const OnboardingView();
-                }
-                // Open HomeView, if the built Future isn't existing
-                return const App();
-              },
+                  // Open HomeView, if the built Future isn't resolved
+                  return const App();
+                },
+              ),
             ),
           ),
         ),

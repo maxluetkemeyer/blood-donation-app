@@ -3,7 +3,7 @@ import 'package:blooddonation/booking/process/parts/booking_overview/booking_ove
 import 'package:blooddonation/booking/process/parts/choose_day/choose_day_widget.dart';
 import 'package:blooddonation/booking/process/parts/choose_time/choose_time_widget.dart';
 import 'package:blooddonation/booking/process/parts/donation_questions/questions_view.dart';
-import 'package:blooddonation/misc/appbar.dart';
+import 'package:blooddonation/misc/appbar_menu.dart';
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';

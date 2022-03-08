@@ -1,8 +1,10 @@
 import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/models/person_model.dart';
+import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:intl/intl.dart';
 import 'package:language_picker/languages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 
 export 'package:blooddonation/models/person_model.dart';
 
@@ -42,6 +44,7 @@ class UserService {
     );
 
     _lan = Language.fromIsoCode(_prefs.getString("user_language") ?? Languages.german.isoCode);
+    ProviderService().container.read(localeProvider.state).state = _localeFallback(_lan);
 
     print("User Service finished!");
   }
@@ -118,6 +121,15 @@ class UserService {
 
   set language(Language lan) {
     _lan = lan;
+    ProviderService().container.read(localeProvider.state).state = _localeFallback(lan);
     _prefs.setString("user_language", lan.isoCode);
   }
+}
+
+Locale _localeFallback(Language language) {
+  if (language.isoCode == Languages.english.isoCode) {
+    return const Locale("en");
+  }
+
+  return const Locale("de");
 }

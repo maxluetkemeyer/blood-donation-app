@@ -25,7 +25,6 @@ class InputFields extends StatelessWidget {
         BirthdayField(),
         GenderField(),
         TelephoneField(),
-        //FirstDonationField(),
         LanguageField(),
       ],
     );
