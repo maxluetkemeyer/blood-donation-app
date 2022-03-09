@@ -3,6 +3,7 @@ import 'package:blooddonation/booking/process/firstbooking_view.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookingDefaultStatus extends StatelessWidget {
   const BookingDefaultStatus({Key? key}) : super(key: key);
@@ -33,8 +34,7 @@ class BookingDefaultStatus extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(22)),
             ),
-            child: Text(
-              "Spenden Sie Blut am UKM\n- in Münster für Münster.",
+            child: Text(AppLocalizations.of(context)!.bookingMotivation,
               style: TextStyle(
                 fontSize: width * 0.07,
                 color: Theme.of(context).primaryColor,
@@ -59,7 +59,7 @@ class BookingDefaultStatus extends StatelessWidget {
               child: CupertinoButton.filled(
                 pressedOpacity: 0.7,
                 child: Text(
-                  "Termin buchen",
+                  AppLocalizations.of(context)!.bookingStartButton,
                   style: TextStyle(
                     fontSize: width * 0.06,
                     color: Theme.of(context).primaryColor,

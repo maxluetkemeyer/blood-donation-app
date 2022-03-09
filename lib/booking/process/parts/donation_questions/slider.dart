@@ -1,7 +1,7 @@
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:blooddonation/booking/process/parts/donation_questions/question_widget.dart';
 
 class QuestionSlider extends ConsumerWidget {
@@ -18,8 +18,8 @@ class QuestionSlider extends ConsumerWidget {
     int questionStep = ref.watch(questionStepStateProvier.state).state;
 
     if (questions.isEmpty) {
-      return const Center(
-        child: Text("Es ist ein Fehler aufgetreten beim Laden der Spende Fragen."),
+      return Center(
+        child: Text(AppLocalizations.of(context)!.bookingErrorLoadingQuestions),
       );
     }
 

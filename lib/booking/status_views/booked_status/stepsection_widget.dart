@@ -4,12 +4,14 @@ class StepSection extends StatelessWidget {
   final String step;
   final Widget body;
   final String titel;
+  final String text;
 
   const StepSection({
     Key? key,
     required this.step,
     required this.body,
     required this.titel,
+    required this.text,
   }) : super(key: key);
 
   @override
@@ -45,10 +47,7 @@ class StepSection extends StatelessWidget {
                 ),
                 child: Text(
                   step,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                  ),
+                  style: const TextStyle(color: Colors.white, fontSize: 30),
                 ),
               ),
               Expanded(
@@ -60,20 +59,15 @@ class StepSection extends StatelessWidget {
                     children: [
                       Text(
                         titel,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(height: 10),
                       body,
                       const SizedBox(height: 10),
-                      const SizedBox(
+                      SizedBox(
                         child: Text(
-                          "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
+                          text,
+                          style: const TextStyle(fontSize: 18),
                         ),
                       ),
                     ],
