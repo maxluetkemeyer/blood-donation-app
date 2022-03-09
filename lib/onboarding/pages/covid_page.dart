@@ -33,11 +33,7 @@ PageViewModel covidPage(BuildContext context) => PageViewModel(
 
 ///Method to go to the homescreen if button was clicked. Sets "alreadyOnboarded" inside [SharedPreferences] to true
 void goToHomeScreen(BuildContext context) async {
-  Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => const App(),
-      ),
-      (Route<dynamic> route) => false);
+  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(showShowcase: true)), (Route<dynamic> route) => false);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setBool("alreadyOnboarded", true);
 }

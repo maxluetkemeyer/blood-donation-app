@@ -21,7 +21,6 @@ class UserDataView extends StatelessWidget {
               SizedBox(height: 10),
               InputFields(),
               LastBloodDonation(),
-              
             ],
           ),
         ],

@@ -48,24 +48,24 @@ String _genSignature({
   required String method,
   required String path,
 }) {
-  var body = "";
-  var method = "GET";
-  var pathS = "/appointments";
+  print(path);
+  // ignore: parameter_assignments
+  path = path.split("?")[0];
+  print(path);
 
   var secret = env.API_TOKEN;
   var secretEnc = utf8.encode(secret);
 
-  var bytes = utf8.encode(secret + "-" + method + "-" + pathS + "-" + body);
+  var bytes = utf8.encode(secret + "-" + method + "-" + path + "-" + body);
 
-  print("bytes");
-  print(secret + "-" + method + "-" + pathS + "-" + body);
+  print("bytes: " + secret + "-" + method + "-" + path + "-" + body);
 
   var hmac = Hmac(sha256, secretEnc);
   var hash = hmac.convert(bytes);
 
   var signature = base64Encode(hash.bytes);
 
-  print("signature " + signature);
+  print("signature: " + signature);
 
   return signature;
 }
