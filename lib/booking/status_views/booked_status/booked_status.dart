@@ -76,6 +76,7 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
                   onRefresh: refreshStatus,
                   onCancel: cancel,
                   appointment: appointment!,
+                  status: AppLocalizations.of(context)!.requestCardStateDeclined,
                   textColor: Colors.white,
                 );
               }
@@ -85,6 +86,7 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
                   onRefresh: refreshStatus,
                   onCancel: cancel,
                   appointment: appointment!,
+                  status: AppLocalizations.of(context)!.requestCardStatePending,
                 );
               }
 
@@ -95,6 +97,7 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
                   onRefresh: refreshStatus,
                   onCancel: cancel,
                   appointment: appointment!,
+                  status: AppLocalizations.of(context)!.requestCardStateAccepted,
                 );
               }
 
@@ -103,6 +106,7 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
                 onRefresh: refreshStatus,
                 onCancel: cancel,
                 appointment: EmptyAppointment(),
+                status: "error",
                 textColor: Colors.black,
               );
             },

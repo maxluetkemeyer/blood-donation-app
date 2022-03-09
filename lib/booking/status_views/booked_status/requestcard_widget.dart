@@ -13,6 +13,7 @@ class RequestCard extends StatefulWidget {
   final VoidCallback onRefresh;
   final VoidCallback onCancel;
   final Color textColor;
+  final String status;
 
   const RequestCard({
     Key? key,
@@ -20,6 +21,7 @@ class RequestCard extends StatefulWidget {
     required this.appointment,
     required this.onRefresh,
     required this.onCancel,
+    required this.status,
     this.textColor = Colors.black,
   }) : super(key: key);
 
@@ -61,7 +63,8 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) => CupertinoAlertDialog(
-        title: Text(AppLocalizations.of(context)!.requestCardCancelAppointment, 
+        title: Text(
+          AppLocalizations.of(context)!.requestCardCancelAppointment,
           style: const TextStyle(
             fontSize: 24,
           ),
@@ -69,7 +72,8 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
         content: Column(
           children: [
             const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.requestCardCancelAppointmentAttentionWarning,
+            Text(
+              AppLocalizations.of(context)!.requestCardCancelAppointmentAttentionWarning,
               style: const TextStyle(
                 fontSize: 16,
               ),
@@ -152,7 +156,7 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
                       ),
                       children: [
                         TextSpan(
-                          text: "\n" + widget.appointment.request!.status,
+                          text: "\n" + widget.status,
                           style: TextStyle(
                             color: widget.textColor,
                             fontSize: 28,

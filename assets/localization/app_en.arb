@@ -113,6 +113,9 @@
   "requestCardCancelAppointmentAttentionWarning": "Diese Aktion kann nicht rückgängig gemacht werden!",
   "requestCardAppointment": "Termin:", 
   "requestCardState": "Status:",
+  "requestCardStatePending": "pending",
+  "requestCardStateAccepted": "accepted",
+  "requestCardStateDeclined": "declined",
 
   "onboarding1Title": "Herzlich Willkommen in der Blutspende-App des UKM",
   "onboarding1Body": "",
