@@ -53,24 +53,7 @@
   "forwardingToFAQ": "Zum FAQ", 
 
   "faqErrorLoadingQuestions": "",
-  "faqQ1Heading": "How to schedule an appointment??",
-  "faqQ1Body": "Select “Appointments” in the navigation bar at the bottom of the screen. Following you will be guided through the booking process for a blood donation appointment. ",
-  "faqQ2Heading": "Why is blood donation so important?",
-  "faqQ2Body": "Blood cannot be substituted by any other fluid or substance. Consequently, blood donations are essential for patient care. A single blood donation from you could save up to three lives.",
-  "faqQ3Heading": "What do I have to consider as a first-time donor?",
-  "faqQ3Body": "For your first blood donation, your appointment will take a little longer, as we have some formalities to complete and would like to ask questions about your current health and lifestyle. At the reception, your personal data will be taken upon presentation of your identity card or passport. The data is of course subject to data protection. Afterwards, first-time donors will receive a comprehensive questionnaire so that we can record your medical history and any exclusion criteria for a donation. To ensure that you feel as comfortable and safe as possible, we are focused on providing first-time donors with comprehensive information.",
-  "faqQ4Heading": "What do I need to consider before donating blood?",
-  "faqQ4Body": "On the day of your blood donation, you should drink plenty of fluids and eat normally to prepare your body for blood donation. Also, you should not eat foods that are too fatty the day before you donate blood, as this can affect the quality of your blood plasma. Smoking a cigarette before donating blood can also affect the quality of your blood plasma. You should refrain from sports activities before and after donating blood.",
-  "faqQ5Heading": "May I donate blood?",
-  "faqQ5Body": "To donate blood, you have to be between 18 and 68 years old and completely healthy. First-time donors have to be under 60 years old. You should weigh at least 50kg and should not have any existing underlying diseases (such as diabetes, high blood pressure, heart diseases, autoimmune diseases, epilepsy, etc.) or tumor diseases. You should not be taking regular medications (except hormone medications), be pregnant or breastfeeding. You should not have been pierced or tattooed in the last four months and you should not have a piercing in the mouth or intimate area.",
-  "faqQ6Heading": "How does a blood donation proceed?",
-  "faqQ6Body": "Have breakfast or a meal as normal before your blood donation appointment and be sure to bring your valid identity card or passport. When you register, you will receive an information sheet and a questionnaire, which you should fill out conscientiously. This will be followed by a consultation with the doctor, during which you will have the opportunity to ask any questions you may have. Subsequently, the blood pigment of your blood will be determined and blood pressure, pulse and temperature will be measured. If the preliminary examination is unremarkable, 500 ml of blood will be taken from your arm vein, which will take about five to ten minutes. Afterwards, you will need to rest for a while until your circulation has normalized.",
-  "faqQ7Heading": "What happens with the donated blood?",
-  "faqQ7Body": "After donation, the blood is usually separated into its components. These then can be used for targeted treatment, as most patients only need certain components of the blood. With a single blood donation, you can therefore help several people at once.",
-  "faqQ8Heading": "What risks exist?",
-  "faqQ8Body": "Only sterile disposable material is used for blood collection. This eliminates any risk of infection for you. The blood donation itself is generally well tolerated - nevertheless, you should not expose yourself to increased physical stress on the day of donation.",
-  "faqQ9Heading": "How often may I donate blood?",
-  "faqQ9Body": "Women may donate whole blood every twelve weeks, but not more than four times a year. Men may donate whole blood every eight weeks, but no more than six times a year.",
+  
 
   "userDataHeading": "Your Data (local saved)",
   "userDataDataHeading": "Your Data",
@@ -104,11 +87,26 @@
   "bookedStepSection6": "Entspannen",
   "bookedStepSection7": "Frische Luft genießen",
   "bookedStepSection8": "Bis zum nächsten mal",
+  "bookedStepSectionText1": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText2": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText3": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText4": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText5": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText6": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText7": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText8": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
 
   "requestCardCancelAppointment": "Termin stornieren",
   "requestCardCancelAppointmentAttentionWarning": "Diese Aktion kann nicht rückgängig gemacht werden!",
   "requestCardAppointment": "Termin:", 
   "requestCardState": "Status:",
+
+  "onboarding1Title": "Herzlich Willkommen in der Blutspende-App des UKM",
+  "onboarding1Body": "",
+  "onboarding2Title": "Wussten Sie..",
+  "onboarding2Body": "..dass in Deutschland täglich über 15.000 Blutspenden benötigt werden?\n\n..dass eine einzelne Blutspende bis zu drei Leben retten kann?\n\n..dass der menschliche Körper ca. fünf Liter Blut enthält?",
+  
+
 
   "miscAppbarHelp": "Hilfe"
 

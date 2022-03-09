@@ -53,24 +53,7 @@
   "forwardingToFAQ": "Zum FAQ", 
 
   "faqErrorLoadingQuestions": "Es ist ein Fehler aufgetreten beim Laden der FAQ Fragen.",
-  "faqQ1Heading": "Wie kann ich in dieser App einen Termin zum Blutspenden buchen?",
-  "faqQ1Body": "Wenn Sie unten auf dem Startbildschirm die Option „Termine“ auswählen, werden Sie durch den Buchungsvorgang für einen Blutspendetermin geführt.",
-  "faqQ2Heading": "Warum sollte ich Blut spenden?",
-  "faqQ2Body": "Blut kann durch keine andere Flüssigkeit und keinen anderen Stoff ersetzt werden. Folglich sind Blutspenden essentiell für die Krankenversorgung. Eine einzige Blutspende von Ihnen könnte bis zu drei Leben retten.",
-  "faqQ3Heading": "Was muss ich als Erstspender:in beachten?",
-  "faqQ3Body": "Bei Ihrer ersten Blutspende dauert der Aufenthalt etwas länger, da wir einige Formalitäten zu erledigen haben und mit Ihnen ein ausführliches Informationsgespräch führen möchten. Am Empfang werden Ihre Personalien unter Vorlage des Personalausweises oder Reisepasses aufgenommen. Die Daten unterliegen selbstverständlich dem Datenschutz. Anschließend erhalten Erstspender:innen einen umfangreichen Fragebogen, damit wir Ihre Krankengeschichte und eventuelle Ausschlusskriterien für eine Spende erfassen können. Damit Sie mit einen sicheren Gefühl zu Ihrer ersten Blutspende gehen können, legen wir besonderen Wert darauf, dass ein Erstspender umfassend informiert wird.",
-  "faqQ4Heading": "Was muss ich vor einer Blutspende beachten?",
-  "faqQ4Body": "Am Tag Ihrer Blutspende sollten Sie viel trinken und normal essen, um Ihren Körper auf die Blutspende vorzubereiten. Auch sollten Sie einen Tag vor der Blutspende keine allzu fetthaltigen Speisen zu sich nehmen, da dies Einfluss auf die Qualität Ihres Blutplasmas haben kann. Das Rauchen einer Zigarette vor der Blutspende kann ebenfalls die Qualität Ihrer Blutkonserve beeinflussen. Vor und nach der Blutspende sollten Sie auf sportliche Aktivitäten verzichten.",
-  "faqQ5Heading": "Darf ich Blut spenden?",
-  "faqQ5Body": "Um Blut spenden zu können müssen Sie zwischen 18 und 68 Jahre alt und völlig gesund sein. Erstspender müssen dabei unter 60 Jahre alt sein. Sie sollten mindestens 50kg wiegen und dürfen keine bestehenden Grunderkrankungen (wie z. B. Diabetes, Bluthochdruck, Herzkrankheiten, Autoimmunerkrankungen, Epilepsie usw.) oder Tumorkrankheiten haben. Sie dürfen nicht regelmäßig Medikamente (außer Hormonpräparate) einnehmen, schwanger sein oder stillen. Sie dürfen in den letzten vier Monaten nicht gepierct oder tätowiert worden sein und Sie dürfen kein Piercing im Mund- oder Intimbereich haben.",
-  "faqQ6Heading": "Wie läuft eine Blutspende ab?",
-  "faqQ6Body": "Frühstücken oder essen Sie vor Ihrem Blutspendetermin ganz normal und bringen Sie auf jeden Fall Ihren gültigen Personalausweis oder Reisepass mit. Bei der Anmeldung erhalten Sie ein Informationsblatt und einen Fragebogen, den Sie bitte gewissenhaft ausfüllen. Danach erfolgt zunächst ein Arztgespräch, in dem Sie Gelegenheit haben, Fragen zu stellen. Anschließend wird der Blutfarbstoff Ihres Blutes bestimmt sowie Blutdruck, Puls und Temperatur werden gemessen. Sofern die Voruntersuchung unauffällig verläuft, werden Ihnen aus der Armvene 500 ml Blut entnommen, was ca. fünf bis zehn Minuten dauert. Danach müssen Sie sich noch eine Weile ausruhen, bis sich Ihr Kreislauf normalisiert hat.",
-  "faqQ7Heading": "Was passiert mit dem gespendeten Blut?",
-  "faqQ7Body": "Nach der Spende wird das Blut in der Regel in seine Bestandteile getrennt. Diese können dann für eine gezielte Behandlung verwendet werden, denn die meisten Patienten benötigen nur bestimmte Bestandteile des Blutes. Mit einer einzigen Blutspende können Sie somit gleich mehreren Menschen helfen.",
-  "faqQ8Heading": "Was für Risiken existieren?",
-  "faqQ8Body": "Für die Blutentnahme wird ausschließlich steriles Einwegmaterial verwendet. Eine Ansteckungsgefahr ist für Sie somit ausgeschlossen. Die Blutspende selbst wird im Allgemeinen gut vertragen - trotzdem sollten Sie sich am Spendetag nicht vermehrter körperlicher Belastung aussetzen.",
-  "faqQ9Heading": "Wie oft darf ich Blut spenden?",
-  "faqQ9Body": "Frauen dürfen alle zwölf Wochen, jedoch maximal vier Mal im Jahr zur Vollblutspende gehen. Männer dürfen alle acht Wochen, jedoch maximal sechs Mal im Jahr zur Vollblutspende gehen.",
+  
 
   "userDataHeading": "Nutzerdaten",
   "userDataDataHeading": "Ihre Daten (Lokal Gespeichert)",
@@ -104,11 +87,24 @@
   "bookedStepSection6": "Entspannen",
   "bookedStepSection7": "Frische Luft genießen",
   "bookedStepSection8": "Bis zum nächsten mal",
+  "bookedStepSectionText1": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText2": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText3": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText4": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText5": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText6": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText7": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
+  "bookedStepSectionText8": "Der erste Schritt zum in der UKM Blutspende führt zum Empfang. Wenn Sie das erste mal bei uns sind,…",
 
   "requestCardCancelAppointment": "Termin stornieren",
   "requestCardCancelAppointmentAttentionWarning": "Diese Aktion kann nicht rückgängig gemacht werden!",
   "requestCardAppointment": "Termin:", 
   "requestCardState": "Status:",
+
+  "onboarding1Title": "Herzlich Willkommen in der Blutspende-App des UKM",
+  "onboarding1Body": "",
+  "onboarding2Title": "Wussten Sie..",
+  "onboarding2Body": "..dass in Deutschland täglich über 15.000 Blutspenden benötigt werden?\n\n..dass eine einzelne Blutspende bis zu drei Leben retten kann?\n\n..dass der menschliche Körper ca. fünf Liter Blut enthält?",
 
   "miscAppbarHelp": "Hilfe"
   
