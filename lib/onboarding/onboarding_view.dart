@@ -49,8 +49,8 @@ class _OnboardingViewState extends State<OnboardingView> {
             flex: 3,
             child: IntroductionScreen(
               pages: [
-                welcomePage(),
-                didyouknowPage(),
+                welcomePage(context),
+                didyouknowPage(context),
                 motivationPage(),
                 covidPage(context),
               ],

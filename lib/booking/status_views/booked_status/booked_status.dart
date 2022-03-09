@@ -110,7 +110,8 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           const SizedBox(height: 10),
           StepSection(
             step: "1",
-            titel: (AppLocalizations.of(context)!.bookedStepSection1),
+            titel: AppLocalizations.of(context)!.bookedStepSection1,
+            text: AppLocalizations.of(context)!.bookedStepSectionText1,
             body: ExpandablePanorama(
               key: const ValueKey("step_section_1"),
               title: (AppLocalizations.of(context)!.bookedStepSection1),
@@ -119,7 +120,8 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           ),
           StepSection(
             step: "2",
-            titel: (AppLocalizations.of(context)!.bookedStepSection2),
+            titel: AppLocalizations.of(context)!.bookedStepSection2,
+            text: AppLocalizations.of(context)!.bookedStepSectionText2,
             body: ExpandablePanorama(
               key: const ValueKey("step_section_2"),
               title: (AppLocalizations.of(context)!.bookedStepSection2),
@@ -128,16 +130,18 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           ),
           StepSection(
             step: "3",
-            titel: (AppLocalizations.of(context)!.bookedStepSection3),
+            titel: AppLocalizations.of(context)!.bookedStepSection3,
+            text: AppLocalizations.of(context)!.bookedStepSectionText3,
             body: ExpandablePanorama(
               key: const ValueKey("step_section_3"),
-              title: (AppLocalizations.of(context)!.bookedStepSection3),
+              title: AppLocalizations.of(context)!.bookedStepSection3,
               image: const AssetImage("assets/images/pan_1.jpg"),
             ),
           ),
           StepSection(
             step: "4",
-            titel: (AppLocalizations.of(context)!.bookedStepSection4),
+            titel: AppLocalizations.of(context)!.bookedStepSection4,
+            text: AppLocalizations.of(context)!.bookedStepSectionText4,
             body: ExpandablePanorama(
               key: const ValueKey("step_section_4"),
               title: (AppLocalizations.of(context)!.bookedStepSection4),
@@ -146,7 +150,8 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           ),
           StepSection(
             step: "5",
-            titel: (AppLocalizations.of(context)!.bookedStepSection5),
+            titel: AppLocalizations.of(context)!.bookedStepSection5,
+            text: AppLocalizations.of(context)!.bookedStepSectionText5,
             body: const Image(
               key: ValueKey("step_section_5"),
               image: AssetImage("assets/images/room_2.jpg"),
@@ -154,7 +159,8 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           ),
           StepSection(
             step: "6",
-            titel: (AppLocalizations.of(context)!.bookedStepSection6),
+            titel: AppLocalizations.of(context)!.bookedStepSection6,
+            text: AppLocalizations.of(context)!.bookedStepSectionText6,
             body: const Image(
               key: ValueKey("step_section_6"),
               image: AssetImage("assets/images/room_1.jpg"),
@@ -162,7 +168,8 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           ),
           StepSection(
             step: "7",
-            titel: (AppLocalizations.of(context)!.bookedStepSection7),
+            titel: AppLocalizations.of(context)!.bookedStepSection7,
+            text: AppLocalizations.of(context)!.bookedStepSectionText7,
             body: const Image(
               key: ValueKey("step_section_7"),
               image: AssetImage("assets/images/room_3.jpg"),
@@ -170,7 +177,8 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           ),
           StepSection(
             step: "8",
-            titel: (AppLocalizations.of(context)!.bookedStepSection8),
+            titel: AppLocalizations.of(context)!.bookedStepSection8,
+            text: AppLocalizations.of(context)!.bookedStepSectionText8,
             body: const Image(
               key: ValueKey("step_section_8"),
               image: AssetImage("assets/images/room_0.jpg"),

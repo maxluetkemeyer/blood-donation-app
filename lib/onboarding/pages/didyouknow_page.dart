@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:url_launcher/link.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../style.dart';
 
-PageViewModel didyouknowPage() => PageViewModel(
-      title: "Wussten Sie..",
-      bodyWidget: const Text(
-        "..dass in Deutschland täglich über 15.000 Blutspenden benötigt werden?\n\n..dass eine einzelne Blutspende bis zu drei Leben retten kann?\n\n..dass der menschliche Körper ca. fünf Liter Blut enthält?",
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, wordSpacing: 3),
+PageViewModel didyouknowPage(BuildContext context) => PageViewModel(
+      title: AppLocalizations.of(context)!.onboarding2Title,
+      bodyWidget: Text(
+        AppLocalizations.of(context)!.onboarding2Body,
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         textAlign: TextAlign.justify,
       ),
-      footer: Link(
+      /*footer: Link(
         uri: Uri.parse('https://ukm-blutspende.de/index.php?id=wussten-sie'),
         builder: (context, followLink) => GestureDetector(
           onTap: followLink,
@@ -21,6 +21,6 @@ PageViewModel didyouknowPage() => PageViewModel(
           ),
         ),
         target: LinkTarget.self,
-      ),
+      ),*/
       decoration: getOwnPageDecoration(),
     );
