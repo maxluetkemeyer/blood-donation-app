@@ -109,14 +109,19 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
           ),
           const SizedBox(height: 10),
           StepSection(
+            step: "0",
+            titel: AppLocalizations.of(context)!.bookedStepSection0,
+            text: AppLocalizations.of(context)!.bookedStepSectionText0,
+            body: const Image(
+              key: ValueKey("step_section_0"),
+              image: AssetImage("assets/images/logo_transparent.png"),
+            ),
+          ),
+          StepSection(
             step: "1",
             titel: AppLocalizations.of(context)!.bookedStepSection1,
             text: AppLocalizations.of(context)!.bookedStepSectionText1,
-            body: ExpandablePanorama(
-              key: const ValueKey("step_section_1"),
-              title: (AppLocalizations.of(context)!.bookedStepSection1),
-              image: const AssetImage("assets/images/entrance_panorama.jpg"),
-            ),
+            body: const Text(""),
           ),
           StepSection(
             step: "2",
@@ -125,7 +130,7 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
             body: ExpandablePanorama(
               key: const ValueKey("step_section_2"),
               title: (AppLocalizations.of(context)!.bookedStepSection2),
-              image: const AssetImage("assets/images/pan_0.jpg"),
+              image: const AssetImage("assets/images/entrance_panorama.jpg"),
             ),
           ),
           StepSection(
@@ -142,38 +147,25 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
             step: "4",
             titel: AppLocalizations.of(context)!.bookedStepSection4,
             text: AppLocalizations.of(context)!.bookedStepSectionText4,
-            body: ExpandablePanorama(
-              key: const ValueKey("step_section_4"),
-              title: (AppLocalizations.of(context)!.bookedStepSection4),
-              image: const AssetImage("assets/images/pan_2.jpg"),
-            ),
+            body: const Text(""),
           ),
           StepSection(
             step: "5",
             titel: AppLocalizations.of(context)!.bookedStepSection5,
             text: AppLocalizations.of(context)!.bookedStepSectionText5,
-            body: const Image(
-              key: ValueKey("step_section_5"),
-              image: AssetImage("assets/images/room_2.jpg"),
-            ),
+            body: const Text(""),
           ),
           StepSection(
             step: "6",
             titel: AppLocalizations.of(context)!.bookedStepSection6,
             text: AppLocalizations.of(context)!.bookedStepSectionText6,
-            body: const Image(
-              key: ValueKey("step_section_6"),
-              image: AssetImage("assets/images/room_1.jpg"),
-            ),
+            body: const Text(""),
           ),
           StepSection(
             step: "7",
             titel: AppLocalizations.of(context)!.bookedStepSection7,
             text: AppLocalizations.of(context)!.bookedStepSectionText7,
-            body: const Image(
-              key: ValueKey("step_section_7"),
-              image: AssetImage("assets/images/room_3.jpg"),
-            ),
+            body: const Text(""),
           ),
           StepSection(
             step: "8",
@@ -181,8 +173,23 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
             text: AppLocalizations.of(context)!.bookedStepSectionText8,
             body: const Image(
               key: ValueKey("step_section_8"),
-              image: AssetImage("assets/images/room_0.jpg"),
+              image: AssetImage("assets/images/room_3.jpg"),
             ),
+          ),
+          StepSection(
+            step: "9",
+            titel: AppLocalizations.of(context)!.bookedStepSection9,
+            text: AppLocalizations.of(context)!.bookedStepSectionText9,
+            body: const Image(
+              key: ValueKey("step_section_9"),
+              image: AssetImage("assets/images/room_2.jpg"),
+            ),
+          ),
+          StepSection(
+            step: "10",
+            titel: AppLocalizations.of(context)!.bookedStepSection10,
+            text: AppLocalizations.of(context)!.bookedStepSectionText10,
+            body: const Text(""),
           ),
           const SizedBox(height: 20),
         ],
