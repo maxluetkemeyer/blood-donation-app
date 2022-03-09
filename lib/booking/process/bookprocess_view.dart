@@ -1,4 +1,4 @@
-import 'package:blooddonation/app.dart';
+ import 'package:blooddonation/app.dart';
 import 'package:blooddonation/booking/process/parts/booking_overview/booking_overview_widget.dart';
 import 'package:blooddonation/booking/process/parts/choose_day/choose_day_widget.dart';
 import 'package:blooddonation/booking/process/parts/choose_time/choose_time_widget.dart';
@@ -35,7 +35,7 @@ class BookProcessView extends ConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Termin buchen"),
+          title: Text(AppLocalizations.of(context)!.bookingStartButton),
           actions: const [AppBarMenuButton()],
         ),
         body: Column(

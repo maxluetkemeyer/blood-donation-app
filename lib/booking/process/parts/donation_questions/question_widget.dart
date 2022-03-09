@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+
 ///Class to define one booking question.
 ///
 ///Inputs include a required [question] from the type [DonationQuestion] to define
@@ -59,7 +60,7 @@ class QuestionWidget extends StatelessWidget {
                 }
               },
               icon: const Icon(Icons.done),
-              label: const Text("Ja"),
+              label: Text(AppLocalizations.of(context)!.donationQuestionAnswerYes),
               style: const ButtonStyle(),
             ),
           ),
@@ -75,8 +76,8 @@ class QuestionWidget extends StatelessWidget {
                   wrongAnswere(context);
                 }
               },
-              label: const Text("Nein"),
               icon: const Icon(Icons.close),
+              label: Text(AppLocalizations.of(context)!.donationQuestionAnswerNo),
             ),
           ),
         ],
@@ -88,18 +89,16 @@ class QuestionWidget extends StatelessWidget {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) => CupertinoAlertDialog(
-        title: const Text(
-          "Zulassung zur Blutspende",
-          style: TextStyle(
+        title: Text(AppLocalizations.of(context)!.donationQuestionAnswerApprovement,
+          style: const TextStyle(
             fontSize: 24,
           ),
         ),
         content: Column(
-          children: const [
-            SizedBox(height: 10),
-            Text(
-              "Auf Grund ihrer Antwort kommen sie wahrscheinlich nicht als Blutspender:in in Frage. Schauen sie sich gerne unser FAQ an.",
-              style: TextStyle(
+          children:[
+            const SizedBox(height: 10),
+            Text(AppLocalizations.of(context)!.donationQuestionAnswerRefusal,
+              style: const TextStyle(
                 fontSize: 16,
               ),
             )
@@ -117,7 +116,7 @@ class QuestionWidget extends StatelessWidget {
               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 3)), (route) => false);
               BookingService().resetProcess();
             },
-            child: const Text("Zum FAQ"),
+            child: Text(AppLocalizations.of(context)!.forwardingToFAQ),
           ),
         ],
       ),

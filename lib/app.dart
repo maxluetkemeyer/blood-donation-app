@@ -68,7 +68,7 @@ class _AppState extends State<App> {
         title: SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
           child: Showcase(
-            description: "Herzlich Willkommen in der UKM Blutspende App!",
+            description: (AppLocalizations.of(context)!.userOnboardingIntroduction),
             key: showcaseKeys[0],
             descTextStyle: const TextStyle(fontSize: 20),
             child: const Image(
@@ -78,7 +78,7 @@ class _AppState extends State<App> {
         ),
         actions: [
           Showcase(
-            description: "Und hier oben finden sie Weiteres.",
+            description: (AppLocalizations.of(context)!.userOnboardingMore),
             key: showcaseKeys[5],
             descTextStyle: const TextStyle(fontSize: 20),
             shapeBorder: const CircleBorder(),
@@ -104,7 +104,7 @@ class _AppState extends State<App> {
           }),
           destinations: [
             Showcase(
-              description: "Hier finden sie Impressionen unserer Blutspender:innen",
+              description: (AppLocalizations.of(context)!.userOnboardinImpressions),
               key: showcaseKeys[1],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(
@@ -115,7 +115,7 @@ class _AppState extends State<App> {
               ),
             ),
             Showcase(
-              description: "Hier können sie einen\nBlutspendetermin buchen",
+              description: (AppLocalizations.of(context)!.userOnboardingBooking),
               key: showcaseKeys[2],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(
@@ -126,7 +126,7 @@ class _AppState extends State<App> {
               ),
             ),
             Showcase(
-              description: "Hier zeigen wir ihnen, wie sie zu uns kommen",
+              description: (AppLocalizations.of(context)!.userOnboardingLocation),
               key: showcaseKeys[3],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(
@@ -137,7 +137,7 @@ class _AppState extends State<App> {
               ),
             ),
             Showcase(
-              description: "Hier beantworten wir die meist gestellten Fragen",
+              description: (AppLocalizations.of(context)!.userOnboardingFAQ),
               key: showcaseKeys[4],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(

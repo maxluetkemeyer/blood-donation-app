@@ -109,7 +109,7 @@ class BookingOverview extends StatelessWidget {
               bookAppointment(appointment: appointmentToBook).then((succsess) {
                 print(succsess);
                 if (!succsess) {
-                  print("[BookingProcess] Something went wrong!");
+                  print(Text(AppLocalizations.of(context)!.bookingErrorProcessFailure));
                   return;
                 }
 
