@@ -1,8 +1,5 @@
 {
   "appTitle" : "UKM Blood Donation App",
-  "@appTitle": {
-    "description": "The title of the application"
-  },
 
   "userOnboardingIntroduction": "Herzlich Willkommen in der UKM Blutspende App!",
   "userOnboardingMore": "Und hier oben finden sie Weiteres.",

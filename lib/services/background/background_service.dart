@@ -19,7 +19,7 @@ void backgroundFetchHeadlessTask(HeadlessTask task) async {
   }
   print('[BackgroundFetch] Headless event received.');
   // Do your work here...
-  _myTask(taskId);
+  myTask(taskId);
 }
 
 Future init() async {
@@ -47,7 +47,7 @@ Future<void> _initPlatformState() async {
     (String taskId) async {
       // Event handler - This is the fetch-event callback.
       print("[BackgroundFetch] Event received $taskId");
-      _myTask(taskId);
+      myTask(taskId);
     },
     (String taskId) async {
       // <-- Task timeout handler.
@@ -74,7 +74,7 @@ void stop() {
   });
 }
 
-void _myTask(String taskId) async {
+void myTask(String taskId) async {
   //#######################################################################################
   String appointmentId = "1";
   String path = "/appointment_status";
