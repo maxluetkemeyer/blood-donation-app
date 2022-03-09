@@ -151,7 +151,11 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
             step: "4",
             titel: AppLocalizations.of(context)!.bookedStepSection4,
             text: AppLocalizations.of(context)!.bookedStepSectionText4,
-            body: const Text(""),
+            body: ExpandablePanorama(
+              key: const ValueKey("step_section_3"),
+              title: AppLocalizations.of(context)!.bookedStepSection3,
+              image: const AssetImage("assets/images/pan_2.jpg"),
+            ),
           ),
           StepSection(
             step: "5",
@@ -190,10 +194,13 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
             ),
           ),
           StepSection(
-            step: "10",
+            step: "0",
             titel: AppLocalizations.of(context)!.bookedStepSection10,
             text: AppLocalizations.of(context)!.bookedStepSectionText10,
-            body: const Text(""),
+            body: const Image(
+              key: ValueKey("step_section_8"),
+              image: AssetImage("assets/images/room_0.jpg"),
+            ),
           ),
           const SizedBox(height: 20),
         ],
