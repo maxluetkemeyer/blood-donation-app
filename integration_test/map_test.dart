@@ -8,7 +8,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('Map Group', () {
     testWidgets(
-      'map integration test testing connection to Google Maps',
+      'Given the Application is started, when selecting the 360 degree image then it is shown in fullscreen',
       (WidgetTester tester) async {
         await init();
 
@@ -22,7 +22,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('Map Group', () {
     testWidgets(
-      'map integration test testing the 360° image',
+      'Given the Application is started, when selection the map image (twice) then the user gets to open (Google) Maps with a set destination',
       (WidgetTester tester) async {
         await init();
 

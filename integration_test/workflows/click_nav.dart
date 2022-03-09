@@ -22,7 +22,7 @@ Future<void> workflowStart(WidgetTester tester) async{
 
   await tester.tap(navButt);
 
-  await tester.pumpAndSettle();
+  await tester.pump();
 
   return;
 }
@@ -35,20 +35,21 @@ Future<void> workflowMap(WidgetTester tester) async{
 
   await tester.tap(navButt);
 
-  await tester.pumpAndSettle();
+  await tester.pump();
 
   return;
 }
 
 Future<void> workflowFaq(WidgetTester tester) async{
   //clicks the Navigationbar item with the key faq
-  final navButt = find.byKey(const Key('faq'));
+  final navButt = find.byKey(const ValueKey('faq'));
 
   expect(navButt, findsOneWidget);
 
   await tester.tap(navButt);
 
-  await tester.pumpAndSettle();
+  await tester.pump();
+  //for(int count = 0; count < 10; count += 1) {await tester.pump(const Duration(seconds: 5));}
 
   return;
 }
@@ -61,7 +62,7 @@ Future<void> workflowPopUpNav(WidgetTester tester) async{
 
   await tester.tap(popUpNav);
 
-  await tester.pumpAndSettle();
+  await tester.pump();
 
   return;
 }
@@ -74,20 +75,19 @@ Future<void> workflowNavImpr(WidgetTester tester) async{
 
   await tester.tap(navImpr);
 
-  await tester.pumpAndSettle();
+  await tester.pump();
 
   return;
 }
 
 Future<void> workflowNavUserData(WidgetTester tester) async{
-  //clicks the imprint navigation bar the key imprintButton
-  final navImpr = find.byKey(const Key('imprintButton'));
+  //clicks the user data navigation bar the key imprintButton
+  final navUserData = find.byKey(const Key('userDataButton'));
 
-  expect(navImpr, findsOneWidget);
+  expect(navUserData, findsOneWidget);
 
-  await tester.tap(navImpr);
-
-  await tester.pumpAndSettle();
-
+  await tester.tap(navUserData);
+  
+  await tester.pump();
   return;
 }

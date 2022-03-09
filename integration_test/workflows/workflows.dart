@@ -18,6 +18,7 @@ final clickNavMap = (WidgetTester tester) => clickNavAS.workflowMap(tester);
 final clickNavFaq = (WidgetTester tester) => clickNavAS.workflowFaq(tester);
 final clickPopUpNav = (WidgetTester tester) => clickNavAS.workflowPopUpNav(tester);
 final clickNavImprint = (WidgetTester tester) => clickNavAS.workflowNavImpr(tester);
+final clickNavUserData = (WidgetTester tester) => clickNavAS.workflowNavUserData(tester);
 
 //Pushing the Buttons
 final clickStartAppointments = (WidgetTester tester) => clickButtonsAS.workflow(tester);

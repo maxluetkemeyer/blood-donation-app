@@ -12,14 +12,17 @@ void main() {
     testWidgets(
       'Given the Application is started, every tab should be accessable from every other tab',
       (WidgetTester tester) async {
+        print("navigation_test_started");
         await init();
-        await tester.pumpAndSettle();
+        await tester.pump();
 
         //Start -> Faq
         await wf.clickNavFaq(tester);
-
+        print("ErsterDone");
+        await tester.pump(const Duration(seconds: 5));
         //Faq -> Start
         await wf.clickNavStart(tester);
+        print("ZweiterDone");
 
         //Start -> Appointments
         await wf.clickNavAppointments(tester);
@@ -44,12 +47,15 @@ void main() {
 
         //Map -> Faq
         await wf.clickNavFaq(tester);
+        print("noch 2");
 
         //Faq -> Appointments
         await wf.clickNavAppointments(tester);
+        print("noch 1");
 
         //Appointments -> Start
         await wf.clickNavStart(tester);
+        print("navigation_test_done");
       },
     );
   });

@@ -7,14 +7,12 @@ import 'test_utils.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('Imprint Test', () {
-
-
     testWidgets(
       'Given the Application is started, When pressing the additional menu and selected imprint, then the imprint is shown',
       (WidgetTester tester) async {
         await init();
 
-        await tester.pumpAndSettle();
+        await tester.pump();
 
         await wf.clickPopUpNav(tester);
 
