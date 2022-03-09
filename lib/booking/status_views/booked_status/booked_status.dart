@@ -6,6 +6,7 @@ import 'package:blooddonation/booking/status_views/booked_status/requestcard_wid
 import 'package:blooddonation/booking/status_views/booked_status/stepsection_widget.dart';
 import 'package:blooddonation/services/backend/requests/cancel_appointment.dart';
 import 'package:blooddonation/services/backend/requests/get_status.dart';
+import 'package:blooddonation/services/background/notification_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,13 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
   late Timer refreshTimer;
 
   Future refreshStatus() async {
-    return getRequestStatus(appointmentId: BookingService().bookedAppointment!.id);
+    bool request = await getRequestStatus(appointmentId: BookingService().bookedAppointment!.id);
+    if (!request) return;
+
+    if (BookingService().bookedAppointment?.request?.status != RequestStatus.pending.name) {
+      refreshTimer.cancel();
+      NotificationService().displayNotification("Blutspendetermin", "Es gibt Neuigkeiten zu Ihrem Blutspendetermin!");
+    }
   }
 
   Future cancel() async {

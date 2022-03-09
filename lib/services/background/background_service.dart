@@ -19,7 +19,7 @@ void backgroundFetchHeadlessTask(HeadlessTask task) async {
   }
   print('[BackgroundFetch] Headless event received.');
   // Do your work here...
-  BackgroundFetch.finish(taskId);
+  _myTask(taskId);
 }
 
 Future init() async {
@@ -47,43 +47,7 @@ Future<void> _initPlatformState() async {
     (String taskId) async {
       // Event handler - This is the fetch-event callback.
       print("[BackgroundFetch] Event received $taskId");
-
-      //#######################################################################################
-      String appointmentId = "1";
-      String path = "/appointment_status";
-      String dateParam = genParam(key: "id", value: appointmentId);
-      path = path + "?" + dateParam;
-      final response = await BackendService().getRequest(path: path);
-
-      if (response.statusCode != 200) {
-        print("error getRequestStatus");
-        BackgroundFetch.finish(taskId);
-        return;
-      }
-
-      //Convert String to Map
-      List jsonList = jsonDecode(response.body) as List; //TODO: Has to be fixed in django.
-      Map<String, dynamic> json = jsonList[0];
-
-      //Convert each List of Map to a List of a model
-      Request request = Request.fromJson(json["request"]);
-
-      if (request.status == RequestStatus.pending.name) {
-        BackgroundFetch.finish(taskId);
-        return;
-      }
-
-      await NotificationService().init().then(
-        (value) {
-          NotificationService().displayNotification("Blutspendetermin", "Es gibt Neuigkeiten zu deinem Blutspendetermin!");
-
-          stop();
-          // IMPORTANT:  You must signal completion of your task or the OS can punish your app
-          // for taking too long in the background.
-          BackgroundFetch.finish(taskId);
-        },
-      );
-      //#######################################################################################
+      _myTask(taskId);
     },
     (String taskId) async {
       // <-- Task timeout handler.
@@ -108,4 +72,43 @@ void stop() {
   BackgroundFetch.stop().then((int status) {
     print('[BackgroundFetch] stop success: $status');
   });
+}
+
+void _myTask(String taskId) async {
+  //#######################################################################################
+  String appointmentId = "1";
+  String path = "/appointment_status";
+  String dateParam = genParam(key: "id", value: appointmentId);
+  path = path + "?" + dateParam;
+  final response = await BackendService().getRequest(path: path);
+
+  if (response.statusCode != 200) {
+    print("error getRequestStatus");
+    BackgroundFetch.finish(taskId);
+    return;
+  }
+
+  //Convert String to Map
+  List jsonList = jsonDecode(response.body) as List; //TODO: Has to be fixed in django.
+  Map<String, dynamic> json = jsonList[0];
+
+  //Convert each List of Map to a List of a model
+  Request request = Request.fromJson(json["request"]);
+
+  if (request.status == RequestStatus.pending.name) {
+    BackgroundFetch.finish(taskId);
+    return;
+  }
+
+  await NotificationService().init().then(
+    (value) {
+      NotificationService().displayNotification("Blutspendetermin", "Es gibt Neuigkeiten zu Ihrem Blutspendetermin!");
+
+      stop();
+      // IMPORTANT:  You must signal completion of your task or the OS can punish your app
+      // for taking too long in the background.
+      BackgroundFetch.finish(taskId);
+    },
+  );
+  //#######################################################################################
 }
