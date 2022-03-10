@@ -1,6 +1,6 @@
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TelephoneField extends StatefulWidget {
   const TelephoneField({Key? key}) : super(key: key);
@@ -33,9 +33,9 @@ class _TelephoneFieldState extends State<TelephoneField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormRow(
-      prefix: const Text("Telephone"),
+      prefix: Text(AppLocalizations.of(context)!.userDataTelephone),
       child: CupertinoTextFormFieldRow(
-        placeholder: "Your telephone number",
+        placeholder: (AppLocalizations.of(context)!.userDataTelephonePlaceholder),
         controller: controller,
         keyboardType: TextInputType.phone,
       ),

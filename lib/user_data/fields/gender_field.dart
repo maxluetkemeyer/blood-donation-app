@@ -1,6 +1,6 @@
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GenderField extends StatefulWidget {
   const GenderField({Key? key}) : super(key: key);
@@ -32,9 +32,9 @@ class _GenderFieldState extends State<GenderField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormRow(
-      prefix: const Text("Gender"),
+      prefix: Text(AppLocalizations.of(context)!.userDataGender),
       child: CupertinoTextFormFieldRow(
-        placeholder: "Your Gender",
+        placeholder: (AppLocalizations.of(context)!.userDataGenderPlaceholder),
         controller: controller,
       ),
     );
