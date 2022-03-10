@@ -26,7 +26,9 @@ Future<bool> getRequestStatus({required int appointmentId}) async {
   Request request = Request.fromJson(json["request"]);
 
   //Update BookingService reference
-  BookingService().bookedAppointment?.request = request;
+  BookingService().bookedAppointment = BookingService().bookedAppointment?.copyWith(
+        request: request,
+      );
   ProviderService().container.read(bookedAppointmentUpdateProvider.state).state++;
 
   return true;

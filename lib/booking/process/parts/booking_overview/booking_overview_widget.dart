@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:blooddonation/services/background/background_service.dart' as background;
 
 ///Class to define the booking overview widget.
 class BookingOverview extends StatelessWidget {
@@ -113,10 +114,12 @@ class BookingOverview extends StatelessWidget {
                 }
 
                 UserService().lastDonation = extractDay(BookingService().bookedAppointment!.start);
+                UserService().firstDonation = false;
 
                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
 
                 BookingService().resetProcess();
+                background.init().then((_) => background.start());
               });
             },
           ),

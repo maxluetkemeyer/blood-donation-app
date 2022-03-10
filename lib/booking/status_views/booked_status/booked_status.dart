@@ -6,10 +6,12 @@ import 'package:blooddonation/booking/status_views/booked_status/requestcard_wid
 import 'package:blooddonation/booking/status_views/booked_status/stepsection_widget.dart';
 import 'package:blooddonation/services/backend/requests/cancel_appointment.dart';
 import 'package:blooddonation/services/backend/requests/get_status.dart';
+import 'package:blooddonation/services/background/notification_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:blooddonation/services/background/background_service.dart' as background;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookingBookedStatus extends StatefulWidget {
@@ -23,7 +25,13 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
   late Timer refreshTimer;
 
   Future refreshStatus() async {
-    return getRequestStatus(appointmentId: BookingService().bookedAppointment!.id);
+    bool request = await getRequestStatus(appointmentId: BookingService().bookedAppointment!.id);
+    if (!request) return;
+
+    if (BookingService().bookedAppointment?.request?.status != RequestStatus.pending.name) {
+      refreshTimer.cancel();
+      NotificationService().displayNotification("Blutspendetermin", "Es gibt Neuigkeiten zu Ihrem Blutspendetermin!");
+    }
   }
 
   Future cancel() async {
@@ -35,6 +43,9 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
 
     //Clear BookingService reference
     BookingService().bookedAppointment = null;
+
+    //Stop background task
+    background.stop();
 
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
   }
