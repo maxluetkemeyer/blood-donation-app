@@ -3,6 +3,7 @@ import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:language_picker/languages.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LanguageField extends StatefulWidget {
   const LanguageField({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _LanguageFieldState extends State<LanguageField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormRow(
-      prefix: const Text("Sprache"),
+      prefix: Text(AppLocalizations.of(context)!.userDataLanguage),
       child: Padding(
         padding: const EdgeInsets.only(left: 25),
         child: DropdownButtonFormField<String>(
