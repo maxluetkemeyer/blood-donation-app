@@ -35,19 +35,17 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
   }
 
   Future cancel() async {
-    refreshTimer.cancel();
-    bool success = await cancelAppointment(appointmentId: BookingService().bookedAppointment!.id);
-
-    //if success is false -> something went wrong in the process
-    print(success);
-
     //Clear BookingService reference
     BookingService().bookedAppointment = null;
 
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+
+    refreshTimer.cancel();
     //Stop background task
     background.stop();
 
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+    // ignore: unused_local_variable
+    bool success = await cancelAppointment(appointmentId: BookingService().bookedAppointment!.id);
   }
 
   @override
