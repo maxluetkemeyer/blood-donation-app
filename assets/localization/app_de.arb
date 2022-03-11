@@ -16,6 +16,14 @@
   "back":"Zurück",
   "next":"Weiter",
   "ageQuestion":"Altersabfrage",
+  "userDataHeading": "Nutzerdaten",
+  "userDataDataHeading": "Ihre Daten (lokal gespeichert)",
+  "userDataLastDonation": "Termin Ihrer letzten Blutspende",
+  "userDataTelephone": "Telefon",
+  "userDataTelephonePlaceholder": "Ihre Telefonnummer",
+  "userDataLanguage": "Sprache",
+  "userDataGender": "Geschlecht",
+  "userDataGenderPlaceholder": "Ihr Geschlecht",
 
   "homeMenuUserData": "Ihre Daten",
   "homeMenuImprint": "Impressum",
@@ -55,13 +63,7 @@
   "donationQuestionAnswerApprovement": "Zulassung zur Blutspende",
   "donationQuestionAnswerRefusal": "Auf Grund Ihrer Antwort kommen Sie wahrscheinlich nicht als Blutspender:in in Frage. Schauen Sie sich gerne unser FAQ an.",
   "forwardingToFAQ": "Zum FAQ", 
-
   "faqErrorLoadingQuestions": "Beim Laden der FAQ-Fragen ist ein Fehler aufgetreten.",
-  
-
-  "userDataHeading": "Nutzerdaten",
-  "userDataDataHeading": "Ihre Daten (lokal gespeichert)",
-  "userDataLastDonation": "Termin Ihrer letzten Blutspende",
 
   "bookingStartHeader": "Blutspendetermin",
   "bookingMotivation": "Spenden Sie Blut am UKM\n- in Münster für Münster.",
@@ -74,7 +76,7 @@
   "bookingStopBooking":"Buchungsvorgang abbrechen",
   "bookingChooseDayTitle":"Tag auswählen",
   "bookingChooseTimeTitle":"Verfügbare Zeiten",
-  "bookingAnswerQuestionsTitle":"Dürfen Sie Blut spenden?",
+  "bookingAnswerQuestionsTitle":"Selbstüberprüfung",
   "bookingDatenTitle":"Daten überprüfen",
   "bookingProgressLoss":"Ihr bisheriger Fortschritt geht verloren.",
   "bookingAgeWarning":"Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",

@@ -13,9 +13,17 @@
   "birthday": "Birthday",
   "yourBirthday": "Your date of birth",
   "doneButton": "Done",
-  "back":"back",
-  "next":"next",
-  "ageQuestion":"Age check",
+  "back": "Back",
+  "next": "Next",
+  "ageQuestion": "Age Check",
+  "userDataHeading": "Your Data (locally saved)",
+  "userDataDataHeading": "Your Data",
+  "userDataLastDonation": "Date of your last Blood Donation",
+  "userDataTelephone": "Telephone",
+  "userDataTelephonePlaceholder": "Your Telephone Number",
+  "userDataLanguage": "Language",
+  "userDataGender": "Gender",
+  "userDataGenderPlaceholder": "Your Gender",
 
   "homeMenuUserData": "Your Data",
   "homeMenuImprint": "Imprint",
@@ -28,23 +36,24 @@
   "homeMenuGetInspiredCatchPhrase": "Why donating blood\nis not hard",
   "homeMenuGetInspiredCatchPhraseSwipe": "Get inspired",
 
-  "getInspiredCarouselSliderPerson1": "I donate blood at the UKM, because I feel safe.",
+  "getInspiredCarouselSliderPerson1": "I donate blood at the UKM, because I feel safe there.",
   "getInspiredCarouselSliderPerson2": "I donate blood, because that way I can help others.",
   "getInspiredCarouselSliderPerson3": "I donate blood at the UKM, because the nut pastries are so delicious.",
-  "getInspiredCarouselSliderPerson4": "My roommates and I always donate together - that way it is way mor entertaining.",
+  "getInspiredCarouselSliderPerson4": "My roommates and I always donate together - that way it is way more entertaining.",
 
   "mapHeading": "Blood donation at UKM",
   "mapDirections": "Directions",
 
    "imprintHeader": "Imprint",
-  "imprintInformationOfPublisher": "About the publisher",
+
+  "imprintInformationOfPublisher": "About the Publisher",
   "imprintPublisherInformation": "European Research Center for Information Systems (ERCIS)\nLeonardo-Campus 3\n48149 Münster\n\nTel.: +49 251 8338100\nFax: +49 251 8338109\ninfo@ercis.org",
   "imprintContact": "Contact",
   "imprintContactInstitution": "Universitätsklinikum Münster",
   "imprintContactAdress": "Zentralklinikum\nAlbert-Schweitzer-Campus 1, Building: A1\nAdress: Albert-Schweitzer-Straße 33\n48149 Münster\n\nTel.: +49 251 8355555\nFax: +49 251 8356960\ninfo@­ukmuenster.­de",
   "imprintLicenses": "Licenses",
   "imprintLicensesOpenStreetMap": "https://www.openstreetmap.org/copyright",
-  "imprintMoreInformation": "Further information",
+  "imprintMoreInformation": "Further Information",
 
   "institutionAdress": "Albert-Schweitzer-Campus 1\n48149 Münster\nDomagkstr. 11, Building: D11",
   "institutionTelephoneNumber": "Tel.: +49 251 8358000",
@@ -52,16 +61,12 @@
 
   "donationQuestionAnswerYes": "Yes",
   "donationQuestionAnswerNo": "No",
-  "donationQuestionAnswerApprovement": "Admission to blood donation",
-  "donationQuestionAnswerRefusal": "Because your answer you will most likely not be able to donate blood. Take a look at the FAQ.",
+
+  "donationQuestionAnswerApprovement": "Admission to Blood Donation",
+  "donationQuestionAnswerRefusal": "Because of your answer you will most likely not be able to donate blood. Take a look at the FAQ.",
   "forwardingToFAQ": "To the FAQ", 
 
   "faqErrorLoadingQuestions": "",
-  
-
-  "userDataHeading": "Your Data (local saved)",
-  "userDataDataHeading": "Your Data",
-  "userDataLastDonation": "Date of your last blood donation",
 
   "bookingStartHeader": "Blood donation",
   "bookingMotivation": "Donate blood at the UKM\n- in Münster for Münster.",
@@ -70,11 +75,11 @@
   "bookingYourAppointment": "Your appointment",
   "bookingAppointment": "Appointment",
   "bookingBreakText": "is your selected appointment. Do you want to change your appointment and start the booking process again?",
-  "bookingChangeDate": "change Appointment",
+  "bookingChangeDate": "Change Appointment",
   "bookingStopBooking":"Stop booking process",
   "bookingChooseDayTitle":"Choose Date",
   "bookingChooseTimeTitle":"Choose Time",
-  "bookingAnswerQuestionsTitle":"May you donate blood?",
+  "bookingAnswerQuestionsTitle":"Self-check",
   "bookingDatenTitle":"Check data",
   "bookingProgressLoss":"Your previous progress will be lost.",
   "bookingAgeWarning":"You must be at least 18 years old to donate blood!",
