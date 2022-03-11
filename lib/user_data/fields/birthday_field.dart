@@ -32,6 +32,7 @@ class _BirthdayFieldState extends State<BirthdayField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormRow(
+      key: const ValueKey("birthdayField"),
       prefix: Text(AppLocalizations.of(context)!.birthday),
       child: CupertinoTextFormFieldRow(
         placeholder: AppLocalizations.of(context)!.yourBirthday,

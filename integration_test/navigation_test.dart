@@ -18,11 +18,9 @@ void main() {
 
         //Start -> Faq
         await wf.clickNavFaq(tester);
-        print("ErsterDone");
-        await tester.pump(const Duration(seconds: 5));
+       
         //Faq -> Start
         await wf.clickNavStart(tester);
-        print("ZweiterDone");
 
         //Start -> Appointments
         await wf.clickNavAppointments(tester);

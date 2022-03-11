@@ -9,7 +9,7 @@ Future<void> workflowApp(WidgetTester tester) async{
 
   await tester.tap(navButt);
 
-  await tester.pumpAndSettle();
+  await tester.pump();
 
   return;
 }
@@ -49,7 +49,6 @@ Future<void> workflowFaq(WidgetTester tester) async{
   await tester.tap(navButt);
 
   await tester.pump();
-  //for(int count = 0; count < 10; count += 1) {await tester.pump(const Duration(seconds: 5));}
 
   return;
 }
@@ -87,6 +86,18 @@ Future<void> workflowNavUserData(WidgetTester tester) async{
   expect(navUserData, findsOneWidget);
 
   await tester.tap(navUserData);
+  
+  await tester.pump();
+  return;
+}
+
+Future<void> workflowNavHelp(WidgetTester tester) async{
+  //clicks the user data navigation bar the key imprintButton
+  final navHelp = find.byKey(const Key('helpButton'));
+
+  expect(navHelp, findsOneWidget);
+
+  await tester.tap(navHelp);
   
   await tester.pump();
   return;

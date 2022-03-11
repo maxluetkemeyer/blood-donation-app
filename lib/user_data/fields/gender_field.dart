@@ -34,6 +34,7 @@ class _GenderFieldState extends State<GenderField> {
     return CupertinoFormRow(
       prefix: const Text("Gender"),
       child: CupertinoTextFormFieldRow(
+        key: const ValueKey("genderField"),
         placeholder: "Your Gender",
         controller: controller,
       ),

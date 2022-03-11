@@ -33,6 +33,7 @@ class _TelephoneFieldState extends State<TelephoneField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormRow(
+      key: const ValueKey("telephoneField"),
       prefix: const Text("Telephone"),
       child: CupertinoTextFormFieldRow(
         placeholder: "Your telephone number",

@@ -8,38 +8,85 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('User Data Group', () {
     testWidgets(
-      'Given the Application is started, when a name is set it is saved',
-      (WidgetTester tester) async {
-        //leaving the user data menu and reopening it
-        await init();
-        await tester.pumpAndSettle();
-      },
-    );
-  });
-  group('User Data Group', () {
-    testWidgets(
       'Given the Application is started, the saved name can be changed by a user',
       (WidgetTester tester) async {
         await init();
-        await tester.pumpAndSettle();
+
+        await tester.pump();
+
+        await wf.clickPopUpNav(tester);
+
+        await tester.pump();
+
+        await wf.clickNavUserData(tester);
+
+        await tester.pump();
+
+        await wf.testNameVorname(tester);
+
+        await wf.testNameNachname(tester);
+
+        await wf.testNameZwischenname(tester);
+
+        await wf.testNameSonderzeichen(tester);
+
+        await wf.testNameDoppelname(tester);
       },
     );
   });
   group('User Data Group', () {
     testWidgets(
-      'Given the Application is started, the saved birthday can be changed by a user',
+      'Given the Application is started, the gender can be changed by a user',
       (WidgetTester tester) async {
         await init();
-        await tester.pumpAndSettle();
+        
+        await tester.pump();
+
+        await wf.clickPopUpNav(tester);
+
+        await tester.pump();
+
+        await wf.clickNavUserData(tester);
+
+        await tester.pump();
+
+        await wf.testGenderM(tester);
+
+        await wf.testGenderW(tester);
+
+        await wf.testGenderD(tester);
+
+        await wf.testGenderMannlich(tester);
+
+        await wf.testGenderWeiblich(tester);
+
+        await wf.testGenderDivers(tester);
       },
     );
   });
   group('User Data Group', () {
     testWidgets(
-      'Given the Application is started, the saved date of the last donation can be changed by a user',
+      'Given the Application is started, the telephone can be changed by a user',
       (WidgetTester tester) async {
         await init();
-        await tester.pumpAndSettle();
+
+        await tester.pump();
+
+        await wf.clickPopUpNav(tester);
+
+        await tester.pump();
+
+        await wf.clickNavUserData(tester);
+
+        await tester.pump();
+
+        await wf.testNumbers(tester);
+
+        await wf.testNumberSame(tester);
+
+        await wf.testNumberSlash(tester);
+
+        await wf.testNumberDoppel(tester);
       },
     );
   });

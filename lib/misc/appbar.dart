@@ -11,6 +11,7 @@ class AppBarMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton<int>(
       elevation: 14,
+      key: const ValueKey("popUpDots"),
       onSelected: (value) {
         switch (value) {
           case 0:
@@ -26,6 +27,7 @@ class AppBarMenuButton extends StatelessWidget {
       },
       itemBuilder: (context) => [
         PopupMenuItem(
+          key: const ValueKey("userDataButton"),
           value: 0,
           textStyle: TextStyle(
             color: Theme.of(context).primaryColor,
@@ -36,6 +38,7 @@ class AppBarMenuButton extends StatelessWidget {
         ),
         const PopupMenuDivider(),
         PopupMenuItem(
+          key: const ValueKey("imprintButton"),
           value: 1,
           textStyle: TextStyle(
             color: Theme.of(context).primaryColor,
@@ -46,6 +49,7 @@ class AppBarMenuButton extends StatelessWidget {
         ),
         const PopupMenuDivider(),
         PopupMenuItem(
+          key: const ValueKey("helpButton"),
           value: 2,
           textStyle: TextStyle(
             color: Theme.of(context).primaryColor,

@@ -15,9 +15,12 @@ void main() {
         await tester.pump();
 
         await wf.clickPopUpNav(tester);
+        
+        await tester.pump();
 
         await wf.clickNavImprint(tester);
 
+        await tester.pump();
         final imprintText = find.textContaining('ERCIS');
         expect(imprintText, findsOneWidget);
       },

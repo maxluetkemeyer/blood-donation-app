@@ -32,6 +32,7 @@ class _NameFieldState extends State<NameField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormRow(
+      key: const ValueKey("nameField"),
       prefix: Text(AppLocalizations.of(context)!.name),
       child: CupertinoTextFormFieldRow(
         placeholder: AppLocalizations.of(context)!.yourName,

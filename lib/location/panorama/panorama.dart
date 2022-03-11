@@ -13,6 +13,7 @@ class MyPanorama extends StatelessWidget {
         child: Stack(
           children: [
             Hero(
+              key: const ValueKey("panoramaImage"),
               tag: "panorama",
               child: Panorama(
                 key: GlobalKey(),

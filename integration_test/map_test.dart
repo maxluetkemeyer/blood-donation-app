@@ -11,25 +11,27 @@ void main() {
       'Given the Application is started, when selecting the 360 degree image then it is shown in fullscreen',
       (WidgetTester tester) async {
         await init();
-
-        //await wf.skipIntro(tester);
-        await tester.pumpAndSettle();
+        await tester.pump();
 
         await wf.clickNavMap(tester);
+        await wf.clickPanorama(tester);
       },
     );
   });
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('Map Group', () {
     testWidgets(
-      'Given the Application is started, when selection the map image (twice) then the user gets to open (Google) Maps with a set destination',
+      'Given the Application is started, when selection the map image then the user is shown the map in fullscreen',
       (WidgetTester tester) async {
         await init();
 
-        //await wf.skipIntro(tester);
-        await tester.pumpAndSettle();
+        await tester.pump();
 
         await wf.clickNavMap(tester);
+
+        await tester.pump();
+
+        await wf.clickStreetMap(tester);
       },
     );
   });

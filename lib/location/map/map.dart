@@ -15,7 +15,8 @@ class MyMap extends StatelessWidget {
           Hero(
             tag: "map",
             child: MapWidget(
-              key: GlobalKey(),
+              //key: GlobalKey(),
+              key: const ValueKey("streetMap"),
               interactiveFlag: InteractiveFlag.none,
               onTap: (tapPosition, point) => Navigator.push(context, MaterialPageRoute(builder: (context) => const MapFullScreen())),
             ),
