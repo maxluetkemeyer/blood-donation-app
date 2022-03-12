@@ -2,16 +2,9 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'skip_intro.dart' as skipIntroAS;
 import 'click_nav.dart' as clickNavAS;
-import 'click_buttons.dart' as clickButtonsAS;
-import 'abort_booking.dart' as abortBookingAS;
-import 'booking_actions.dart' as bookingActionsAS;
 import "map_actions.dart" as mapActionsAS;
 import "user_data_actions.dart" as userDataActionsAS;
-
-//Skipping Introduction
-final skipIntro = (WidgetTester tester) => skipIntroAS.workflow(tester);
 
 //Navigation Bar Orientation
 final clickNavAppointments = (WidgetTester tester) => clickNavAS.workflowApp(tester);
@@ -22,17 +15,6 @@ final clickPopUpNav = (WidgetTester tester) => clickNavAS.workflowPopUpNav(teste
 final clickNavImprint = (WidgetTester tester) => clickNavAS.workflowNavImpr(tester);
 final clickNavUserData = (WidgetTester tester) => clickNavAS.workflowNavUserData(tester);
 final clickNavHelp = (WidgetTester tester) => clickNavAS.workflowNavHelp(tester);
-
-//Pushing the Buttons
-final clickStartAppointments = (WidgetTester tester) => clickButtonsAS.workflow(tester);
-final clickNoButton = (WidgetTester tester) => clickButtonsAS.workflowNoButton(tester);
-
-//Abort the booking process
-final abortBooking = (WidgetTester tester) => abortBookingAS.workflow(tester);
-
-//Click Buttons during Booking process
-final clickDate = (WidgetTester tester) => bookingActionsAS.workflowClickDate(tester);
-final clickTime = (WidgetTester tester) => bookingActionsAS.workflowClickTime(tester);
 
 //MapActions
 final clickPanorama = (WidgetTester tester) => mapActionsAS.workflowPanorama(tester);
