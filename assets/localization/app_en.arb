@@ -24,6 +24,8 @@
   "userDataLanguage": "Language",
   "userDataGender": "Gender",
   "userDataGenderPlaceholder": "Your Gender",
+  "userDataErrorMessage": "Please include this field.",
+  "userDataTelephoneReason": "For possible queries",
 
   "homeMenuUserData": "Your Data",
   "homeMenuImprint": "Imprint",
@@ -43,9 +45,9 @@
 
   "mapHeading": "Blood donation at UKM",
   "mapDirections": "Directions",
+  "mapToMapsProvider": "Route",
 
-   "imprintHeader": "Imprint",
-
+  "imprintHeader": "Imprint",
   "imprintInformationOfPublisher": "About the Publisher",
   "imprintPublisherInformation": "European Research Center for Information Systems (ERCIS)\nLeonardo-Campus 3\n48149 Münster\n\nTel.: +49 251 8338100\nFax: +49 251 8338109\ninfo@ercis.org",
   "imprintContact": "Contact",
@@ -87,6 +89,7 @@
   "bookingFirstAge":"What is your date of birth?",
   "bookingErrorLoadingQuestions": "An error occured while loading the questions.",
   "bookingErrorProcessFailure": "[BookingProcess] Something went wrong!",
+  "bookingAppointmentCanceledFeedback": "Your appointment has been cancelled!",
 
   "bookedStepSection0": "Appointment", 
   "bookedStepSection1": "Welcome to the UKM",

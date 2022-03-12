@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:panorama/panorama.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:blooddonation/misc/env.dart' as env;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PanFullScreen extends StatelessWidget {
   final double initialLatitude;
@@ -24,9 +25,10 @@ class PanFullScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white.withOpacity(0.7),
           actions: [
-            IconButton(
+            TextButton.icon(
               onPressed: () => launch(env.locationLink),
               icon: const Icon(Icons.open_in_new_outlined),
+              label: Text(AppLocalizations.of(context)!.mapToMapsProvider),
             ),
           ],
         ),

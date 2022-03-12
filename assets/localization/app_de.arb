@@ -24,6 +24,8 @@
   "userDataLanguage": "Sprache",
   "userDataGender": "Geschlecht",
   "userDataGenderPlaceholder": "Ihr Geschlecht",
+  "userDataErrorMessage": "Bitte dieses Feld mit angeben.",
+  "userDataTelephoneReason": "Für mögliche Rückfragen",
 
   "homeMenuUserData": "Ihre Daten",
   "homeMenuImprint": "Impressum",
@@ -43,6 +45,7 @@
 
   "mapHeading": "Blutspende am UKM",
   "mapDirections": "Anfahrtsadresse",
+  "mapToMapsProvider": "Route",
 
   "imprintHeader": "Impressum",
   "imprintInformationOfPublisher": "Angaben des Herausgebers",
@@ -62,7 +65,7 @@
   "donationQuestionAnswerNo": "Nein",
   "donationQuestionAnswerApprovement": "Zulassung zur Blutspende",
   "donationQuestionAnswerRefusal": "Auf Grund Ihrer Antwort kommen Sie wahrscheinlich nicht als Blutspender:in in Frage. Schauen Sie sich gerne unser FAQ an.",
-  "forwardingToFAQ": "Zum FAQ", 
+  "forwardingToFAQ": "Zur FAQ", 
   "faqErrorLoadingQuestions": "Beim Laden der FAQ-Fragen ist ein Fehler aufgetreten.",
 
   "bookingStartHeader": "Blutspendetermin",
@@ -84,6 +87,7 @@
   "bookingFirstAge":"Wann wurden Sie geboren?",
   "bookingErrorLoadingQuestions": "Es ist ein Fehler aufgetreten beim Laden der Spende Fragen.",
   "bookingErrorProcessFailure": "[BookingProcess] Something went wrong!",
+  "bookingAppointmentCanceledFeedback": "Ihr Termin wurde storniert!",
 
   "bookedStepSection0": "Terminvereinbarung", 
   "bookedStepSection1": "Willkommen am UKM",

@@ -19,7 +19,9 @@ Future<bool> getRequestStatus({required int appointmentId}) async {
   print("[get_status]: " + response.body);
 
   //Convert String to Map
-  List jsonList = jsonDecode(response.body) as List; //TODO: Has to be fixed in django.
+  List jsonList = jsonDecode(utf8.decode(response.bodyBytes)) as List; //TODO: Has to be fixed in django.
+  if (jsonList.isEmpty) return false;
+
   Map<String, dynamic> json = jsonList[0];
 
   //Convert each List of Map to a List of a model
