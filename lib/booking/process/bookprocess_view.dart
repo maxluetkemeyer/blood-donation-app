@@ -1,9 +1,9 @@
-import 'package:blooddonation/app.dart';
+ import 'package:blooddonation/app.dart';
 import 'package:blooddonation/booking/process/parts/booking_overview/booking_overview_widget.dart';
 import 'package:blooddonation/booking/process/parts/choose_day/choose_day_widget.dart';
 import 'package:blooddonation/booking/process/parts/choose_time/choose_time_widget.dart';
 import 'package:blooddonation/booking/process/parts/donation_questions/questions_view.dart';
-import 'package:blooddonation/misc/appbar.dart';
+import 'package:blooddonation/misc/appbar_menu.dart';
 import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,7 +35,7 @@ class BookProcessView extends ConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Termin buchen"),
+          title: Text(AppLocalizations.of(context)!.bookingStartButton),
           actions: const [AppBarMenuButton()],
         ),
         body: Column(
@@ -180,7 +180,7 @@ class BookProcessView extends ConsumerWidget {
       case 2:
         return const QuestionsView();
       case 3:
-        return BookingOverview();
+        return const BookingOverview();
       default:
         return Container();
     }

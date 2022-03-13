@@ -19,7 +19,7 @@ Future<bool> bookAppointment({required Appointment appointment}) async {
   }
 
   //Convert String to Map
-  Map<String, dynamic> jsonAppointment = jsonDecode(response.body);
+  Map<String, dynamic> jsonAppointment = jsonDecode(utf8.decode(response.bodyBytes));
 
   //Convert Map to Appointment
   Appointment responseAppointment = Appointment.fromJson(jsonAppointment);

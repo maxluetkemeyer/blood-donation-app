@@ -1,7 +1,7 @@
 import 'package:blooddonation/services/faq/faq_service.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'faqquestion_panel.dart';
 
 ///This Widget is used, to show the user the faq interface.
@@ -21,7 +21,7 @@ class FaqView extends StatelessWidget {
         }
 
         if (!(snapshot.data as bool)) {
-          return const Center(child: Text("Es ist ein Fehler aufgetreten beim Laden der FAQ Fragen."));
+          return Center(child: Text(AppLocalizations.of(context)!.faqErrorLoadingQuestions)); 
         }
 
         List<FaqQuestionTranslation> tList = FaqService().extractTranslations(language: UserService().language);

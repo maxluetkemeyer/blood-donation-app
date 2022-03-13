@@ -1,4 +1,4 @@
-import 'package:blooddonation/location/company_info.dart';
+import 'package:blooddonation/location/institution_info.dart';
 import 'package:blooddonation/location/map/map.dart';
 import 'package:blooddonation/location/panorama/panorama.dart';
 import 'package:flutter/material.dart';

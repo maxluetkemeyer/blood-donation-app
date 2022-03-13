@@ -56,7 +56,7 @@ class AppBarMenuButton extends StatelessWidget {
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
-          child: const Text("Hilfe"),
+          child: Text(AppLocalizations.of(context)!.miscAppbarHelp),
         ),
       ],
     );

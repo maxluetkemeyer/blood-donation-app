@@ -18,7 +18,7 @@ Future<bool> getFreeAppointments(DateTime day) async {
   }
 
   //Convert json String to List of dynamic (will be Maps)
-  List<dynamic> json = jsonDecode(response.body) as List;
+  List<dynamic> json = jsonDecode(utf8.decode(response.bodyBytes)) as List;
 
   //Convert the List to a List of Appointments
   List<Appointment> appointments = json.map((appointmentMap) => Appointment.fromJson(appointmentMap)).toList();

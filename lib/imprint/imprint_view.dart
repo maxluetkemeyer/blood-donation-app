@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ImprintView extends StatelessWidget {
   const ImprintView({Key? key}) : super(key: key);
@@ -8,43 +9,43 @@ class ImprintView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Impressum'),
+        title: Text(AppLocalizations.of(context)!.imprintHeader),
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(12),
         children: [
-          const Text(
-            'Angaben des Herausgebers',
+          Text(
+            (AppLocalizations.of(context)!.imprintInformationOfPublisher),
             style: _headTextStyle,
           ),
           const SizedBox(height: 10),
-          const SelectableText(
-            'European Research Center for Information Systems (ERCIS) \nLeonardo-Campus 3 \n48149 Münster	\n\nTel.: +49 251 8338100 \nFax: +49 251 8338109 \ninfo@ercis.org ',
+          SelectableText(
+            (AppLocalizations.of(context)!.imprintPublisherInformation),
             style: _bodyTextStyle,
           ),
           const SizedBox(height: 30),
-          const Text(
-            'Kontakt',
+          Text(
+            (AppLocalizations.of(context)!.imprintContact),
             style: _headTextStyle,
           ),
           const SizedBox(height: 10),
-          const SelectableText(
-            'Universitätsklinikum Münster',
+          SelectableText(
+            (AppLocalizations.of(context)!.imprintContactInstitution),
             style: _bodyTextStyle,
           ),
-          const SelectableText(
-            'Zentralklinikum\nAlbert-Schweitzer-Campus 1, Gebäude: A1\nAnfahrtsadresse: Albert-Schweitzer-Straße 33\n48149 Münster\n\nTel.: +49 251 8355555\nFax: +49 251 8356960\ninfo@­ukmuenster.­de',
+          SelectableText(
+            (AppLocalizations.of(context)!.imprintContactAdress),
             style: _bodyTextStyle,
           ),
           const SizedBox(height: 30),
-          const Text(
-            'Lizenzen',
+          Text(
+            (AppLocalizations.of(context)!.imprintLicenses),
             style: _headTextStyle,
           ),
           const SizedBox(height: 10),
-          const SelectableText(
-            'https://www.openstreetmap.org/copyright',
+          SelectableText(
+            (AppLocalizations.of(context)!.imprintLicensesOpenStreetMap),
             style: _bodyTextStyle,
           ),
           const SizedBox(height: 10),
@@ -58,7 +59,7 @@ class ImprintView extends StatelessWidget {
                   image: AssetImage("assets/images/logo_square.png"),
                 ),
                 applicationVersion: "0.3",
-                applicationName: "UKM Blutspende",
+                applicationName: (AppLocalizations.of(context)!.appTitle),
                 children: [
                   const Image(
                     //width: 50,
@@ -66,9 +67,9 @@ class ImprintView extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Text(
-                "More Info",
-                style: TextStyle(
+              child: Text(
+                (AppLocalizations.of(context)!.imprintMoreInformation),
+                style: const TextStyle(
                   fontSize: 20,
                 ),
               ),

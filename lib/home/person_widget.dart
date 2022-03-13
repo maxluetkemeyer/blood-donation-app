@@ -16,9 +16,7 @@ class PersonWiget extends StatelessWidget {
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height,
-          //padding: const EdgeInsets.all(17),
           child: ClipRRect(
-            //borderRadius: BorderRadius.circular(20),
             child: Image(
               image: image,
               fit: BoxFit.fitHeight,
@@ -28,7 +26,6 @@ class PersonWiget extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: Container(
-            //height: MediaQuery.of(context).size.height * 0.25,
             padding: const EdgeInsets.all(12),
             margin: const EdgeInsets.all(15),
             decoration: BoxDecoration(
@@ -53,9 +50,7 @@ class PersonWiget extends StatelessWidget {
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  const TextSpan(
-                    text: '”',
-                  ),
+                  const TextSpan(text: '”'),
                 ],
               ),
               textAlign: TextAlign.center,

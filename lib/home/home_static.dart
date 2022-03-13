@@ -2,6 +2,7 @@
 import 'package:blooddonation/app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 ///Entrance page, also functioning as the home page.
 class HomeStatic extends StatelessWidget {
@@ -47,8 +48,7 @@ class HomeStatic extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "Noch keinen\nBlutspendetermin?\nÄndern wir.",
+                    Text(AppLocalizations.of(context)!.homeMenuCatchPhrase,
                       style: TextStyle(
                         fontSize: width * 0.07,
                         color: Theme.of(context).primaryColor,
@@ -77,7 +77,7 @@ class HomeStatic extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "Termin finden",
+                          (AppLocalizations.of(context)!.homeMenuCatchPhraseButton),
                           style: TextStyle(
                             fontSize: width * 0.06,
                             color: Theme.of(context).primaryColor,
@@ -121,7 +121,7 @@ class HomeStatic extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    "Warum Blut spenden gar\nnicht schwer ist",
+                    (AppLocalizations.of(context)!.homeMenuGetInspiredCatchPhrase),
                     style: TextStyle(
                       fontSize: width * 0.06,
                       color: Theme.of(context).primaryColor,
@@ -134,7 +134,7 @@ class HomeStatic extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        "Inspirieren lassen",
+                        (AppLocalizations.of(context)!.homeMenuGetInspiredCatchPhraseSwipe),
                         style: TextStyle(
                           fontSize: width * 0.055,
                           color: Theme.of(context).primaryColor,

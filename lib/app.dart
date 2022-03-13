@@ -1,4 +1,6 @@
-import 'package:blooddonation/misc/appbar.dart';
+import 'package:badges/badges.dart';
+import 'package:blooddonation/misc/appbar_menu.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -63,12 +65,14 @@ class _AppState extends State<App> {
   ///New pages are accessed by the [screens] array-defined [Widget]'s.
   @override
   Widget build(BuildContext context) {
+    bool showAppointmentBadge = BookingService().bookedAppointment != null;
+
     return Scaffold(
       appBar: AppBar(
         title: SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
           child: Showcase(
-            description: "Herzlich Willkommen in der UKM Blutspende App!",
+            description: (AppLocalizations.of(context)!.userOnboardingIntroduction),
             key: showcaseKeys[0],
             descTextStyle: const TextStyle(fontSize: 20),
             child: const Image(
@@ -78,7 +82,7 @@ class _AppState extends State<App> {
         ),
         actions: [
           Showcase(
-            description: "Und hier oben finden sie Weiteres.",
+            description: (AppLocalizations.of(context)!.userOnboardingMore),
             key: showcaseKeys[5],
             descTextStyle: const TextStyle(fontSize: 20),
             shapeBorder: const CircleBorder(),
@@ -104,7 +108,7 @@ class _AppState extends State<App> {
           }),
           destinations: [
             Showcase(
-              description: "Hier finden sie Impressionen unserer Blutspender:innen",
+              description: (AppLocalizations.of(context)!.userOnboardinImpressions),
               key: showcaseKeys[1],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(
@@ -115,18 +119,26 @@ class _AppState extends State<App> {
               ),
             ),
             Showcase(
-              description: "Hier können sie einen\nBlutspendetermin buchen",
+              description: (AppLocalizations.of(context)!.userOnboardingBooking),
               key: showcaseKeys[2],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(
                 key: const ValueKey('appointment'),
-                icon: const Icon(Icons.date_range_outlined),
-                selectedIcon: const Icon(Icons.date_range),
+                icon: Badge(
+                  showBadge: showAppointmentBadge,
+                  badgeContent: const Text("1"),
+                  child: const Icon(Icons.date_range_outlined),
+                ),
+                selectedIcon: Badge(
+                  showBadge: showAppointmentBadge,
+                  badgeContent: const Text("1"),
+                  child: const Icon(Icons.date_range),
+                ),
                 label: AppLocalizations.of(context)!.homeMenuAppointment,
               ),
             ),
             Showcase(
-              description: "Hier zeigen wir ihnen, wie sie zu uns kommen",
+              description: (AppLocalizations.of(context)!.userOnboardingLocation),
               key: showcaseKeys[3],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(
@@ -137,7 +149,7 @@ class _AppState extends State<App> {
               ),
             ),
             Showcase(
-              description: "Hier beantworten wir die meist gestellten Fragen",
+              description: (AppLocalizations.of(context)!.userOnboardingFAQ),
               key: showcaseKeys[4],
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(

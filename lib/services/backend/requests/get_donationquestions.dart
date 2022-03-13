@@ -20,7 +20,7 @@ Future<bool> getDonationQuestions() async {
   print(response.body);
 
   //Convert String to Map
-  Map<String, dynamic> json = jsonDecode(response.body);
+  Map<String, dynamic> json = jsonDecode(utf8.decode(response.bodyBytes));
 
   //Extract Lists of Maps
   List<dynamic> donationQuestionMaps = json["donationQuestions"];

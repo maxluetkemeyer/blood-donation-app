@@ -5,6 +5,7 @@ import 'package:blooddonation/services/provider/providers.dart';
 import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuestionsView extends ConsumerWidget {
   const QuestionsView({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class QuestionsView extends ConsumerWidget {
         }
 
         if (!(snapshot.data as bool)) {
-          return const Center(child: Text("Es ist ein Fehler aufgetreten beim Laden der Spende Fragen."));
+          return Center(child: Text(AppLocalizations.of(context)!.bookingErrorLoadingQuestions));
         }
 
         return QuestionSlider(

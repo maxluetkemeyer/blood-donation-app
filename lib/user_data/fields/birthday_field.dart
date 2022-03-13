@@ -1,9 +1,15 @@
-import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:blooddonation/services/user/user_service.dart';
+
 class BirthdayField extends StatefulWidget {
-  const BirthdayField({Key? key}) : super(key: key);
+  final bool showErrorMessage;
+
+  const BirthdayField({
+    Key? key,
+    this.showErrorMessage = false,
+  }) : super(key: key);
 
   @override
   State<BirthdayField> createState() => _BirthdayFieldState();
@@ -34,6 +40,7 @@ class _BirthdayFieldState extends State<BirthdayField> {
     return CupertinoFormRow(
       key: const ValueKey("birthdayField"),
       prefix: Text(AppLocalizations.of(context)!.birthday),
+      error: widget.showErrorMessage ? Text(AppLocalizations.of(context)!.userDataErrorMessage) : null,
       child: CupertinoTextFormFieldRow(
         placeholder: AppLocalizations.of(context)!.yourBirthday,
         readOnly: true,
