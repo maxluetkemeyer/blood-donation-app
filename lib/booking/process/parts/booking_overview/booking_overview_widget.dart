@@ -14,8 +14,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:blooddonation/services/background/background_service.dart' as background;
 
 ///Class to define the booking overview widget.
-class BookingOverview extends StatelessWidget {
-  BookingOverview({Key? key}) : super(key: key);
+class BookingOverview extends StatefulWidget {
+  const BookingOverview({Key? key}) : super(key: key);
+
+  @override
+  State<BookingOverview> createState() => _BookingOverviewState();
+}
+
+class _BookingOverviewState extends State<BookingOverview> {
+  bool errorName = false;
+  bool errorTelephone = false;
 
   ///Defines the earliest date, where the user is a minimum of 18 years old
   final DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(DateTime.now().millisecondsSinceEpoch - 568036800000);
@@ -28,11 +36,11 @@ class BookingOverview extends StatelessWidget {
           header: Text(AppLocalizations.of(context)!.homeMenuUserData),
           footer: const Divider(),
           margin: const EdgeInsets.all(12),
-          children: const [
-            NameField(),
-            BirthdayField(),
-            GenderField(),
-            TelephoneField(),
+          children: [
+            NameField(showErrorMessage: errorName),
+            const BirthdayField(),
+            const GenderField(),
+            TelephoneField(showErrorMessage: errorTelephone),
           ],
         ),
         CupertinoFormSection.insetGrouped(
@@ -96,6 +104,25 @@ class BookingOverview extends StatelessWidget {
             color: Theme.of(context).primaryColor,
             child: Text(AppLocalizations.of(context)!.bookingStartButton),
             onPressed: () async {
+              bool dontAllow = false;
+              if (UserService().name == null || UserService().name!.isEmpty) {
+                dontAllow = true;
+                errorName = true;
+              } else {
+                errorName = false;
+              }
+              if (UserService().telephoneNumber == null || UserService().telephoneNumber!.isEmpty) {
+                dontAllow = true;
+                errorTelephone = true;
+              } else {
+                errorTelephone = false;
+              }
+
+              if (dontAllow) {
+                setState(() {});
+                return;
+              }
+
               Appointment appointmentToBook = BookingService().selectedAppointment!.copyWith(
                     person: Person(
                       name: UserService().name,

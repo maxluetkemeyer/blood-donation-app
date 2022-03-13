@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 
@@ -15,7 +17,7 @@ Future<bool> cancelAppointment({required int appointmentId}) async {
 
   print("body " + response.body.toString());
 
-  if (response.body != '"successful"') {
+  if (utf8.decode(response.bodyBytes) != '"successful"') {
     //TODO: Bug here are String literals inside the string
     print(response.body);
     return false;

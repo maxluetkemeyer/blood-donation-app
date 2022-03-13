@@ -180,7 +180,7 @@ class BookProcessView extends ConsumerWidget {
       case 2:
         return const QuestionsView();
       case 3:
-        return BookingOverview();
+        return const BookingOverview();
       default:
         return Container();
     }

@@ -26,7 +26,10 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
 
   Future refreshStatus() async {
     bool request = await getRequestStatus(appointmentId: BookingService().bookedAppointment!.id);
-    if (!request) return;
+    if (!request) {
+      cancel();
+      return;
+    }
 
     if (BookingService().bookedAppointment?.request?.status != RequestStatus.pending.name) {
       refreshTimer.cancel();
@@ -35,19 +38,26 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
   }
 
   Future cancel() async {
-    refreshTimer.cancel();
+    // ignore: unused_local_variable
     bool success = await cancelAppointment(appointmentId: BookingService().bookedAppointment!.id);
-
-    //if success is false -> something went wrong in the process
-    print(success);
-
     //Clear BookingService reference
     BookingService().bookedAppointment = null;
+
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+
+    // ignore: unnecessary_null_comparison
+    if (refreshTimer != null) {
+      refreshTimer.cancel();
+    }
 
     //Stop background task
     background.stop();
 
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(AppLocalizations.of(context)!.bookingAppointmentCanceledFeedback),
+      ),
+    );
   }
 
   @override

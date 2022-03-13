@@ -1,9 +1,15 @@
-import 'package:blooddonation/services/user/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:blooddonation/services/user/user_service.dart';
+
 class NameField extends StatefulWidget {
-  const NameField({Key? key}) : super(key: key);
+  final bool showErrorMessage;
+
+  const NameField({
+    Key? key,
+    this.showErrorMessage = false,
+  }) : super(key: key);
 
   @override
   State<NameField> createState() => _NameFieldState();
@@ -33,6 +39,7 @@ class _NameFieldState extends State<NameField> {
   Widget build(BuildContext context) {
     return CupertinoFormRow(
       prefix: Text(AppLocalizations.of(context)!.name),
+      error: widget.showErrorMessage ? Text(AppLocalizations.of(context)!.userDataErrorMessage) : null,
       child: CupertinoTextFormFieldRow(
         placeholder: AppLocalizations.of(context)!.yourName,
         controller: controller,

@@ -2,7 +2,7 @@
   "appTitle" : "UKM Blood Donation App",
 
   "userOnboardingIntroduction": "Welcome to the UKM Blood Donation App!",
-  "userOnboardingMore": "At the top you find further information.",
+  "userOnboardingMore": "At the top you can find your personal information, the imprint and a help function.",
   "userOnboardinImpressions": "Here are some impressions of our donors",
   "userOnboardingBooking": "Here you can book a\ndonation appoinment",
   "userOnboardingLocation": "Here you can find directions to our location",
@@ -24,6 +24,8 @@
   "userDataLanguage": "Language",
   "userDataGender": "Gender",
   "userDataGenderPlaceholder": "Your Gender",
+  "userDataErrorMessage": "Please include this field.",
+  "userDataTelephoneReason": "For possible queries",
 
   "homeMenuUserData": "Your Data",
   "homeMenuImprint": "Imprint",
@@ -43,9 +45,9 @@
 
   "mapHeading": "Blood donation at UKM",
   "mapDirections": "Directions",
+  "mapToMapsProvider": "Route",
 
-   "imprintHeader": "Imprint",
-
+  "imprintHeader": "Imprint",
   "imprintInformationOfPublisher": "About the Publisher",
   "imprintPublisherInformation": "European Research Center for Information Systems (ERCIS)\nLeonardo-Campus 3\n48149 Münster\n\nTel.: +49 251 8338100\nFax: +49 251 8338109\ninfo@ercis.org",
   "imprintContact": "Contact",
@@ -79,19 +81,15 @@
   "bookingStopBooking":"Stop Booking Process",
   "bookingChooseDayTitle":"Choose Date",
   "bookingChooseTimeTitle":"Choose Time",
-<<<<<<< Updated upstream
-  "bookingAnswerQuestionsTitle":"May you donate blood?",
-  "bookingDatenTitle":"Check data",
-=======
   "bookingAnswerQuestionsTitle":"Suitability for Blood Donation",
   "bookingDatenTitle":"Check Data",
->>>>>>> Stashed changes
   "bookingProgressLoss":"Your previous progress will be lost.",
   "bookingAgeWarning":"You must be at least 18 years old to donate blood!",
   "bookingFirstPrompt":"Your first blood donation",
   "bookingFirstAge":"What is your date of birth?",
   "bookingErrorLoadingQuestions": "An error occured while loading the questions.",
   "bookingErrorProcessFailure": "[BookingProcess] Something went wrong!",
+  "bookingAppointmentCanceledFeedback": "Your appointment has been cancelled!",
 
   "bookedStepSection0": "Appointment", 
   "bookedStepSection1": "Welcome to the UKM",

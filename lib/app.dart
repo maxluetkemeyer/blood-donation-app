@@ -1,4 +1,6 @@
+import 'package:badges/badges.dart';
 import 'package:blooddonation/misc/appbar_menu.dart';
+import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -63,6 +65,8 @@ class _AppState extends State<App> {
   ///New pages are accessed by the [screens] array-defined [Widget]'s.
   @override
   Widget build(BuildContext context) {
+    bool showAppointmentBadge = BookingService().bookedAppointment != null;
+
     return Scaffold(
       appBar: AppBar(
         title: SizedBox(
@@ -120,8 +124,16 @@ class _AppState extends State<App> {
               descTextStyle: const TextStyle(fontSize: 20),
               child: NavigationDestination(
                 key: const ValueKey('appointment'),
-                icon: const Icon(Icons.date_range_outlined),
-                selectedIcon: const Icon(Icons.date_range),
+                icon: Badge(
+                  showBadge: showAppointmentBadge,
+                  badgeContent: const Text("1"),
+                  child: const Icon(Icons.date_range_outlined),
+                ),
+                selectedIcon: Badge(
+                  showBadge: showAppointmentBadge,
+                  badgeContent: const Text("1"),
+                  child: const Icon(Icons.date_range),
+                ),
                 label: AppLocalizations.of(context)!.homeMenuAppointment,
               ),
             ),

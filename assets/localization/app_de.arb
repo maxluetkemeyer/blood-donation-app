@@ -6,7 +6,7 @@
   "userOnboardingBooking": "Hier können Sie einen\nBlutspendetermin buchen",
   "userOnboardingLocation": "Hier zeigen wir Ihnen, wie Sie zu uns kommen",
   "userOnboardingFAQ": "Hier beantworten wir für Sie häufig gestellte Fragen",
-  "userOnboardingMore": "Und hier oben finden Sie Ihre angegebenen Daten, das Impressum und eine Hilfe-Funktion.",
+  "userOnboardingMore": "Und hier oben finden Sie Ihre angegebenen Daten, das Impressum und eine Hilfefunktion.",
 
   "name": "Name",
   "yourName": "Ihr Name",
@@ -24,6 +24,8 @@
   "userDataLanguage": "Sprache",
   "userDataGender": "Geschlecht",
   "userDataGenderPlaceholder": "Ihr Geschlecht",
+  "userDataErrorMessage": "Bitte dieses Feld mit angeben.",
+  "userDataTelephoneReason": "Für mögliche Rückfragen",
 
   "homeMenuUserData": "Ihre Daten",
   "homeMenuImprint": "Impressum",
@@ -43,6 +45,7 @@
 
   "mapHeading": "Blutspende am UKM",
   "mapDirections": "Anfahrtsadresse",
+  "mapToMapsProvider": "Route",
 
   "imprintHeader": "Impressum",
   "imprintInformationOfPublisher": "Angaben des Herausgebers",
@@ -62,7 +65,7 @@
   "donationQuestionAnswerNo": "Nein",
   "donationQuestionAnswerApprovement": "Zulassung zur Blutspende",
   "donationQuestionAnswerRefusal": "Auf Grund Ihrer Antwort kommen Sie wahrscheinlich nicht als Blutspender:in in Frage. Schauen Sie sich gerne unser FAQ an.",
-  "forwardingToFAQ": "Zum FAQ", 
+  "forwardingToFAQ": "Zur FAQ", 
   "faqErrorLoadingQuestions": "Beim Laden der FAQ-Fragen ist ein Fehler aufgetreten.",
 
   "bookingStartHeader": "Blutspendetermin",
@@ -76,11 +79,8 @@
   "bookingStopBooking":"Buchungsvorgang abbrechen",
   "bookingChooseDayTitle":"Tag auswählen",
   "bookingChooseTimeTitle":"Verfügbare Zeiten",
-<<<<<<< Updated upstream
-  "bookingAnswerQuestionsTitle":"Dürfen Sie Blut spenden?",
-=======
   "bookingAnswerQuestionsTitle":"Spendetauglichkeit",
->>>>>>> Stashed changes
+
   "bookingDatenTitle":"Daten überprüfen",
   "bookingProgressLoss":"Ihr bisheriger Fortschritt geht verloren.",
   "bookingAgeWarning":"Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",
@@ -88,6 +88,7 @@
   "bookingFirstAge":"Wann wurden Sie geboren?",
   "bookingErrorLoadingQuestions": "Es ist ein Fehler aufgetreten beim Laden der Spende Fragen.",
   "bookingErrorProcessFailure": "[BookingProcess] Something went wrong!",
+  "bookingAppointmentCanceledFeedback": "Ihr Termin wurde storniert!",
 
   "bookedStepSection0": "Terminvereinbarung", 
   "bookedStepSection1": "Willkommen am UKM",
