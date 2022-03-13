@@ -124,6 +124,10 @@ class UserService {
     ProviderService().container.read(localeProvider.state).state = _localeFallback(lan);
     _prefs.setString("user_language", lan.isoCode);
   }
+
+  void reset() {
+    _init();
+  }
 }
 
 Locale _localeFallback(Language language) {

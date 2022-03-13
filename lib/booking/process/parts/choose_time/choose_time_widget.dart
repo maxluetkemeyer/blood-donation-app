@@ -37,16 +37,16 @@ class ChooseTime extends ConsumerWidget {
   ///only fetching the data from the current date and creating an [AppointmentBox] for each time.
   List<Widget> _appointmentBoxList() {
     DateTime day = extractDay(BookingService().selectedAppointment!.start);
+    DateTime nextDay = day.add(const Duration(days: 1));
+
     List<Appointment> freeAppointments = BookingService().freeAppointments;
 
     List<AppointmentBox> tiles = [];
     List freeAppointmentsAtThisDay = [];
 
-    DateTime nextDay = day.add(const Duration(days: 1));
-
-    for (Appointment app in freeAppointments) {
-      if ((app.start.isAfter(day) || app.start.isAtSameMomentAs(day)) && app.start.isBefore(nextDay)) {
-        freeAppointmentsAtThisDay.add(app);
+    for (Appointment appointment in freeAppointments) {
+      if ((appointment.start.isAfter(DateTime.now()) || appointment.start.isAtSameMomentAs(DateTime.now())) && appointment.start.isBefore(nextDay)) {
+        freeAppointmentsAtThisDay.add(appointment);
       }
     }
 

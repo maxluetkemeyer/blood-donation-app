@@ -31,7 +31,7 @@ class Person {
       "name": name ?? "",
       "gender": gender ?? "",
       "firstDonation": firstDonation,
-      "telephoneNumber": "",
+      "telephoneNumber": telephoneNumber,
     };
 
     if (id < 0) {

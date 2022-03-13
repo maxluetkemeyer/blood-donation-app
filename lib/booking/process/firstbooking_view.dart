@@ -141,9 +141,11 @@ class _FirstBookingState extends State<FirstBooking> {
 
     DateTime userBirthday = UserService().birthday!;
     DateTime earliestDonationBirthday = DateTime.fromMillisecondsSinceEpoch(DateTime.now().millisecondsSinceEpoch - 568036800000);
+    DateTime latestDonationBirthday = DateTime.now().add(const Duration(days: -365 * 68));
 
     if (UserService().birthdayAsString == "") return false;
     if (userBirthday.isAfter(earliestDonationBirthday)) return false;
+    if (userBirthday.isBefore(latestDonationBirthday)) return false;
 
     return true;
   }
