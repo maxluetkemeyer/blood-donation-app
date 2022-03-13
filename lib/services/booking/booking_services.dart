@@ -81,6 +81,7 @@ class BookingService {
     donationQuestions.clear();
     donationQuestionTranslations.clear();
     ProviderService().container.read(bookingStateProvider.state).state = 0;
+    ProviderService().container.read(questionStepStateProvier.state).state = 0;
   }
 
   ///Resets the BookingService

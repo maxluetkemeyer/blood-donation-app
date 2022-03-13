@@ -82,7 +82,7 @@
   "bookingAnswerQuestionsTitle":"Selbstüberprüfung",
   "bookingDatenTitle":"Daten überprüfen",
   "bookingProgressLoss":"Ihr bisheriger Fortschritt geht verloren.",
-  "bookingAgeWarning":"Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",
+  "bookingAgeWarning":"Sie müssen zwischen 18 und 68 Jahren alt sein, um Blut spenden zu können!",
   "bookingFirstPrompt":"Ihre erste Blutspende",
   "bookingFirstAge":"Wann wurden Sie geboren?",
   "bookingErrorLoadingQuestions": "Es ist ein Fehler aufgetreten beim Laden der Spende Fragen.",

@@ -1,10 +1,10 @@
 import 'dart:math' as math;
 
 import 'package:blooddonation/models/appointment_model.dart';
+import 'package:blooddonation/services/provider/provider_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 class RequestCard extends StatefulWidget {
@@ -36,8 +36,6 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
   void initState() {
     super.initState();
 
-    initializeDateFormatting();
-
     controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -54,7 +52,6 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
   void refreshIcon() {
     //animation
     controller.forward().then((_) => controller.reset());
-    print("animate!");
     //some provided function
     widget.onRefresh();
   }
@@ -99,7 +96,7 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    String dayMonth = DateFormat("c. LLLL").format(widget.appointment.start); //"11. Dezember";
+    String dayMonth = DateFormat("c. LLLL", ProviderService().container.read(localeProvider.state).state.languageCode).format(widget.appointment.start); //"11. Dezember";
     String time = DateFormat("hh:mm").format(widget.appointment.start); //"10:30";
 
     return Card(
