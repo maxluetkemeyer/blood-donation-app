@@ -76,11 +76,16 @@
   "bookingAppointment": "Appointment",
   "bookingBreakText": "is your selected appointment. Do you want to change your appointment and start the booking process again?",
   "bookingChangeDate": "Change Appointment",
-  "bookingStopBooking":"Stop booking process",
+  "bookingStopBooking":"Stop Booking Process",
   "bookingChooseDayTitle":"Choose Date",
   "bookingChooseTimeTitle":"Choose Time",
+<<<<<<< Updated upstream
   "bookingAnswerQuestionsTitle":"May you donate blood?",
   "bookingDatenTitle":"Check data",
+=======
+  "bookingAnswerQuestionsTitle":"Suitability for Blood Donation",
+  "bookingDatenTitle":"Check Data",
+>>>>>>> Stashed changes
   "bookingProgressLoss":"Your previous progress will be lost.",
   "bookingAgeWarning":"You must be at least 18 years old to donate blood!",
   "bookingFirstPrompt":"Your first blood donation",

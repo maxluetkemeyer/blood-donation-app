@@ -6,7 +6,7 @@
   "userOnboardingBooking": "Hier können Sie einen\nBlutspendetermin buchen",
   "userOnboardingLocation": "Hier zeigen wir Ihnen, wie Sie zu uns kommen",
   "userOnboardingFAQ": "Hier beantworten wir für Sie häufig gestellte Fragen",
-  "userOnboardingMore": "Und hier oben finden Sie alle Spender:innen-Daten und das Impressum.",
+  "userOnboardingMore": "Und hier oben finden Sie Ihre angegebenen Daten, das Impressum und eine Hilfe-Funktion.",
 
   "name": "Name",
   "yourName": "Ihr Name",
@@ -76,7 +76,11 @@
   "bookingStopBooking":"Buchungsvorgang abbrechen",
   "bookingChooseDayTitle":"Tag auswählen",
   "bookingChooseTimeTitle":"Verfügbare Zeiten",
+<<<<<<< Updated upstream
   "bookingAnswerQuestionsTitle":"Dürfen Sie Blut spenden?",
+=======
+  "bookingAnswerQuestionsTitle":"Spendetauglichkeit",
+>>>>>>> Stashed changes
   "bookingDatenTitle":"Daten überprüfen",
   "bookingProgressLoss":"Ihr bisheriger Fortschritt geht verloren.",
   "bookingAgeWarning":"Sie müssen mindestens 18 Jahre alt sein, um Blut spenden zu können!",
