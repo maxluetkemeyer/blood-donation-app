@@ -4,6 +4,7 @@ import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:blooddonation/misc/env.dart' as env;
 
 import 'appointmentbox_widget.dart';
 
@@ -70,8 +71,8 @@ class ChooseTime extends ConsumerWidget {
       tiles.add(
         AppointmentBox(
           appointment: map2[key]!,
-          maxSlots: 4,
-          usedSlots: 4 - map[key]!,
+          maxSlots: env.MAX_CAPACITY_SLOTS,
+          usedSlots: env.MAX_CAPACITY_SLOTS - map[key]!,
           //usedSlots: Random().nextInt(5),
         ),
       );

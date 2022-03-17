@@ -15,3 +15,6 @@ const locationLink =
 
 ///How long should faq questions be cached.
 const Duration FAQ_CACHE_DURATION = Duration(hours: 1);
+
+///Due to the fact, that capacities does not get send to the client, we have to define maxCapacitySlots global.
+const int MAX_CAPACITY_SLOTS = 4;
