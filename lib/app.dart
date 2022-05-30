@@ -49,9 +49,9 @@ class _AppState extends State<App> {
     super.initState();
     pageIndex = widget.initalPageIndex;
 
-    print("showShowcase " + widget.showShowcase.toString());
+    print("showShowcase ${widget.showShowcase}");
     if (widget.showShowcase) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         //Needed to delay the showcase call due to visual bugs
         Future.delayed(const Duration(milliseconds: 100)).then(
           (_) => ShowCaseWidget.of(context)!.startShowCase(showcaseKeys),

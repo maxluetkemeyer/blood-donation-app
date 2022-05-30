@@ -33,7 +33,7 @@ class UserService {
   void _init() async {
     _prefs = await SharedPreferences.getInstance();
 
-    print("User Service: " + (_prefs.getString("birthday") ?? "No birthday found"));
+    print("User Service: ${_prefs.getString("birthday") ?? "No birthday found"}");
 
     _user = Person(
       name: _prefs.getString("name") ?? "",

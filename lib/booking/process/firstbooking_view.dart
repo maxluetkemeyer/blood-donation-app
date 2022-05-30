@@ -8,7 +8,7 @@ class FirstBooking extends StatefulWidget {
   const FirstBooking({Key? key}) : super(key: key);
 
   @override
-  _FirstBookingState createState() => _FirstBookingState();
+  State<FirstBooking> createState() => _FirstBookingState();
 }
 
 class _FirstBookingState extends State<FirstBooking> {

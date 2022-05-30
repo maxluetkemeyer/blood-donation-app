@@ -7,7 +7,7 @@ import 'package:blooddonation/services/provider/provider_service.dart';
 Future<bool> getRequestStatus({required int appointmentId}) async {
   String path = "/appointment_status";
   String dateParam = genParam(key: "id", value: appointmentId.toString());
-  path = path + "?" + dateParam;
+  path = "$path?$dateParam";
 
   final response = await BackendService().getRequest(path: path);
 
@@ -16,7 +16,7 @@ Future<bool> getRequestStatus({required int appointmentId}) async {
     return false;
   }
 
-  print("[get_status]: " + response.body);
+  print("[get_status]: ${response.body}");
 
   //Convert String to Map
   List jsonList = jsonDecode(utf8.decode(response.bodyBytes)) as List; //TODO: Has to be fixed in django.

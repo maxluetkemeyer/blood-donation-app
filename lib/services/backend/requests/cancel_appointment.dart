@@ -6,7 +6,7 @@ import 'package:blooddonation/services/booking/booking_services.dart';
 Future<bool> cancelAppointment({required int appointmentId}) async {
   String path = "/appointment_cancel";
   String dateParam = genParam(key: "id", value: appointmentId.toString());
-  path = path + "?" + dateParam;
+  path = "$path?$dateParam";
 
   final response = await BackendService().getRequest(path: path);
 
@@ -15,7 +15,7 @@ Future<bool> cancelAppointment({required int appointmentId}) async {
     return false;
   }
 
-  print("body " + response.body.toString());
+  print("body ${response.body}");
 
   if (utf8.decode(response.bodyBytes) != '"successful"') {
     //TODO: Bug here are String literals inside the string

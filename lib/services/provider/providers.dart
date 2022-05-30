@@ -1,4 +1,4 @@
-import "package:flutter_riverpod/flutter_riverpod.dart";
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
 
 /// Provides the active step of the booking processvalue as state

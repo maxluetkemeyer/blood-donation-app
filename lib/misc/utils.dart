@@ -12,9 +12,9 @@ DateTime extractDay(DateTime dateTime) {
 
 String dayWithTimeString(DateTime dateTime) {
   if (extractDay(dateTime) == extractDay(DateTime.now())) {
-    return "Heute um " + DateFormat("HH:mm").format(dateTime);
+    return "Heute um ${DateFormat("HH:mm").format(dateTime)}";
   }
 
-  return DateFormat("dd.MM.yyyy").format(dateTime) + " um " + DateFormat("HH:mm").format(dateTime);
+  return "${DateFormat("dd.MM.yyyy").format(dateTime)} um ${DateFormat("HH:mm").format(dateTime)}";
 }
 

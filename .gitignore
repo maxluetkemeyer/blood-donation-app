@@ -81,10 +81,7 @@ android/app/google-services.json
 ios/Podfile.lock
 
 # Images
-assets/images/person_1.png
-assets/images/person_2.png
-assets/images/person_3.png
-assets/images/person_4.png
+assets/images/persons/
 assets/images/pan_0.jpg
 assets/images/pan_1.jpg
 assets/images/pan_2.jpg

@@ -127,14 +127,14 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
                       ),
                       children: [
                         TextSpan(
-                          text: "\n" + dayMonth,
+                          text: "\n$dayMonth",
                           style: TextStyle(
                             color: widget.textColor,
                             fontSize: 28,
                           ),
                         ),
                         TextSpan(
-                          text: "\n" + time,
+                          text: "\n$time",
                           style: TextStyle(
                             color: widget.textColor,
                             fontSize: 28,
@@ -153,7 +153,7 @@ class _RequestCardState extends State<RequestCard> with SingleTickerProviderStat
                       ),
                       children: [
                         TextSpan(
-                          text: "\n" + widget.status,
+                          text: "\n${widget.status}",
                           style: TextStyle(
                             color: widget.textColor,
                             fontSize: 28,

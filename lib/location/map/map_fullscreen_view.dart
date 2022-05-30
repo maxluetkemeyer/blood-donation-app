@@ -15,7 +15,7 @@ class MapFullScreen extends StatelessWidget {
         appBar: AppBar(
           actions: [
             TextButton.icon(
-              onPressed: () => launch(env.locationLink),
+              onPressed: () => launchUrl(Uri.parse(env.locationLink)),
               icon: const Icon(Icons.open_in_new_outlined),
               label: Text(AppLocalizations.of(context)!.mapToMapsProvider),
             ),

@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 Future<bool> getFreeAppointments(DateTime day) async {
   String path = "/appointments";
   String dateParam = genParam(key: "date", value: DateFormat("yyyy-MM-dd").format(day));
-  path = path + "?" + dateParam;
+  path = "$path?$dateParam";
 
   final response = await BackendService().getRequest(path: path);
 

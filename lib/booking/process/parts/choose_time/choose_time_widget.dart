@@ -2,7 +2,7 @@ import 'package:blooddonation/misc/utils.dart';
 import 'package:blooddonation/services/backend/backend_service.dart';
 import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:blooddonation/misc/env.dart' as env;
 

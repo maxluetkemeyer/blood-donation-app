@@ -9,7 +9,8 @@ PageDecoration getOwnPageDecoration() => PageDecoration(
         color: Color(0xff003866),
       ),
       bodyTextStyle: const TextStyle(fontSize: 20),
-      descriptionPadding: const EdgeInsets.all(16).copyWith(bottom: 0),
+      bodyPadding: const EdgeInsets.all(16).copyWith(bottom: 0),
+      //descriptionPadding
       imagePadding: const EdgeInsets.fromLTRB(5, 20, 5, 0),
       pageColor: Colors.white,
     );

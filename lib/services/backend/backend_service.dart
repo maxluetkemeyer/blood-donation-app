@@ -41,7 +41,7 @@ class BackendService {
   }
 }
 
-String genParam({required String key, required String value}) => key + "=" + value;
+String genParam({required String key, required String value}) => "$key=$value";
 
 String _genSignature({
   required String body,
@@ -56,16 +56,16 @@ String _genSignature({
   var secret = env.API_TOKEN;
   var secretEnc = utf8.encode(secret);
 
-  var bytes = utf8.encode(secret + "-" + method + "-" + path + "-" + body);
+  var bytes = utf8.encode("$secret-$method-$path-$body");
 
-  print("bytes: " + secret + "-" + method + "-" + path + "-" + body);
+  print("bytes: $secret-$method-$path-$body");
 
   var hmac = Hmac(sha256, secretEnc);
   var hash = hmac.convert(bytes);
 
   var signature = base64Encode(hash.bytes);
 
-  print("signature: " + signature);
+  print("signature: $signature");
 
   return signature;
 }

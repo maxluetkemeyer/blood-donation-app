@@ -39,19 +39,19 @@ class _HomePageViewState extends State<HomePageView> {
             items: const [
               HomeStatic(),
               PersonWiget(
-                image: AssetImage("assets/images/person_1.png"),
+                image: AssetImage("assets/images/persons/person_1.jpg"),
                 text: "Ich spende beim UKM, weil ich mich hier gut aufgehoben fühle.",
               ),
               PersonWiget(
-                image: AssetImage("assets/images/person_2.png"),
-                text: "Ich spende Blut, weil ich damit anderen Menschen helfen kann.",
-              ),
-              PersonWiget(
-                image: AssetImage("assets/images/person_3.png"),
+                image: AssetImage("assets/images/persons/person_2.jpg"),
                 text: "Ich spende beim UKM, weil die Nussecken hier so unglaublich lecker sind.",
               ),
               PersonWiget(
-                image: AssetImage("assets/images/person_4.png"),
+                image: AssetImage("assets/images/persons/person_3.jpg"),
+                text: "Ich spende Blut, weil ich damit anderen Menschen helfen kann.", 
+              ),
+              PersonWiget(
+                image: AssetImage("assets/images/persons/person_4.jpg"),
                 text: "Wir gehen immer mit unserer WG Blut spenden. Das ist direkt viel lustiger.",
               ),
             ],

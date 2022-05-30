@@ -26,7 +26,7 @@ class PanFullScreen extends StatelessWidget {
           backgroundColor: Colors.white.withOpacity(0.7),
           actions: [
             TextButton.icon(
-              onPressed: () => launch(env.locationLink),
+              onPressed: () => launchUrl(Uri.parse(env.locationLink)),
               icon: const Icon(Icons.open_in_new_outlined),
               label: Text(AppLocalizations.of(context)!.mapToMapsProvider),
             ),

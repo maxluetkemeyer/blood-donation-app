@@ -43,6 +43,7 @@ class _BookingBookedStatusState extends State<BookingBookedStatus> {
     //Clear BookingService reference
     BookingService().bookedAppointment = null;
 
+    if (!mounted) return;
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const App(initalPageIndex: 1)), (route) => false);
 
     // ignore: unnecessary_null_comparison

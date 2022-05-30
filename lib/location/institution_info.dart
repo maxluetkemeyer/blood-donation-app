@@ -47,7 +47,7 @@ class CompanyInfo extends StatelessWidget {
                   ),
                   TableCell(
                     child: GestureDetector(
-                      onTap: () => launch('tel:+492518358000'),
+                      onTap: () => launchUrl(Uri.dataFromString('tel:+492518358000')),
                       child: Text(AppLocalizations.of(context)!.institutionTelephoneNumber),
                     ),
                   ),
@@ -64,7 +64,7 @@ class CompanyInfo extends StatelessWidget {
                   ),
                   TableCell(
                     child: GestureDetector(
-                      onTap: () => launch("mailto:blutspende@ukmuenster.de"),
+                      onTap: () => launchUrl(Uri.parse("mailto:blutspende@ukmuenster.de")),
                       child: Text(AppLocalizations.of(context)!.institutionMailAdress),
                     ),
                   ),

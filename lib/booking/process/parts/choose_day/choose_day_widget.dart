@@ -3,7 +3,7 @@ import 'package:blooddonation/services/booking/booking_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 ///Widget that allows the user to choose the desired date to donate.
 class ChooseDay extends ConsumerWidget {

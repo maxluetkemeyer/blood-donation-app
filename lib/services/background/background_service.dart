@@ -79,7 +79,7 @@ void myTask(String taskId) async {
   String appointmentId = "1";
   String path = "/appointment_status";
   String dateParam = genParam(key: "id", value: appointmentId);
-  path = path + "?" + dateParam;
+  path = "$path?$dateParam";
   final response = await BackendService().getRequest(path: path);
 
   if (response.statusCode != 200) {
